@@ -1,0 +1,160 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Mes formations - Formation AssMat{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col">
+        <h1>Mes formations</h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        {% if completed %}
+            <div class="list-group">
+                {% for training in completed %}
+                <div class="list-group-item">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{ training.training_action.formation.name }}</h5>
+                        <span class="badge bg-success">Terminée</span>
+                    </div>
+                    <div class="mb-2">
+                        <small class="text-muted">
+                            <strong>Code IPERIA:</strong> {{ training.training_action.formation.code_iperia }}
+                        </small>
+                    </div>
+                    <div class="row mb-2">
+                        <div class="col-md-6">
+                            <p class="mb-1">
+                                <i class="fas fa-calendar-alt"></i> 
+                                Du {{ training.training_action.start_date|date:"d/m/Y" }} 
+                                au {{ training.training_action.end_date|date:"d/m/Y" }}
+                            </p>
+                            <p class="mb-1">
+                                <i class="fas fa-map-marker-alt"></i> 
+                                {{ training.training_action.location }}
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p class="mb-1">
+                                <i class="fas fa-clock"></i> 
+                                Durée : {{ training.training_action.formation.duration }} heures
+                            </p>
+                            <p class="mb-1">
+                                <i class="fas fa-user-tie"></i> 
+                                Formateur(s) : {{ training.training_action.trainers }}
+                            </p>
+                        </div>
+                    </div>
+                    {% if training.certificate_number %}
+                    <div class="alert alert-info mb-2">
+                        <small>
+                            <i class="fas fa-certificate"></i>
+                            Numéro de certificat : {{ training.certificate_number }}
+                        </small>
+                    </div>
+                    {% endif %}
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{ training.training_action.formation.program_link }}" 
+                           class="btn btn-sm btn-outline-primary" 
+                           target="_blank">
+                            Voir le programme
+                        </a>
+                        {% if training.training_action.formation.image_url %}
+                        <img src="{{ training.training_action.formation.image_url }}" 
+                             alt="{{ training.training_action.formation.name }}" 
+                             class="img-thumbnail" 
+                             style="max-height: 50px;">
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Résumé de mes formations</h5>
+                    <div class="row text-center">
+                        <div class="col-md-4">
+                            <h3>{{ completed|length }}</h3>
+                            <p>Formations terminées</p>
+                        </div>
+                        <div class="col-md-4">
+                            {% with total_hours=0 %}
+                                {% for training in completed %}
+                                    {% with hours=training.training_action.formation.duration %}
+                                        {% with total_hours=total_hours|add:hours %}
+                                        {% endwith %}
+                                    {% endwith %}
+                                {% endfor %}
+                                <h3>{{ total_hours }}</h3>
+                                <p>Heures de formation</p>
+                            {% endwith %}
+                        </div>
+                        <div class="col-md-4">
+                            <h3>{{ completed.last.completion_date|date:"m/Y" }}</h3>
+                            <p>Dernière formation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="alert alert-info">
+                <h5 class="alert-heading">Aucune formation terminée</h5>
+                <p>Vous n'avez pas encore terminé de formation.</p>
+                <hr>
+                <p class="mb-0">
+                    Consultez notre catalogue pour trouver des formations qui vous intéressent.
+                </p>
+                <a href="{% url 'core:formation_list' %}" class="btn btn-primary mt-3">
+                    Voir les formations disponibles
+                </a>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Formations à venir</h5>
+                {% with wishes=user.trainingwish_set.all %}
+                    {% if wishes %}
+                        <ul class="list-unstyled">
+                            {% for wish in wishes %}
+                            <li class="mb-2">
+                                <i class="fas fa-bookmark text-primary"></i>
+                                {{ wish.formation.name }}
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        <a href="{% url 'core:training_wishes' %}" class="btn btn-outline-primary btn-sm">
+                            Gérer mes souhaits
+                        </a>
+                    {% else %}
+                        <p class="card-text">Aucun souhait de formation pour le moment.</p>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Téléchargements</h5>
+                <ul class="list-unstyled">
+                    {% for training in completed %}
+                        {% if training.certificate_number %}
+                        <li class="mb-2">
+                            <a href="#" class="btn btn-outline-secondary btn-sm w-100">
+                                <i class="fas fa-download"></i>
+                                Attestation - {{ training.training_action.formation.name }}
+                            </a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

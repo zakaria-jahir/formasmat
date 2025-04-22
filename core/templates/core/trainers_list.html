@@ -1,0 +1,61 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Formateurs</h1>
+        {% if user.is_staff %}
+            <a href="{% url 'core:trainer_create' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nouveau formateur
+            </a>
+        {% endif %}
+    </div>
+
+    <div class="row">
+        {% for trainer in trainers %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ trainer.get_full_name }}</h5>
+                        <p class="card-text">
+                            <i class="fas fa-envelope"></i> {{ trainer.email }}<br>
+                            <i class="fas fa-phone"></i> {{ trainer.phone }}
+                        </p>
+                        {% if trainer.specialties.all %}
+                            <p class="card-text">
+                                <strong>Spécialités :</strong><br>
+                                {% for specialty in trainer.specialties.all %}
+                                    <span class="badge bg-secondary me-1">{{ specialty.name }}</span>
+                                {% endfor %}
+                            </p>
+                        {% endif %}
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-between">
+                            <a href="{% url 'core:trainer_detail' pk=trainer.pk %}" class="btn btn-info btn-sm">
+                                <i class="fas fa-info-circle"></i> Détails
+                            </a>
+                            {% if user.is_staff %}
+                                <div>
+                                    <a href="{% url 'core:trainer_edit' pk=trainer.pk %}" class="btn btn-warning btn-sm">
+                                        <i class="fas fa-edit"></i> Modifier
+                                    </a>
+                                    <a href="{% url 'core:trainer_delete' pk=trainer.pk %}" class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </a>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="col">
+                <div class="alert alert-info">
+                    Aucun formateur n'est disponible pour le moment.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

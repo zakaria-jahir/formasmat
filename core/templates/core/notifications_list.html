@@ -1,0 +1,40 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="bi bi-bell"></i> Mes notifications
+                {% if notifications.count > 0 %}
+                    <small class="text-muted">({{ notifications.count }})</small>
+                {% endif %}
+            </h2>
+
+            {% if notifications.count == 0 %}
+                <div class="alert alert-info">
+                    Vous n'avez pas de nouvelles notifications.
+                </div>
+            {% else %}
+                <div class="list-group">
+                    {% for notification in notifications %}
+                        <a href="{% url 'core:mark_notification_read' notification_id=notification.id %}" 
+                           class="list-group-item list-group-item-action {% if not notification.is_read %}list-group-item-primary{% endif %}">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">
+                                    <i class="bi {% if notification.type == 'formation_added' %}bi-book{% endif %} 
+                                               {% if notification.type == 'session_created' %}bi-calendar-check{% endif %} 
+                                               {% if notification.type == 'wish_assigned' %}bi-check-circle{% endif %}"></i>
+                                    {{ notification.get_type_display }}
+                                </h5>
+                                <small class="text-muted">{{ notification.created_at|timesince }} ago</small>
+                            </div>
+                            <p class="mb-1">{{ notification.message }}</p>
+                        </a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

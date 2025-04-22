@@ -1,0 +1,75 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Mes souhaits de formation - Formation AssMat{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Mes souhaits de formation</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            {% if wishes %}
+                <div class="list-group">
+                    {% for wish in wishes %}
+                    <div class="list-group-item">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h5 class="mb-1">{{ wish.formation.name }}</h5>
+                            <small>Ajouté le {{ wish.created_at|date:"d/m/Y" }}</small>
+                        </div>
+                        <p class="mb-1">{{ wish.formation.description|truncatewords:30 }}</p>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <small>
+                                <i class="fas fa-clock"></i> {{ wish.formation.duration }} heures
+                                ({{ wish.formation.get_number_of_days }} jour{{ wish.formation.get_number_of_days|pluralize }})
+                                <br>
+                                <i class="fas fa-tag"></i> Code IPERIA: {{ wish.formation.code_iperia }}
+                            </small>
+                            <div>
+                                <form method="post" action="{% url 'core:remove_training_wish' wish.formation.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        <i class="fas fa-times"></i> Retirer de ma liste
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-info">
+                    <h4 class="alert-heading"><i class="fas fa-info-circle"></i> Aucun souhait</h4>
+                    <p>Vous n'avez pas encore ajouté de formations à votre liste de souhaits.</p>
+                    <hr>
+                    <a href="{% url 'core:formations_list' %}" class="btn btn-primary">
+                        <i class="fas fa-search"></i> Parcourir les formations
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fas fa-info-circle"></i> À propos des souhaits</h5>
+                    <p class="card-text">
+                        Cette liste vous permet de :
+                    </p>
+                    <ul class="mb-3">
+                        <li>Garder une trace des formations qui vous intéressent</li>
+                        <li>Être notifié des nouvelles sessions disponibles</li>
+                        <li>Gérer vos priorités de formation</li>
+                    </ul>
+                    <a href="{% url 'core:formations_list' %}" class="btn btn-primary w-100">
+                        <i class="fas fa-plus"></i> Ajouter d'autres formations
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,116 @@
+{% extends 'core/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Modifier mon profil - Formation AssMat{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8 mx-auto">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="card-title mb-0">Modifier mon profil</h2>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="first_name" class="form-label">Prénom</label>
+                            <input type="text" class="form-control" id="first_name" name="first_name" 
+                                   value="{{ user.first_name }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="last_name" class="form-label">Nom</label>
+                            <input type="text" class="form-control" id="last_name" name="last_name" 
+                                   value="{{ user.last_name }}">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                   value="{{ user.email }}">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="phone_number" class="form-label">Téléphone</label>
+                            <input type="tel" class="form-control" id="phone_number" name="phone_number" 
+                                   value="{{ user.phone_number }}">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="organization_name" class="form-label">Nom de l'organisation</label>
+                        <input type="text" class="form-control" id="organization_name" name="organization_name" 
+                               value="{{ user.organization_name }}">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Préférences de formation</label>
+                        <div class="row">
+                            {% for value, label in training_choices %}
+                            <div class="col-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="training_preferences" 
+                                           value="{{ value }}" id="training_{{ value }}"
+                                           {% if value in current_training_preferences %}checked{% endif %}>
+                                    <label class="form-check-label" for="training_{{ value }}">
+                                        {{ label }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Disponibilités</label>
+                        <div class="row">
+                            {% for value, label in schedule_choices %}
+                            <div class="col-md-6">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="schedule_preferences" 
+                                           value="{{ value }}" id="schedule_{{ value }}"
+                                           {% if value in current_schedule_preferences %}checked{% endif %}>
+                                    <label class="form-check-label" for="schedule_{{ value }}">
+                                        {{ label }}
+                                    </label>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="text-end">
+                        <a href="{% url 'core:profile' %}" class="btn btn-outline-secondary">Annuler</a>
+                        <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Script pour la géolocalisation
+    if ("geolocation" in navigator) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            const latInput = document.createElement('input');
+            latInput.type = 'hidden';
+            latInput.name = 'latitude';
+            latInput.value = position.coords.latitude;
+            
+            const longInput = document.createElement('input');
+            longInput.type = 'hidden';
+            longInput.name = 'longitude';
+            longInput.value = position.coords.longitude;
+            
+            document.querySelector('form').appendChild(latInput);
+            document.querySelector('form').appendChild(longInput);
+        });
+    }
+</script>
+{% endblock %}

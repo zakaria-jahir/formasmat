@@ -1,0 +1,127 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Créer une nouvelle session pour {{ formation.name }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="mb-4">Créer une nouvelle session</h1>
+    
+    {% if error_message %}
+    <div class="alert alert-danger" role="alert">
+        <strong>Erreur :</strong> {{ error_message }}
+    </div>
+    {% endif %}
+    
+    <div class="card">
+        <div class="card-header">
+            <h3>Formation : {{ formation.name }}</h3>
+        </div>
+        <div class="card-body">
+            <form id="create-session-form" method="post" action="{% url 'core:create_session' %}">
+                {% csrf_token %}
+                <input type="hidden" name="formation" value="{{ formation.id }}">
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="trainers" class="form-label">Formateurs</label>
+                        <select name="trainers[]" id="trainers" class="form-select" multiple>
+                            {% for trainer in trainers %}
+                                <option value="{{ trainer.id }}">{{ trainer.first_name }} {{ trainer.last_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="status" class="form-label">Statut de la session</label>
+                        <select name="status" id="status" class="form-select">
+                            <option value="NON_OUVERTE">Non ouverte</option>
+                            <option value="DEMANDEE">Demandée</option>
+                            <option value="OUVERTE">Ouverte</option>
+                            <option value="COMPLETE">Complète</option>
+                            <option value="PREPAREE">Préparée</option>
+                            <option value="ENVOYEE_FORMATEUR">Envoyée formateur</option>
+                            <option value="ATTENTE_RETOUR">En attente retour</option>
+                            <option value="ATTENTE_TRAITEMENT_SYLVAN">En attente traitement Sylvan</option>
+                            <option value="ATTENTE_TRAITEMENT_IPERIA">En attente traitement Ipéria</option>
+                            <option value="ERREUR_SYLVAN">Erreur à traiter Sylvan</option>
+                            <option value="ERREUR_IPERIA">Erreur à traiter Ipéria</option>
+                            <option value="TERMINEE">Terminée</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="iperia_opening_date" class="form-label">Date d'ouverture Ipéria</label>
+                        <input type="date" name="iperia_opening_date" id="iperia_opening_date" class="form-control">
+                    </div>
+                    
+                    <div class="col-md-6 mb-3">
+                        <label for="iperia_deadline" class="form-label">Date limite Ipéria</label>
+                        <input type="date" name="iperia_deadline" id="iperia_deadline" class="form-control">
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="session_dates" class="form-label">Dates de la session</label>
+                    <div id="session-dates-container">
+                        <div class="input-group mb-2 session-date-row">
+                            <input type="date" name="session_dates[]" class="form-control" required>
+                            <select name="session_rooms[]" class="form-select" style="max-width: 200px;">
+                                <option value="">Sélectionner une salle</option>
+                                {% for room in training_rooms %}
+                                    <option value="{{ room.id }}">{{ room.name }}</option>
+                                {% endfor %}
+                            </select>
+                            <button type="button" class="btn btn-secondary add-date-btn">+</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="comment" class="form-label">Commentaire</label>
+                    <textarea name="comment" id="comment" class="form-control" rows="3"></textarea>
+                </div>
+                
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> Créer la session
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sessionDatesContainer = document.getElementById('session-dates-container');
+    const addDateBtn = document.querySelector('.add-date-btn');
+    
+    addDateBtn.addEventListener('click', function() {
+        const newDateInput = document.createElement('div');
+        newDateInput.classList.add('input-group', 'mb-2', 'session-date-row');
+        newDateInput.innerHTML = `
+            <input type="date" name="session_dates[]" class="form-control" required>
+            <select name="session_rooms[]" class="form-select" style="max-width: 200px;">
+                <option value="">Sélectionner une salle</option>
+                {% for room in training_rooms %}
+                    <option value="{{ room.id }}">{{ room.name }}</option>
+                {% endfor %}
+            </select>
+            <button type="button" class="btn btn-danger remove-date-btn">-</button>
+        `;
+        
+        const removeBtn = newDateInput.querySelector('.remove-date-btn');
+        removeBtn.addEventListener('click', function() {
+            newDateInput.remove();
+        });
+        
+        sessionDatesContainer.appendChild(newDateInput);
+    });
+});
+</script>
+{% endblock %}

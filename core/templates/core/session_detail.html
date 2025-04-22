@@ -1,0 +1,810 @@
+{% extends '../base.html' %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Détails de la session {{ session.formation.name }}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .participants-table {
+        min-height: 800px; /* Hauteur pour environ 20 lignes */
+    }
+    .participants-table tbody tr {
+        height: 40px; /* Hauteur fixe pour chaque ligne */
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div id="toast-container" class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 1100;"></div>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Menu</h5>
+            </div>
+            <div class="list-group list-group-flush">
+                <a href="{% url 'core:manage_session' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-calendar-alt me-2"></i>Sessions
+                </a>
+                <a href="{% url 'core:admin_training_wishes' %}" class="list-group-item list-group-item-action">
+                    <i class="fas fa-clipboard-list me-2"></i>Souhaits de formation
+                </a>
+                {% if user.is_superuser %}
+                    <a href="{% url 'admin:index' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-cogs me-2"></i>Administration
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="card">
+            <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">
+                    <i class="fas fa-calendar-alt me-2"></i>Détails de la session
+                </h2>
+                <div class="btn-group">
+                    <a href="{% url 'core:manage_session' %}" class="btn btn-light btn-sm me-2">
+                        <i class="fas fa-arrow-left me-1"></i>Retour
+                    </a>
+                    <div class="btn-group" role="group">
+                        <button type="button" class="btn btn-success btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-plus me-1"></i>Ajouter
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addParticipantFromWishModal">
+                                    <i class="fas fa-clipboard-list me-2"></i>Depuis un voeu
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addDirectParticipantModal">
+                                    <i class="fas fa-user-plus me-2"></i>Ajout direct
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#addRegisteredUserModal">
+                                    <i class="fas fa-user-check me-2"></i>Ajout Utilisateur enregistré
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#createParticipantModal">
+                                    <i class="fas fa-user-edit me-2"></i>Créer un participant
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="btn-group ms-2" role="group">
+                        <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-file-export me-1"></i>Exporter
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-csv me-2"></i>CSV</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel me-2"></i>Excel</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-pdf me-2"></i>PDF</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-{{ session.get_status_class }} dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ session.get_status_display }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="statusDropdown">
+                            {% for status_value, status_label in session.STATUS_CHOICES %}
+                                {% if status_value != session.status %}
+                                    <li>
+                                        <a class="dropdown-item status-change" href="#" data-status="{{ status_value }}">
+                                            {{ status_label }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h4>{{ session.formation.name }}</h4>
+                        <p>
+                            <strong>Statut :</strong> 
+                            <span class="badge 
+                                {% if session.status == 'NON_OUVERTE' %}bg-secondary
+                                {% elif session.status == 'DEMANDEE' %}bg-warning
+                                {% elif session.status == 'OUVERTE' %}bg-success
+                                {% elif session.status == 'COMPLETE' %}bg-danger
+                                {% else %}bg-info
+                                {% endif %}">
+                                {{ session.get_status_display }}
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <p><strong>Date de début :</strong> {{ session.start_date|default:"Non définie"|date:"d/m/Y" }}</p>
+                        <p><strong>Date de fin :</strong> {{ session.end_date|default:"Non définie"|date:"d/m/Y" }}</p>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-chalkboard-teacher me-2"></i>Formateurs</h5>
+                        {% if trainers %}
+                            <ul class="list-group">
+                            {% for trainer in trainers %}
+                                <li class="list-group-item">{{ trainer }}</li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="alert alert-warning">Aucun formateur assigné</div>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-6">
+                        <h5><i class="fas fa-map-marker-alt me-2"></i>Dates et Lieux</h5>
+                        {% if session_dates %}
+                            <ul class="list-group">
+                            {% for date_info in session_dates %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ date_info.date|date:"d/m/Y" }} 
+                                    {% if date_info.location %}
+                                        <span class="badge bg-info">{{ date_info.location.name }}</span>
+                                    {% else %}
+                                        <span class="badge bg-warning">Lieu non défini</span>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                            </ul>
+                        {% else %}
+                            <div class="alert alert-warning">Aucune date programmée</div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-users me-2"></i>Places</h5>
+                        <div class="progress" style="height: 25px;">
+                            <div class="progress-bar bg-success" 
+                                 role="progressbar" 
+                                 style="width: {{ registered_count|divide_by:total_capacity|multiply:100 }}%"
+                                 aria-valuenow="{{ registered_count }}" 
+                                 aria-valuemin="0" 
+                                 aria-valuemax="{{ total_capacity }}">
+                                {{ registered_count }} / {{ total_capacity }} places
+                            </div>
+                        </div>
+                        <p class="mt-2 text-muted">
+                            <strong>Places disponibles :</strong> {{ available_seats }} 
+                            <span>(sur {{ total_capacity }} places)</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h5><i class="fas fa-user-friends me-2"></i>Participants</h5>
+                        {% if participants %}
+                            <div class="table-responsive participants-table">
+                                <table class="table table-striped table-hover">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>Nom</th>
+                                            <th>RPE/Association</th>
+                                            <th>Statut</th>
+                                            <th>Commentaires</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for participant in participants %}
+                                            <tr>
+                                                <td>{{ participant.user.get_full_name }}</td>
+                                                <td>{{ participant.user.rpe_association|default:"Non renseigné" }}</td>
+                                                <td>
+                                                    <div class="dropdown">
+                                                        <button class="btn btn-sm dropdown-toggle {{ participant.get_status_badge_class }}" 
+                                                                type="button" 
+                                                                id="statusDropdown{{ participant.id }}" 
+                                                                data-bs-toggle="dropdown" 
+                                                                aria-expanded="false">
+                                                            {{ participant.get_status_display }}
+                                                        </button>
+                                                        <ul class="dropdown-menu" aria-labelledby="statusDropdown{{ participant.id }}">
+                                                            {% for status_value, status_label in participant.STATUS_CHOICES %}
+                                                                {% if status_value != participant.status %}
+                                                                    <li>
+                                                                        <a class="dropdown-item participant-status-change" 
+                                                                           href="#" 
+                                                                           data-participant-id="{{ participant.id }}"
+                                                                           data-status="{{ status_value }}">
+                                                                            {{ status_label }}
+                                                                        </a>
+                                                                    </li>
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-info" 
+                                                            onclick="showCommentsModal('{{ participant.id }}', '{{ participant.user.get_full_name }}')">
+                                                        <i class="fas fa-comments me-1"></i>
+                                                        Commentaires
+                                                    </button>
+                                                </td>
+                                                <td>
+                                                    <button class="btn btn-sm btn-outline-danger" 
+                                                            onclick="showRemoveModal('{{ participant.id }}', '{{ participant.user.get_full_name }}')">
+                                                        <i class="fas fa-user-minus me-1"></i>
+                                                        Retirer
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        {% else %}
+                            <div class="alert alert-info">
+                                <i class="fas fa-info-circle me-2"></i>
+                                Aucun participant pour le moment
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal pour les commentaires -->
+<div class="modal fade" id="commentsModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Commentaires - <span id="participantName"></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <!-- Liste des commentaires existants -->
+                <div id="commentsList" class="mb-4">
+                    <h6>Historique des commentaires</h6>
+                    <div class="comments-container">
+                        <!-- Les commentaires seront chargés ici dynamiquement -->
+                    </div>
+                </div>
+                
+                <!-- Formulaire pour ajouter un commentaire -->
+                <form id="commentForm">
+                    <input type="hidden" id="participantId" name="participantId">
+                    <div class="form-group">
+                        <label for="participantComments">Nouveau commentaire</label>
+                        <textarea class="form-control" id="participantComments" rows="3" required></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" id="saveParticipantComment">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CSS pour les commentaires -->
+<style>
+    .comments-container {
+        max-height: 300px;
+        overflow-y: auto;
+    }
+    .comment-item {
+        border-left: 3px solid #007bff;
+        margin-bottom: 10px;
+        padding: 10px;
+        background-color: #f8f9fa;
+    }
+    .comment-header {
+        font-size: 0.9em;
+        color: #6c757d;
+        margin-bottom: 5px;
+    }
+    .comment-content {
+        margin-bottom: 0;
+    }
+</style>
+
+<!-- Modal Commentaires -->
+<div class="modal fade" id="participantCommentsModal" tabindex="-1" aria-labelledby="participantCommentsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="participantCommentsModalLabel">Commentaires du participant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form id="participantCommentsForm">
+                    {% csrf_token %}
+                    <input type="hidden" id="participantId" name="participant_id" value="">
+                    
+                    <!-- Liste des commentaires existants -->
+                    <div id="participantCommentsList" class="mb-3">
+                        <!-- Les commentaires seront chargés dynamiquement ici -->
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="participantComments" class="form-label">Commentaires</label>
+                        <textarea class="form-control" id="participantComments" name="comments" rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                <button type="button" class="btn btn-primary" id="saveParticipantComment">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajout Participant depuis un voeu -->
+<div class="modal fade" id="addParticipantFromWishModal" tabindex="-1" aria-labelledby="addParticipantFromWishModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addParticipantFromWishModalLabel">Ajouter un participant depuis un voeu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addParticipantFromWishForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="wishId" class="form-label">Voeu de formation</label>
+                        <select class="form-select" id="wishId" name="wish_id" required>
+                            <option value="">Sélectionnez un voeu</option>
+                            {% for wish in training_wishes %}
+                                <option value="{{ wish.id }}">{{ wish.user.get_full_name }} - {{ wish.formation.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="saveParticipantFromWish">Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajout Participant Direct -->
+<div class="modal fade" id="addDirectParticipantModal" tabindex="-1" aria-labelledby="addDirectParticipantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addDirectParticipantModalLabel">Ajouter un participant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addDirectParticipantForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="first_name" class="form-label">Prénom</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="last_name" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="last_name" name="last_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="rpe_association" class="form-label">RPE/Association</label>
+                        <input type="text" class="form-control" id="rpe_association" name="rpe_association">
+                    </div>
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Statut</label>
+                        <select class="form-select" id="status" name="status" required>
+                            {% for value, label in participant_status_choices %}
+                                <option value="{{ value }}">{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajout Utilisateur enregistré -->
+<div class="modal fade" id="addRegisteredUserModal" tabindex="-1" aria-labelledby="addRegisteredUserModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addRegisteredUserModalLabel">Ajouter un utilisateur enregistré</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addRegisteredUserForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="registered_user" class="form-label">Utilisateur</label>
+                        <select class="form-select" id="registered_user" name="user_id" required>
+                            <option value="">Sélectionnez un utilisateur</option>
+                            {% for user in all_users %}
+                                <option value="{{ user.id }}">{{ user.get_full_name }} ({{ user.email }})</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="registered_user_status" class="form-label">Statut</label>
+                        <select class="form-select" id="registered_user_status" name="status" required>
+                            {% for value, label in participant_status_choices %}
+                                <option value="{{ value }}">{{ label }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Ajouter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Création de Participant -->
+<div class="modal fade" id="createParticipantModal" tabindex="-1" aria-labelledby="createParticipantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createParticipantModalLabel">Créer un nouveau participant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createParticipantForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="firstName" class="form-label">Prénom</label>
+                        <input type="text" class="form-control" id="firstName" name="first_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Nom</label>
+                        <input type="text" class="form-control" id="lastName" name="last_name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="createParticipant">Créer et Ajouter</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Autres modaux existants -->
+{% include 'core/modals/update_participant_status.html' %}
+{% include 'core/modals/remove_participant.html' %}
+
+{% block extra_js %}
+<script>
+$(document).ready(function() {
+    // Fonction pour afficher le modal de statut
+    function showStatusModal(participantId, currentStatus) {
+        $('#statusParticipantId').val(participantId);
+        $('#participantStatus').val(currentStatus);
+        $('#statusModal').modal('show');
+    }
+
+    // Fonction pour afficher le modal de suppression
+    function showRemoveModal(participantId, participantName) {
+        $('#removeParticipantId').val(participantId);
+        $('#participantToRemove').text(participantName);
+        $('#removeParticipantModal').modal('show');
+    }
+
+    // Gestionnaire pour la mise à jour du statut
+    $('#saveParticipantStatus').on('click', function() {
+        const participantId = $('#statusParticipantId').val();
+        const newStatus = $('#participantStatus').val();
+
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/status/`,
+            method: 'POST',
+            data: {
+                'status': newStatus,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert('Erreur lors de la mise à jour du statut: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de la mise à jour du statut:', error);
+                alert('Erreur lors de la mise à jour du statut');
+            }
+        });
+    });
+
+    // Gestionnaire pour la suppression
+    $('#confirmRemoveParticipant').on('click', function() {
+        const participantId = $('#removeParticipantId').val();
+
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/remove/`,
+            method: 'POST',
+            data: {
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert('Erreur lors de la suppression: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de la suppression:', error);
+                alert('Erreur lors de la suppression');
+            }
+        });
+    });
+
+    // Fonction pour afficher le modal des commentaires
+    function showCommentsModal(participantId, participantName) {
+        $('#participantId').val(participantId);
+        $('#participantName').text(participantName);
+        loadParticipantComments(participantId);
+        $('#commentsModal').modal('show');
+    }
+
+    // Fonction pour charger les commentaires
+    function loadParticipantComments(participantId) {
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/comments/`,
+            method: 'GET',
+            success: function(response) {
+                console.log('Comments response:', response);
+                const commentsContainer = $('.comments-container');
+                commentsContainer.empty();
+                
+                if (response.comments && response.comments.length > 0) {
+                    response.comments.forEach(comment => {
+                        const commentHtml = `
+                            <div class="comment-item">
+                                <div class="comment-header">
+                                    <strong>${comment.author || 'Auteur inconnu'}</strong> - ${comment.created_at}
+                                </div>
+                                <p class="comment-content">${comment.content}</p>
+                            </div>
+                        `;
+                        commentsContainer.append(commentHtml);
+                    });
+                } else {
+                    commentsContainer.append('<p class="text-muted">Aucun commentaire pour le moment.</p>');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error loading comments:', xhr.responseText);
+                $('.comments-container').html('<p class="text-danger">Erreur lors du chargement des commentaires.</p>');
+            }
+        });
+    }
+
+    // Gestionnaire pour l'enregistrement des commentaires
+    $('#saveParticipantComment').on('click', function() {
+        const participantId = $('#participantId').val();
+        const comments = $('#participantComments').val().trim();
+
+        if (!comments) {
+            alert('Veuillez saisir un commentaire');
+            return;
+        }
+
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/update-comments/`,
+            method: 'POST',
+            data: {
+                'comments': comments,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                if (response.success) {
+                    loadParticipantComments(participantId);
+                    $('#participantComments').val('');
+                } else {
+                    alert('Erreur lors de l\'enregistrement du commentaire: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur de communication avec le serveur:', {
+                    status: status,
+                    error: error,
+                    response: xhr.responseText
+                });
+                alert('Erreur de communication avec le serveur');
+            }
+        });
+    });
+
+    // Gestionnaire pour l'ajout direct de participant
+    $('#addDirectParticipantForm').on('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const sessionId = {{ session.id }};
+        
+        $.ajax({
+        url: "{% url 'core:create_and_add_participant' session.id %}", // Utiliser le template tag Django
+        method: 'POST',
+        data: formData,
+        processData: false,
+        contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    showToast('success', 'Participant ajouté avec succès');
+                    location.reload();
+                } else {
+                    showToast('error', 'Erreur lors de l\'ajout du participant: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de l\'ajout du participant:', error);
+                showToast('error', 'Erreur lors de l\'ajout du participant');
+            }
+        });
+    });
+
+    // Gestionnaire pour l'ajout d'un utilisateur enregistré
+    $('#addRegisteredUserForm').on('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const sessionId = {{ session.id }};
+        
+        $.ajax({
+            url: `/manage-session/${sessionId}/participants/add/`,
+            method: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    showToast('success', 'Participant ajouté avec succès');
+                    location.reload();
+                } else {
+                    showToast('error', 'Erreur lors de l\'ajout du participant: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de l\'ajout du participant:', error);
+                showToast('error', 'Erreur lors de l\'ajout du participant');
+            }
+        });
+    });
+
+    // Fonction pour afficher les toasts
+    function showToast(type, message) {
+        const toastHtml = `
+            <div class="toast align-items-center text-white bg-${type === 'success' ? 'success' : 'danger'} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+            </div>
+        `;
+        
+        const toastElement = $(toastHtml);
+        $('#toast-container').append(toastElement);
+        const toast = new bootstrap.Toast(toastElement[0]);
+        toast.show();
+        
+        // Supprimer le toast après qu'il soit caché
+        toastElement.on('hidden.bs.toast', function() {
+            $(this).remove();
+        });
+    }
+
+    // Gestionnaire pour le changement de statut de la session
+    $('.status-change').on('click', function(e) {
+        e.preventDefault();
+        const newStatus = $(this).data('status');
+        const sessionId = {{ session.id }};
+
+        $.ajax({
+            url: "{% url 'core:update_session' session.id %}",
+            method: 'POST',
+            data: {
+                'session_id': sessionId,
+                'status': newStatus,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Mettre à jour le bouton de statut
+                    $('#statusDropdown')
+                        .text(response.status)
+                        .removeClass()
+                        .addClass('btn dropdown-toggle ' + response.status_class);
+                    
+                    // Mettre à jour le badge de statut
+                    $('.badge-status')
+                        .text(response.status)
+                        .removeClass()
+                        .addClass('badge ' + response.status_class);
+                    
+                    // Afficher un toast de succès
+                    showToast('success', 'Statut mis à jour avec succès');
+                    
+                    // Recharger la page pour mettre à jour la liste des options
+                    location.reload();
+                } else {
+                    showToast('error', 'Erreur lors de la mise à jour du statut: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de la mise à jour du statut:', error);
+                showToast('error', 'Erreur lors de la mise à jour du statut');
+            }
+        });
+    });
+
+    // Gestionnaire pour le changement de statut des participants
+    $('.participant-status-change').on('click', function(e) {
+        e.preventDefault();
+        const participantId = $(this).data('participant-id');
+        const newStatus = $(this).data('status');
+        const button = $(`#statusDropdown${participantId}`);
+
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/status/`,
+            method: 'POST',
+            data: {
+                'status': newStatus,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                if (response.success) {
+                    // Mettre à jour le bouton de statut
+                    button
+                        .text(response.status)
+                        .removeClass()
+                        .addClass('btn btn-sm dropdown-toggle ' + response.status_class);
+                    
+                    // Afficher un toast de succès
+                    showToast('success', 'Statut du participant mis à jour avec succès');
+                    
+                    // Recharger la page pour mettre à jour la liste des options
+                    location.reload();
+                } else {
+                    showToast('error', 'Erreur lors de la mise à jour du statut: ' + response.error);
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Erreur lors de la mise à jour du statut:', error);
+                showToast('error', 'Erreur lors de la mise à jour du statut');
+            }
+        });
+    });
+
+    // Rendre les fonctions disponibles globalement
+    window.showStatusModal = showStatusModal;
+    window.showRemoveModal = showRemoveModal;
+    window.showCommentsModal = showCommentsModal;
+});
+</script>
+{% endblock %}
+{% endblock %}

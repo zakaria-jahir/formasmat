@@ -1,0 +1,552 @@
+{% extends 'core/base.html' %}
+
+{% block extra_css %}
+<style>
+    .session-date {
+        border: 1px solid #dee2e6;
+        border-radius: 0.25rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .status-badge {
+        font-size: 0.875rem;
+        padding: 0.5em 0.75em;
+        border-radius: 0.25rem;
+    }
+    .status-PENDING {
+        background-color: #ffc107;
+        color: #000;
+    }
+    .status-OPEN {
+        background-color: #28a745;
+        color: #fff;
+    }
+    .status-VALIDATED {
+        background-color: #17a2b8;
+        color: #fff;
+    }
+    .status-COMPLETED {
+        background-color: #0d6efd;
+        color: #fff;
+    }
+    .status-ARCHIVED {
+        background-color: #6c757d;
+        color: #fff;
+    }
+    .status-CANCELLED {
+        background-color: #dc3545;
+        color: #fff;
+    }
+    .session-card {
+        margin-bottom: 1.5rem;
+        transition: all 0.3s ease;
+    }
+    .session-card:hover {
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+    .filter-section {
+        background-color: #f8f9fa;
+        border-radius: 0.25rem;
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+    .btn-group .btn {
+        transition: all 0.2s ease;
+    }
+    .btn-group .btn:hover {
+        transform: translateY(-1px);
+    }
+    .table td {
+        vertical-align: middle;
+    }
+    .table th {
+        background-color: #f8f9fa;
+        border-bottom: 2px solid #dee2e6;
+    }
+    .modal-content {
+        border-radius: 0.5rem;
+    }
+    .modal-header {
+        background-color: #f8f9fa;
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .modal-footer {
+        background-color: #f8f9fa;
+        border-radius: 0 0 0.5rem 0.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Accueil</a></li>
+            <li class="breadcrumb-item active">Gestion des sessions</li>
+        </ol>
+    </nav>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1>Gestion des sessions</h1>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createSessionModal">
+            <i class="fas fa-plus"></i> Nouvelle session
+        </button>
+    </div>
+
+    <!-- Filtres -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="formation-filter">Formation</label>
+                        <select class="form-control" id="formation-filter">
+                            <option value="">Toutes les formations</option>
+                            {% for formation in formations %}
+                            <option value="{{ formation.id }}">{{ formation.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="status-filter">Statut</label>
+                        <select class="form-control" id="status-filter">
+                            <option value="">Tous les statuts</option>
+                            {% for status in status_choices %}
+                            <option value="{{ status.0 }}">{{ status.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Liste des sessions -->
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Formation</th>
+                            <th>Dates</th>
+                            <th>Formateurs</th>
+                            <th>Statut</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for session in sessions %}
+                        <tr>
+                            <td>{{ session.formation.name }}</td>
+                            <td>
+                                {% for date in session.dates.all %}
+                                <div>{{ date|date:"d/m/Y" }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                {% for trainer in session.trainers.all %}
+                                <div>{{ trainer.get_full_name }}</div>
+                                {% endfor %}
+                            </td>
+                            <td>
+                                <span class="badge {{ session.get_status_badge_class }}">
+                                    {{ session.get_status_display }}
+                                </span>
+                            </td>
+                            <td>
+                                <div class="btn-group">
+                                    <button type="button" 
+                                            class="btn btn-sm btn-outline-primary"
+                                            onclick="editSession({{ session.id }})">
+                                        <i class="fas fa-edit"></i> Modifier
+                                    </button>
+                                    <a href="{% url 'core:session_detail' session_id=session.id %}" class="btn btn-info btn-sm">
+                                        <i class="fas fa-info-circle"></i> Détails
+                                    </a>
+                                    <button type="button" 
+                                            class="btn btn-sm btn-outline-danger"
+                                            onclick="deleteSession({{ session.id }})">
+                                        <i class="fas fa-trash"></i> Supprimer
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="5" class="text-center">Aucune session trouvée</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de création de session -->
+<div class="modal fade" id="createSessionModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Nouvelle session</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createSessionForm">
+                    <div class="mb-3">
+                        <label for="formation" class="form-label">Formation</label>
+                        <select class="form-control" id="formation" name="formation" required>
+                            <option value="">Sélectionnez une formation</option>
+                            {% for formation in formations %}
+                            <option value="{{ formation.id }}">{{ formation.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="trainers" class="form-label">Formateurs</label>
+                        <select class="form-control" id="trainers" name="trainers" multiple required>
+                            {% for trainer in trainers %}
+                            <option value="{{ trainer.id }}">{{ trainer.get_full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="status" class="form-label">Statut</label>
+                        <select class="form-control" id="status" name="status" required>
+                            {% for status in status_choices %}
+                            <option value="{{ status.0 }}">{{ status.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Dates et salles</label>
+                        <div id="dates-container">
+                            <div class="row mb-2">
+                                <div class="col-md-6">
+                                    <input type="date" name="session_dates[]" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="session_rooms[]" class="form-control" required>
+                                        <option value="">Sélectionner une salle</option>
+                                        {% for room in training_rooms %}
+                                        <option value="{{ room.id }}">{{ room.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-secondary btn-sm" onclick="addDateInput()">
+                            <i class="fas fa-plus"></i> Ajouter une date
+                        </button>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="iperia-opening" class="form-label">Date d'ouverture IPERIA</label>
+                        <input type="date" class="form-control" id="iperia-opening" name="iperia_opening">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="iperia-deadline" class="form-label">Date limite IPERIA</label>
+                        <input type="date" class="form-control" id="iperia-deadline" name="iperia_deadline">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" onclick="createSession()">Créer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de modification de session -->
+<div class="modal fade" id="editSessionModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modifier la session</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="editSessionForm">
+                    <input type="hidden" name="session_id" id="edit-session-id">
+                    <div class="mb-3">
+                        <label for="edit-formation" class="form-label">Formation</label>
+                        <select class="form-control" id="edit-formation" name="formation" required>
+                            {% for formation in formations %}
+                            <option value="{{ formation.id }}">{{ formation.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-trainers" class="form-label">Formateurs</label>
+                        <select class="form-control" id="edit-trainers" name="trainers" multiple required>
+                            {% for trainer in trainers %}
+                            <option value="{{ trainer.original_trainer.id }}">{{ trainer.get_full_name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="edit-status" class="form-label">Statut</label>
+                        <select class="form-control" id="edit-status" name="status" required>
+                            {% for status in status_choices %}
+                            <option value="{{ status.0 }}">{{ status.1 }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div id="edit-dates-container">
+                        <label class="form-label">Dates et salles</label>
+                        <!-- Les dates seront ajoutées dynamiquement ici -->
+                    </div>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mt-2" onclick="addEditDateInput()">
+                        <i class="fas fa-plus"></i> Ajouter une date
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" onclick="updateSession()">Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function editSession(sessionId) {
+    fetch(`/manage-session/get/${sessionId}/`)
+        .then(response => response.json())
+        .then(data => {
+            // Remplir le formulaire avec les données
+            document.getElementById('edit-session-id').value = sessionId;
+            document.getElementById('edit-formation').value = data.formation_id;
+            document.getElementById('edit-status').value = data.status;
+            
+            // Gérer les formateurs (select multiple)
+            const trainerSelect = document.getElementById('edit-trainers');
+            Array.from(trainerSelect.options).forEach(option => {
+                option.selected = data.trainers.includes(parseInt(option.value));
+            });
+            
+            // Gérer les dates
+            const datesContainer = document.getElementById('edit-dates-container');
+            datesContainer.innerHTML = ''; // Nettoyer les dates existantes
+            
+            data.dates.forEach(date => {
+                addEditDateInput(date);
+            });
+            
+            // Afficher le modal
+            const editModal = new bootstrap.Modal(document.getElementById('editSessionModal'));
+            editModal.show();
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération des données de la session:', error);
+            alert('Une erreur est survenue lors de la récupération des données de la session.');
+        });
+}
+
+function updateSession() {
+    const formData = new FormData(document.getElementById('editSessionForm'));
+    const sessionId = formData.get('session_id');
+
+    fetch("{% url 'core:update_session' '0' %}".replace('0', sessionId), {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload(); // Recharger la page pour voir les modifications
+        } else {
+            alert('Erreur lors de la mise à jour de la session: ' + data.error);
+        }
+    })
+    .catch(error => {
+        console.error('Erreur lors de la mise à jour de la session:', error);
+        alert('Une erreur est survenue lors de la mise à jour de la session.');
+    });
+}
+
+function addEditDateInput(dateData = null) {
+    const container = document.getElementById('edit-dates-container');
+    const dateGroup = document.createElement('div');
+    dateGroup.className = 'session-date mb-3';
+    
+    const dateHtml = `
+        <div class="row">
+            <div class="col-md-6">
+                <label class="form-label">Date</label>
+                <input type="date" class="form-control" name="dates[]" value="${dateData ? dateData.date : ''}" required>
+            </div>
+            <div class="col-md-5">
+                <label class="form-label">Salle</label>
+                <select class="form-control" name="rooms[]">
+                    <option value="">Sélectionner une salle</option>
+                    {% for room in training_rooms %}
+                    <option value="{{ room.id }}" ${dateData && dateData.room_id === {{ room.id }} ? 'selected' : ''}>
+                        {{ room.name }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col-md-1 d-flex align-items-end">
+                <button type="button" class="btn btn-outline-danger btn-sm" onclick="this.closest('.session-date').remove()">
+                    <i class="fas fa-trash"></i>
+                </button>
+            </div>
+        </div>
+    `;
+    
+    dateGroup.innerHTML = dateHtml;
+    container.appendChild(dateGroup);
+}
+
+function deleteSession(sessionId) {
+    if (confirm('Êtes-vous sûr de vouloir supprimer cette session ?')) {
+        fetch(`/manage-session/delete/${sessionId}/`, {
+            method: 'POST',
+            headers: {
+                'X-CSRFToken': getCookie('csrftoken'),
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                location.reload();
+            } else {
+                alert('Erreur lors de la suppression de la session');
+            }
+        });
+    }
+}
+
+function addDateInput() {
+    const container = document.getElementById('dates-container');
+    const dateInput = document.createElement('div');
+    dateInput.className = 'row mb-2';
+    
+    const dateField = document.createElement('div');
+    dateField.className = 'col-md-6';
+    const dateInputField = document.createElement('input');
+    dateInputField.type = 'date';
+    dateInputField.name = 'session_dates[]';
+    dateInputField.className = 'form-control';
+    dateInputField.required = true;
+    dateField.appendChild(dateInputField);
+    
+    const roomField = document.createElement('div');
+    roomField.className = 'col-md-6';
+    const roomSelect = document.createElement('select');
+    roomSelect.name = 'session_rooms[]';
+    roomSelect.className = 'form-control';
+    roomSelect.required = true;
+    
+    const defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Sélectionner une salle';
+    roomSelect.appendChild(defaultOption);
+    
+    {% for room in training_rooms %}
+    const option = document.createElement('option');
+    option.value = '{{ room.id }}';
+    option.textContent = '{{ room.name }}';
+    roomSelect.appendChild(option);
+    {% endfor %}
+    
+    roomField.appendChild(roomSelect);
+    dateInput.appendChild(dateField);
+    dateInput.appendChild(roomField);
+    container.appendChild(dateInput);
+}
+
+function createSession() {
+    const form = document.getElementById('createSessionForm');
+    const formData = new FormData(form);
+    
+    // Récupérer les formateurs sélectionnés
+    const trainers = Array.from(form.querySelector('#trainers').selectedOptions).map(option => option.value);
+    formData.set('trainers', JSON.stringify(trainers));
+    
+    // Récupérer toutes les dates et salles
+    const dates = Array.from(form.querySelectorAll('input[name="session_dates[]"]')).map(input => input.value);
+    const rooms = Array.from(form.querySelectorAll('select[name="session_rooms[]"]')).map(select => select.value);
+    
+    formData.set('session_dates', JSON.stringify(dates));
+    formData.set('session_rooms', JSON.stringify(rooms));
+    
+    fetch('/api/create-session/', {
+        method: 'POST',
+        headers: {
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            alert('Erreur lors de la création de la session');
+        }
+    });
+}
+
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// Initialisation des filtres
+document.addEventListener('DOMContentLoaded', function() {
+    const formationFilter = document.getElementById('formation-filter');
+    const statusFilter = document.getElementById('status-filter');
+    
+    function applyFilters() {
+        const formationId = formationFilter.value;
+        const status = statusFilter.value;
+        
+        // Filtrer les lignes du tableau
+        const rows = document.querySelectorAll('tbody tr');
+        rows.forEach(row => {
+            let showRow = true;
+            
+            // Filtre par formation
+            if (formationId) {
+                const formationCell = row.cells[0];
+                showRow = showRow && formationCell.textContent.includes(formationId);
+            }
+            
+            // Filtre par statut
+            if (status) {
+                const statusCell = row.cells[3];
+                showRow = showRow && statusCell.textContent.trim() === status;
+            }
+            
+            row.style.display = showRow ? '' : 'none';
+        });
+    }
+    
+    formationFilter.addEventListener('change', applyFilters);
+    statusFilter.addEventListener('change', applyFilters);
+});
+</script>
+{% endblock %}

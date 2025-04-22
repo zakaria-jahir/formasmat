@@ -1,0 +1,146 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}{{ room.name }} - Formation AssMat{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style>
+    #map { 
+        height: 400px; 
+        width: 100%; 
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        margin-bottom: 20px;
+    }
+    .session-card {
+        transition: transform 0.2s;
+    }
+    .session-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>{{ room.name }}</h1>
+            <p class="text-muted">
+                <i class="fas fa-map-marker-alt"></i>
+                {{ room.address }}
+            </p>
+        </div>
+        {% if user.is_staff %}
+        <div>
+            <a href="{% url 'core:room_edit' room.id %}" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Modifier la salle
+            </a>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Informations</h5>
+                    
+                    <div class="mb-3">
+                        <strong><i class="fas fa-users"></i> Capacité :</strong>
+                        {{ room.capacity }} personnes
+                    </div>
+
+                    {% if room.description %}
+                    <div class="mb-3">
+                        <strong><i class="fas fa-info-circle"></i> Description :</strong>
+                        <p class="mt-2">{{ room.description }}</p>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title mb-3">Localisation</h5>
+                    <div id="map"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title mb-4">
+                <i class="fas fa-calendar-alt"></i>
+                Sessions de formation à venir
+            </h5>
+
+            <div class="row">
+                {% for session in future_sessions %}
+                <div class="col-md-6 mb-3">
+                    <div class="card session-card">
+                        <div class="card-body">
+                            <h6 class="card-title">{{ session.formation.name }}</h6>
+                            <p class="card-text">
+                                <i class="fas fa-calendar"></i>
+                                {{ session.start_date|date:"d/m/Y" }}
+                            </p>
+                            <p class="card-text">
+                                <i class="fas fa-users"></i>
+                                {{ session.participants.count }}/{{ session.max_participants }} participants
+                            </p>
+                            <div class="mt-2">
+                                <a href="{% url 'core:session_detail' session.id %}" class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-eye"></i> Voir les détails
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i>
+                        Aucune session n'est prévue dans cette salle pour le moment.
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        // Initialisation de la carte
+        var map = L.map('map');
+
+        // Ajout de la couche OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Ajout du marqueur pour la salle
+        {% if room.latitude and room.longitude %}
+            var marker = L.marker([{{ room.latitude }}, {{ room.longitude }}])
+                .addTo(map)
+                .bindPopup("<strong>{{ room.name|escapejs }}</strong><br>{{ room.address|escapejs }}");
+
+            // Centrer la carte sur le marqueur
+            map.setView([{{ room.latitude }}, {{ room.longitude }}], 13);
+        {% else %}
+            // Si pas de coordonnées, centrer sur la France
+            map.setView([46.603354, 1.888334], 6);
+        {% endif %}
+    } catch (error) {
+        console.error('Erreur lors de l\'initialisation de la carte:', error);
+    }
+});
+</script>
+{% endblock %}

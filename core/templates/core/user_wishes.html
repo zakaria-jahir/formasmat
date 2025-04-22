@@ -1,0 +1,227 @@
+{% extends '../base.html' %}
+{% load static %}
+
+{% block title %}Mes souhaits de formation{% endblock %}
+
+{% block extra_css %}
+<style>
+    :root {
+    --primary-color: #F9B72A; /* Jaune chaleureux */
+    --secondary-color: #2E2E2E; /* Gris foncé */
+    --background-color: #ffffff;
+    --text-color: #141414; /* Gris très foncé */
+    --hover-color: #fccc64;
+    --border-radius: 8px;
+    }
+    
+    /* Styles pour la page des souhaits */
+    .wish-menu-card {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        margin-bottom: 1rem;
+    }
+
+    .wish-menu-card .card-header {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+        border-bottom: none;
+    }
+
+    .wish-menu-card .list-group-item {
+        border: none;
+        padding: 0.8rem 1rem;
+        color: var(--secondary-color);
+        transition: all 0.3s ease;
+    }
+
+    .wish-menu-card .list-group-item:hover {
+        background-color: rgba(249, 183, 42, 0.1);
+        color: var(--primary-color);
+    }
+
+    .wish-menu-card .list-group-item.active {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+        color: white;
+    }
+
+    .wish-content-card {
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .wish-content-card .card-header {
+        background-color: var(--primary-color) !important;
+        color: white !important;
+    }
+
+    .wish-table {
+        margin-bottom: 0;
+    }
+
+    .wish-table th {
+        border-top: none;
+        background-color: rgba(249, 183, 42, 0.1);
+        color: var(--secondary-color);
+    }
+
+    .wish-badge {
+        padding: 0.5rem 0.8rem;
+        border-radius: 20px;
+    }
+
+    .wish-actions .btn {
+        padding: 0.3rem 0.8rem;
+    }
+
+    /* Modal personnalisé */
+    .wish-modal .modal-header {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+    .wish-modal .form-select:focus,
+    .wish-modal .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.2rem rgba(249, 183, 42, 0.25);
+    }
+
+    /* Responsive */
+    @media screen and (max-width: 767px) {
+        .wish-menu-card {
+            margin-bottom: 1.5rem;
+        }
+
+        .wish-content-card .card-header h2 {
+            font-size: 1.2rem;
+        }
+
+        .wish-table {
+            font-size: 0.9rem;
+        }
+
+        .wish-badge {
+            padding: 0.3rem 0.6rem;
+            font-size: 0.8rem;
+        }
+
+        .wish-actions .btn {
+            padding: 0.2rem 0.6rem;
+            font-size: 0.8rem;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card wish-menu-card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Menu</h5>
+                </div>
+                <div class="list-group list-group-flush">
+                    <a href="{% url 'core:profile' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-user me-2"></i>Mon profil
+                    </a>
+                    <a href="{% url 'core:user_wishes' %}" class="list-group-item list-group-item-action active">
+                        <i class="fas fa-clipboard-list me-2"></i>Mes souhaits
+                    </a>
+                    <a href="{% url 'core:formation_list' %}" class="list-group-item list-group-item-action">
+                        <i class="fas fa-graduation-cap me-2"></i>Formations
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div class="card wish-content-card">
+                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                    <h2 class="mb-0">
+                        <i class="fas fa-clipboard-list me-2"></i>Mes souhaits de formation
+                    </h2>
+                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#addWishModal">
+                        <i class="fas fa-plus me-1"></i>Nouveau souhait
+                    </button>
+                </div>
+                <div class="card-body">
+                    {% if wishes %}
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover wish-table">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Formation</th>
+                                        <th>Date</th>
+                                        <th>Statut</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for wish in wishes %}
+                                    <tr>
+                                        <td>{{ wish.formation.name }}</td>
+                                        <td>{{ wish.created_at|date:"d/m/Y" }}</td>
+                                        <td>
+                                            {% if wish.session %}
+                                                <span class="badge bg-success wish-badge">Assigné</span>
+                                            {% else %}
+                                                <span class="badge bg-warning wish-badge">En attente</span>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group btn-group-sm wish-actions" role="group">
+                                                {% if not wish.session %}
+                                                    <button class="btn btn-outline-danger delete-wish" data-wish-id="{{ wish.id }}">
+                                                        <i class="fas fa-trash me-1"></i>Supprimer
+                                                    </button>
+                                                {% endif %}
+                                            </div>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            Vous n'avez pas encore de souhaits de formation.
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Ajout de Souhait -->
+<div class="modal fade wish-modal" id="addWishModal" tabindex="-1" aria-labelledby="addWishModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addWishModalLabel">Nouveau souhait de formation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="id_formation" class="form-label">Formation</label>
+                        <select name="formation" id="id_formation" class="form-select" required>
+                            <option value="">Sélectionnez une formation</option>
+                            {% for formation in formations %}
+                                <option value="{{ formation.id }}">{{ formation.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="id_notes" class="form-label">Notes (optionnel)</label>
+                        <textarea name="notes" id="id_notes" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

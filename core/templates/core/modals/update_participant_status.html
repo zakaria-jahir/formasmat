@@ -1,0 +1,78 @@
+<!-- Modal de mise à jour du statut du participant -->
+<div class="modal fade" id="participantStatusModal" tabindex="-1" aria-labelledby="participantStatusModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="participantStatusModalLabel">Modifier le statut du participant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <form id="updateParticipantStatusForm">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="participantStatus" class="form-label">Nouveau statut</label>
+                        <select class="form-select" id="participantStatus" name="status" required>
+                            <option value="">Sélectionnez un statut</option>
+                            {% for status_value, status_display in statuses %}
+                                <option value="{{ status_value }}">{{ status_display }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="participantComment" class="form-label">Commentaire (optionnel)</label>
+                        <textarea class="form-control" id="participantComment" name="comment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="saveParticipantStatus" disabled>Enregistrer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    // Afficher le modal de mise à jour du statut
+    $('.update-status').on('click', function() {
+        const participantId = $(this).data('participant-id');
+        $('#participantStatusModal').data('participant-id', participantId);
+        
+        // Réinitialiser le formulaire
+        $('#participantStatus').val('');
+        $('#participantComment').val('');
+        $('#saveParticipantStatus').prop('disabled', true);
+        
+        $('#participantStatusModal').modal('show');
+    });
+
+    // Activer/désactiver le bouton de validation
+    $('#participantStatus').on('change', function() {
+        const selectedStatus = $(this).val();
+        $('#saveParticipantStatus').prop('disabled', !selectedStatus);
+    });
+
+    $('#saveParticipantStatus').on('click', function() {
+        const participantId = $('#participantStatusModal').data('participant-id');
+        const status = $('#participantStatus').val();
+        const comment = $('#participantComment').val();
+        
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/status/`,
+            method: 'POST',
+            data: {
+                'status': status,
+                'comment': comment,
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                alert('Erreur lors de la mise à jour du statut');
+            }
+        });
+    });
+});
+</script>

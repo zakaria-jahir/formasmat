@@ -1,0 +1,50 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Supprimer {{ room.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'core:training_room_list' %}">Salles</a></li>
+                    <li class="breadcrumb-item"><a href="{% url 'core:training_room_detail' pk=room.pk %}">{{ room.name }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Supprimer</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <div class="card">
+                <div class="card-body text-center">
+                    <h1 class="card-title mb-4">Confirmer la suppression</h1>
+                    
+                    <p class="lead">
+                        Êtes-vous sûr de vouloir supprimer la salle <strong>{{ room.name }}</strong> ?
+                    </p>
+                    
+                    <div class="alert alert-warning">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        Cette action est irréversible.
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                            <a href="{% url 'core:training_room_detail' pk=room.pk %}" class="btn btn-secondary me-md-2">
+                                Annuler
+                            </a>
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Confirmer la suppression
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

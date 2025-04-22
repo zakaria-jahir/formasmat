@@ -1,0 +1,40 @@
+<!-- Modal de suppression du participant -->
+<div class="modal fade" id="removeParticipantModal" tabindex="-1" aria-labelledby="removeParticipantModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="removeParticipantModalLabel">Retirer le participant</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+            </div>
+            <div class="modal-body">
+                <p>Êtes-vous sûr de vouloir retirer ce participant de la session ?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-danger" id="confirmRemoveParticipant">Retirer</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    $('#confirmRemoveParticipant').on('click', function() {
+        const participantId = $('#removeParticipantModal').data('participant-id');
+        
+        $.ajax({
+            url: `/manage-session/participants/${participantId}/remove/`,
+            method: 'POST',
+            data: {
+                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+            },
+            success: function(response) {
+                location.reload();
+            },
+            error: function(xhr, status, error) {
+                alert('Erreur lors de la suppression du participant');
+            }
+        });
+    });
+});
+</script>

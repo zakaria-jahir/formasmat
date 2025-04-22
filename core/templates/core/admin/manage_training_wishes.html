@@ -1,0 +1,339 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Gestion des souhaits de formation{% endblock %}
+
+{% block extra_css %}
+<link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+<link href="https://cdn.datatables.net/select/1.3.4/css/select.bootstrap5.min.css" rel="stylesheet">
+<style>
+    .selected-count {
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+    .distance-badge {
+        font-size: 0.8em;
+        padding: 0.3em 0.6em;
+    }
+    .table-hover tbody tr:hover {
+        background-color: rgba(255, 107, 0, 0.05);
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                {{ message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="row mb-4">
+        <div class="col">
+            <h1>Gestion des souhaits de formation</h1>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Sélection de la formation</h5>
+                    <select id="formation-select" class="form-select">
+                        <option value="">Choisir une formation...</option>
+                        {% for formation in formations %}
+                            <option value="{{ formation.id }}">{{ formation.name }} ({{ formation.code_iperia }})</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Salle de formation</h5>
+                    <select id="room-select" class="form-select">
+                        <option value="">Choisir une salle...</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Tri des résultats</h5>
+                    <div class="btn-group w-100" role="group">
+                        <input type="radio" class="btn-check" name="sort-by" id="sort-date" value="date" checked>
+                        <label class="btn btn-outline-primary" for="sort-date">
+                            <i class="fas fa-calendar"></i> Date
+                        </label>
+                        <input type="radio" class="btn-check" name="sort-by" id="sort-distance" value="distance">
+                        <label class="btn btn-outline-primary" for="sort-distance">
+                            <i class="fas fa-map-marker-alt"></i> Distance
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mb-4">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h5 class="card-title mb-0">Liste des souhaits</h5>
+                        <div>
+                            <span class="me-3">Sélectionnés: <span id="selected-count" class="selected-count">0</span></span>
+                            <button id="assign-button" class="btn btn-primary" disabled>
+                                <i class="fas fa-user-plus"></i> Assigner à une session
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table id="wishes-table" class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Nom</th>
+                                    <th>Email</th>
+                                    <th>Adresse</th>
+                                    <th>Date du souhait</th>
+                                    <th>Distance</th>
+                                    <th>Notes</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal d'assignation -->
+<div class="modal fade" id="assign-modal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Assigner à une session</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label class="form-label">Session de formation</label>
+                    <select id="session-select" class="form-select">
+                        <option value="">Choisir une session...</option>
+                    </select>
+                </div>
+                <div id="session-info" class="alert alert-info d-none">
+                    <p class="mb-1"><strong>Places disponibles:</strong> <span id="available-seats">-</span></p>
+                    <p class="mb-1"><strong>Dates:</strong> <span id="session-dates">-</span></p>
+                    <p class="mb-0"><strong>Formateur:</strong> <span id="session-trainer">-</span></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                <button type="button" class="btn btn-primary" id="confirm-assign">Confirmer</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/select/1.3.4/js/dataTables.select.min.js"></script>
+<script>
+$(document).ready(function() {
+    // Configuration CSRF pour toutes les requêtes AJAX
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    const csrftoken = getCookie('csrftoken');
+    $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+            if (!/^(GET|HEAD|OPTIONS|TRACE)$/i.test(settings.type) && !this.crossDomain) {
+                xhr.setRequestHeader("X-CSRFToken", csrftoken);
+            }
+        }
+    });
+
+    let table = $('#wishes-table').DataTable({
+        select: {
+            style: 'multi'
+        },
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.11.5/i18n/fr-FR.json'
+        },
+        columns: [
+            { data: null, defaultContent: '', orderable: false },
+            { data: 'user.name' },
+            { data: 'user.email' },
+            { data: 'user.address' },
+            { data: 'date' },
+            { 
+                data: 'distance',
+                render: function(data) {
+                    return data ? `<span class="badge bg-info distance-badge">${data} km</span>` : '-';
+                }
+            },
+            { data: 'notes' }
+        ],
+        order: [[4, 'desc']]  // Tri par défaut sur la date
+    });
+
+    // Mise à jour du compteur de sélection
+    table.on('select deselect', function() {
+        let count = table.rows({ selected: true }).count();
+        $('#selected-count').text(count);
+        $('#assign-button').prop('disabled', count === 0);
+    });
+
+    // Chargement des souhaits lors du changement de formation
+    $('#formation-select').change(function() {
+        let formationId = $(this).val();
+        if (formationId) {
+            loadWishes(formationId);
+            loadRooms(formationId);
+            loadSessions(formationId);
+        } else {
+            table.clear().draw();
+            $('#room-select').html('<option value="">Choisir une salle...</option>');
+            $('#session-select').html('<option value="">Choisir une session...</option>');
+        }
+    });
+
+    // Tri par distance/date
+    $('input[name="sort-by"]').change(function() {
+        loadWishes($('#formation-select').val());
+    });
+
+    // Changement de salle
+    $('#room-select').change(function() {
+        loadWishes($('#formation-select').val());
+    });
+
+    // Bouton d'assignation
+    $('#assign-button').click(function() {
+        $('#assign-modal').modal('show');
+    });
+
+    // Chargement des informations de session
+    $('#session-select').change(function() {
+        let selectedOption = $(this).find('option:selected');
+        let sessionInfo = selectedOption.data('info');
+        if (sessionInfo) {
+            $('#available-seats').text(sessionInfo.availableSeats);
+            $('#session-dates').text(`${sessionInfo.startDate} au ${sessionInfo.endDate}`);
+            $('#session-trainer').text(sessionInfo.trainer);
+            $('#session-info').removeClass('d-none');
+            
+            // Désactiver le bouton si pas assez de places
+            let selectedCount = table.rows({ selected: true }).count();
+            $('#confirm-assign').prop('disabled', selectedCount > sessionInfo.availableSeats);
+        } else {
+            $('#session-info').addClass('d-none');
+            $('#confirm-assign').prop('disabled', true);
+        }
+    });
+
+    // Confirmation d'assignation
+    $('#confirm-assign').click(function() {
+        let sessionId = $('#session-select').val();
+        if (!sessionId) {
+            alert('Veuillez sélectionner une session');
+            return;
+        }
+
+        let wishIds = table.rows({ selected: true }).data().map(d => d.id).toArray();
+        
+        $.ajax({
+            url: '{% url "core:assign_to_session" %}',
+            method: 'POST',
+            data: JSON.stringify({
+                session_id: sessionId,
+                wish_ids: wishIds
+            }),
+            contentType: 'application/json',
+            success: function(response) {
+                $('#assign-modal').modal('hide');
+                alert(response.message);
+                loadWishes($('#formation-select').val());
+            },
+            error: function(xhr) {
+                alert(xhr.responseJSON?.error || 'Une erreur est survenue');
+            }
+        });
+    });
+
+    function loadWishes(formationId) {
+        let sortBy = $('input[name="sort-by"]:checked').val();
+        let roomId = $('#room-select').val();
+        
+        $.get('{% url "core:get_training_wishes" %}', {
+            formation_id: formationId,
+            sort: sortBy,
+            room_id: roomId
+        })
+        .done(function(data) {
+            table.clear().rows.add(data.wishes).draw();
+        })
+        .fail(function(xhr) {
+            alert(xhr.responseJSON?.error || 'Une erreur est survenue lors du chargement des souhaits');
+        });
+    }
+
+    function loadRooms(formationId) {
+        $.get('{% url "core:get_formation_rooms" %}', { formation_id: formationId })
+        .done(function(data) {
+            let options = '<option value="">Choisir une salle...</option>';
+            data.rooms.forEach(function(room) {
+                options += `<option value="${room.id}">${room.name} (${room.capacity} places)</option>`;
+            });
+            $('#room-select').html(options);
+        })
+        .fail(function(xhr) {
+            alert('Erreur lors du chargement des salles');
+        });
+    }
+
+    function loadSessions(formationId) {
+        $.get('{% url "core:get_formation_sessions" %}', { formation_id: formationId })
+        .done(function(data) {
+            let options = '<option value="">Choisir une session...</option>';
+            data.sessions.forEach(function(session) {
+                options += `<option value="${session.id}" data-info='${JSON.stringify(session)}'>
+                    ${session.startDate} au ${session.endDate} - ${session.availableSeats} places disponibles
+                </option>`;
+            });
+            $('#session-select').html(options);
+        })
+        .fail(function(xhr) {
+            alert('Erreur lors du chargement des sessions');
+        });
+    }
+});
+</script>
+{% endblock %}

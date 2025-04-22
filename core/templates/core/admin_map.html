@@ -1,0 +1,120 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Carte administrative - Formation AssMat{% endblock %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<style>
+    #map { height: 600px; width: 100%; }
+    .user-marker { background-color: blue; }
+    .session-marker { background-color: red; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Carte administrative</h2>
+    <div class="card mb-4">
+        <div class="card-body">
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Utilisateurs ({{ users.count }})</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Adresse</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for user in users %}
+                                <tr>
+                                    <td>{{ user.get_full_name }}</td>
+                                    <td>{{ user.address }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Sessions ({{ sessions.count }})</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Formation</th>
+                                    <th>Date</th>
+                                    <th>Lieu</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for session in sessions %}
+                                <tr>
+                                    <td>{{ session.formation.name }}</td>
+                                    <td>{{ session.start_date|date:"d/m/Y" }}</td>
+                                    <td>{{ session.address }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var map = L.map('map').setView([46.603354, 1.888334], 6);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: ' OpenStreetMap contributors'
+    }).addTo(map);
+
+    // Ajouter les utilisateurs (marqueurs bleus)
+    {% for user in users %}
+        {% if user.latitude and user.longitude %}
+            L.marker([{{ user.latitude }}, {{ user.longitude }}], {
+                icon: L.divIcon({
+                    className: 'user-marker',
+                    html: '<div style="width: 10px; height: 10px; border-radius: 50%; background-color: blue;"></div>'
+                })
+            }).addTo(map)
+            .bindPopup("<strong>{{ user.get_full_name|escapejs }}</strong><br>{{ user.address|escapejs }}");
+        {% endif %}
+    {% endfor %}
+
+    // Ajouter les sessions (marqueurs rouges)
+    {% for session in sessions %}
+        {% if session.latitude and session.longitude %}
+            L.marker([{{ session.latitude }}, {{ session.longitude }}], {
+                icon: L.divIcon({
+                    className: 'session-marker',
+                    html: '<div style="width: 10px; height: 10px; border-radius: 50%; background-color: red;"></div>'
+                })
+            }).addTo(map)
+            .bindPopup("<strong>{{ session.formation.name|escapejs }}</strong><br>{{ session.start_date|date:'d/m/Y' }}<br>{{ session.address|escapejs }}");
+        {% endif %}
+    {% endfor %}
+});
+</script>
+{% endblock %}

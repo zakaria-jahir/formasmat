@@ -1,0 +1,514 @@
+/* Palette principale : Jaune doux et gris anthracite */
+:root {
+    --primary-color: #F9B72A; /* Jaune chaleureux */
+    --secondary-color: #2E2E2E; /* Gris foncé */
+    --background-color: #ffffff;
+    --text-color: #141414; /* Gris très foncé */
+    --hover-color: #fccc64;
+    --border-radius: 8px;
+}
+
+/* Reset de base pour la cohérence */
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.6;
+}
+
+img {
+    width: 100px;
+    height: auto;
+}
+
+/* Navigation */
+.navbar {
+    background-color: var(--background-color);
+    border-bottom: 2px solid var(--primary-color);
+    padding: 1rem;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    color: var(--primary-color) !important;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--secondary-color) !important;
+    transition: color 0.3s;
+}
+
+.nav-link:hover {
+    color: var(--primary-color) !important;
+}
+
+/* Styles du menu burger */
+.navbar-toggler {
+    border: 2px solid var(--primary-color);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(249, 183, 42, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23F9B72A' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}
+
+/* Boutons */
+.auth-buttons .nav-link,
+.btn {
+    border-radius: var(--border-radius);
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    background: transparent;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+.auth-buttons .nav-link:hover,
+.btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Barre secondaire */
+.below-bar {
+    background: linear-gradient(to right, var(--primary-color), #ffd875);
+    width: 120%;
+    height: 4px;
+}
+
+/* Titres */
+h1, h2, h3 {
+    color: var(--secondary-color);
+    margin-bottom: 1rem;
+}
+
+/* Liens */
+a {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Alertes et badges */
+.alert {
+    border-radius: var(--border-radius);
+}
+
+.badge.bg-danger {
+    background-color: var(--primary-color) !important;
+}
+
+/* Footer ou bas de page éventuel */
+.footer {
+    background-color: var(--secondary-color);
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+/* Styles pour le calendrier */
+.calendar-container {
+    background: #fff;
+    border-radius: var(--border-radius);
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.session-item {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid var(--primary-color);
+    background: #f8f9fa;
+    transition: transform 0.2s;
+}
+
+.session-item:hover {
+    transform: translateX(5px);
+}
+
+.session-item h5 {
+    color: var(--secondary-color);
+    margin-bottom: 0.5rem;
+}
+
+.session-item p {
+    color: var(--text-color);
+    margin-bottom: 0;
+}
+
+.session-item i {
+    color: var(--primary-color);
+    margin-right: 0.5rem;
+}
+
+/* Styles du menu burger */
+.navbar-toggler {
+    border: 2px solid var(--primary-color);
+    padding: 0.5rem;
+    border-radius: var(--border-radius);
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.2rem rgba(249, 183, 42, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23F9B72A' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+}    
+
+/* Styles pour la page des souhaits */
+.wish-menu-card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 1rem;
+}
+
+.wish-menu-card .card-header {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    border-bottom: none;
+}
+
+.wish-menu-card .list-group-item {
+    border: none;
+    padding: 0.8rem 1rem;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+}
+
+.wish-menu-card .list-group-item:hover {
+    background-color: rgba(249, 183, 42, 0.1);
+    color: var(--primary-color);
+}
+
+.wish-menu-card .list-group-item.active {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+.wish-content-card {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.wish-content-card .card-header {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+.wish-table {
+    margin-bottom: 0;
+}
+
+.wish-table th {
+    border-top: none;
+    background-color: rgba(249, 183, 42, 0.1);
+    color: var(--secondary-color);
+}
+
+.wish-badge {
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+}
+
+.wish-actions .btn {
+    padding: 0.3rem 0.8rem;
+}
+
+/* Modal personnalisé */
+.wish-modal .modal-header {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.wish-modal .form-select:focus,
+.wish-modal .form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(249, 183, 42, 0.25);
+}
+
+/* Responsive */
+@media screen and (max-width: 767px) {
+    .wish-menu-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .wish-content-card .card-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .wish-table {
+        font-size: 0.9rem;
+    }
+
+    .wish-badge {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+
+    .wish-actions .btn {
+        padding: 0.2rem 0.6rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* Responsive optimisé */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+}
+
+/* === RESPONSIVE DESIGN === */
+
+/* Mobile (jusqu'à 767px) */
+@media screen and (max-width: 767px) {
+    /* Navigation */
+    .navbar {
+        padding: 0.5rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.2rem;
+    }
+
+    .navbar-collapse {
+        background-color: var(--background-color);
+        padding: 1rem;
+        border-radius: var(--border-radius);
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .nav-link {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .nav-link:last-child {
+        border-bottom: none;
+    }
+
+    /* Boutons */
+    .auth-buttons {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .auth-buttons .nav-link {
+        text-align: center;
+    }
+
+    /* Conteneurs */
+    .container {
+        padding: 0 1rem;
+    }
+
+    /* Typographie */
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.3rem; }
+    h3 { font-size: 1.1rem; }
+
+    /* Marges et espacements */
+    .mt-4 { margin-top: 2rem !important; }
+    .mb-4 { margin-bottom: 2rem !important; }
+    .py-4 { padding: 2rem 0 !important; }
+}
+
+/* Tablette (768px à 1023px) */
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    /* Navigation */
+    .navbar {
+        padding: 0.8rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+
+    .nav-link {
+        padding: 0.6rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    /* Boutons */
+    .auth-buttons {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    .auth-buttons .nav-link {
+        padding: 0.5rem 1rem;
+    }
+
+    /* Conteneurs */
+    .container {
+        padding: 0 1.5rem;
+    }
+
+    /* Grille */
+    .row {
+        margin: 0 -0.5rem;
+    }
+
+    .col, [class*="col-"] {
+        padding: 0 0.5rem;
+    }
+
+    /* Typographie */
+    h1 { font-size: 1.8rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.3rem; }
+
+    /* Cards et contenus */
+    .calendar-container {
+        padding: 0.8rem;
+    }
+
+    .session-item {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+    }
+}
+
+/* Laptop (1024px à 1366px) */
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    /* Navigation */
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.4rem;
+        margin-right: 2rem;
+    }
+
+    .navbar-nav {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .nav-link {
+        padding: 0.5rem 1rem;
+        font-size: 0.95rem;
+        position: relative;
+    }
+
+    /* Effet de soulignement au survol */
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+    }
+
+    .nav-link:hover::after {
+        width: 100%;
+    }
+
+    /* Boutons d'authentification */
+    .auth-buttons {
+        margin-left: auto;
+        display: flex;
+        gap: 1rem;
+    }
+
+    .auth-buttons .nav-link {
+        padding: 0.5rem 1.2rem;
+        min-width: 100px;
+        text-align: center;
+    }
+
+    /* Conteneurs */
+    .container {
+        max-width: 1200px;
+        padding: 0 2rem;
+    }
+
+    /* Grille */
+    .row {
+        margin: 0 -1rem;
+    }
+
+    .col, [class*="col-"] {
+        padding: 0 1rem;
+    }
+
+    /* Typographie */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.7rem; }
+    h3 { font-size: 1.4rem; }
+
+    /* Cards et contenus */
+    .calendar-container {
+        padding: 1.5rem;
+    }
+
+    .session-item {
+        padding: 1.2rem;
+        margin-bottom: 1rem;
+    }
+
+    /* Espacements */
+    .mt-4 { margin-top: 2.5rem !important; }
+    .mb-4 { margin-bottom: 2.5rem !important; }
+    .py-4 { padding: 2.5rem 0 !important; }
+}
+
+/* Ajustements pour le menu mobile */
+@media screen and (max-width: 991px) {
+    .navbar-collapse {
+        margin-top: 1rem;
+    }
+
+    .navbar-nav {
+        padding: 0.5rem 0;
+    }
+
+    .navbar-toggler {
+        margin-right: 0.5rem;
+    }
+
+    /* Animation du menu */
+    .navbar-collapse {
+        transform: translateY(-10px);
+        opacity: 0;
+        transition: all 0.3s ease;
+    }
+
+    .navbar-collapse.show {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Ajustements pour les petits mobiles */
+@media screen and (max-width: 375px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+
+    .container {
+        padding: 0 0.8rem;
+    }
+
+    .btn, 
+    .auth-buttons .nav-link {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+}

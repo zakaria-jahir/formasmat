@@ -1,0 +1,108 @@
+{% extends 'core/base.html' %}
+
+{% block title %}{{ formation.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row mb-4">
+        <div class="col">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'core:formation_list' %}">Formations</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ formation.name }}</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    {% if formation.image %}
+        <div class="text-center mb-4">
+            <img src="{{ formation.image.url }}" alt="{{ formation.name }}" class="img-fluid rounded shadow-sm" style="max-height: 400px; object-fit: cover;">
+        </div>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-4">{{ formation.name }}</h1>
+            
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Description</h5>
+                    <p>{{ formation.description|linebreaks }}</p>
+                    
+                    {% if formation.program_file %}
+                    <div class="mt-3">
+                        <a href="{{ formation.program_file.url }}" class="btn btn-outline-primary" target="_blank">
+                            <i class="bi bi-file-earmark-pdf me-2"></i>Télécharger le programme de formation
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Détails</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Durée :</strong> {{ formation.duration }} heures</li>
+                        <li><strong>Type :</strong> {{ formation.get_type_display }}</li>
+                        <li><strong>Modalités :</strong> 
+                            <span class="badge bg-info me-1">
+                                {% if formation.is_presentiel %}Présentiel{% endif %}
+                            </span>
+                            <span class="badge bg-info me-1">
+                                {% if formation.is_distanciel %}Distanciel{% endif %}
+                            </span>
+                            <span class="badge bg-info me-1">
+                                {% if formation.is_asynchrone %}Asynchrone{% endif %}
+                            </span>
+                        </li>
+                        <li><strong>Tarif :</strong> {{ formation.price }} €</li>
+                        <li><strong>Public :</strong> {{ formation.target_audience }}</li>
+                        <li><strong>Prérequis :</strong> {{ formation.prerequisites }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Informations</h5>
+                    <ul class="list-unstyled">
+                        <li><strong>Certification :</strong> {{ formation.certification }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if user.is_authenticated %}
+<!-- Modal -->
+<div class="modal fade" id="interestModal" tabindex="-1" aria-labelledby="interestModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="interestModalLabel">Manifester votre intérêt</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form method="post" action="{% url 'core:add_training_wish' formation.pk %}">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <p>Vous êtes intéressé(e) par la formation "{{ formation.name }}".</p>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message (optionnel)</label>
+                        <textarea class="form-control" id="message" name="message" rows="3" placeholder="Vos disponibilités, questions ou commentaires..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <button type="submit" class="btn btn-primary">Confirmer</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

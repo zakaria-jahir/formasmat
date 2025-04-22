@@ -1,0 +1,76 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-4">
+        <h1>{{ trainer.get_full_name }}</h1>
+        <p class="lead">Formateur</p>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Informations</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Email :</strong> {{ trainer.email }}</p>
+                    <p><strong>Téléphone :</strong> {{ trainer.phone }}</p>
+                    {% if trainer.specialties %}
+                        <p><strong>Spécialités :</strong><br>{{ trainer.specialties }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Sessions de formation</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Formation</th>
+                                    <th>Dates</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for session in sessions %}
+                                    <tr>
+                                        <td>{{ session.formation.name }}</td>
+                                        <td>
+                                            {{ session.start_date|date:"d/m/Y" }} - {{ session.end_date|date:"d/m/Y" }}
+                                        </td>
+                                        <td>
+                                            <span class="badge badge-{{ session.status_color }}">
+                                                {{ session.get_status_display }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="{% url 'core:session_detail' session_id=session.id %}" 
+                                               class="btn btn-info btn-sm">
+                                                <i class="fas fa-info-circle"></i> Détails
+                                            </a>
+                                        </td>
+                                    </tr>
+                                {% empty %}
+                                    <tr>
+                                        <td colspan="4" class="text-center">
+                                            Aucune session de formation pour ce formateur.
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,171 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link href='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/main.min.css' rel='stylesheet' />
+<link href='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.10/main.min.css' rel='stylesheet' />
+<style>
+    #calendar {
+        margin: 20px 0;
+        height: 600px;  /* Hauteur fixe pour s'assurer que le calendrier est visible */
+    }
+    .fc-event {
+        cursor: pointer;
+    }
+    .modal-body ul {
+        list-style: none;
+        padding-left: 0;
+    }
+    .formation-filter {
+        margin-bottom: 20px;
+    }
+    .fc-event-title {
+        white-space: normal;
+    }
+    /* Debug styles */
+    .debug-info {
+        background: #f8f9fa;
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid #ddd;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container my-4">
+    <h1 class="mb-4">{{ title }}</h1>
+
+    <!-- Debug info -->
+    <div class="debug-info">
+        <h4>Informations de débogage :</h4>
+        <p>Nombre de formations : {{ formations|length }}</p>
+        <p>Nombre de sessions : {{ sessions|length }}</p>
+        <ul>
+        {% for session in sessions %}
+            <li>Session {{ session.id }} - {{ session.formation.name }} 
+                ({{ session.dates.first.date|date:"d/m/Y" }} - {{ session.dates.last.date|date:"d/m/Y" }})</li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Filtre par formation -->
+    <div class="formation-filter">
+        <form method="get" class="d-flex">
+            <select name="formation" class="form-select" style="max-width: 300px;" onchange="this.form.submit()">
+                <option value="">Toutes les formations</option>
+                {% for formation in formations %}
+                <option value="{{ formation.id }}" {% if selected_formation == formation.id|stringformat:"s" %}selected{% endif %}>
+                    {{ formation.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+
+    <!-- Calendrier -->
+    <div id="calendar"></div>
+</div>
+
+<!-- Modal pour les détails de la session -->
+<div class="modal fade" id="sessionModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Détails de la session</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>Formation :</h6>
+                <p id="modalFormation"></p>
+                
+                <h6>Dates et lieux :</h6>
+                <ul id="modalDates"></ul>
+                
+                <h6>Formateurs :</h6>
+                <ul id="modalTrainers"></ul>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.10/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/fr@6.1.10/main.min.js'></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, initializing calendar...');
+    
+    const calendarEl = document.getElementById('calendar');
+    console.log('Calendar element:', calendarEl);
+    
+    const modal = new bootstrap.Modal(document.getElementById('sessionModal'));
+    
+    const events = [
+        {% for session in sessions %}
+            {
+                id: '{{ session.id }}',
+                title: '{{ session.formation.name }}',
+                start: '{{ session.dates.first.date|date:"Y-m-d" }}',
+                end: '{{ session.dates.last.date|date:"Y-m-d" }}',
+                backgroundColor: '#007bff',
+                borderColor: '#0056b3',
+                extendedProps: {
+                    formation: '{{ session.formation.name }}',
+                    dates: [
+                        {% for date in session.dates.all %}
+                            {
+                                date: '{{ date.date|date:"d/m/Y" }}',
+                                location: '{% if date.location %}{{ date.location.name }}{% endif %}'
+                            }{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ],
+                    trainers: [
+                        {% for trainer in session.trainers.all %}
+                            '{{ trainer.get_full_name }}'{% if not forloop.last %},{% endif %}
+                        {% endfor %}
+                    ]
+                }
+            }{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ];
+    
+    console.log('Events data:', events);
+    
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        locale: 'fr',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,dayGridWeek'
+        },
+        events: events,
+        eventClick: function(info) {
+            const event = info.event;
+            const props = event.extendedProps;
+            
+            document.getElementById('modalFormation').textContent = props.formation;
+            
+            const datesList = document.getElementById('modalDates');
+            datesList.innerHTML = props.dates.map(d => 
+                `<li>${d.date}${d.location ? ' - ' + d.location : ''}</li>`
+            ).join('');
+            
+            const trainersList = document.getElementById('modalTrainers');
+            trainersList.innerHTML = props.trainers.map(t => 
+                `<li>${t}</li>`
+            ).join('');
+            
+            modal.show();
+        }
+    });
+    
+    console.log('Calendar initialized, rendering...');
+    calendar.render();
+    console.log('Calendar rendered');
+});
+</script>
+{% endblock %}

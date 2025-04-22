@@ -1,0 +1,170 @@
+{% extends "core/base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <h2>
+                Formations 
+                {% if formations.count > 0 %}
+                    <small class="text-muted">({{ formations.count }} résultat{% if formations.count > 1 %}s{% endif %})</small>
+                {% endif %}
+            </h2>
+            {% if user.is_staff %}
+                <a href="{% url 'core:formation_create' %}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle"></i> Nouvelle formation
+                </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Filtres -->
+        <div class="col-md-3 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">Filtres de recherche</h5>
+                </div>
+                <div class="card-body">
+                    <form method="get">
+                        <div class="mb-3">
+                            <label for="search" class="form-label">Recherche</label>
+                            <input type="text" class="form-control" id="search" name="search" 
+                                   placeholder="Nom, description, code..." 
+                                   value="{{ search_query }}">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="type" class="form-label">Type de formation</label>
+                            <select class="form-select" id="type" name="type">
+                                <option value="">Tous types</option>
+                                {% for value, label in type_choices %}
+                                    <option value="{{ value }}" {% if type_filter == value %}selected{% endif %}>
+                                        {{ label }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Modalités</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       name="is_presentiel" id="is_presentiel" 
+                                       value="true" {% if request.GET.is_presentiel %}checked{% endif %}>
+                                <label class="form-check-label" for="is_presentiel">
+                                    Présentiel
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       name="is_distanciel" id="is_distanciel" 
+                                       value="true" {% if request.GET.is_distanciel %}checked{% endif %}>
+                                <label class="form-check-label" for="is_distanciel">
+                                    Distanciel
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" 
+                                       name="is_asynchrone" id="is_asynchrone" 
+                                       value="true" {% if request.GET.is_asynchrone %}checked{% endif %}>
+                                <label class="form-check-label" for="is_asynchrone">
+                                    Asynchrone
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="min_duration" class="form-label">Durée min (heures)</label>
+                                <input type="number" class="form-control" id="min_duration" 
+                                       name="min_duration" value="{{ min_duration }}">
+                            </div>
+                            <div class="col">
+                                <label for="max_duration" class="form-label">Durée max (heures)</label>
+                                <input type="number" class="form-control" id="max_duration" 
+                                       name="max_duration" value="{{ max_duration }}">
+                            </div>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-filter"></i> Appliquer les filtres
+                            </button>
+                            <a href="{% url 'core:formation_list' %}" class="btn btn-outline-secondary">
+                                <i class="bi bi-x-circle"></i> Réinitialiser
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liste des formations -->
+        <div class="col-md-9">
+            {% if formations.count == 0 %}
+                <div class="alert alert-info">
+                    Aucune formation ne correspond à vos critères de recherche.
+                </div>
+            {% else %}
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    {% for formation in formations %}
+                        <div class="col">
+                            <div class="card h-100 shadow-sm">
+                                {% if formation.image %}
+                                    <img src="{{ formation.image.url }}" class="card-img-top" alt="{{ formation.name }}">
+                                {% endif %}
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ formation.name }}</h5>
+                                    <p class="card-text text-muted">
+                                        <i class="bi bi-clock"></i> {{ formation.duration }} heures
+                                        <br>
+                                        <i class="bi bi-tag"></i> {{ formation.get_type_display }}
+                                        <br>
+                                        <i class="bi bi-geo"></i> {{ formation.get_modalities_display }}
+                                    </p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <a href="{% url 'core:formation_detail' pk=formation.pk %}" class="btn btn-outline-primary flex-grow-1 me-2">
+                                            Détails <i class="bi bi-arrow-right"></i>
+                                        </a>
+                                        {% if user.is_staff %}
+                                            <div class="btn-group" role="group">
+                                                <a href="{% url 'core:formation_edit' pk=formation.pk %}" class="btn btn-sm btn-warning" title="Modifier">
+                                                    <i class="bi bi-pencil"></i>
+                                                </a>
+                                                <a href="{% url 'core:formation_delete' pk=formation.pk %}" class="btn btn-sm btn-danger" title="Supprimer">
+                                                    <i class="bi bi-trash"></i>
+                                                </a>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Rendre la carte de filtres responsive
+    const filterCard = document.querySelector('.card');
+    const filterToggle = document.createElement('button');
+    filterToggle.classList.add('btn', 'btn-outline-primary', 'd-md-none', 'w-100', 'mb-3');
+    filterToggle.innerHTML = '<i class="bi bi-filter"></i> Afficher/Masquer les filtres';
+    
+    filterToggle.addEventListener('click', function() {
+        filterCard.classList.toggle('d-none');
+    });
+
+    // Insérer le bouton avant la carte de filtres
+    filterCard.parentNode.insertBefore(filterToggle, filterCard);
+});
+</script>
+{% endblock %}
