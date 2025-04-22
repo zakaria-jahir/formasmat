@@ -35,7 +35,7 @@ def register():
         db.session.commit()
         login_user(user)
         return redirect(url_for('member.profile'))
-    return render_template('auth/login.html')
+    return render_template('auth/register.html')
 
 @bp.route('/logout')
 @login_required

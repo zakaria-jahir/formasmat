@@ -10724,3 +10724,1762 @@ INFO 2025-04-22 11:15:53,670 views 145238 139898035390144 Salles : ['Club inform
 INFO 2025-04-22 11:15:53,672 views 145238 139898035390144 Nombre de sessions trouvées : 3
 INFO 2025-04-22 11:15:53,718 basehttp 145238 139898035390144 "GET /manage-session/ HTTP/1.1" 200 35508
 INFO 2025-04-22 11:15:53,814 basehttp 145238 139898035390144 "GET /static/core/css/custom.css?v=1745313353 HTTP/1.1" 200 10230
+INFO 2025-04-22 11:39:20,622 autoreload 29760 21560 Watching for file changes with StatReloader
+INFO 2025-04-22 11:40:02,647 autoreload 32628 13232 Watching for file changes with StatReloader
+INFO 2025-04-22 11:40:05,248 basehttp 32628 14868 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 11:40:05,433 basehttp 32628 14868 "GET /static/core/css/custom.css?v=1745314805 HTTP/1.1" 200 10744
+INFO 2025-04-22 11:40:14,409 basehttp 32628 14868 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 11:40:14,465 basehttp 32628 14868 "GET /static/core/css/custom.css?v=1745314814 HTTP/1.1" 200 10744
+INFO 2025-04-22 11:44:09,993 basehttp 32628 25120 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 11:44:10,028 basehttp 32628 25120 "GET /static/core/css/custom.css?v=1745315049 HTTP/1.1" 200 10744
+INFO 2025-04-22 11:45:05,476 autoreload 30764 24744 Watching for file changes with StatReloader
+INFO 2025-04-22 11:45:06,454 basehttp 30764 27344 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 11:45:06,601 basehttp 30764 27344 "GET /static/core/css/custom.css?v=1745315106 HTTP/1.1" 200 10744
+INFO 2025-04-22 11:45:07,533 basehttp 30764 27344 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 11:45:07,571 basehttp 30764 27344 "GET /static/core/css/custom.css?v=1745315107 HTTP/1.1" 200 10744
+INFO 2025-04-22 11:45:08,217 basehttp 30764 27344 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 11:45:08,244 basehttp 30764 27344 "GET /static/core/css/custom.css?v=1745315108 HTTP/1.1" 200 10744
+INFO 2025-04-22 11:45:08,629 basehttp 30764 27344 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 11:45:08,843 basehttp 30764 27344 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 13:25:50,481 autoreload 18136 1600 Watching for file changes with StatReloader
+INFO 2025-04-22 13:25:53,163 basehttp 18136 5380 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 13:25:53,278 basehttp 18136 5380 "GET /static/core/css/custom.css?v=1745321153 HTTP/1.1" 200 10744
+WARNING 2025-04-22 13:25:53,482 log 18136 5380 Not Found: /favicon.ico
+WARNING 2025-04-22 13:25:53,483 basehttp 18136 5380 "GET /favicon.ico HTTP/1.1" 404 18261
+INFO 2025-04-22 13:25:55,435 basehttp 18136 5380 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 13:25:55,459 basehttp 18136 5380 "GET /static/core/css/custom.css?v=1745321155 HTTP/1.1" 200 10744
+INFO 2025-04-22 13:32:43,012 basehttp 18136 23052 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 13:32:43,046 basehttp 18136 23052 "GET /static/core/css/custom.css?v=1745321563 HTTP/1.1" 200 10744
+INFO 2025-04-22 13:32:45,143 basehttp 18136 23052 "GET /login/ HTTP/1.1" 200 5276
+INFO 2025-04-22 13:32:45,166 basehttp 18136 23052 "GET /static/core/css/custom.css?v=1745321565 HTTP/1.1" 200 10744
+INFO 2025-04-22 13:33:01,206 basehttp 18136 23052 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 13:33:01,231 basehttp 18136 23052 "GET /static/core/css/custom.css?v=1745321581 HTTP/1.1" 200 10744
+ERROR 2025-04-22 13:40:08,856 log 18136 25104 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 706, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '()' from 'csrf_token()'
+ERROR 2025-04-22 13:40:08,864 basehttp 18136 25104 "GET /register/ HTTP/1.1" 500 196330
+ERROR 2025-04-22 13:40:09,643 log 18136 25104 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 706, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '()' from 'csrf_token()'
+ERROR 2025-04-22 13:40:09,645 basehttp 18136 25104 "GET /register/ HTTP/1.1" 500 196330
+INFO 2025-04-22 13:43:35,254 autoreload 18136 1600 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:43:36,143 autoreload 21664 19504 Watching for file changes with StatReloader
+INFO 2025-04-22 13:43:52,857 autoreload 21664 19504 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:43:53,575 autoreload 20932 32392 Watching for file changes with StatReloader
+INFO 2025-04-22 13:43:58,976 autoreload 20932 32392 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:43:59,739 autoreload 4540 29040 Watching for file changes with StatReloader
+INFO 2025-04-22 13:44:03,142 autoreload 4540 29040 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:44:03,879 autoreload 5380 28248 Watching for file changes with StatReloader
+INFO 2025-04-22 13:45:26,068 autoreload 5380 28248 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:45:26,805 autoreload 13852 1952 Watching for file changes with StatReloader
+INFO 2025-04-22 13:45:29,564 autoreload 13852 1952 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:45:30,358 autoreload 29220 25684 Watching for file changes with StatReloader
+INFO 2025-04-22 13:47:30,546 autoreload 27580 8016 Watching for file changes with StatReloader
+ERROR 2025-04-22 13:47:33,388 log 27580 10892 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:47:33,392 basehttp 27580 10892 "GET /register/ HTTP/1.1" 500 254620
+ERROR 2025-04-22 13:47:34,039 log 27580 10892 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:47:34,041 basehttp 27580 10892 "GET /register/ HTTP/1.1" 500 254620
+ERROR 2025-04-22 13:47:36,564 log 27580 10892 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:47:36,567 basehttp 27580 10892 "GET /register/ HTTP/1.1" 500 254483
+INFO 2025-04-22 13:47:48,484 autoreload 27580 8016 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:47:49,298 autoreload 23080 3692 Watching for file changes with StatReloader
+INFO 2025-04-22 13:47:52,663 autoreload 23080 3692 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\forms.py changed, reloading.
+INFO 2025-04-22 13:47:53,371 autoreload 16016 14736 Watching for file changes with StatReloader
+ERROR 2025-04-22 13:49:17,399 log 16016 12528 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:49:17,405 basehttp 16016 12528 "GET /register/ HTTP/1.1" 500 254620
+ERROR 2025-04-22 13:49:17,881 log 16016 12528 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:49:17,888 basehttp 16016 12528 "GET /register/ HTTP/1.1" 500 254620
+ERROR 2025-04-22 13:49:18,057 log 16016 12528 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:49:18,061 basehttp 16016 12528 "GET /register/ HTTP/1.1" 500 254620
+ERROR 2025-04-22 13:49:18,196 log 16016 12528 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 510, in parse
+    compile_func = self.tags[command]
+                   ~~~~~~~~~^^^^^^^^^
+KeyError: 'render_field'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 512, in parse
+    self.invalid_block_tag(token, command, parse_until)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 563, in invalid_block_tag
+    raise self.error(
+django.template.exceptions.TemplateSyntaxError: Invalid block tag on line 34: 'render_field', expected 'endblock'. Did you forget to register or load this tag?
+ERROR 2025-04-22 13:49:18,200 basehttp 16016 12528 "GET /register/ HTTP/1.1" 500 254620
+INFO 2025-04-22 13:49:21,106 basehttp 16016 12528 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 13:49:21,270 basehttp 16016 12528 "GET /static/core/css/custom.css?v=1745322561 HTTP/1.1" 200 10744
+ERROR 2025-04-22 13:51:53,306 log 16016 12528 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 15, in get_template
+    return engine.get_template(template_name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 79, in get_template
+    return Template(self.engine.get_template(template_name), self)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 177, in get_template
+    template, origin = self.find_template(template_name)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\engine.py", line 159, in find_template
+    template = loader.get_template(name, skip=skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\cached.py", line 57, in get_template
+    template = super().get_template(template_name, skip)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loaders\base.py", line 28, in get_template
+    return Template(
+           ^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 154, in __init__
+    self.nodelist = self.compile_nodelist()
+                    ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 196, in compile_nodelist
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 295, in do_extends
+    nodelist = parser.parse()
+               ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 518, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 516, in parse
+    compiled_result = compile_func(self, token)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 234, in do_block
+    nodelist = parser.parse(("endblock",))
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 489, in parse
+    raise self.error(token, e)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 487, in parse
+    filter_expression = self.compile_filter(token.contents)
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 605, in compile_filter
+    return FilterExpression(token, self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 706, in __init__
+    raise TemplateSyntaxError(
+django.template.exceptions.TemplateSyntaxError: Could not parse the remainder: '('auth.login')' from 'url_for('auth.login')'
+ERROR 2025-04-22 13:51:53,310 basehttp 16016 12528 "GET /register/ HTTP/1.1" 500 196449
+INFO 2025-04-22 13:52:19,495 basehttp 16016 12528 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 13:52:19,518 basehttp 16016 12528 "GET /static/core/css/custom.css?v=1745322739 HTTP/1.1" 200 10744
+INFO 2025-04-22 13:54:06,607 autoreload 16016 14736 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 13:54:07,490 autoreload 22656 3904 Watching for file changes with StatReloader
+ERROR 2025-04-22 13:54:09,076 log 22656 23592 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:54:09,079 basehttp 22656 23592 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:54:09,729 log 22656 23592 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:54:09,731 basehttp 22656 23592 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:54:10,022 log 22656 23592 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:54:10,024 basehttp 22656 23592 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:54:10,261 log 22656 23592 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:54:10,262 basehttp 22656 23592 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:54:10,426 log 22656 23592 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:54:10,427 basehttp 22656 23592 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:54:10,631 log 22656 23592 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:54:10,632 basehttp 22656 23592 "GET /register/ HTTP/1.1" 500 91453
+INFO 2025-04-22 13:54:15,455 autoreload 22656 3904 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 13:54:16,264 autoreload 21264 17300 Watching for file changes with StatReloader
+INFO 2025-04-22 13:54:18,036 autoreload 21264 17300 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 13:54:18,812 autoreload 26248 18196 Watching for file changes with StatReloader
+INFO 2025-04-22 13:54:52,004 autoreload 26248 18196 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\urls.py changed, reloading.
+INFO 2025-04-22 13:54:52,777 autoreload 22804 2944 Watching for file changes with StatReloader
+INFO 2025-04-22 13:54:54,535 autoreload 22804 2944 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\urls.py changed, reloading.
+INFO 2025-04-22 13:54:55,362 autoreload 19704 2324 Watching for file changes with StatReloader
+ERROR 2025-04-22 13:55:01,558 log 19704 18848 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:01,560 basehttp 19704 18848 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:55:02,065 log 19704 18848 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:02,067 basehttp 19704 18848 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:55:02,247 log 19704 18848 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:02,248 basehttp 19704 18848 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:55:02,422 log 19704 18848 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:02,425 basehttp 19704 18848 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:55:02,596 log 19704 18848 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:02,597 basehttp 19704 18848 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:55:02,808 log 19704 18848 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:02,810 basehttp 19704 18848 "GET /register/ HTTP/1.1" 500 91453
+INFO 2025-04-22 13:55:06,791 autoreload 19704 2324 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\urls.py changed, reloading.
+INFO 2025-04-22 13:55:07,663 autoreload 23960 20484 Watching for file changes with StatReloader
+ERROR 2025-04-22 13:55:11,833 log 23960 12636 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:11,836 basehttp 23960 12636 "GET /register/ HTTP/1.1" 500 91453
+ERROR 2025-04-22 13:55:12,309 log 23960 12636 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 82, in register
+    return render(request, 'auth/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 61, in render_to_string
+    template = get_template(template_name, using=using)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 19, in get_template
+    raise TemplateDoesNotExist(template_name, chain=chain)
+django.template.exceptions.TemplateDoesNotExist: auth/register.html
+ERROR 2025-04-22 13:55:12,310 basehttp 23960 12636 "GET /register/ HTTP/1.1" 500 91453
+INFO 2025-04-22 13:55:19,930 autoreload 23960 20484 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 13:55:20,757 autoreload 30248 21264 Watching for file changes with StatReloader
+INFO 2025-04-22 13:55:21,276 basehttp 30248 32140 "GET /register/ HTTP/1.1" 200 9933
+INFO 2025-04-22 13:55:21,373 basehttp 30248 32140 "GET /static/core/css/custom.css?v=1745322921 HTTP/1.1" 200 10744
+ERROR 2025-04-22 13:56:16,506 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:56:16,509 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 174951
+ERROR 2025-04-22 13:56:17,097 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:56:17,099 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 174951
+ERROR 2025-04-22 13:56:17,295 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:56:17,298 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 174951
+ERROR 2025-04-22 13:56:17,492 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:56:17,496 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 174951
+ERROR 2025-04-22 13:57:43,511 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:57:43,513 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 175050
+ERROR 2025-04-22 13:57:44,075 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:57:44,078 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 175050
+ERROR 2025-04-22 13:57:44,246 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:57:44,248 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 175050
+ERROR 2025-04-22 13:57:44,451 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:57:44,453 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 175050
+ERROR 2025-04-22 13:57:46,533 log 30248 32140 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'auth'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'auth' is not a registered namespace
+ERROR 2025-04-22 13:57:46,535 basehttp 30248 32140 "GET /register/ HTTP/1.1" 500 174913
+INFO 2025-04-22 13:58:23,859 basehttp 30248 32140 "GET /register/ HTTP/1.1" 200 9953
+INFO 2025-04-22 13:58:23,883 basehttp 30248 32140 "GET /static/core/css/custom.css?v=1745323103 HTTP/1.1" 200 10744
+INFO 2025-04-22 13:58:24,572 basehttp 30248 32140 "GET /register/ HTTP/1.1" 200 9953
+INFO 2025-04-22 13:58:24,590 basehttp 30248 32140 "GET /static/core/css/custom.css?v=1745323104 HTTP/1.1" 200 10744
+INFO 2025-04-22 13:58:24,787 basehttp 30248 32140 "GET /register/ HTTP/1.1" 200 9953
+INFO 2025-04-22 13:59:02,188 basehttp 30248 32140 "GET /register/ HTTP/1.1" 200 9953
+INFO 2025-04-22 13:59:02,212 basehttp 30248 32140 "GET /static/core/css/custom.css?v=1745323142 HTTP/1.1" 200 10744
+ERROR 2025-04-22 14:05:17,557 log 30248 1412 Internal Server Error: /register/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 71, in reverse
+    extra, resolver = resolver.namespace_dict[ns]
+                      ~~~~~~~~~~~~~~~~~~~~~~~^^^^
+KeyError: 'app'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 79, in register
+    return render(request, 'core/register.html', {'form': form})
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 82, in reverse
+    raise NoReverseMatch("%s is not a registered namespace" % key)
+django.urls.exceptions.NoReverseMatch: 'app' is not a registered namespace
+ERROR 2025-04-22 14:05:17,559 basehttp 30248 1412 "GET /register/ HTTP/1.1" 500 176355
+INFO 2025-04-22 14:06:29,834 basehttp 30248 1412 "GET /register/ HTTP/1.1" 200 9895
+INFO 2025-04-22 14:06:29,857 basehttp 30248 1412 "GET /static/core/css/custom.css?v=1745323589 HTTP/1.1" 200 10744
+INFO 2025-04-22 14:06:50,629 basehttp 30248 1412 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-04-22 14:06:50,636 basehttp 30248 1412 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 14:06:50,666 basehttp 30248 1412 "GET /formations/ HTTP/1.1" 200 20090
+INFO 2025-04-22 14:06:50,696 basehttp 30248 1412 "GET /static/core/css/custom.css?v=1745323610 HTTP/1.1" 200 10744
+INFO 2025-04-22 14:06:50,698 basehttp 30248 8032 "GET /media/formations/IPERIA%20TETST/images/adjust_bleu.png HTTP/1.1" 200 2825
