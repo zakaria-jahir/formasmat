@@ -12191,3 +12191,4 @@ Traceback (most recent call last):
     raise TypeError(
 TypeError: Direct assignment to the forward side of a many-to-many set is prohibited. Use trainers.set() instead.
 ERROR 2025-04-22 16:27:19,979 basehttp 74483 140716332074688 "POST /api/create-session/?formation=2 HTTP/1.1" 500 104169
+INFO 2025-04-22 16:37:14,721 autoreload 80557 139833771165504 Watching for file changes with StatReloader
