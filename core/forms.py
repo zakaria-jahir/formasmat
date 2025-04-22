@@ -7,12 +7,76 @@ User = get_user_model()
 
 class UserRegistrationForm(UserCreationForm):
     """Formulaire d'inscription utilisateur."""
-    username = forms.CharField(required=True, label="Nom d'utilisateur", widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': "Choisissez un nom d'utilisateur"}))
-    email = forms.EmailField(required=True, widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'exemple@email.com', 'autocomplete': 'username'}))
-    first_name = forms.CharField(required=True, label="Prénom", widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'given-name'}))
-    last_name = forms.CharField(required=True, label="Nom", widget=forms.TextInput(attrs={'class': 'form-control','autocomplete': 'family-name'}))
-    phone = forms.CharField(required=True, label="téléphone", max_length=20, widget=forms.TextInput(attrs={'class': 'form-control', 'autocomplete': 'tel', 'id': 'id_phone', 'pattern': '[0-9]{10}'}))
-    address = forms.CharField(required=True, label="Adresse", widget=forms.Textarea(attrs={'class': 'form-control', 'rows': 3, 'autocomplete': 'street-address'}))
+
+    username = forms.CharField(
+        required=True,
+        label="Nom d'utilisateur",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': "Choisissez un nom d'utilisateur"
+        })
+    )
+    email = forms.EmailField(
+        required=True,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'exemple@email.com',
+            'autocomplete': 'username'
+        })
+    )
+    first_name = forms.CharField(
+        required=True,
+        label="Prénom",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'autocomplete': 'given-name'
+        })
+    )
+    last_name = forms.CharField(
+        required=True,
+        label="Nom",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'autocomplete': 'family-name'
+        })
+    )
+    phone = forms.CharField(
+        required=True,
+        label="Téléphone",
+        max_length=20,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'autocomplete': 'tel',
+            'id': 'id_phone',
+            'pattern': '[0-9]{10}'
+        })
+    )
+    city = forms.CharField(
+        required=True,
+        label="Ville",
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Ex. : La Rochelle'
+        })
+    )
+    code_postal = forms.CharField(
+        required=True,
+        label="Code postal",
+        max_length=10,
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'placeholder': 'Ex. : 17000'
+        })
+    )
+    address = forms.CharField(
+        required=True,
+        label="Adresse",
+        widget=forms.Textarea(attrs={
+            'class': 'form-control',
+            'rows': 3,
+            'autocomplete': 'street-address'
+        })
+    )
     rpe = forms.ModelChoiceField(
         queryset=RPE.objects.all(),
         required=False,
@@ -22,13 +86,19 @@ class UserRegistrationForm(UserCreationForm):
     other_rpe = forms.CharField(
         required=False,
         label="Autre RPE / Association",
-        widget=forms.TextInput(attrs={'class': 'form-control', 'style': 'display: none;'})
+        widget=forms.TextInput(attrs={
+            'class': 'form-control',
+            'style': 'display: none;'
+        })
     )
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'phone', 'address', 'rpe', 'other_rpe', 'password1', 'password2']
-
+        fields = [
+            'username', 'email', 'first_name', 'last_name',
+            'phone', 'city', 'code_postal', 'address',
+            'rpe', 'other_rpe', 'password1', 'password2'
+        ]
 class UserProfileForm(forms.ModelForm):
     """Formulaire de profil utilisateur."""
     rpe = forms.ModelChoiceField(
@@ -57,22 +127,20 @@ class UserProfileForm(forms.ModelForm):
 class FormationForm(forms.ModelForm):
     class Meta:
         model = Formation
-        fields = ['name', 'code_iperia', 'description', 'duration', 'image', 'program_file', 'type', 
-                  'is_presentiel', 'is_distanciel', 'is_asynchrone']
+        fields = [
+            'name', 'code_iperia', 'description', 'duration',
+            'image', 'program_file', 'type',
+            'is_presentiel', 'is_distanciel', 'is_asynchrone',
+            'city', 'code_postal'
+        ]
         widgets = {
             'description': forms.Textarea(attrs={'rows': 4}),
             'duration': forms.NumberInput(attrs={'class': 'form-control'}),
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'code_iperia': forms.TextInput(attrs={'class': 'form-control'}),
             'type': forms.Select(attrs={'class': 'form-select'}),
-        }
-        help_texts = {
-            'duration': 'Durée de la formation en heures',
-            'code_iperia': 'Code unique de la formation',
-            'type': 'Type de formation',
-            'is_presentiel': 'Formation en présentiel',
-            'is_distanciel': 'Formation à distance',
-            'is_asynchrone': 'Formation asynchrone',
+            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'code_postal': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class TrainingRoomForm(forms.ModelForm):

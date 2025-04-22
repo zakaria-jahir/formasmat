@@ -12483,3 +12483,244 @@ INFO 2025-04-22 14:06:50,636 basehttp 30248 1412 "GET / HTTP/1.1" 302 0
 INFO 2025-04-22 14:06:50,666 basehttp 30248 1412 "GET /formations/ HTTP/1.1" 200 20090
 INFO 2025-04-22 14:06:50,696 basehttp 30248 1412 "GET /static/core/css/custom.css?v=1745323610 HTTP/1.1" 200 10744
 INFO 2025-04-22 14:06:50,698 basehttp 30248 8032 "GET /media/formations/IPERIA%20TETST/images/adjust_bleu.png HTTP/1.1" 200 2825
+INFO 2025-04-22 16:14:21,568 autoreload 2952 26480 Watching for file changes with StatReloader
+INFO 2025-04-22 16:14:56,986 basehttp 2952 28280 "GET /formations/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:14:57,022 basehttp 2952 28280 "GET /login/?next=/formations/ HTTP/1.1" 200 5276
+INFO 2025-04-22 16:14:57,113 basehttp 2952 28280 "GET /static/core/css/custom.css?v=1745331297 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:15:14,278 basehttp 2952 28280 "POST /login/?next=/formations/ HTTP/1.1" 200 5479
+INFO 2025-04-22 16:15:14,301 basehttp 2952 28280 "GET /static/core/css/custom.css?v=1745331314 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:15:21,853 basehttp 2952 28280 "POST /login/?next=/formations/ HTTP/1.1" 200 5479
+INFO 2025-04-22 16:15:21,872 basehttp 2952 28280 "GET /static/core/css/custom.css?v=1745331321 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:15:27,984 basehttp 2952 28280 "POST /login/?next=/formations/ HTTP/1.1" 200 5479
+INFO 2025-04-22 16:15:28,004 basehttp 2952 28280 "GET /static/core/css/custom.css?v=1745331327 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:15:28,227 basehttp 2952 28280 "GET /login/ HTTP/1.1" 200 5276
+INFO 2025-04-22 16:15:28,256 basehttp 2952 28280 "GET /static/core/css/custom.css?v=1745331328 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:16:26,984 basehttp 2952 28280 "GET /register/ HTTP/1.1" 200 9895
+INFO 2025-04-22 16:16:27,012 basehttp 2952 28280 "GET /static/core/css/custom.css?v=1745331386 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:31:53,626 autoreload 27884 12460 Watching for file changes with StatReloader
+INFO 2025-04-22 16:31:56,726 basehttp 27884 9620 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 16:31:56,840 basehttp 27884 9620 "GET /static/core/css/custom.css?v=1745332316 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:31:58,882 basehttp 27884 9620 "GET /register/ HTTP/1.1" 200 9895
+INFO 2025-04-22 16:31:58,914 basehttp 27884 9620 "GET /static/core/css/custom.css?v=1745332318 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:32:34,432 basehttp 27884 9620 "GET /register/ HTTP/1.1" 200 10546
+INFO 2025-04-22 16:32:34,455 basehttp 27884 9620 "GET /static/core/css/custom.css?v=1745332354 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:33:00,120 basehttp 27884 9620 "POST /register/ HTTP/1.1" 200 11367
+INFO 2025-04-22 16:33:00,146 basehttp 27884 9620 "GET /static/core/css/custom.css?v=1745332380 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:33:20,472 basehttp 27884 9620 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:33:20,480 basehttp 27884 9620 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:33:20,525 basehttp 27884 9620 "GET /formations/ HTTP/1.1" 200 20090
+INFO 2025-04-22 16:33:20,552 basehttp 27884 9620 "GET /static/core/css/custom.css?v=1745332400 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:33:20,553 basehttp 27884 13364 "GET /media/formations/IPERIA%20TETST/images/adjust_bleu.png HTTP/1.1" 304 0
+INFO 2025-04-22 16:33:27,038 basehttp 27884 13364 "GET /formations/2/ HTTP/1.1" 200 7938
+INFO 2025-04-22 16:33:27,079 basehttp 27884 13364 "GET /static/core/css/custom.css?v=1745332407 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:33:35,032 basehttp 27884 13364 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:33:35,037 basehttp 27884 13364 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 16:33:35,059 basehttp 27884 13364 "GET /static/core/css/custom.css?v=1745332415 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:33:36,172 basehttp 27884 13364 "GET /login/ HTTP/1.1" 200 5276
+INFO 2025-04-22 16:33:36,205 basehttp 27884 13364 "GET /static/core/css/custom.css?v=1745332416 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:33:38,111 basehttp 27884 13364 "GET /register/ HTTP/1.1" 200 10546
+INFO 2025-04-22 16:33:38,140 basehttp 27884 13364 "GET /static/core/css/custom.css?v=1745332418 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:37:25,432 autoreload 27884 12460 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:37:26,331 autoreload 19648 18396 Watching for file changes with StatReloader
+INFO 2025-04-22 16:38:14,283 basehttp 19648 21420 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:38:14,289 basehttp 19648 21420 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:38:14,334 basehttp 19648 21420 "GET /formations/ HTTP/1.1" 200 20090
+INFO 2025-04-22 16:38:14,516 basehttp 19648 21420 "GET /static/core/css/custom.css?v=1745332694 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:40:36,736 basehttp 19648 21420 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:40:36,742 basehttp 19648 21420 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 16:40:36,770 basehttp 19648 21420 "GET /static/core/css/custom.css?v=1745332836 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:40:37,865 basehttp 19648 21420 "GET /login/ HTTP/1.1" 200 5276
+INFO 2025-04-22 16:40:37,893 basehttp 19648 21420 "GET /static/core/css/custom.css?v=1745332837 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:40:40,800 basehttp 19648 21420 "GET /register/ HTTP/1.1" 200 10546
+INFO 2025-04-22 16:40:40,830 basehttp 19648 21420 "GET /static/core/css/custom.css?v=1745332840 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:44:47,199 autoreload 19648 18396 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:44:48,061 autoreload 22512 12540 Watching for file changes with StatReloader
+INFO 2025-04-22 16:45:24,712 basehttp 22512 24420 "GET /register/ HTTP/1.1" 200 9969
+INFO 2025-04-22 16:45:24,896 basehttp 22512 24420 "GET /static/core/css/custom.css?v=1745333124 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:45:52,077 basehttp 22512 24420 "POST /register/ HTTP/1.1" 200 10658
+INFO 2025-04-22 16:45:52,102 basehttp 22512 24420 "GET /static/core/css/custom.css?v=1745333152 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:46:10,122 basehttp 22512 24420 "POST /register/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:46:10,130 basehttp 22512 24420 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:46:10,170 basehttp 22512 24420 "GET /formations/ HTTP/1.1" 200 20090
+INFO 2025-04-22 16:46:10,198 basehttp 22512 24420 "GET /static/core/css/custom.css?v=1745333170 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:48:44,991 autoreload 22512 12540 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:48:45,871 autoreload 2384 30476 Watching for file changes with StatReloader
+INFO 2025-04-22 16:49:07,598 autoreload 2384 30476 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:49:08,413 autoreload 17668 22308 Watching for file changes with StatReloader
+INFO 2025-04-22 16:49:22,672 autoreload 17668 22308 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:49:23,473 autoreload 31088 24836 Watching for file changes with StatReloader
+INFO 2025-04-22 16:49:25,285 autoreload 31088 24836 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:49:26,051 autoreload 23008 25116 Watching for file changes with StatReloader
+INFO 2025-04-22 16:49:46,662 autoreload 23008 25116 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:49:47,561 autoreload 18396 14068 Watching for file changes with StatReloader
+INFO 2025-04-22 16:51:23,367 autoreload 18396 14068 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:51:24,155 autoreload 20184 27636 Watching for file changes with StatReloader
+INFO 2025-04-22 16:51:26,967 autoreload 20184 27636 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:51:27,812 autoreload 18136 8188 Watching for file changes with StatReloader
+INFO 2025-04-22 16:51:40,993 autoreload 18136 8188 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:51:41,819 autoreload 15908 25436 Watching for file changes with StatReloader
+INFO 2025-04-22 16:53:27,953 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 200 19965
+INFO 2025-04-22 16:53:28,042 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333607 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:53:28,698 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 200 19965
+INFO 2025-04-22 16:53:28,724 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333608 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:53:29,246 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 200 19965
+INFO 2025-04-22 16:53:29,266 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333609 HTTP/1.1" 200 10744
+ERROR 2025-04-22 16:53:54,946 log 15908 14104 Internal Server Error: /logout/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+sqlite3.OperationalError: database is locked
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 68, in logout_view
+    logout(request)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\__init__.py", line 171, in logout
+    request.session.flush()
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\sessions\backends\base.py", line 418, in flush
+    self.delete()
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\sessions\backends\db.py", line 175, in delete
+    self.model.objects.get(session_key=session_key).delete()
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\models\base.py", line 1273, in delete
+    return collector.delete()
+           ^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\models\deletion.py", line 449, in delete
+    count = sql.DeleteQuery(model).delete_batch(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\models\sql\subqueries.py", line 42, in delete_batch
+    num_deleted += self.do_query(
+                   ^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\models\sql\subqueries.py", line 20, in do_query
+    cursor = self.get_compiler(using).execute_sql(CURSOR)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\models\sql\compiler.py", line 1574, in execute_sql
+    cursor.execute(sql, params)
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\utils.py", line 122, in execute
+    return super().execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\utils.py", line 79, in execute
+    return self._execute_with_wrappers(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\utils.py", line 92, in _execute_with_wrappers
+    return executor(sql, params, many, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\utils.py", line 100, in _execute
+    with self.db.wrap_database_errors:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\utils.py", line 91, in __exit__
+    raise dj_exc_value.with_traceback(traceback) from exc_value
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\utils.py", line 105, in _execute
+    return self.cursor.execute(sql, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\db\backends\sqlite3\base.py", line 354, in execute
+    return super().execute(query, params)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+django.db.utils.OperationalError: database is locked
+ERROR 2025-04-22 16:53:54,960 basehttp 15908 14104 "GET /logout/ HTTP/1.1" 500 152761
+INFO 2025-04-22 16:54:01,705 basehttp 15908 14104 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:54:01,713 basehttp 15908 14104 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 16:54:01,745 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333641 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:54:03,428 basehttp 15908 14104 "GET /login/ HTTP/1.1" 200 5276
+INFO 2025-04-22 16:54:03,460 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333643 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:54:15,104 basehttp 15908 14104 "POST /login/ HTTP/1.1" 200 5490
+INFO 2025-04-22 16:54:15,127 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333655 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:54:22,350 basehttp 15908 14104 "POST /login/ HTTP/1.1" 200 5490
+INFO 2025-04-22 16:54:22,368 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333662 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:54:35,009 basehttp 15908 14104 "POST /login/ HTTP/1.1" 200 5490
+INFO 2025-04-22 16:54:35,031 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333675 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:54:59,817 basehttp 15908 14104 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:54:59,823 basehttp 15908 14104 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:54:59,838 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 200 19965
+INFO 2025-04-22 16:54:59,858 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333699 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:55:24,035 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 200 25907
+INFO 2025-04-22 16:55:24,055 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333724 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:55:25,378 basehttp 15908 14104 "GET /formations/create/ HTTP/1.1" 200 9189
+INFO 2025-04-22 16:55:25,405 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333725 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:55:39,720 basehttp 15908 14104 "POST /formations/create/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:55:39,733 basehttp 15908 14104 "GET /formations/9/ HTTP/1.1" 200 9009
+INFO 2025-04-22 16:55:39,761 basehttp 15908 14104 "GET /static/core/css/custom.css?v=1745333739 HTTP/1.1" 200 10744
+ERROR 2025-04-22 16:55:41,241 log 15908 14104 Internal Server Error: /formations/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 348, in formation_list
+    distance = haversine(user.latitude, user.longitude, f.latitude, f.longitude)
+               ^^^^^^^^^
+NameError: name 'haversine' is not defined
+ERROR 2025-04-22 16:55:41,247 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 500 82583
+ERROR 2025-04-22 16:55:44,396 log 15908 14104 Internal Server Error: /formations/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 348, in formation_list
+    distance = haversine(user.latitude, user.longitude, f.latitude, f.longitude)
+               ^^^^^^^^^
+NameError: name 'haversine' is not defined
+ERROR 2025-04-22 16:55:44,402 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 500 82720
+ERROR 2025-04-22 16:55:45,016 log 15908 14104 Internal Server Error: /formations/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 348, in formation_list
+    distance = haversine(user.latitude, user.longitude, f.latitude, f.longitude)
+               ^^^^^^^^^
+NameError: name 'haversine' is not defined
+ERROR 2025-04-22 16:55:45,027 basehttp 15908 14104 "GET /formations/ HTTP/1.1" 500 82720
+INFO 2025-04-22 16:56:44,081 autoreload 15908 25436 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\utils.py changed, reloading.
+INFO 2025-04-22 16:56:44,904 autoreload 20632 26140 Watching for file changes with StatReloader
+INFO 2025-04-22 16:56:46,645 autoreload 20632 26140 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\utils.py changed, reloading.
+INFO 2025-04-22 16:56:47,463 autoreload 6480 26928 Watching for file changes with StatReloader
+INFO 2025-04-22 16:56:53,363 autoreload 6480 26928 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:56:54,137 autoreload 23728 23444 Watching for file changes with StatReloader
+INFO 2025-04-22 16:57:01,087 autoreload 23728 23444 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-22 16:57:01,987 autoreload 31836 21648 Watching for file changes with StatReloader
+INFO 2025-04-22 16:57:03,984 basehttp 31836 28284 "GET /formations/ HTTP/1.1" 200 27903
+INFO 2025-04-22 16:57:04,073 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333823 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:57:06,541 basehttp 31836 28284 "GET /formations/create/ HTTP/1.1" 200 9189
+INFO 2025-04-22 16:57:06,567 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333826 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:57:20,432 basehttp 31836 28284 "POST /formations/create/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:57:20,451 basehttp 31836 28284 "GET /formations/10/ HTTP/1.1" 200 9037
+INFO 2025-04-22 16:57:20,480 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333840 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:57:22,184 basehttp 31836 28284 "GET /formations/ HTTP/1.1" 200 30009
+INFO 2025-04-22 16:57:22,235 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333842 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:57:24,162 basehttp 31836 28284 "GET /logout/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:57:24,167 basehttp 31836 28284 "GET / HTTP/1.1" 200 4324
+INFO 2025-04-22 16:57:24,195 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333844 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:57:25,128 basehttp 31836 28284 "GET /login/ HTTP/1.1" 200 5276
+INFO 2025-04-22 16:57:25,153 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333845 HTTP/1.1" 200 10744
+INFO 2025-04-22 16:57:36,753 basehttp 31836 28284 "POST /login/ HTTP/1.1" 302 0
+INFO 2025-04-22 16:57:36,758 basehttp 31836 28284 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:57:36,773 basehttp 31836 28284 "GET /formations/ HTTP/1.1" 200 22776
+INFO 2025-04-22 16:57:36,799 basehttp 31836 28284 "GET /static/core/css/custom.css?v=1745333856 HTTP/1.1" 200 10744

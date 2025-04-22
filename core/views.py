@@ -13,6 +13,8 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.http import JsonResponse
 from django.db import transaction
 
+from core.utils import get_coordinates_from_postal_code, haversine1
+
 from .models import (
     User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
     SessionDate, Participant, SessionParticipant, ParticipantComment, 
@@ -70,12 +72,23 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+
+            # Géolocalisation via code postal et ville
+            code_postal = form.cleaned_data.get('code_postal')
+            city = form.cleaned_data.get('city')
+            lat, lng = get_coordinates_from_postal_code(code_postal,city)
+
+            user.latitude = lat
+            user.longitude = lng
+
+            user.save()
             login(request, user)
             messages.success(request, 'Inscription réussie !')
             return redirect('core:home')
     else:
         form = UserRegistrationForm()
+    
     return render(request, 'core/register.html', {'form': form})
 
 @login_required
@@ -288,47 +301,62 @@ def assign_to_session(request):
     return JsonResponse({'status': 'error'}, status=400)
 
 # Formations
+# Formations
 @login_required
 def formation_list(request):
-    """Liste des formations disponibles."""
-    formations = Formation.objects.filter(is_active=True).order_by('name')
-    
-    # Filtres de recherche
+    """Liste des formations disponibles, triées par proximité (puis par défaut)."""
+    user = request.user
+
+    # Base queryset
+    formations_qs = Formation.objects.filter(is_active=True)
+
+    # Filtres GET
     search_query = request.GET.get('search', '')
     type_filter = request.GET.get('type', '')
-    is_presentiel = request.GET.get('is_presentiel', '').lower() == 'true'
-    is_distanciel = request.GET.get('is_distanciel', '').lower() == 'true'
-    is_asynchrone = request.GET.get('is_asynchrone', '').lower() == 'true'
+    is_presentiel = request.GET.get('is_presentiel', '') == 'true'
+    is_distanciel = request.GET.get('is_distanciel', '') == 'true'
+    is_asynchrone = request.GET.get('is_asynchrone', '') == 'true'
     min_duration = request.GET.get('min_duration', '')
     max_duration = request.GET.get('max_duration', '')
-    
-    # Filtrage par recherche
+
+    # Filtres ORM
     if search_query:
-        formations = formations.filter(
-            Q(name__icontains=search_query) | 
-            Q(description__icontains=search_query) | 
+        formations_qs = formations_qs.filter(
+            Q(name__icontains=search_query) |
+            Q(description__icontains=search_query) |
             Q(code_iperia__icontains=search_query)
         )
-    
-    # Filtrage par type
     if type_filter:
-        formations = formations.filter(type=type_filter)
-    
-    # Filtrage par modalités
-    if is_presentiel or is_distanciel or is_asynchrone:
-        formations = formations.filter(
-            Q(is_presentiel=is_presentiel if is_presentiel else None) |
-            Q(is_distanciel=is_distanciel if is_distanciel else None) |
-            Q(is_asynchrone=is_asynchrone if is_asynchrone else None)
-        )
-    
-    # Filtrage par durée
+        formations_qs = formations_qs.filter(type=type_filter)
+    if is_presentiel:
+        formations_qs = formations_qs.filter(is_presentiel=True)
+    if is_distanciel:
+        formations_qs = formations_qs.filter(is_distanciel=True)
+    if is_asynchrone:
+        formations_qs = formations_qs.filter(is_asynchrone=True)
     if min_duration:
-        formations = formations.filter(duration__gte=int(min_duration))
-    
+        formations_qs = formations_qs.filter(duration__gte=int(min_duration))
     if max_duration:
-        formations = formations.filter(duration__lte=int(max_duration))
-    
+        formations_qs = formations_qs.filter(duration__lte=int(max_duration))
+
+    # Séparation des formations
+    formations_with_coords = []
+    formations_without_coords = []
+
+    for f in formations_qs:
+        if f.latitude is not None and f.longitude is not None and user.latitude and user.longitude:
+            distance = haversine1(user.latitude, user.longitude, f.latitude, f.longitude)
+            f.distance = round(distance, 2)  # Pour affichage si besoin
+            formations_with_coords.append(f)
+        else:
+            formations_without_coords.append(f)
+
+    # Tri des formations avec coordonnées
+    formations_with_coords.sort(key=lambda f: f.distance)
+
+    # Fusion avec les formations sans coordonnées
+    formations = formations_with_coords + formations_without_coords
+
     context = {
         'formations': formations,
         'search_query': search_query,
@@ -337,9 +365,8 @@ def formation_list(request):
         'max_duration': max_duration,
         'type_choices': Formation.FORMATION_TYPES,
     }
-    
-    return render(request, 'core/formation_list.html', context)
 
+    return render(request, 'core/formation_list.html', context)
 @login_required
 def formation_detail(request, pk):
     """Détails d'une formation."""
@@ -358,27 +385,30 @@ def formation_detail(request, pk):
 @login_required
 @staff_member_required
 def formation_create(request):
-    """Création d'une formation avec notification."""
+    """Création d'une formation avec géolocalisation."""
     if request.method == 'POST':
         form = FormationForm(request.POST, request.FILES)
         if form.is_valid():
-            formation = form.save()
-            messages.success(request, 'Formation créée avec succès.')
-            
-            # Notification pour tous les utilisateurs
-            users = User.objects.all()
-            for user in users:
-                Notification.create_notification(
-                    user=user, 
-                    type='formation_added', 
-                    message=f'Une nouvelle formation "{formation.name}" a été ajoutée.',
-                    related_object=formation
-                )
-            
-            return redirect('core:formation_detail', pk=formation.pk)
+            formation = form.save(commit=False)
+
+            code_postal = form.cleaned_data.get('code_postal')
+            city = form.cleaned_data.get('city')
+            latitude, longitude = get_coordinates_from_postal_code(code_postal,city)
+
+            formation.latitude = latitude
+            formation.longitude = longitude
+
+            try:
+                formation.save()
+                # Notifications (optionnel)
+                messages.success(request, 'Formation créée avec succès.')
+                return redirect('core:formation_detail', pk=formation.pk)
+            except IntegrityError:
+                messages.error(request, "Erreur lors de l'enregistrement de la formation.")
+
     else:
         form = FormationForm()
-    
+
     return render(request, 'core/formation_form.html', {
         'form': form,
         'title': 'Nouvelle formation'
