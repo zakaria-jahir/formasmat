@@ -8,16 +8,26 @@
         padding: 1rem;
         margin-bottom: 1rem;
     }
+
+    .badge{
+        color: #000;
+    }
+    .badge-default {
+    background-color: #6c757d;
+    color: #fff;
+    }
+
     .status-badge {
         font-size: 0.875rem;
         padding: 0.5em 0.75em;
         border-radius: 0.25rem;
+        color: red;
     }
-    .status-PENDING {
+    .status-NON_OUVERTE {
         background-color: #ffc107;
         color: #000;
     }
-    .status-OPEN {
+    .status-OUVERTE {
         background-color: #28a745;
         color: #fff;
     }
@@ -143,7 +153,7 @@
                             <td>{{ session.formation.name }}</td>
                             <td>
                                 {% for date in session.dates.all %}
-                                <div>{{ date|date:"d/m/Y" }}</div>
+                                <div>{{ date.date|date:"d/m/Y" }}</div>
                                 {% endfor %}
                             </td>
                             <td>
@@ -152,7 +162,7 @@
                                 {% endfor %}
                             </td>
                             <td>
-                                <span class="badge {{ session.get_status_badge_class }}">
+                                <span class="badge status-{{ session.status }}">
                                     {{ session.get_status_display }}
                                 </span>
                             </td>
@@ -471,32 +481,54 @@ function addDateInput() {
 function createSession() {
     const form = document.getElementById('createSessionForm');
     const formData = new FormData(form);
-    
-    // Récupérer les formateurs sélectionnés
+
+    // Get the selected formation
+    const formationId = form.querySelector('#formation').value;
+    if (!formationId) {
+        alert('Veuillez sélectionner une formation.');
+        return;
+    }
+
+    // Get trainers
     const trainers = Array.from(form.querySelector('#trainers').selectedOptions).map(option => option.value);
     formData.set('trainers', JSON.stringify(trainers));
-    
-    // Récupérer toutes les dates et salles
+
+    // Get dates and rooms
     const dates = Array.from(form.querySelectorAll('input[name="session_dates[]"]')).map(input => input.value);
     const rooms = Array.from(form.querySelectorAll('select[name="session_rooms[]"]')).map(select => select.value);
-    
+
+    if (dates.length === 0 || rooms.length === 0) {
+        alert('Veuillez remplir toutes les dates et salles.');
+        return;
+    }
+
     formData.set('session_dates', JSON.stringify(dates));
     formData.set('session_rooms', JSON.stringify(rooms));
-    
-    fetch('/api/create-session/', {
+
+    // Send the request
+    fetch(`/api/create-session/?formation=${formationId}`, {
         method: 'POST',
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),
         },
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
     .then(data => {
         if (data.success) {
             location.reload();
         } else {
-            alert('Erreur lors de la création de la session');
+            alert(data.error || 'Erreur lors de la création de la session');
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Une erreur est survenue. Veuillez réessayer.');
     });
 }
 

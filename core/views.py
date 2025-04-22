@@ -12,6 +12,11 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import JsonResponse
 from django.db import transaction
+from django.shortcuts import redirect
+from django.urls import reverse
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from core.models import Formation, Session
 
 from .models import (
     User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
@@ -960,14 +965,47 @@ def manage_session(request):
 @login_required
 @staff_member_required
 def create_session(request):
-    """Préparation du formulaire de création de session."""
-    formation_id = request.GET.get('formation')
-    if formation_id:
-        from django.shortcuts import redirect
-        from django.urls import reverse
-        return redirect(f"{reverse('core:session_create')}?formation={formation_id}")
-    messages.error(request, 'Formation introuvable.')
-    return redirect('core:formation_list')
+    """Handle session creation."""
+    if request.method == 'POST':
+        # Get the formation ID from the POST data
+        formation_id = request.POST.get('formation')
+        if not formation_id:
+            return JsonResponse({'error': 'Formation ID is missing.'}, status=400)
+
+        # Get the formation object
+        formation = get_object_or_404(Formation, id=formation_id)
+
+        # Get other session data from the POST request
+        session_dates = request.POST.get('session_dates')
+        session_rooms = request.POST.get('session_rooms')
+        trainers = request.POST.get('trainers')
+
+        # Validate the data
+        if not session_dates or not session_rooms or not trainers:
+            return JsonResponse({'error': 'All fields are required.'}, status=400)
+
+        # Parse the data (assuming JSON format for dates, rooms, and trainers)
+        try:
+            session_dates = json.loads(session_dates)
+            session_rooms = json.loads(session_rooms)
+            trainers = json.loads(trainers)
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid data format.'}, status=400)
+
+        # Create the session(s)
+        for date, room in zip(session_dates, session_rooms):
+            Session.objects.create(
+                formation=formation,
+                date=date,
+                room=room,
+                trainers=','.join(trainers)  # Assuming trainers are stored as a comma-separated string
+            )
+
+        # Return success response
+        return JsonResponse({'success': True, 'redirect': '/manage-session/'})
+
+    # If not POST, return an error
+    return JsonResponse({'error': 'Invalid request method.'}, status=405)
 
 
 @login_required

@@ -10724,3 +10724,1470 @@ INFO 2025-04-22 11:15:53,670 views 145238 139898035390144 Salles : ['Club inform
 INFO 2025-04-22 11:15:53,672 views 145238 139898035390144 Nombre de sessions trouvées : 3
 INFO 2025-04-22 11:15:53,718 basehttp 145238 139898035390144 "GET /manage-session/ HTTP/1.1" 200 35508
 INFO 2025-04-22 11:15:53,814 basehttp 145238 139898035390144 "GET /static/core/css/custom.css?v=1745313353 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:41:39,718 autoreload 6463 140088782137152 Watching for file changes with StatReloader
+INFO 2025-04-22 13:41:53,980 basehttp 6463 140088239244992 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 13:41:53,996 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:41:53,996 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:41:53,996 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:41:53,996 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:41:53,999 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:41:54,001 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:41:54,003 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:41:54,004 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:41:54,004 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:41:54,005 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:41:54,007 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:41:54,009 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:41:54,070 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35508
+INFO 2025-04-22 13:41:54,243 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322114 HTTP/1.1" 200 10230
+WARNING 2025-04-22 13:41:55,630 log 6463 140088239244992 Not Found: /favicon.ico
+WARNING 2025-04-22 13:41:55,631 basehttp 6463 140088239244992 "GET /favicon.ico HTTP/1.1" 404 18261
+INFO 2025-04-22 13:43:10,863 basehttp 6463 140088239244992 "GET /formations/ HTTP/1.1" 200 25727
+INFO 2025-04-22 13:43:11,046 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322190 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:43:11,107 basehttp 6463 140088239244992 "GET /media/formations/IPERIA%20TETST/images/adjust_bleu.png HTTP/1.1" 304 0
+INFO 2025-04-22 13:43:17,571 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:43:17,572 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:43:17,572 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:43:17,572 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:43:17,576 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:43:17,578 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:43:17,582 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:43:17,583 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:43:17,583 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:43:17,586 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:43:17,589 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:43:17,591 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:43:17,640 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35508
+INFO 2025-04-22 13:43:17,801 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322197 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:45:52,698 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:45:52,699 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:45:52,699 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:45:52,700 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:45:52,703 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:45:52,706 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:45:52,710 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:45:52,711 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:45:52,712 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:45:52,715 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:45:52,718 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:45:52,721 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:45:52,785 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35510
+INFO 2025-04-22 13:45:52,885 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322352 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:49:21,675 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:49:21,675 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:49:21,676 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:49:21,676 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:49:21,682 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:49:21,685 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:49:21,691 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:49:21,692 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:49:21,692 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:49:21,696 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:49:21,700 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:49:21,703 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:49:21,765 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35568
+INFO 2025-04-22 13:49:21,908 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322561 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:49:29,017 basehttp 6463 140088239244992 "GET /manage-session/get/2/ HTTP/1.1" 200 150
+INFO 2025-04-22 13:49:37,291 basehttp 6463 140088239244992 "GET /manage-session/get/2/ HTTP/1.1" 200 150
+INFO 2025-04-22 13:49:48,933 views 6463 140088239244992 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['2'], 'trainers': ['1'], 'status': ['NON_OUVERTE'], 'dates[]': ['2025-04-23'], 'rooms[]': ['1']}>
+INFO 2025-04-22 13:49:48,959 views 6463 140088239244992 Session 2 mise à jour avec succès
+ERROR 2025-04-22 13:49:48,960 views 6463 140088239244992 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 13:49:48,961 log 6463 140088239244992 Internal Server Error: /manage-session/2/update/
+ERROR 2025-04-22 13:49:48,963 basehttp 6463 140088239244992 "POST /manage-session/2/update/ HTTP/1.1" 500 57
+INFO 2025-04-22 13:51:33,280 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:51:33,280 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:51:33,281 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:51:33,281 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:51:33,285 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:51:33,287 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:51:33,292 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:51:33,293 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:51:33,293 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:51:33,296 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:51:33,301 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:51:33,304 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:51:33,370 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35569
+INFO 2025-04-22 13:51:33,479 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322693 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:52:25,257 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:52:25,257 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:52:25,258 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:52:25,258 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:52:25,263 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:52:25,266 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:52:25,271 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:52:25,272 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:52:25,273 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:52:25,275 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:52:25,278 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:52:25,281 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:52:25,341 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35588
+INFO 2025-04-22 13:52:25,441 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322745 HTTP/1.1" 200 10230
+INFO 2025-04-22 13:53:42,107 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 13:53:42,108 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 13:53:42,109 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 13:53:42,109 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 13:53:42,114 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 13:53:42,117 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 13:53:42,124 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 13:53:42,124 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 13:53:42,125 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 13:53:42,128 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 13:53:42,135 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 13:53:42,138 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 13:53:42,203 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35629
+INFO 2025-04-22 13:53:42,303 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745322822 HTTP/1.1" 200 10230
+INFO 2025-04-22 14:01:35,039 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 14:01:35,040 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 14:01:35,040 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 14:01:35,041 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 14:01:35,045 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 14:01:35,048 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 14:01:35,055 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 14:01:35,056 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 14:01:35,056 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 14:01:35,060 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 14:01:35,064 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 14:01:35,067 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 14:01:35,133 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35829
+INFO 2025-04-22 14:01:35,296 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745323295 HTTP/1.1" 200 10230
+INFO 2025-04-22 14:02:22,252 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 14:02:22,253 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 14:02:22,253 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 14:02:22,253 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 14:02:22,257 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 14:02:22,260 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 14:02:22,265 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 14:02:22,266 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 14:02:22,266 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 14:02:22,269 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 14:02:22,272 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 14:02:22,275 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 14:02:22,334 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35629
+INFO 2025-04-22 14:02:22,522 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745323342 HTTP/1.1" 200 10230
+INFO 2025-04-22 14:07:44,082 basehttp 6463 140088239244992 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-22 14:07:52,283 views 6463 140088239244992 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['4'], 'trainers': ['1'], 'status': ['OUVERTE'], 'dates[]': ['2025-12-12', '2024-12-28', '2025-01-02'], 'rooms[]': ['', '', '']}>
+INFO 2025-04-22 14:07:52,314 views 6463 140088239244992 Session 4 mise à jour avec succès
+ERROR 2025-04-22 14:07:52,315 views 6463 140088239244992 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 14:07:52,316 log 6463 140088239244992 Internal Server Error: /manage-session/4/update/
+ERROR 2025-04-22 14:07:52,317 basehttp 6463 140088239244992 "POST /manage-session/4/update/ HTTP/1.1" 500 57
+INFO 2025-04-22 14:23:28,594 basehttp 6463 140088239244992 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-22 14:31:06,692 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 14:31:06,692 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 14:31:06,692 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 14:31:06,693 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 14:31:06,696 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 14:31:06,698 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 14:31:06,702 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 14:31:06,703 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 14:31:06,703 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 14:31:06,705 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 14:31:06,709 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 14:31:06,711 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 14:31:06,763 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35720
+INFO 2025-04-22 14:31:06,905 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745325066 HTTP/1.1" 200 10230
+INFO 2025-04-22 14:31:15,594 basehttp 6463 140088239244992 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-22 14:31:18,978 views 6463 140088239244992 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['4'], 'trainers': ['1'], 'status': ['OUVERTE'], 'dates[]': ['2025-12-12', '2024-12-28', '2025-01-02'], 'rooms[]': ['', '', '']}>
+INFO 2025-04-22 14:31:19,006 views 6463 140088239244992 Session 4 mise à jour avec succès
+ERROR 2025-04-22 14:31:19,007 views 6463 140088239244992 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 14:31:19,008 log 6463 140088239244992 Internal Server Error: /manage-session/4/update/
+ERROR 2025-04-22 14:31:19,009 basehttp 6463 140088239244992 "POST /manage-session/4/update/ HTTP/1.1" 500 57
+INFO 2025-04-22 14:31:59,509 views 6463 140088239244992 === DÉBUT manage_session ===
+INFO 2025-04-22 14:31:59,510 views 6463 140088239244992 Méthode : GET
+INFO 2025-04-22 14:31:59,510 views 6463 140088239244992 User : Brandon Dieu
+INFO 2025-04-22 14:31:59,512 views 6463 140088239244992 Staff : True
+INFO 2025-04-22 14:31:59,518 views 6463 140088239244992 
+=== Chargement des données de base ===
+INFO 2025-04-22 14:31:59,523 views 6463 140088239244992 Nombre de formations trouvées : 7
+INFO 2025-04-22 14:31:59,531 views 6463 140088239244992 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 14:31:59,533 views 6463 140088239244992 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 14:31:59,535 views 6463 140088239244992 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 14:31:59,539 views 6463 140088239244992 Nombre de salles trouvées : 1
+INFO 2025-04-22 14:31:59,543 views 6463 140088239244992 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 14:31:59,545 views 6463 140088239244992 Nombre de sessions trouvées : 3
+INFO 2025-04-22 14:31:59,613 basehttp 6463 140088239244992 "GET /manage-session/ HTTP/1.1" 200 35719
+INFO 2025-04-22 14:31:59,756 basehttp 6463 140088239244992 "GET /static/core/css/custom.css?v=1745325119 HTTP/1.1" 200 10230
+INFO 2025-04-22 14:32:09,978 basehttp 6463 140088239244992 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-22 14:32:12,223 views 6463 140088239244992 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['4'], 'trainers': ['1'], 'status': ['OUVERTE'], 'dates[]': ['2025-12-12', '2024-12-28', '2025-01-02'], 'rooms[]': ['', '', '']}>
+INFO 2025-04-22 14:32:12,257 views 6463 140088239244992 Session 4 mise à jour avec succès
+ERROR 2025-04-22 14:32:12,258 views 6463 140088239244992 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 14:32:12,259 log 6463 140088239244992 Internal Server Error: /manage-session/4/update/
+ERROR 2025-04-22 14:32:12,260 basehttp 6463 140088239244992 "POST /manage-session/4/update/ HTTP/1.1" 500 57
+INFO 2025-04-22 14:48:02,785 autoreload 6463 140088782137152 /home/jahir/Projects/StageDjango/Formasmat/core/templates/core/utils.py changed, reloading.
+INFO 2025-04-22 14:48:03,697 autoreload 33082 140066133862208 Watching for file changes with StatReloader
+INFO 2025-04-22 14:48:26,253 autoreload 33082 140066133862208 /home/jahir/Projects/StageDjango/Formasmat/core/templates/core/utils.py changed, reloading.
+INFO 2025-04-22 14:48:27,075 autoreload 33270 139819619858240 Watching for file changes with StatReloader
+INFO 2025-04-22 14:54:13,334 autoreload 33270 139819619858240 /home/jahir/Projects/StageDjango/Formasmat/core/models.py changed, reloading.
+INFO 2025-04-22 14:54:14,324 autoreload 35521 140238366734144 Watching for file changes with StatReloader
+INFO 2025-04-22 14:57:50,976 autoreload 35521 140238366734144 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 14:57:51,954 autoreload 36929 140597151360832 Watching for file changes with StatReloader
+INFO 2025-04-22 14:57:57,106 autoreload 36929 140597151360832 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 14:57:57,871 autoreload 36999 139775245313856 Watching for file changes with StatReloader
+INFO 2025-04-22 14:58:35,023 autoreload 36999 139775245313856 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 14:58:35,969 autoreload 37268 140248402196288 Watching for file changes with StatReloader
+INFO 2025-04-22 14:58:44,384 autoreload 37268 140248402196288 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 14:58:45,245 autoreload 37365 139953523046208 Watching for file changes with StatReloader
+INFO 2025-04-22 15:00:28,855 views 37365 139952978855616 === DÉBUT manage_session ===
+INFO 2025-04-22 15:00:28,855 views 37365 139952978855616 Méthode : GET
+INFO 2025-04-22 15:00:28,856 views 37365 139952978855616 User : Brandon Dieu
+INFO 2025-04-22 15:00:28,857 views 37365 139952978855616 Staff : True
+INFO 2025-04-22 15:00:28,864 views 37365 139952978855616 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:00:28,868 views 37365 139952978855616 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:00:28,876 views 37365 139952978855616 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:00:28,877 views 37365 139952978855616 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:00:28,877 views 37365 139952978855616 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:00:28,881 views 37365 139952978855616 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:00:28,886 views 37365 139952978855616 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:00:28,889 views 37365 139952978855616 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:00:29,020 basehttp 37365 139952978855616 "GET /manage-session/ HTTP/1.1" 200 35636
+INFO 2025-04-22 15:00:29,152 basehttp 37365 139952978855616 "GET /static/core/css/custom.css?v=1745326828 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:00:33,638 basehttp 37365 139952978855616 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-22 15:00:36,482 views 37365 139952978855616 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['4'], 'trainers': ['1'], 'status': ['OUVERTE'], 'dates[]': ['2025-12-12', '2024-12-28', '2025-01-02'], 'rooms[]': ['', '', '']}>
+INFO 2025-04-22 15:00:36,513 views 37365 139952978855616 Session 4 mise à jour avec succès
+ERROR 2025-04-22 15:00:36,513 views 37365 139952978855616 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 15:00:36,515 log 37365 139952978855616 Internal Server Error: /manage-session/4/update/
+ERROR 2025-04-22 15:00:36,516 basehttp 37365 139952978855616 "POST /manage-session/4/update/ HTTP/1.1" 500 57
+INFO 2025-04-22 15:00:42,824 views 37365 139952978855616 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['4'], 'trainers': ['1'], 'status': ['OUVERTE'], 'dates[]': ['2025-12-12', '2024-12-28', '2025-01-02'], 'rooms[]': ['', '', '']}>
+INFO 2025-04-22 15:00:42,852 views 37365 139952978855616 Session 4 mise à jour avec succès
+ERROR 2025-04-22 15:00:42,852 views 37365 139952978855616 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 15:00:42,853 log 37365 139952978855616 Internal Server Error: /manage-session/4/update/
+ERROR 2025-04-22 15:00:42,854 basehttp 37365 139952978855616 "POST /manage-session/4/update/ HTTP/1.1" 500 57
+INFO 2025-04-22 15:01:55,393 autoreload 37365 139953523046208 /home/jahir/Projects/StageDjango/Formasmat/core/models.py changed, reloading.
+INFO 2025-04-22 15:01:56,498 autoreload 38683 140280876164928 Watching for file changes with StatReloader
+INFO 2025-04-22 15:02:55,939 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:02:55,940 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:02:55,940 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:02:55,941 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:02:55,948 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:02:55,952 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:02:55,959 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:02:55,960 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:02:55,960 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:02:55,964 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:02:55,969 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:02:55,971 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:02:56,082 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35636
+INFO 2025-04-22 15:02:56,153 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745326976 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:03:36,751 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:03:36,752 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:03:36,752 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:03:36,752 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:03:36,756 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:03:36,758 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:03:36,761 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:03:36,762 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:03:36,762 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:03:36,764 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:03:36,767 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:03:36,770 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:03:36,829 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35611
+INFO 2025-04-22 15:03:36,989 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745327016 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:05:06,586 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:05:06,586 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:05:06,587 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:05:06,587 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:05:06,591 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:05:06,594 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:05:06,598 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:05:06,599 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:05:06,599 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:05:06,603 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:05:06,606 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:05:06,609 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:05:06,652 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35611
+INFO 2025-04-22 15:05:06,752 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745327106 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:05:12,089 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:05:12,090 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:05:12,090 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:05:12,090 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:05:12,095 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:05:12,098 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:05:12,103 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:05:12,104 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:05:12,104 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:05:12,107 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:05:12,109 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:05:12,113 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:05:12,182 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35636
+INFO 2025-04-22 15:05:12,279 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745327112 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:05:39,124 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:05:39,125 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:05:39,126 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:05:39,126 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:05:39,132 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:05:39,135 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:05:39,140 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:05:39,141 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:05:39,142 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:05:39,144 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:05:39,148 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:05:39,150 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:05:39,208 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35611
+INFO 2025-04-22 15:05:39,286 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745327139 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:24:23,927 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:24:23,928 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:24:23,928 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:24:23,929 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:24:23,932 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:24:23,935 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:24:23,940 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:24:23,940 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:24:23,941 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:24:23,944 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:24:23,948 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:24:23,951 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:24:24,014 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35757
+INFO 2025-04-22 15:24:24,158 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745328263 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:24:42,850 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:24:42,852 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:24:42,852 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:24:42,853 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:24:42,856 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:24:42,858 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:24:42,862 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:24:42,862 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:24:42,863 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:24:42,865 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:24:42,868 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:24:42,870 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:24:42,922 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35757
+INFO 2025-04-22 15:24:43,024 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745328282 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:25:22,112 views 38683 140280333334208 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-22 15:25:22,120 views 38683 140280333334208 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-22 15:25:22,129 views 38683 140280333334208 Participants trouvés : 3
+INFO 2025-04-22 15:25:22,139 views 38683 140280333334208 Dates trouvées : 3
+INFO 2025-04-22 15:25:22,145 views 38683 140280333334208 Utilisateurs trouvés : 5
+INFO 2025-04-22 15:25:22,157 views 38683 140280333334208 Souhaits trouvés : 1
+INFO 2025-04-22 15:25:22,158 views 38683 140280333334208 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-22 15:25:22,158 views 38683 140280333334208 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-22 15:25:22,164 views 38683 140280333334208 Formateurs trouvés : 1
+INFO 2025-04-22 15:25:22,165 views 38683 140280333334208 Contexte préparé avec succès
+INFO 2025-04-22 15:25:22,166 views 38683 140280333334208 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-22 15:25:22,252 views 38683 140280333334208 Template rendu avec succès
+INFO 2025-04-22 15:25:22,253 basehttp 38683 140280333334208 "GET /manage-session/detail/4/ HTTP/1.1" 200 81725
+INFO 2025-04-22 15:25:41,933 views 38683 140280333334208 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-22 15:25:41,939 views 38683 140280333334208 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-22 15:25:41,945 views 38683 140280333334208 Participants trouvés : 3
+INFO 2025-04-22 15:25:41,950 views 38683 140280333334208 Dates trouvées : 3
+INFO 2025-04-22 15:25:41,954 views 38683 140280333334208 Utilisateurs trouvés : 5
+INFO 2025-04-22 15:25:41,963 views 38683 140280333334208 Souhaits trouvés : 1
+INFO 2025-04-22 15:25:41,964 views 38683 140280333334208 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-22 15:25:41,964 views 38683 140280333334208 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-22 15:25:41,968 views 38683 140280333334208 Formateurs trouvés : 1
+INFO 2025-04-22 15:25:41,968 views 38683 140280333334208 Contexte préparé avec succès
+INFO 2025-04-22 15:25:41,968 views 38683 140280333334208 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-22 15:25:41,991 views 38683 140280333334208 Template rendu avec succès
+INFO 2025-04-22 15:25:41,993 basehttp 38683 140280333334208 "GET /manage-session/detail/4/ HTTP/1.1" 200 81725
+INFO 2025-04-22 15:26:23,470 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:26:23,471 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:26:23,471 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:26:23,472 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:26:23,477 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:26:23,481 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:26:23,485 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:26:23,486 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:26:23,486 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:26:23,489 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:26:23,493 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:26:23,496 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:26:23,546 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35757
+INFO 2025-04-22 15:26:23,684 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745328383 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:26:26,432 views 38683 140280333334208 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-22 15:26:26,439 views 38683 140280333334208 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-22 15:26:26,448 views 38683 140280333334208 Participants trouvés : 3
+INFO 2025-04-22 15:26:26,453 views 38683 140280333334208 Dates trouvées : 3
+INFO 2025-04-22 15:26:26,458 views 38683 140280333334208 Utilisateurs trouvés : 5
+INFO 2025-04-22 15:26:26,467 views 38683 140280333334208 Souhaits trouvés : 1
+INFO 2025-04-22 15:26:26,467 views 38683 140280333334208 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-22 15:26:26,468 views 38683 140280333334208 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-22 15:26:26,472 views 38683 140280333334208 Formateurs trouvés : 1
+INFO 2025-04-22 15:26:26,473 views 38683 140280333334208 Contexte préparé avec succès
+INFO 2025-04-22 15:26:26,473 views 38683 140280333334208 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-22 15:26:26,501 views 38683 140280333334208 Template rendu avec succès
+INFO 2025-04-22 15:26:26,503 basehttp 38683 140280333334208 "GET /manage-session/detail/4/ HTTP/1.1" 200 81725
+INFO 2025-04-22 15:26:28,118 basehttp 38683 140280333334208 "GET /training-wishes/ HTTP/1.1" 200 15326
+INFO 2025-04-22 15:26:28,228 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745328388 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:26:37,122 basehttp 38683 140280333334208 "GET /training-wishes/ HTTP/1.1" 200 15326
+INFO 2025-04-22 15:26:37,205 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745328397 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:26:39,133 views 38683 140280333334208 === DÉBUT manage_session ===
+INFO 2025-04-22 15:26:39,133 views 38683 140280333334208 Méthode : GET
+INFO 2025-04-22 15:26:39,134 views 38683 140280333334208 User : Brandon Dieu
+INFO 2025-04-22 15:26:39,134 views 38683 140280333334208 Staff : True
+INFO 2025-04-22 15:26:39,137 views 38683 140280333334208 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:26:39,139 views 38683 140280333334208 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:26:39,142 views 38683 140280333334208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:26:39,143 views 38683 140280333334208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:26:39,143 views 38683 140280333334208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:26:39,145 views 38683 140280333334208 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:26:39,147 views 38683 140280333334208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:26:39,150 views 38683 140280333334208 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:26:39,185 basehttp 38683 140280333334208 "GET /manage-session/ HTTP/1.1" 200 35757
+INFO 2025-04-22 15:26:39,276 basehttp 38683 140280333334208 "GET /static/core/css/custom.css?v=1745328399 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:26:40,865 views 38683 140280333334208 === DÉBUT session_detail pour session_id=3 ===
+INFO 2025-04-22 15:26:40,872 views 38683 140280333334208 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-22 15:26:40,879 views 38683 140280333334208 Participants trouvés : 3
+INFO 2025-04-22 15:26:40,883 views 38683 140280333334208 Dates trouvées : 3
+INFO 2025-04-22 15:26:40,888 views 38683 140280333334208 Utilisateurs trouvés : 5
+INFO 2025-04-22 15:26:40,895 views 38683 140280333334208 Souhaits trouvés : 0
+INFO 2025-04-22 15:26:40,896 views 38683 140280333334208 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-22 15:26:40,896 views 38683 140280333334208 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-22 15:26:40,899 views 38683 140280333334208 Formateurs trouvés : 1
+INFO 2025-04-22 15:26:40,900 views 38683 140280333334208 Contexte préparé avec succès
+INFO 2025-04-22 15:26:40,900 views 38683 140280333334208 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-22 15:26:40,923 views 38683 140280333334208 Template rendu avec succès
+INFO 2025-04-22 15:26:40,924 basehttp 38683 140280333334208 "GET /manage-session/detail/3/ HTTP/1.1" 200 81553
+INFO 2025-04-22 15:26:43,157 basehttp 38683 140280333334208 "GET /admin/ HTTP/1.1" 200 11584
+INFO 2025-04-22 15:26:43,240 basehttp 38683 140280333334208 "GET /static/admin/css/base.css HTTP/1.1" 200 22092
+INFO 2025-04-22 15:26:43,254 basehttp 38683 140280324941504 "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2804
+INFO 2025-04-22 15:26:43,262 basehttp 38683 140280305010368 "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+INFO 2025-04-22 15:26:43,265 basehttp 38683 140280288224960 "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+INFO 2025-04-22 15:26:43,267 basehttp 38683 140280296617664 "GET /static/admin/css/responsive.css HTTP/1.1" 200 17972
+INFO 2025-04-22 15:26:43,267 basehttp 38683 140280313403072 "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+INFO 2025-04-22 15:26:43,313 basehttp 38683 140280296617664 "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+INFO 2025-04-22 15:26:43,336 basehttp 38683 140280296617664 "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+INFO 2025-04-22 15:26:43,337 basehttp 38683 140280288224960 "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+INFO 2025-04-22 15:26:43,340 basehttp 38683 140280313403072 "GET /static/admin/img/icon-deletelink.svg HTTP/1.1" 200 392
+INFO 2025-04-22 15:27:06,736 basehttp 38683 140280296617664 "GET /admin/core/formation/ HTTP/1.1" 200 15255
+INFO 2025-04-22 15:27:06,784 basehttp 38683 140280296617664 "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+INFO 2025-04-22 15:27:06,805 basehttp 38683 140280305010368 "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+INFO 2025-04-22 15:27:06,808 basehttp 38683 140280296617664 "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+INFO 2025-04-22 15:27:06,809 basehttp 38683 140280333334208 "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9097
+INFO 2025-04-22 15:27:06,813 basehttp 38683 140280305010368 "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+INFO 2025-04-22 15:27:06,813 basehttp 38683 140280324941504 "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+INFO 2025-04-22 15:27:06,814 basehttp 38683 140280313403072 "GET /admin/jsi18n/ HTTP/1.1" 200 8985
+INFO 2025-04-22 15:27:06,819 basehttp 38683 140280333334208 "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+INFO 2025-04-22 15:27:06,820 basehttp 38683 140280288224960 "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+INFO 2025-04-22 15:27:06,821 basehttp 38683 140280324941504 "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+INFO 2025-04-22 15:27:06,824 basehttp 38683 140280313403072 "GET /static/admin/img/search.svg HTTP/1.1" 200 458
+INFO 2025-04-22 15:27:06,876 basehttp 38683 140280313403072 "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+INFO 2025-04-22 15:27:07,178 basehttp 38683 140280313403072 "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+INFO 2025-04-22 15:27:07,184 basehttp 38683 140280324941504 "GET /static/admin/img/sorting-icons.svg HTTP/1.1" 200 1097
+INFO 2025-04-22 15:27:10,404 basehttp 38683 140280324941504 "GET /admin/ HTTP/1.1" 200 11584
+INFO 2025-04-22 15:27:17,129 views 38683 140280324941504 === DÉBUT manage_session ===
+INFO 2025-04-22 15:27:17,130 views 38683 140280324941504 Méthode : GET
+INFO 2025-04-22 15:27:17,130 views 38683 140280324941504 User : Brandon Dieu
+INFO 2025-04-22 15:27:17,130 views 38683 140280324941504 Staff : True
+INFO 2025-04-22 15:27:17,134 views 38683 140280324941504 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:27:17,136 views 38683 140280324941504 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:27:17,141 views 38683 140280324941504 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:27:17,142 views 38683 140280324941504 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:27:17,142 views 38683 140280324941504 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:27:17,145 views 38683 140280324941504 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:27:17,148 views 38683 140280324941504 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:27:17,150 views 38683 140280324941504 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:27:17,196 basehttp 38683 140280324941504 "GET /manage-session/ HTTP/1.1" 200 35757
+INFO 2025-04-22 15:27:17,285 basehttp 38683 140280324941504 "GET /static/core/css/custom.css?v=1745328437 HTTP/1.1" 200 10230
+ERROR 2025-04-22 15:27:53,301 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:53,307 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85469
+ERROR 2025-04-22 15:27:56,437 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:56,440 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:57,228 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:57,231 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:57,950 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:57,954 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:58,268 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:58,271 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:58,445 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:58,448 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:58,627 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:58,632 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:58,751 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:58,753 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:58,930 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:58,931 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:59,145 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:59,146 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:27:59,406 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:27:59,408 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:00,338 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:00,340 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:00,545 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:00,547 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:00,716 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:00,718 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:00,934 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:00,935 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:01,089 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:01,091 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:01,330 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:01,333 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:01,539 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:01,541 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:01,971 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:01,972 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:02,234 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:02,237 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:02,450 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:02,452 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:02,638 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:02,640 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:02,854 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:02,855 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:03,068 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:03,071 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+ERROR 2025-04-22 15:28:03,273 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:28:03,276 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85481
+INFO 2025-04-22 15:28:12,195 basehttp 38683 140280324941504 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-22 15:28:20,867 views 38683 140280324941504 Tentative de mise à jour de session - Données POST: <QueryDict: {'session_id': ['4'], 'trainers': ['1'], 'status': ['OUVERTE'], 'dates[]': ['2025-12-12', '2024-12-28', '2025-01-02'], 'rooms[]': ['1', '', '1']}>
+INFO 2025-04-22 15:28:20,902 views 38683 140280324941504 Session 4 mise à jour avec succès
+ERROR 2025-04-22 15:28:20,902 views 38683 140280324941504 Erreur lors de la mise à jour de la session: name 'get_status_badge_class' is not defined
+ERROR 2025-04-22 15:28:20,903 log 38683 140280324941504 Internal Server Error: /manage-session/4/update/
+ERROR 2025-04-22 15:28:20,903 basehttp 38683 140280324941504 "POST /manage-session/4/update/ HTTP/1.1" 500 57
+ERROR 2025-04-22 15:33:22,490 log 38683 140280324941504 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 970, in create_session
+    return redirect('core:formation_list')
+           ^^^^^^^^
+UnboundLocalError: cannot access local variable 'redirect' where it is not associated with a value
+ERROR 2025-04-22 15:33:22,492 basehttp 38683 140280324941504 "POST /api/create-session/ HTTP/1.1" 500 85482
+INFO 2025-04-22 15:40:23,047 autoreload 38683 140280876164928 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:40:24,010 autoreload 54250 140479625672512 Watching for file changes with StatReloader
+INFO 2025-04-22 15:40:38,309 autoreload 54250 140479625672512 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:40:39,003 autoreload 54391 140035828369216 Watching for file changes with StatReloader
+INFO 2025-04-22 15:40:42,162 autoreload 54391 140035828369216 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:40:42,994 autoreload 54425 140310050715456 Watching for file changes with StatReloader
+INFO 2025-04-22 15:40:44,125 autoreload 54425 140310050715456 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:40:44,825 autoreload 54439 139901703911232 Watching for file changes with StatReloader
+INFO 2025-04-22 15:41:40,414 autoreload 54439 139901703911232 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:41:41,349 autoreload 54849 139933735221056 Watching for file changes with StatReloader
+INFO 2025-04-22 15:41:44,611 autoreload 54849 139933735221056 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:41:45,343 autoreload 54892 139680996525888 Watching for file changes with StatReloader
+INFO 2025-04-22 15:42:00,774 autoreload 54892 139680996525888 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:42:01,351 autoreload 55018 139992427820864 Watching for file changes with StatReloader
+INFO 2025-04-22 15:42:06,272 autoreload 55018 139992427820864 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:42:07,095 autoreload 55070 140394359183168 Watching for file changes with StatReloader
+INFO 2025-04-22 15:42:26,453 autoreload 55070 140394359183168 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:42:27,347 autoreload 55236 139795491813184 Watching for file changes with StatReloader
+INFO 2025-04-22 15:42:52,994 autoreload 55236 139795491813184 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:42:53,711 autoreload 55434 140062942672704 Watching for file changes with StatReloader
+INFO 2025-04-22 15:43:08,970 autoreload 55434 140062942672704 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:43:09,772 autoreload 55570 140551089432384 Watching for file changes with StatReloader
+INFO 2025-04-22 15:43:12,815 autoreload 55570 140551089432384 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:43:13,612 autoreload 55617 140564664829760 Watching for file changes with StatReloader
+INFO 2025-04-22 15:43:22,737 autoreload 55617 140564664829760 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:43:23,476 autoreload 55717 140498324121408 Watching for file changes with StatReloader
+INFO 2025-04-22 15:43:25,679 autoreload 55717 140498324121408 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:43:26,384 autoreload 55743 140595526825792 Watching for file changes with StatReloader
+INFO 2025-04-22 15:43:39,603 autoreload 55743 140595526825792 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:43:40,374 autoreload 55939 140322430830400 Watching for file changes with StatReloader
+INFO 2025-04-22 15:43:46,437 views 55939 140321886975680 === DÉBUT manage_session ===
+INFO 2025-04-22 15:43:46,438 views 55939 140321886975680 Méthode : GET
+INFO 2025-04-22 15:43:46,438 views 55939 140321886975680 User : Brandon Dieu
+INFO 2025-04-22 15:43:46,439 views 55939 140321886975680 Staff : True
+INFO 2025-04-22 15:43:46,447 views 55939 140321886975680 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:43:46,451 views 55939 140321886975680 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:43:46,460 views 55939 140321886975680 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:43:46,462 views 55939 140321886975680 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:43:46,462 views 55939 140321886975680 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:43:46,464 views 55939 140321886975680 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:43:46,468 views 55939 140321886975680 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:43:46,470 views 55939 140321886975680 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:43:46,602 basehttp 55939 140321886975680 "GET /manage-session/ HTTP/1.1" 200 35757
+INFO 2025-04-22 15:43:46,671 basehttp 55939 140321886975680 "GET /static/core/css/custom.css?v=1745329426 HTTP/1.1" 200 10230
+WARNING 2025-04-22 15:44:04,654 log 55939 140321886975680 Bad Request: /api/create-session/
+WARNING 2025-04-22 15:44:04,656 basehttp 55939 140321886975680 "POST /api/create-session/ HTTP/1.1" 400 35
+INFO 2025-04-22 15:51:40,223 views 55939 140321886975680 === DÉBUT manage_session ===
+INFO 2025-04-22 15:51:40,224 views 55939 140321886975680 Méthode : GET
+INFO 2025-04-22 15:51:40,224 views 55939 140321886975680 User : Brandon Dieu
+INFO 2025-04-22 15:51:40,225 views 55939 140321886975680 Staff : True
+INFO 2025-04-22 15:51:40,230 views 55939 140321886975680 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:51:40,233 views 55939 140321886975680 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:51:40,237 views 55939 140321886975680 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:51:40,237 views 55939 140321886975680 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:51:40,237 views 55939 140321886975680 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:51:40,239 views 55939 140321886975680 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:51:40,241 views 55939 140321886975680 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:51:40,243 views 55939 140321886975680 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:51:40,274 basehttp 55939 140321886975680 "GET /manage-session/ HTTP/1.1" 200 36210
+INFO 2025-04-22 15:51:40,339 basehttp 55939 140321886975680 "GET /static/core/css/custom.css?v=1745329900 HTTP/1.1" 200 10230
+WARNING 2025-04-22 15:52:08,008 log 55939 140321886975680 Bad Request: /api/create-session/
+WARNING 2025-04-22 15:52:08,010 basehttp 55939 140321886975680 "POST /api/create-session/ HTTP/1.1" 400 35
+INFO 2025-04-22 15:56:23,851 autoreload 55939 140322430830400 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 15:56:24,815 autoreload 60927 139752055945024 Watching for file changes with StatReloader
+INFO 2025-04-22 15:56:49,777 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 15:56:49,777 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 15:56:49,777 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 15:56:49,778 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 15:56:49,781 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:56:49,782 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:56:49,785 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:56:49,785 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:56:49,785 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:56:49,786 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:56:49,788 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:56:49,789 views 60927 139751511754432 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:56:49,841 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 36361
+INFO 2025-04-22 15:56:49,928 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330209 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:57:11,219 basehttp 60927 139751511754432 "POST /api/create-session/?formation=1 HTTP/1.1" 200 51
+INFO 2025-04-22 15:57:44,133 basehttp 60927 139751511754432 "POST /api/create-session/?formation=1 HTTP/1.1" 200 51
+INFO 2025-04-22 15:57:52,404 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 15:57:52,405 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 15:57:52,405 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 15:57:52,406 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 15:57:52,409 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:57:52,412 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:57:52,415 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:57:52,416 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:57:52,416 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:57:52,418 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:57:52,420 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:57:52,422 views 60927 139751511754432 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:57:52,462 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 36361
+INFO 2025-04-22 15:57:52,641 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330272 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:58:17,719 basehttp 60927 139751511754432 "POST /api/create-session/?formation=7 HTTP/1.1" 200 51
+INFO 2025-04-22 15:58:23,163 basehttp 60927 139751511754432 "POST /api/create-session/?formation=7 HTTP/1.1" 200 51
+INFO 2025-04-22 15:59:36,369 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 15:59:36,369 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 15:59:36,370 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 15:59:36,370 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 15:59:36,375 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 15:59:36,378 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 15:59:36,384 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 15:59:36,384 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 15:59:36,385 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 15:59:36,388 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 15:59:36,391 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 15:59:36,395 views 60927 139751511754432 Nombre de sessions trouvées : 3
+INFO 2025-04-22 15:59:36,466 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 36555
+INFO 2025-04-22 15:59:36,606 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330376 HTTP/1.1" 200 10230
+INFO 2025-04-22 15:59:57,492 basehttp 60927 139751511754432 "POST /api/create-session/?formation=6 HTTP/1.1" 200 51
+INFO 2025-04-22 15:59:57,563 basehttp 60927 139751511754432 "GET /manage-session/create/?formation=6 HTTP/1.1" 200 10780
+INFO 2025-04-22 15:59:57,741 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330397 HTTP/1.1" 200 10230
+INFO 2025-04-22 16:00:52,602 basehttp 60927 139751511754432 "POST /api/create-session/ HTTP/1.1" 200 51
+INFO 2025-04-22 16:01:14,093 basehttp 60927 139751511754432 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:01:14,129 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 16:01:14,130 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 16:01:14,130 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 16:01:14,131 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 16:01:14,135 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:01:14,137 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:01:14,142 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:01:14,142 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:01:14,143 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:01:14,145 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:01:14,148 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:01:14,151 views 60927 139751511754432 Nombre de sessions trouvées : 3
+INFO 2025-04-22 16:01:14,204 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 36555
+INFO 2025-04-22 16:01:14,335 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330474 HTTP/1.1" 200 10230
+INFO 2025-04-22 16:03:34,615 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 16:03:34,615 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 16:03:34,616 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 16:03:34,616 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 16:03:34,619 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:03:34,629 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:03:34,634 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:03:34,635 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:03:34,636 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:03:34,638 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:03:34,640 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:03:34,643 views 60927 139751511754432 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:03:34,683 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 34824
+INFO 2025-04-22 16:03:34,868 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330614 HTTP/1.1" 200 10230
+INFO 2025-04-22 16:05:40,722 basehttp 60927 139751511754432 "POST /api/create-session/?formation=7 HTTP/1.1" 200 51
+INFO 2025-04-22 16:05:40,753 basehttp 60927 139751511754432 "GET /manage-session/create/?formation=7 HTTP/1.1" 200 10792
+INFO 2025-04-22 16:05:40,879 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330740 HTTP/1.1" 200 10230
+INFO 2025-04-22 16:07:08,972 basehttp 60927 139751511754432 "POST /api/create-session/ HTTP/1.1" 200 51
+INFO 2025-04-22 16:08:18,494 basehttp 60927 139751511754432 "GET / HTTP/1.1" 302 0
+INFO 2025-04-22 16:08:18,538 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 16:08:18,538 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 16:08:18,539 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 16:08:18,539 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 16:08:18,542 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:08:18,544 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:08:18,546 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:08:18,547 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:08:18,547 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:08:18,549 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:08:18,552 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:08:18,555 views 60927 139751511754432 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:08:18,590 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 34824
+INFO 2025-04-22 16:08:18,740 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330898 HTTP/1.1" 200 10230
+INFO 2025-04-22 16:08:20,749 views 60927 139751511754432 === DÉBUT manage_session ===
+INFO 2025-04-22 16:08:20,752 views 60927 139751511754432 Méthode : GET
+INFO 2025-04-22 16:08:20,753 views 60927 139751511754432 User : Brandon Dieu
+INFO 2025-04-22 16:08:20,755 views 60927 139751511754432 Staff : True
+INFO 2025-04-22 16:08:20,765 views 60927 139751511754432 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:08:20,768 views 60927 139751511754432 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:08:20,772 views 60927 139751511754432 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:08:20,773 views 60927 139751511754432 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:08:20,773 views 60927 139751511754432 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:08:20,775 views 60927 139751511754432 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:08:20,777 views 60927 139751511754432 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:08:20,778 views 60927 139751511754432 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:08:20,824 basehttp 60927 139751511754432 "GET /manage-session/ HTTP/1.1" 200 34824
+INFO 2025-04-22 16:08:20,947 basehttp 60927 139751511754432 "GET /static/core/css/custom.css?v=1745330900 HTTP/1.1" 200 10230
+INFO 2025-04-22 16:12:07,657 autoreload 60927 139752055945024 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:12:08,643 autoreload 67992 140546052269888 Watching for file changes with StatReloader
+INFO 2025-04-22 16:12:54,921 autoreload 67992 140546052269888 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:12:55,734 autoreload 68359 140666244933440 Watching for file changes with StatReloader
+INFO 2025-04-22 16:13:58,170 views 68359 140665702082240 === DÉBUT manage_session ===
+INFO 2025-04-22 16:13:58,171 views 68359 140665702082240 Méthode : GET
+INFO 2025-04-22 16:13:58,171 views 68359 140665702082240 User : Brandon Dieu
+INFO 2025-04-22 16:13:58,172 views 68359 140665702082240 Staff : True
+INFO 2025-04-22 16:13:58,180 views 68359 140665702082240 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:13:58,185 views 68359 140665702082240 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:13:58,192 views 68359 140665702082240 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:13:58,192 views 68359 140665702082240 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:13:58,193 views 68359 140665702082240 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:13:58,195 views 68359 140665702082240 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:13:58,198 views 68359 140665702082240 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:13:58,201 views 68359 140665702082240 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:13:58,295 basehttp 68359 140665702082240 "GET /manage-session/ HTTP/1.1" 200 34794
+INFO 2025-04-22 16:13:58,359 basehttp 68359 140665702082240 "GET /static/core/css/custom.css?v=1745331238 HTTP/1.1" 200 10230
+ERROR 2025-04-22 16:14:15,818 log 68359 140665702082240 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 997, in create_session
+    Session.objects.create(
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 564, in __init__
+    _setattr(self, prop, value)
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 665, in __set__
+    raise TypeError(
+TypeError: Direct assignment to the forward side of a many-to-many set is prohibited. Use trainers.set() instead.
+ERROR 2025-04-22 16:14:15,825 basehttp 68359 140665702082240 "POST /api/create-session/ HTTP/1.1" 500 106561
+ERROR 2025-04-22 16:14:32,499 log 68359 140665702082240 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 997, in create_session
+    Session.objects.create(
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 564, in __init__
+    _setattr(self, prop, value)
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 665, in __set__
+    raise TypeError(
+TypeError: Direct assignment to the forward side of a many-to-many set is prohibited. Use trainers.set() instead.
+ERROR 2025-04-22 16:14:32,501 basehttp 68359 140665702082240 "POST /api/create-session/ HTTP/1.1" 500 106561
+INFO 2025-04-22 16:14:38,655 views 68359 140665702082240 === DÉBUT manage_session ===
+INFO 2025-04-22 16:14:38,655 views 68359 140665702082240 Méthode : GET
+INFO 2025-04-22 16:14:38,656 views 68359 140665702082240 User : Brandon Dieu
+INFO 2025-04-22 16:14:38,656 views 68359 140665702082240 Staff : True
+INFO 2025-04-22 16:14:38,661 views 68359 140665702082240 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:14:38,663 views 68359 140665702082240 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:14:38,667 views 68359 140665702082240 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:14:38,667 views 68359 140665702082240 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:14:38,668 views 68359 140665702082240 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:14:38,670 views 68359 140665702082240 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:14:38,674 views 68359 140665702082240 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:14:38,676 views 68359 140665702082240 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:14:38,719 basehttp 68359 140665702082240 "GET /manage-session/ HTTP/1.1" 200 34794
+INFO 2025-04-22 16:14:38,888 basehttp 68359 140665702082240 "GET /static/core/css/custom.css?v=1745331278 HTTP/1.1" 200 10230
+ERROR 2025-04-22 16:15:01,634 log 68359 140665702082240 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 997, in create_session
+    Session.objects.create(
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 564, in __init__
+    _setattr(self, prop, value)
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 665, in __set__
+    raise TypeError(
+TypeError: Direct assignment to the forward side of a many-to-many set is prohibited. Use trainers.set() instead.
+ERROR 2025-04-22 16:15:01,636 basehttp 68359 140665702082240 "POST /api/create-session/ HTTP/1.1" 500 106597
+INFO 2025-04-22 16:17:00,229 autoreload 68359 140666244933440 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:17:01,232 autoreload 70107 139842530150208 Watching for file changes with StatReloader
+INFO 2025-04-22 16:17:36,236 autoreload 70107 139842530150208 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:17:37,181 autoreload 70378 140343458248512 Watching for file changes with StatReloader
+INFO 2025-04-22 16:17:45,104 views 70378 140342914070208 === DÉBUT manage_session ===
+INFO 2025-04-22 16:17:45,105 views 70378 140342914070208 Méthode : GET
+INFO 2025-04-22 16:17:45,105 views 70378 140342914070208 User : Brandon Dieu
+INFO 2025-04-22 16:17:45,105 views 70378 140342914070208 Staff : True
+INFO 2025-04-22 16:17:45,109 views 70378 140342914070208 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:17:45,111 views 70378 140342914070208 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:17:45,114 views 70378 140342914070208 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:17:45,114 views 70378 140342914070208 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:17:45,115 views 70378 140342914070208 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:17:45,116 views 70378 140342914070208 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:17:45,118 views 70378 140342914070208 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:17:45,119 views 70378 140342914070208 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:17:45,165 basehttp 70378 140342914070208 "GET /manage-session/ HTTP/1.1" 200 34794
+INFO 2025-04-22 16:17:45,233 basehttp 70378 140342914070208 "GET /static/core/css/custom.css?v=1745331465 HTTP/1.1" 200 10230
+ERROR 2025-04-22 16:18:11,653 log 70378 140342914070208 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  [Previous line repeated 1 more time]
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 1004, in create_session
+    session = Session.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Session() got unexpected keyword arguments: 'date', 'room'
+ERROR 2025-04-22 16:18:11,661 basehttp 70378 140342914070208 "POST /api/create-session/ HTTP/1.1" 500 112591
+INFO 2025-04-22 16:21:01,234 autoreload 70378 140343458248512 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:21:02,174 autoreload 71752 140253958145856 Watching for file changes with StatReloader
+ERROR 2025-04-22 16:21:08,336 log 71752 140253414291136 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 1003, in create_session
+    session = Session.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Session() got unexpected keyword arguments: 'date', 'room'
+ERROR 2025-04-22 16:21:08,341 basehttp 71752 140253414291136 "POST /api/create-session/ HTTP/1.1" 500 102315
+ERROR 2025-04-22 16:21:11,703 log 71752 140253414291136 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 1003, in create_session
+    session = Session.objects.create(
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 567, in __init__
+    raise TypeError(
+TypeError: Session() got unexpected keyword arguments: 'date', 'room'
+ERROR 2025-04-22 16:21:11,706 basehttp 71752 140253414291136 "POST /api/create-session/ HTTP/1.1" 500 102316
+INFO 2025-04-22 16:21:25,153 autoreload 71752 140253958145856 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:21:26,054 autoreload 71959 140095161177920 Watching for file changes with StatReloader
+INFO 2025-04-22 16:22:27,085 autoreload 71959 140095161177920 /home/jahir/Projects/StageDjango/Formasmat/core/models.py changed, reloading.
+INFO 2025-04-22 16:22:28,107 autoreload 72374 140181407749952 Watching for file changes with StatReloader
+INFO 2025-04-22 16:22:33,370 autoreload 72374 140181407749952 /home/jahir/Projects/StageDjango/Formasmat/core/models.py changed, reloading.
+INFO 2025-04-22 16:22:34,321 autoreload 72439 140227182323520 Watching for file changes with StatReloader
+INFO 2025-04-22 16:24:49,883 autoreload 72439 140227182323520 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:24:50,676 autoreload 73356 139743111141184 Watching for file changes with StatReloader
+INFO 2025-04-22 16:24:58,354 autoreload 73356 139743111141184 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:24:59,080 autoreload 73459 140536659924800 Watching for file changes with StatReloader
+INFO 2025-04-22 16:25:08,060 autoreload 73459 140536659924800 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:25:08,821 autoreload 73532 140136776259392 Watching for file changes with StatReloader
+INFO 2025-04-22 16:25:21,676 autoreload 73532 140136776259392 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:25:22,508 autoreload 73659 140278113081152 Watching for file changes with StatReloader
+INFO 2025-04-22 16:26:11,908 autoreload 73659 140278113081152 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:26:12,886 autoreload 74011 140136089999168 Watching for file changes with StatReloader
+INFO 2025-04-22 16:26:21,525 views 74011 140135547008704 === DÉBUT manage_session ===
+INFO 2025-04-22 16:26:21,526 views 74011 140135547008704 Méthode : GET
+INFO 2025-04-22 16:26:21,526 views 74011 140135547008704 User : Brandon Dieu
+INFO 2025-04-22 16:26:21,527 views 74011 140135547008704 Staff : True
+INFO 2025-04-22 16:26:21,534 views 74011 140135547008704 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:26:21,537 views 74011 140135547008704 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:26:21,543 views 74011 140135547008704 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:26:21,544 views 74011 140135547008704 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:26:21,544 views 74011 140135547008704 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:26:21,546 views 74011 140135547008704 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:26:21,550 views 74011 140135547008704 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:26:21,552 views 74011 140135547008704 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:26:21,621 basehttp 74011 140135547008704 "GET /manage-session/ HTTP/1.1" 200 34794
+INFO 2025-04-22 16:26:21,699 basehttp 74011 140135547008704 "GET /static/core/css/custom.css?v=1745331981 HTTP/1.1" 200 10230
+WARNING 2025-04-22 16:26:41,944 log 74011 140135547008704 Bad Request: /api/create-session/
+WARNING 2025-04-22 16:26:41,946 basehttp 74011 140135547008704 "POST /api/create-session/ HTTP/1.1" 400 53
+INFO 2025-04-22 16:26:50,004 autoreload 74011 140136089999168 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:26:50,776 autoreload 74349 140635896571712 Watching for file changes with StatReloader
+INFO 2025-04-22 16:26:52,775 autoreload 74349 140635896571712 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:26:53,547 autoreload 74384 140524359059264 Watching for file changes with StatReloader
+INFO 2025-04-22 16:26:55,630 autoreload 74384 140524359059264 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:26:56,469 autoreload 74422 139833232090944 Watching for file changes with StatReloader
+INFO 2025-04-22 16:26:58,506 autoreload 74422 139833232090944 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:26:59,250 autoreload 74454 140527920645952 Watching for file changes with StatReloader
+INFO 2025-04-22 16:27:01,197 autoreload 74454 140527920645952 /home/jahir/Projects/StageDjango/Formasmat/core/views.py changed, reloading.
+INFO 2025-04-22 16:27:02,044 autoreload 74483 140716874995520 Watching for file changes with StatReloader
+INFO 2025-04-22 16:27:12,084 views 74483 140716332074688 === DÉBUT manage_session ===
+INFO 2025-04-22 16:27:12,084 views 74483 140716332074688 Méthode : GET
+INFO 2025-04-22 16:27:12,085 views 74483 140716332074688 User : Brandon Dieu
+INFO 2025-04-22 16:27:12,085 views 74483 140716332074688 Staff : True
+INFO 2025-04-22 16:27:12,092 views 74483 140716332074688 
+=== Chargement des données de base ===
+INFO 2025-04-22 16:27:12,095 views 74483 140716332074688 Nombre de formations trouvées : 7
+INFO 2025-04-22 16:27:12,100 views 74483 140716332074688 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'premier test']
+INFO 2025-04-22 16:27:12,100 views 74483 140716332074688 Nombre de formateurs trouvés : 1
+INFO 2025-04-22 16:27:12,101 views 74483 140716332074688 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-22 16:27:12,104 views 74483 140716332074688 Nombre de salles trouvées : 1
+INFO 2025-04-22 16:27:12,108 views 74483 140716332074688 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-22 16:27:12,111 views 74483 140716332074688 Nombre de sessions trouvées : 2
+INFO 2025-04-22 16:27:12,196 basehttp 74483 140716332074688 "GET /manage-session/ HTTP/1.1" 200 34630
+INFO 2025-04-22 16:27:12,273 basehttp 74483 140716332074688 "GET /static/core/css/custom.css?v=1745332032 HTTP/1.1" 200 10230
+ERROR 2025-04-22 16:27:19,968 log 74483 140716332074688 Internal Server Error: /api/create-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/core/views.py", line 994, in create_session
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/query.py", line 677, in create
+    obj = self.model(**kwargs)
+          ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/base.py", line 564, in __init__
+    _setattr(self, prop, value)
+  File "/home/jahir/Projects/StageDjango/Formasmat/venv/lib/python3.11/site-packages/django/db/models/fields/related_descriptors.py", line 665, in __set__
+    raise TypeError(
+TypeError: Direct assignment to the forward side of a many-to-many set is prohibited. Use trainers.set() instead.
+ERROR 2025-04-22 16:27:19,979 basehttp 74483 140716332074688 "POST /api/create-session/?formation=2 HTTP/1.1" 500 104169
