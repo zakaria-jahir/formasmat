@@ -22,6 +22,8 @@ class User(AbstractUser):
     is_trainer = models.BooleanField(default=False, verbose_name="Est formateur")
     phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="Téléphone")
     address = models.TextField(blank=True, null=True, verbose_name="Adresse")
+    city = models.CharField(max_length=100, blank=True, null=True, verbose_name="Ville")
+    code_postal = models.CharField(max_length=10, blank=True, null=True, verbose_name="Code postal")
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     
@@ -69,32 +71,23 @@ class Formation(models.Model):
         ('specialisation', 'Formation Spécialisation'),
     ]
 
-    FORMATION_MODALITIES = [
-        ('presentiel', 'Présentiel'),
-        ('distanciel', 'Distanciel'),
-        ('asynchrone', 'Asynchrone'),
-    ]
-
     name = models.CharField(max_length=255, verbose_name="Nom de la formation")
     code_iperia = models.CharField(max_length=50, unique=True, verbose_name="Code IPERIA")
     description = models.TextField(verbose_name="Description")
     duration = models.IntegerField(help_text="Durée en heures", validators=[MinValueValidator(1)], verbose_name="Durée")
-    image = models.ImageField(upload_to=formation_image_path, null=True, blank=True, verbose_name="Image")
+    image = models.ImageField(upload_to='formations/images/', null=True, blank=True, verbose_name="Image")
     program_file = models.FileField(upload_to='programs/', null=True, blank=True, verbose_name="Programme détaillé")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date de création")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de mise à jour")
-    
-    # Nouveaux champs
-    type = models.CharField(
-        max_length=20, 
-        choices=FORMATION_TYPES, 
-        default='initial', 
-        verbose_name="Type de formation"
-    )
+    type = models.CharField(max_length=20, choices=FORMATION_TYPES, default='initial', verbose_name="Type de formation")
     is_presentiel = models.BooleanField(default=True, verbose_name="Présentiel")
     is_distanciel = models.BooleanField(default=False, verbose_name="Distanciel")
     is_asynchrone = models.BooleanField(default=False, verbose_name="Asynchrone")
     is_active = models.BooleanField(default=True, verbose_name="Formation active")
+    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
+    code_postal = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
     def __str__(self):
         return f"{self.name} ({self.code_iperia})"
