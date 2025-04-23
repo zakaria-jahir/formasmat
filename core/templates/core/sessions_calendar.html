@@ -36,18 +36,6 @@
 <div class="container my-4">
     <h1 class="mb-4">{{ title }}</h1>
 
-    <!-- Debug info -->
-    <div class="debug-info">
-        <h4>Informations de débogage :</h4>
-        <p>Nombre de formations : {{ formations|length }}</p>
-        <p>Nombre de sessions : {{ sessions|length }}</p>
-        <ul>
-        {% for session in sessions %}
-            <li>Session {{ session.id }} - {{ session.formation.name }} 
-                ({{ session.dates.first.date|date:"d/m/Y" }} - {{ session.dates.last.date|date:"d/m/Y" }})</li>
-        {% endfor %}
-        </ul>
-    </div>
 
     <!-- Filtre par formation -->
     <div class="formation-filter">
@@ -91,49 +79,47 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/main.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@6.1.10/main.min.js'></script>
-<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/fr@6.1.10/main.min.js'></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing calendar...');
     
     const calendarEl = document.getElementById('calendar');
     console.log('Calendar element:', calendarEl);
-    
+
     const modal = new bootstrap.Modal(document.getElementById('sessionModal'));
     
     const events = [
         {% for session in sessions %}
             {
                 id: '{{ session.id }}',
-                title: '{{ session.formation.name }}',
+                title: '{{ session.formation.name|escapejs }}',
                 start: '{{ session.dates.first.date|date:"Y-m-d" }}',
                 end: '{{ session.dates.last.date|date:"Y-m-d" }}',
                 backgroundColor: '#007bff',
                 borderColor: '#0056b3',
                 extendedProps: {
-                    formation: '{{ session.formation.name }}',
+                    formation: '{{ session.formation.name|escapejs }}',
                     dates: [
                         {% for date in session.dates.all %}
                             {
                                 date: '{{ date.date|date:"d/m/Y" }}',
-                                location: '{% if date.location %}{{ date.location.name }}{% endif %}'
+                                location: '{% if date.location %}{{ date.location.name|escapejs }}{% endif %}'
                             }{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ],
                     trainers: [
                         {% for trainer in session.trainers.all %}
-                            '{{ trainer.get_full_name }}'{% if not forloop.last %},{% endif %}
+                            '{{ trainer.get_full_name|escapejs }}'{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]
                 }
             }{% if not forloop.last %},{% endif %}
         {% endfor %}
     ];
-    
-    console.log('Events data:', events);
-    
+    console.log("📅 Événements à afficher :", events);
+
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'fr',
@@ -148,21 +134,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const props = event.extendedProps;
             
             document.getElementById('modalFormation').textContent = props.formation;
-            
             const datesList = document.getElementById('modalDates');
             datesList.innerHTML = props.dates.map(d => 
                 `<li>${d.date}${d.location ? ' - ' + d.location : ''}</li>`
             ).join('');
-            
+
             const trainersList = document.getElementById('modalTrainers');
-            trainersList.innerHTML = props.trainers.map(t => 
-                `<li>${t}</li>`
-            ).join('');
+            trainersList.innerHTML = props.trainers.map(t => `<li>${t}</li>`).join('');
             
             modal.show();
         }
     });
-    
+
     console.log('Calendar initialized, rendering...');
     calendar.render();
     console.log('Calendar rendered');
