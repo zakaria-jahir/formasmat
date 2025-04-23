@@ -102,9 +102,9 @@
                         <label for="formation-filter">Formation</label>
                         <select class="form-control" id="formation-filter">
                             <option value="">Toutes les formations</option>
-                            {% for formation in formations %}
-                            <option value="{{ formation.id }}">{{ formation.name }}</option>
-                            {% endfor %}
+                                {% for formation in formations %}
+                                <option value="{{ formation.id }}">{{ formation.name }}</option>
+                                {% endfor %}
                         </select>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                             <td>{{ session.formation.name }}</td>
                             <td>
                                 {% for date in session.dates.all %}
-                                <div>{{ date|date:"d/m/Y" }}</div>
+                                <div>{{ date.date|date:"d/m/Y" }}</div>
                                 {% endfor %}
                             </td>
                             <td>
@@ -152,23 +152,20 @@
                                 {% endfor %}
                             </td>
                             <td>
-                                <span class="badge {{ session.get_status_badge_class }}">
                                     {{ session.get_status_display }}
-                                </span>
                             </td>
                             <td>
                                 <div class="btn-group">
                                     <button type="button" 
                                             class="btn btn-sm btn-outline-primary"
-                                            onclick="editSession({{ session.id }})">
-                                        <i class="fas fa-edit"></i> Modifier
-                                    </button>
+                                            onclick="editSession({{ session.id }})">Modifier</button>
+
                                     <a href="{% url 'core:session_detail' session_id=session.id %}" class="btn btn-info btn-sm">
                                         <i class="fas fa-info-circle"></i> Détails
                                     </a>
                                     <button type="button" 
                                             class="btn btn-sm btn-outline-danger"
-                                            onclick="deleteSession({{ session.id }})">
+                                            onclick="deleteSession({{ session.id }})">  
                                         <i class="fas fa-trash"></i> Supprimer
                                     </button>
                                 </div>
@@ -186,75 +183,44 @@
     </div>
 </div>
 
-<!-- Modal de création de session -->
+<!-- Create Session Modal -->
 <div class="modal fade" id="createSessionModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Nouvelle session</h5>
+                <h5 class="modal-title">Créer une session</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <form id="createSessionForm">
-                    <div class="mb-3">
-                        <label for="formation" class="form-label">Formation</label>
-                        <select class="form-control" id="formation" name="formation" required>
-                            <option value="">Sélectionnez une formation</option>
-                            {% for formation in formations %}
-                            <option value="{{ formation.id }}">{{ formation.name }}</option>
+                    <label>Formation</label>
+                    <select name="formation" class="form-control">
+                        {% for formation in formations %}
+                        <option value="{{ formation.id }}">{{ formation.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Formateurs</label>
+                    <select name="trainers[]" class="form-control" multiple>
+                        {% for trainer in trainers %}
+                        <option value="{{ trainer.id }}">{{ trainer.get_full_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Statut</label>
+                    <select name="status" class="form-control">
+                        {% for status in status_choices %}
+                        <option value="{{ status.0 }}">{{ status.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Dates</label>
+                    <div id="dates-container">
+                        <input type="date" name="session_dates[]" class="form-control">
+                        <select name="session_rooms[]" class="form-control">
+                            {% for room in training_rooms %}
+                            <option value="{{ room.id }}">{{ room.name }}</option>
                             {% endfor %}
                         </select>
                     </div>
-                    
-                    <div class="mb-3">
-                        <label for="trainers" class="form-label">Formateurs</label>
-                        <select class="form-control" id="trainers" name="trainers" multiple required>
-                            {% for trainer in trainers %}
-                            <option value="{{ trainer.id }}">{{ trainer.get_full_name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label for="status" class="form-label">Statut</label>
-                        <select class="form-control" id="status" name="status" required>
-                            {% for status in status_choices %}
-                            <option value="{{ status.0 }}">{{ status.1 }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    
-                    <div class="mb-3">
-                        <label class="form-label">Dates et salles</label>
-                        <div id="dates-container">
-                            <div class="row mb-2">
-                                <div class="col-md-6">
-                                    <input type="date" name="session_dates[]" class="form-control" required>
-                                </div>
-                                <div class="col-md-6">
-                                    <select name="session_rooms[]" class="form-control" required>
-                                        <option value="">Sélectionner une salle</option>
-                                        {% for room in training_rooms %}
-                                        <option value="{{ room.id }}">{{ room.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-secondary btn-sm" onclick="addDateInput()">
-                            <i class="fas fa-plus"></i> Ajouter une date
-                        </button>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="iperia-opening" class="form-label">Date d'ouverture IPERIA</label>
-                        <input type="date" class="form-control" id="iperia-opening" name="iperia_opening">
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="iperia-deadline" class="form-label">Date limite IPERIA</label>
-                        <input type="date" class="form-control" id="iperia-deadline" name="iperia_deadline">
-                    </div>
+                    <button type="button" onclick="addDateInput()">Ajouter une date</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -265,48 +231,38 @@
     </div>
 </div>
 
-<!-- Modal de modification de session -->
+<!-- Edit Session Modal -->
 <div class="modal fade" id="editSessionModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title">Modifier la session</h5>
+                <h5 class="modal-title">Modifier une session</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <div class="modal-body">
                 <form id="editSessionForm">
                     <input type="hidden" name="session_id" id="edit-session-id">
-                    <div class="mb-3">
-                        <label for="edit-formation" class="form-label">Formation</label>
-                        <select class="form-control" id="edit-formation" name="formation" required>
-                            {% for formation in formations %}
-                            <option value="{{ formation.id }}">{{ formation.name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit-trainers" class="form-label">Formateurs</label>
-                        <select class="form-control" id="edit-trainers" name="trainers" multiple required>
-                            {% for trainer in trainers %}
-                            <option value="{{ trainer.original_trainer.id }}">{{ trainer.get_full_name }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="edit-status" class="form-label">Statut</label>
-                        <select class="form-control" id="edit-status" name="status" required>
-                            {% for status in status_choices %}
-                            <option value="{{ status.0 }}">{{ status.1 }}</option>
-                            {% endfor %}
-                        </select>
-                    </div>
-                    <div id="edit-dates-container">
-                        <label class="form-label">Dates et salles</label>
-                        <!-- Les dates seront ajoutées dynamiquement ici -->
-                    </div>
-                    <button type="button" class="btn btn-outline-secondary btn-sm mt-2" onclick="addEditDateInput()">
-                        <i class="fas fa-plus"></i> Ajouter une date
-                    </button>
+                    <label>Formation</label>
+                    <select name="formation" id="edit-formation" class="form-control">
+                        {% for formation in formations %}
+                        <option value="{{ formation.id }}">{{ formation.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Formateurs</label>
+                    <select name="trainers[]" id="edit-trainers" class="form-control" multiple>
+                        {% for trainer in trainers %}
+                        <option value="{{ trainer.id }}">{{ trainer.get_full_name }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Statut</label>
+                    <select name="status" id="edit-status" class="form-control">
+                        {% for status in status_choices %}
+                        <option value="{{ status.0 }}">{{ status.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    <label>Dates</label>
+                    <div id="edit-dates-container"></div>
+                    <button type="button" onclick="addEditDateInput()">Ajouter une date</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -317,55 +273,75 @@
     </div>
 </div>
 
+
 <script>
+function createSession() {
+    const form = document.getElementById('createSessionForm');
+    const formData = new FormData(form);
+    fetch('/api/create-session/', {
+        method: 'POST',
+        body: formData,
+    }).then(response => response.json()).then(data => {
+        if (data.success) location.reload();
+        else alert(data.error);
+    });
+}
+
+
+
 function editSession(sessionId) {
     fetch(`/manage-session/get/${sessionId}/`)
         .then(response => response.json())
         .then(data => {
-            // Remplir le formulaire avec les données
-            document.getElementById('edit-session-id').value = sessionId;
-            document.getElementById('edit-formation').value = data.formation_id;
-            document.getElementById('edit-status').value = data.status;
             
-            // Gérer les formateurs (select multiple)
-            const trainerSelect = document.getElementById('edit-trainers');
-            Array.from(trainerSelect.options).forEach(option => {
+            document.getElementById('edit-session-id').value = data.id;
+            document.getElementById('edit-formation').value = data.formation; 
+            document.getElementById('edit-status').value = data.status;
+
+            // Populate trainers
+            const trainers = document.getElementById('edit-trainers');
+            Array.from(trainers.options).forEach(option => {
                 option.selected = data.trainers.includes(parseInt(option.value));
             });
-            
-            // Gérer les dates
+
+            // Populate dates and rooms
             const datesContainer = document.getElementById('edit-dates-container');
-            datesContainer.innerHTML = ''; // Nettoyer les dates existantes
-            
+            datesContainer.innerHTML = '';
             data.dates.forEach(date => {
-                addEditDateInput(date);
+                const dateInput = `<input type="date" name="session_dates[]" value="${date.date}" class="form-control">`;
+                const roomSelect = `<select name="session_rooms[]" class="form-control">
+                    {% for room in training_rooms %}
+                    <option value="{{ room.id }}" ${date.room_id == {{ room.id }} ? 'selected' : ''}>{{ room.name }}</option>
+                    {% endfor %}
+                </select>`;
+                datesContainer.innerHTML += dateInput + roomSelect;
             });
-            
-            // Afficher le modal
-            const editModal = new bootstrap.Modal(document.getElementById('editSessionModal'));
-            editModal.show();
+
+            // Show the modal
+            new bootstrap.Modal(document.getElementById('editSessionModal')).show();
         })
         .catch(error => {
-            console.error('Erreur lors de la récupération des données de la session:', error);
-            alert('Une erreur est survenue lors de la récupération des données de la session.');
+            console.error('Erreur lors de la récupération des détails de la session:', error);
+            alert('Une erreur est survenue lors de la récupération des détails de la session.');
         });
 }
 
 function updateSession() {
-    const formData = new FormData(document.getElementById('editSessionForm'));
+    const form = document.getElementById('editSessionForm');
+    const formData = new FormData(form);
     const sessionId = formData.get('session_id');
 
-    fetch("{% url 'core:update_session' '0' %}".replace('0', sessionId), {
+    fetch(`/manage-session/${sessionId}/update/`, {
         method: 'POST',
         body: formData,
         headers: {
-            'X-CSRFToken': getCookie('csrftoken')
-        }
+            'X-CSRFToken': getCookie('csrftoken'),
+        },
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            location.reload(); // Recharger la page pour voir les modifications
+            location.reload(); // Reload the page to see the changes
         } else {
             alert('Erreur lors de la mise à jour de la session: ' + data.error);
         }
@@ -385,11 +361,11 @@ function addEditDateInput(dateData = null) {
         <div class="row">
             <div class="col-md-6">
                 <label class="form-label">Date</label>
-                <input type="date" class="form-control" name="dates[]" value="${dateData ? dateData.date : ''}" required>
+                <input type="date" class="form-control" name="session_dates[]" value="${dateData ? dateData.date : ''}" required>
             </div>
             <div class="col-md-5">
                 <label class="form-label">Salle</label>
-                <select class="form-control" name="rooms[]">
+                <select class="form-control" name="session_rooms[]">
                     <option value="">Sélectionner une salle</option>
                     {% for room in training_rooms %}
                     <option value="{{ room.id }}" ${dateData && dateData.room_id === {{ room.id }} ? 'selected' : ''}>
@@ -468,37 +444,6 @@ function addDateInput() {
     container.appendChild(dateInput);
 }
 
-function createSession() {
-    const form = document.getElementById('createSessionForm');
-    const formData = new FormData(form);
-    
-    // Récupérer les formateurs sélectionnés
-    const trainers = Array.from(form.querySelector('#trainers').selectedOptions).map(option => option.value);
-    formData.set('trainers', JSON.stringify(trainers));
-    
-    // Récupérer toutes les dates et salles
-    const dates = Array.from(form.querySelectorAll('input[name="session_dates[]"]')).map(input => input.value);
-    const rooms = Array.from(form.querySelectorAll('select[name="session_rooms[]"]')).map(select => select.value);
-    
-    formData.set('session_dates', JSON.stringify(dates));
-    formData.set('session_rooms', JSON.stringify(rooms));
-    
-    fetch('/api/create-session/', {
-        method: 'POST',
-        headers: {
-            'X-CSRFToken': getCookie('csrftoken'),
-        },
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            location.reload();
-        } else {
-            alert('Erreur lors de la création de la session');
-        }
-    });
-}
 
 function getCookie(name) {
     let cookieValue = null;
