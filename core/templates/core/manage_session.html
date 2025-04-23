@@ -295,7 +295,7 @@ function editSession(sessionId) {
         .then(data => {
             
             document.getElementById('edit-session-id').value = data.id;
-            document.getElementById('edit-formation').value = data.formation; // Set the formation field
+            document.getElementById('edit-formation').value = data.formation; 
             document.getElementById('edit-status').value = data.status;
 
             // Populate trainers
