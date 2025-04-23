@@ -1,4 +1,5 @@
 from io import BytesIO
+from django.db.models import Prefetch
 from django.apps import apps
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
@@ -21,8 +22,6 @@ from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 from django.db import transaction
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.encoding import smart_str
-
-import csv
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
@@ -3813,15 +3812,27 @@ def notifications_list(request):
     
     return render(request, 'core/notifications_list.html', context)
 
-@login_required
 def sessions_calendar(request):
-    """Vue pour afficher le calendrier des sessions."""
-    sessions = Session.objects.all()  # Vous pouvez ajuster le queryset selon vos besoins
+    selected_formation = request.GET.get('formation')
     
-    return render(request, 'core/sessions_calendar.html', {
-        'sessions': sessions,
-    })
+    sessions = Session.objects.prefetch_related(
+        'trainers',
+        Prefetch('dates')
+    ).select_related('formation')
 
+    if selected_formation:
+        sessions = sessions.filter(formation_id=selected_formation)
+
+    formations = Formation.objects.all()
+
+    context = {
+        'title': 'Calendrier des sessions',
+        'sessions': sessions,
+        'formations': formations,
+        'selected_formation': selected_formation,
+    }
+
+    return render(request, 'core/sessions_calendar.html', context)
 @login_required
 def get_participant_comments(request, participant_id):
     """
