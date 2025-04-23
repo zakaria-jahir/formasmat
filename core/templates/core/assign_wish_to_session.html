@@ -67,7 +67,7 @@
                 <div class="alert alert-warning">
                     Aucune session disponible pour cette formation.
                 </div>
-                <a href="{% url 'core:create_session' %}?formation={{ wish.formation.id }}" class="btn btn-success">
+                <a href="{% url 'core:session_create' %}?formation={{ wish.formation.id }}" class="btn btn-success">
                     <i class="fas fa-plus"></i> Créer une nouvelle session
                 </a>
             {% endif %}
