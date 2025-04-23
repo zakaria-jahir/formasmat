@@ -124,6 +124,10 @@
                                         <br>
                                         <i class="bi bi-geo"></i> {{ formation.get_modalities_display }}
                                     </p>
+                                    {% if formation.distance %}
+                                         <span>{{ formation.distance }} km</span>
+                                    {% endif %}
+
                                     <div class="d-flex justify-content-between align-items-center">
                                         <a href="{% url 'core:formation_detail' pk=formation.pk %}" class="btn btn-outline-primary flex-grow-1 me-2">
                                             Détails <i class="bi bi-arrow-right"></i>

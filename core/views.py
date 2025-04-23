@@ -10,8 +10,14 @@ from django.db import IntegrityError
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.db import transaction
+from django.utils.encoding import smart_str
+import csv
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
+from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
+from core.utils import get_coordinates_from_postal_code, haversine1
 
 from .models import (
     User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
@@ -70,12 +76,23 @@ def register(request):
     if request.method == 'POST':
         form = UserRegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save()
+            user = form.save(commit=False)
+
+            # Géolocalisation via code postal et ville
+            code_postal = form.cleaned_data.get('code_postal')
+            city = form.cleaned_data.get('city')
+            lat, lng = get_coordinates_from_postal_code(code_postal,city)
+
+            user.latitude = lat
+            user.longitude = lng
+
+            user.save()
             login(request, user)
             messages.success(request, 'Inscription réussie !')
             return redirect('core:home')
     else:
         form = UserRegistrationForm()
+    
     return render(request, 'core/register.html', {'form': form})
 
 @login_required
@@ -288,47 +305,62 @@ def assign_to_session(request):
     return JsonResponse({'status': 'error'}, status=400)
 
 # Formations
+# Formations
 @login_required
 def formation_list(request):
-    """Liste des formations disponibles."""
-    formations = Formation.objects.filter(is_active=True).order_by('name')
-    
-    # Filtres de recherche
+    """Liste des formations disponibles, triées par proximité (puis par défaut)."""
+    user = request.user
+
+    # Base queryset
+    formations_qs = Formation.objects.filter(is_active=True)
+
+    # Filtres GET
     search_query = request.GET.get('search', '')
     type_filter = request.GET.get('type', '')
-    is_presentiel = request.GET.get('is_presentiel', '').lower() == 'true'
-    is_distanciel = request.GET.get('is_distanciel', '').lower() == 'true'
-    is_asynchrone = request.GET.get('is_asynchrone', '').lower() == 'true'
+    is_presentiel = request.GET.get('is_presentiel', '') == 'true'
+    is_distanciel = request.GET.get('is_distanciel', '') == 'true'
+    is_asynchrone = request.GET.get('is_asynchrone', '') == 'true'
     min_duration = request.GET.get('min_duration', '')
     max_duration = request.GET.get('max_duration', '')
-    
-    # Filtrage par recherche
+
+    # Filtres ORM
     if search_query:
-        formations = formations.filter(
-            Q(name__icontains=search_query) | 
-            Q(description__icontains=search_query) | 
+        formations_qs = formations_qs.filter(
+            Q(name__icontains=search_query) |
+            Q(description__icontains=search_query) |
             Q(code_iperia__icontains=search_query)
         )
-    
-    # Filtrage par type
     if type_filter:
-        formations = formations.filter(type=type_filter)
-    
-    # Filtrage par modalités
-    if is_presentiel or is_distanciel or is_asynchrone:
-        formations = formations.filter(
-            Q(is_presentiel=is_presentiel if is_presentiel else None) |
-            Q(is_distanciel=is_distanciel if is_distanciel else None) |
-            Q(is_asynchrone=is_asynchrone if is_asynchrone else None)
-        )
-    
-    # Filtrage par durée
+        formations_qs = formations_qs.filter(type=type_filter)
+    if is_presentiel:
+        formations_qs = formations_qs.filter(is_presentiel=True)
+    if is_distanciel:
+        formations_qs = formations_qs.filter(is_distanciel=True)
+    if is_asynchrone:
+        formations_qs = formations_qs.filter(is_asynchrone=True)
     if min_duration:
-        formations = formations.filter(duration__gte=int(min_duration))
-    
+        formations_qs = formations_qs.filter(duration__gte=int(min_duration))
     if max_duration:
-        formations = formations.filter(duration__lte=int(max_duration))
-    
+        formations_qs = formations_qs.filter(duration__lte=int(max_duration))
+
+    # Séparation des formations
+    formations_with_coords = []
+    formations_without_coords = []
+
+    for f in formations_qs:
+        if f.latitude is not None and f.longitude is not None and user.latitude and user.longitude:
+            distance = haversine1(user.latitude, user.longitude, f.latitude, f.longitude)
+            f.distance = round(distance, 2)  # Pour affichage si besoin
+            formations_with_coords.append(f)
+        else:
+            formations_without_coords.append(f)
+
+    # Tri des formations avec coordonnées
+    formations_with_coords.sort(key=lambda f: f.distance)
+
+    # Fusion avec les formations sans coordonnées
+    formations = formations_with_coords + formations_without_coords
+
     context = {
         'formations': formations,
         'search_query': search_query,
@@ -337,9 +369,8 @@ def formation_list(request):
         'max_duration': max_duration,
         'type_choices': Formation.FORMATION_TYPES,
     }
-    
-    return render(request, 'core/formation_list.html', context)
 
+    return render(request, 'core/formation_list.html', context)
 @login_required
 def formation_detail(request, pk):
     """Détails d'une formation."""
@@ -358,27 +389,30 @@ def formation_detail(request, pk):
 @login_required
 @staff_member_required
 def formation_create(request):
-    """Création d'une formation avec notification."""
+    """Création d'une formation avec géolocalisation."""
     if request.method == 'POST':
         form = FormationForm(request.POST, request.FILES)
         if form.is_valid():
-            formation = form.save()
-            messages.success(request, 'Formation créée avec succès.')
-            
-            # Notification pour tous les utilisateurs
-            users = User.objects.all()
-            for user in users:
-                Notification.create_notification(
-                    user=user, 
-                    type='formation_added', 
-                    message=f'Une nouvelle formation "{formation.name}" a été ajoutée.',
-                    related_object=formation
-                )
-            
-            return redirect('core:formation_detail', pk=formation.pk)
+            formation = form.save(commit=False)
+
+            code_postal = form.cleaned_data.get('code_postal')
+            city = form.cleaned_data.get('city')
+            latitude, longitude = get_coordinates_from_postal_code(code_postal,city)
+
+            formation.latitude = latitude
+            formation.longitude = longitude
+
+            try:
+                formation.save()
+                # Notifications (optionnel)
+                messages.success(request, 'Formation créée avec succès.')
+                return redirect('core:formation_detail', pk=formation.pk)
+            except IntegrityError:
+                messages.error(request, "Erreur lors de l'enregistrement de la formation.")
+
     else:
         form = FormationForm()
-    
+
     return render(request, 'core/formation_form.html', {
         'form': form,
         'title': 'Nouvelle formation'
@@ -906,7 +940,109 @@ def session_create(request):
     except Formation.DoesNotExist:
         messages.error(request, 'Formation introuvable.')
         return redirect('core:formation_list')
+    
+    
+@staff_member_required
+def export_session_csv(request, session_id):
+    session = Session.objects.get(pk=session_id)
+    session_participants = SessionParticipant.objects.filter(session=session).select_related('user')
+    participant_extra_data = {p.user_id: p for p in Participant.objects.filter(session=session)}
 
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Participants"
+
+    # Styles
+    header_fill = PatternFill(start_color="004080", end_color="004080", fill_type="solid")
+    header_font = Font(color="FFFFFF", bold=True)
+    center_alignment = Alignment(horizontal="center", vertical="center")
+    thin_border = Border(
+        left=Side(style='thin'), right=Side(style='thin'),
+        top=Side(style='thin'), bottom=Side(style='thin')
+    )
+
+    color_map = {
+        'Souhait': 'ADD8E6',
+        'Contacté': '87CEEB',
+        'Relancé': 'FFFF99',
+        'Dossier reçu par email': '90EE90',
+        'Dossier reçu papier': '32CD32',
+        'Erreur': 'FF9999',
+    }
+
+    # Ligne avec les formateurs
+    formateurs = ', '.join(f"{t.first_name} {t.last_name}" for t in session.trainers.all())
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=9)
+    cell = ws.cell(row=1, column=1)
+    cell.value = f"Formateurs : {formateurs or 'Aucun'}"
+    cell.font = Font(bold=True)
+    cell.alignment = center_alignment
+
+    # Ligne d'en-têtes
+    headers = [
+        "Nom", "Prénom", "Email", "RPE/Association",
+        "Statut d'inscription", "Statut Dossier", "Commentaires",
+        "Dates et Lieux", " "  # colonne vide pour avoir 9 colonnes
+    ]
+    ws.append(headers)
+
+    for col_num, column_title in enumerate(headers, 1):
+        cell = ws.cell(row=2, column=col_num)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = center_alignment
+        cell.border = thin_border
+
+    # Remplir les données des participants
+    for sp in session_participants:
+        user = sp.user
+        participant = participant_extra_data.get(user.id)
+
+        status_text = dict(SessionParticipant.STATUS_CHOICES).get(sp.status, 'Inconnu')
+        file_status_text = dict(Participant.FILE_STATUS).get(participant.file_status, '') if participant else ''
+        comments = participant.comments if participant else ''
+        dates_lieux = "/n"
+
+        row_data = [
+            user.last_name,
+            user.first_name,
+            user.email,
+            getattr(user, 'rpe_association', 'Non renseigné'),
+            status_text,
+            file_status_text,
+            comments,
+            dates_lieux,
+            ""  # colonne vide pour équilibrer
+        ]
+
+        ws.append(row_data)
+        row_idx = ws.max_row
+        for col_idx, value in enumerate(row_data, 1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.alignment = center_alignment
+            cell.border = thin_border
+
+        status_color = color_map.get(status_text)
+        if status_color:
+            status_cell = ws.cell(row=row_idx, column=5)
+            status_cell.fill = PatternFill(start_color=status_color, end_color=status_color, fill_type="solid")
+
+    # Ajuster la largeur des colonnes
+    for i, column_cells in enumerate(ws.columns, 1):
+        max_length = 0
+        for cell in column_cells:
+            if cell.value:
+                max_length = max(max_length, len(str(cell.value)))
+        col_letter = get_column_letter(i)
+        ws.column_dimensions[col_letter].width = max_length + 2
+
+    # Génération du fichier
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    response['Content-Disposition'] = f'attachment; filename="session_{session_id}_participants.xlsx"'
+    wb.save(response)
+    return response
 @login_required
 @staff_member_required
 def manage_session(request):

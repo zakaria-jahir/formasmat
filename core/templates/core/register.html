@@ -40,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_first_name" class="form-label">{{ form.first_name.label }}</label>
-                                {% render_field form.first_name class="form-control" id="id_first_name" autocomplete="given-name" %}
+                                {% render_field form.first_name class="form-control" id="id_first_name" %}
                                 {% for error in form.first_name.errors %}
                                     <div class="invalid-feedback d-block">{{ error }}</div>
                                 {% endfor %}
@@ -49,7 +49,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_last_name" class="form-label">{{ form.last_name.label }}</label>
-                                {% render_field form.last_name class="form-control" id="id_last_name" autocomplete="family-name" %}
+                                {% render_field form.last_name class="form-control" id="id_last_name" %}
                                 {% for error in form.last_name.errors %}
                                     <div class="invalid-feedback d-block">{{ error }}</div>
                                 {% endfor %}
@@ -59,7 +59,7 @@
 
                     <div class="mb-3">
                         <label for="id_email" class="form-label">{{ form.email.label }}</label>
-                        {% render_field form.email class="form-control" id="id_email" autocomplete="email" %}
+                        {% render_field form.email class="form-control" id="id_email" %}
                         {% for error in form.email.errors %}
                             <div class="invalid-feedback d-block">{{ error }}</div>
                         {% endfor %}
@@ -67,15 +67,31 @@
 
                     <div class="mb-3">
                         <label for="id_phone" class="form-label">{{ form.phone.label }}</label>
-                        {% render_field form.phone class="form-control" id="id_phone" autocomplete="tel" %}
+                        {% render_field form.phone class="form-control" id="id_phone" %}
                         {% for error in form.phone.errors %}
                             <div class="invalid-feedback d-block">{{ error }}</div>
                         {% endfor %}
                     </div>
 
                     <div class="mb-3">
+                        <label for="id_city" class="form-label">{{ form.city.label }}</label>
+                        {% render_field form.city class="form-control" id="id_city" placeholder="Ex. : La Rochelle" %}
+                        {% for error in form.city.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_code_postal" class="form-label">{{ form.code_postal.label }}</label>
+                        {% render_field form.code_postal class="form-control" id="id_code_postal" placeholder="17000" %}
+                        {% for error in form.code_postal.errors %}
+                            <div class="invalid-feedback d-block">{{ error }}</div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="mb-3">
                         <label for="id_address" class="form-label">{{ form.address.label }}</label>
-                        {% render_field form.address class="form-control" id="id_address" autocomplete="street-address" %}
+                        {% render_field form.address class="form-control" id="id_address" %}
                         {% for error in form.address.errors %}
                             <div class="invalid-feedback d-block">{{ error }}</div>
                         {% endfor %}
@@ -101,10 +117,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_password1" class="form-label">{{ form.password1.label }}</label>
-                                {% render_field form.password1 class="form-control" id="id_password1" autocomplete="new-password" %}
-                                {% if form.password1.help_text %}
-                                    <small class="form-text text-muted">{{ form.password1.help_text }}</small>
-                                {% endif %}
+                                {% render_field form.password1 class="form-control" id="id_password1" %}
                                 {% for error in form.password1.errors %}
                                     <div class="invalid-feedback d-block">{{ error }}</div>
                                 {% endfor %}
@@ -113,7 +126,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_password2" class="form-label">{{ form.password2.label }}</label>
-                                {% render_field form.password2 class="form-control" id="id_password2" autocomplete="new-password" %}
+                                {% render_field form.password2 class="form-control" id="id_password2" %}
                                 {% for error in form.password2.errors %}
                                     <div class="invalid-feedback d-block">{{ error }}</div>
                                 {% endfor %}
@@ -136,13 +149,12 @@
 
 {% block extra_js %}
 <script>
-// Déclarée globalement pour être visible dans le HTML inline
 function toggleOtherRPE(select) {
     const otherRpeDiv = document.getElementById('other_rpe_div');
     const otherRpeInput = document.getElementById('id_other_rpe');
 
     if (otherRpeInput) {
-        if (!select.value) {
+        if (!select.value || select.value === "") {
             otherRpeDiv.style.display = 'block';
             otherRpeInput.setAttribute('required', 'required');
         } else {
@@ -153,7 +165,6 @@ function toggleOtherRPE(select) {
     }
 }
 
-// Exécution à l'affichage initial de la page
 document.addEventListener('DOMContentLoaded', function () {
     const rpeSelect = document.getElementById('id_rpe');
     if (rpeSelect) {
