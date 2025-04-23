@@ -18,7 +18,7 @@
             <h3>Formation : {{ formation.name }}</h3>
         </div>
         <div class="card-body">
-            <form id="create-session-form" method="post" action="{% url 'core:create_session' %}">
+            <form id="create-session-form" method="post" action="{% url 'core:session_create' %}">
                 {% csrf_token %}
                 <input type="hidden" name="formation" value="{{ formation.id }}">
                 

@@ -87,7 +87,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="assignSessionForm">
+                    <form id="assignSessionForm" method="post">
+                        {% csrf_token %}
                         <div class="mb-3">
                             <label for="sessionSelect" class="form-label">Session de formation</label>
                             <select id="sessionSelect" class="form-select" required>
@@ -226,22 +227,30 @@ jQuery(document).ready(function($) {
         
         // Récupérer les sessions disponibles
         $.get('{% url "core:get_formation_sessions" %}', { formation_id: row.formation.id })
-            .done(function(sessions) {
-                console.log('Sessions disponibles:', sessions);
-                var select = $('#sessionSelect');
-                select.empty().append('<option value="">Choisir une session...</option>');
-                
-                sessions.forEach(function(session) {
-                    select.append(`<option value="${session.id}">
-                        ${session.formation.name} - Du ${new Date(session.start_date).toLocaleDateString('fr-FR')}
-                        au ${new Date(session.end_date).toLocaleDateString('fr-FR')}
-                    </option>`);
-                });
+        .done(function(sessions) {
+    console.log('Sessions disponibles:', sessions);
+    const select = $('#sessionSelect');
+    select.empty().append('<option value="">Choisir une session...</option>');
 
-                $('#assignSessionModal')
-                    .data('wish-id', wishId)
-                    .modal('show');
-            })
+    if (sessions.length === 0) {
+        select.append('<option value="">Aucune session disponible</option>');
+        return;
+    }
+
+    sessions.forEach(function(session) {
+        if (session.start_date && session.end_date && session.formation && session.formation.name) {
+            select.append(`<option value="${session.id}">
+                ${session.formation.name} - Du ${new Date(session.start_date).toLocaleDateString('fr-FR')}
+                au ${new Date(session.end_date).toLocaleDateString('fr-FR')}
+            </option>`);
+        }
+    });
+
+    $('#assignSessionModal')
+        .data('wish-id', wishId)
+        .modal('show');
+})
+
             .fail(function(xhr) {
                 console.error('Erreur lors de la récupération des sessions:', xhr);
                 alert('Erreur lors de la récupération des sessions disponibles');

@@ -1,3 +1,6 @@
+from django.urls import path
+from django.contrib.auth import views as auth_views
+from . import views
 from io import BytesIO
 from django.db.models import Prefetch
 from django.apps import apps
@@ -267,6 +270,8 @@ def get_training_wishes(request):
     } for wish in wishes]
     return JsonResponse(data, safe=False)
 
+from django.views.decorators.http import require_POST
+@require_POST
 @login_required
 @staff_member_required
 def assign_to_session(request):
@@ -893,7 +898,8 @@ def session_create(request):
 
             # Redirection vers la liste des sessions ou la page de détail de la session
             messages.success(request, f'Session pour {formation.name} créée avec succès.')
-            return redirect('core:sessions_list')
+            path('manage-session/', views.manage_session, name='manage_session'),
+
 
         except Exception as e:
             # Log de l'erreur détaillée
