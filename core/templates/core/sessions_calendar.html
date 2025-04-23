@@ -77,19 +77,15 @@
     </div>
 </div>
 {% endblock %}
-
 {% block extra_js %}
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@6.1.10/locales/fr.js"></script>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM loaded, initializing calendar...');
-    
     const calendarEl = document.getElementById('calendar');
-    console.log('Calendar element:', calendarEl);
-
     const modal = new bootstrap.Modal(document.getElementById('sessionModal'));
-    
+
     const events = [
         {% for session in sessions %}
             {
@@ -118,37 +114,56 @@ document.addEventListener('DOMContentLoaded', function() {
             }{% if not forloop.last %},{% endif %}
         {% endfor %}
     ];
-    console.log("📅 Événements à afficher :", events);
 
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'fr',
+        customButtons: {
+            jour: {
+                text: 'Jour',
+                click: function() {
+                    calendar.changeView('dayGridDay');
+                }
+            },
+            semaine: {
+                text: 'Semaine',
+                click: function() {
+                    calendar.changeView('dayGridWeek');
+                }
+            },
+            mois: {
+                text: 'Mois',
+                click: function() {
+                    calendar.changeView('dayGridMonth');
+                }
+            }
+        },
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,dayGridWeek'
+            right: 'jour,semaine,mois'
+        },
+        buttonText: {
+            today:    "Aujourd’hui",
+            month:    "Mois",
+            week:     "Semaine",
+            day:      "Jour"
         },
         events: events,
         eventClick: function(info) {
             const event = info.event;
             const props = event.extendedProps;
-            
+
             document.getElementById('modalFormation').textContent = props.formation;
-            const datesList = document.getElementById('modalDates');
-            datesList.innerHTML = props.dates.map(d => 
+            document.getElementById('modalDates').innerHTML = props.dates.map(d =>
                 `<li>${d.date}${d.location ? ' - ' + d.location : ''}</li>`
             ).join('');
-
-            const trainersList = document.getElementById('modalTrainers');
-            trainersList.innerHTML = props.trainers.map(t => `<li>${t}</li>`).join('');
-            
+            document.getElementById('modalTrainers').innerHTML = props.trainers.map(t => `<li>${t}</li>`).join('');
             modal.show();
         }
     });
 
-    console.log('Calendar initialized, rendering...');
     calendar.render();
-    console.log('Calendar rendered');
 });
 </script>
 {% endblock %}
