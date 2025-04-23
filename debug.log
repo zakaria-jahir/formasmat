@@ -11581,3 +11581,596 @@ INFO 2025-04-23 10:12:45,235 autoreload 27116 21748 Watching for file changes wi
 INFO 2025-04-23 10:12:58,659 autoreload 27116 21748 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
 INFO 2025-04-23 10:12:59,515 autoreload 13692 588 Watching for file changes with StatReloader
 INFO 2025-04-23 10:13:02,009 basehttp 13692 27144 "GET /export-session/4/participants/csv/ HTTP/1.1" 200 5627
+INFO 2025-04-23 10:34:23,172 autoreload 20088 14508 Watching for file changes with StatReloader
+INFO 2025-04-23 10:34:29,694 views 20088 28756 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-23 10:34:29,695 views 20088 28756 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-23 10:34:29,697 views 20088 28756 Participants trouvés : 3
+INFO 2025-04-23 10:34:29,698 views 20088 28756 Dates trouvées : 3
+INFO 2025-04-23 10:34:29,700 views 20088 28756 Utilisateurs trouvés : 9
+INFO 2025-04-23 10:34:29,703 views 20088 28756 Souhaits trouvés : 1
+INFO 2025-04-23 10:34:29,703 views 20088 28756 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:34:29,703 views 20088 28756 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:34:29,704 views 20088 28756 Formateurs trouvés : 1
+INFO 2025-04-23 10:34:29,704 views 20088 28756 Contexte préparé avec succès
+INFO 2025-04-23 10:34:29,704 views 20088 28756 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+ERROR 2025-04-23 10:34:29,726 views 20088 28756 Erreur lors du rendu du template : Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 1496, in session_detail
+    response = render(request, 'core/session_detail.html', context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+INFO 2025-04-23 10:34:29,736 basehttp 20088 28756 "GET /manage-session/detail/4/ HTTP/1.1" 302 0
+INFO 2025-04-23 10:34:29,743 views 20088 28756 === DÉBUT manage_session ===
+INFO 2025-04-23 10:34:29,743 views 20088 28756 Méthode : GET
+INFO 2025-04-23 10:34:29,743 views 20088 28756 User : paris paris
+INFO 2025-04-23 10:34:29,743 views 20088 28756 Staff : True
+INFO 2025-04-23 10:34:29,744 views 20088 28756 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:34:29,745 views 20088 28756 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:34:29,745 views 20088 28756 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:34:29,746 views 20088 28756 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:34:29,746 views 20088 28756 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:34:29,746 views 20088 28756 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:34:29,747 views 20088 28756 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:34:29,747 views 20088 28756 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:34:29,765 basehttp 20088 28756 "GET /manage-session/ HTTP/1.1" 200 36515
+INFO 2025-04-23 10:34:29,783 basehttp 20088 28756 "GET /static/core/css/custom.css?v=1745397269 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:34:34,977 views 20088 28756 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-23 10:34:34,980 views 20088 28756 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-23 10:34:34,982 views 20088 28756 Participants trouvés : 3
+INFO 2025-04-23 10:34:34,983 views 20088 28756 Dates trouvées : 3
+INFO 2025-04-23 10:34:34,985 views 20088 28756 Utilisateurs trouvés : 9
+INFO 2025-04-23 10:34:34,988 views 20088 28756 Souhaits trouvés : 1
+INFO 2025-04-23 10:34:34,989 views 20088 28756 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:34:34,989 views 20088 28756 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:34:34,992 views 20088 28756 Formateurs trouvés : 1
+INFO 2025-04-23 10:34:34,993 views 20088 28756 Contexte préparé avec succès
+INFO 2025-04-23 10:34:34,993 views 20088 28756 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+ERROR 2025-04-23 10:34:34,999 views 20088 28756 Erreur lors du rendu du template : Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 1496, in session_detail
+    response = render(request, 'core/session_detail.html', context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+INFO 2025-04-23 10:34:35,010 basehttp 20088 28756 "GET /manage-session/detail/4/ HTTP/1.1" 302 0
+INFO 2025-04-23 10:34:35,016 views 20088 28756 === DÉBUT manage_session ===
+INFO 2025-04-23 10:34:35,017 views 20088 28756 Méthode : GET
+INFO 2025-04-23 10:34:35,017 views 20088 28756 User : paris paris
+INFO 2025-04-23 10:34:35,018 views 20088 28756 Staff : True
+INFO 2025-04-23 10:34:35,020 views 20088 28756 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:34:35,022 views 20088 28756 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:34:35,024 views 20088 28756 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:34:35,024 views 20088 28756 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:34:35,025 views 20088 28756 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:34:35,025 views 20088 28756 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:34:35,027 views 20088 28756 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:34:35,028 views 20088 28756 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:34:35,051 basehttp 20088 28756 "GET /manage-session/ HTTP/1.1" 200 36515
+INFO 2025-04-23 10:34:35,069 basehttp 20088 28756 "GET /static/core/css/custom.css?v=1745397275 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:35:30,916 autoreload 20088 14508 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\urls.py changed, reloading.
+INFO 2025-04-23 10:35:31,802 autoreload 23780 21956 Watching for file changes with StatReloader
+INFO 2025-04-23 10:35:34,926 views 23780 4928 === DÉBUT manage_session ===
+INFO 2025-04-23 10:35:34,926 views 23780 4928 Méthode : GET
+INFO 2025-04-23 10:35:34,927 views 23780 4928 User : paris paris
+INFO 2025-04-23 10:35:34,927 views 23780 4928 Staff : True
+INFO 2025-04-23 10:35:34,928 views 23780 4928 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:35:34,929 views 23780 4928 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:35:34,930 views 23780 4928 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:35:34,931 views 23780 4928 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:35:34,931 views 23780 4928 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:35:34,932 views 23780 4928 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:35:34,933 views 23780 4928 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:35:34,934 views 23780 4928 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:35:34,958 basehttp 23780 4928 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 10:35:34,978 basehttp 23780 4928 "GET /static/core/css/custom.css?v=1745397334 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:35:36,426 views 23780 4928 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-23 10:35:36,428 views 23780 4928 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-23 10:35:36,429 views 23780 4928 Participants trouvés : 3
+INFO 2025-04-23 10:35:36,430 views 23780 4928 Dates trouvées : 3
+INFO 2025-04-23 10:35:36,431 views 23780 4928 Utilisateurs trouvés : 9
+INFO 2025-04-23 10:35:36,432 views 23780 4928 Souhaits trouvés : 1
+INFO 2025-04-23 10:35:36,432 views 23780 4928 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:35:36,432 views 23780 4928 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:35:36,434 views 23780 4928 Formateurs trouvés : 1
+INFO 2025-04-23 10:35:36,434 views 23780 4928 Contexte préparé avec succès
+INFO 2025-04-23 10:35:36,434 views 23780 4928 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+ERROR 2025-04-23 10:35:36,446 views 23780 4928 Erreur lors du rendu du template : Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 1496, in session_detail
+    response = render(request, 'core/session_detail.html', context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+INFO 2025-04-23 10:35:36,455 basehttp 23780 4928 "GET /manage-session/detail/4/ HTTP/1.1" 302 0
+INFO 2025-04-23 10:35:36,461 views 23780 4928 === DÉBUT manage_session ===
+INFO 2025-04-23 10:35:36,461 views 23780 4928 Méthode : GET
+INFO 2025-04-23 10:35:36,461 views 23780 4928 User : paris paris
+INFO 2025-04-23 10:35:36,462 views 23780 4928 Staff : True
+INFO 2025-04-23 10:35:36,463 views 23780 4928 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:35:36,463 views 23780 4928 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:35:36,464 views 23780 4928 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:35:36,464 views 23780 4928 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:35:36,464 views 23780 4928 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:35:36,465 views 23780 4928 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:35:36,465 views 23780 4928 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:35:36,466 views 23780 4928 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:35:36,477 basehttp 23780 4928 "GET /manage-session/ HTTP/1.1" 200 36515
+INFO 2025-04-23 10:35:36,498 basehttp 23780 4928 "GET /static/core/css/custom.css?v=1745397336 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:37:08,303 autoreload 23780 21956 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:37:09,249 autoreload 22000 32224 Watching for file changes with StatReloader
+INFO 2025-04-23 10:37:11,376 autoreload 22000 32224 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:37:12,212 autoreload 16736 572 Watching for file changes with StatReloader
+INFO 2025-04-23 10:37:12,917 views 16736 6964 === DÉBUT manage_session ===
+INFO 2025-04-23 10:37:12,917 views 16736 6964 Méthode : GET
+INFO 2025-04-23 10:37:12,917 views 16736 6964 User : paris paris
+INFO 2025-04-23 10:37:12,917 views 16736 6964 Staff : True
+INFO 2025-04-23 10:37:12,918 views 16736 6964 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:37:12,919 views 16736 6964 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:37:12,920 views 16736 6964 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:37:12,920 views 16736 6964 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:37:12,920 views 16736 6964 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:37:12,921 views 16736 6964 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:37:12,923 views 16736 6964 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:37:12,923 views 16736 6964 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:37:12,949 basehttp 16736 6964 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 10:37:12,971 basehttp 16736 6964 "GET /static/core/css/custom.css?v=1745397432 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:37:13,952 views 16736 6964 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-23 10:37:13,953 views 16736 6964 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-23 10:37:13,955 views 16736 6964 Participants trouvés : 3
+INFO 2025-04-23 10:37:13,956 views 16736 6964 Dates trouvées : 3
+INFO 2025-04-23 10:37:13,957 views 16736 6964 Utilisateurs trouvés : 9
+INFO 2025-04-23 10:37:13,958 views 16736 6964 Souhaits trouvés : 1
+INFO 2025-04-23 10:37:13,959 views 16736 6964 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:37:13,959 views 16736 6964 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:37:13,960 views 16736 6964 Formateurs trouvés : 1
+INFO 2025-04-23 10:37:13,960 views 16736 6964 Contexte préparé avec succès
+INFO 2025-04-23 10:37:13,960 views 16736 6964 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+ERROR 2025-04-23 10:37:13,970 views 16736 6964 Erreur lors du rendu du template : Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 1498, in session_detail
+    response = render(request, 'core/session_detail.html', context)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\backends\django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\template\defaulttags.py", line 480, in render
+    url = reverse(view_name, args=args, kwargs=kwargs, current_app=current_app)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\base.py", line 88, in reverse
+    return resolver._reverse_with_prefix(view, prefix, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\urls\resolvers.py", line 831, in _reverse_with_prefix
+    raise NoReverseMatch(msg)
+django.urls.exceptions.NoReverseMatch: Reverse for 'export_session_pdf' not found. 'export_session_pdf' is not a valid view function or pattern name.
+INFO 2025-04-23 10:37:13,981 basehttp 16736 6964 "GET /manage-session/detail/4/ HTTP/1.1" 302 0
+INFO 2025-04-23 10:37:13,987 views 16736 6964 === DÉBUT manage_session ===
+INFO 2025-04-23 10:37:13,987 views 16736 6964 Méthode : GET
+INFO 2025-04-23 10:37:13,987 views 16736 6964 User : paris paris
+INFO 2025-04-23 10:37:13,987 views 16736 6964 Staff : True
+INFO 2025-04-23 10:37:13,988 views 16736 6964 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:37:13,989 views 16736 6964 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:37:13,989 views 16736 6964 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:37:13,989 views 16736 6964 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:37:13,989 views 16736 6964 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:37:13,991 views 16736 6964 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:37:13,992 views 16736 6964 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:37:13,992 views 16736 6964 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:37:14,003 basehttp 16736 6964 "GET /manage-session/ HTTP/1.1" 200 36515
+INFO 2025-04-23 10:37:14,023 basehttp 16736 6964 "GET /static/core/css/custom.css?v=1745397433 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:38:11,784 views 16736 6964 === DÉBUT manage_session ===
+INFO 2025-04-23 10:38:11,784 views 16736 6964 Méthode : GET
+INFO 2025-04-23 10:38:11,784 views 16736 6964 User : paris paris
+INFO 2025-04-23 10:38:11,784 views 16736 6964 Staff : True
+INFO 2025-04-23 10:38:11,785 views 16736 6964 
+=== Chargement des données de base ===
+INFO 2025-04-23 10:38:11,786 views 16736 6964 Nombre de formations trouvées : 9
+INFO 2025-04-23 10:38:11,786 views 16736 6964 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 10:38:11,786 views 16736 6964 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 10:38:11,787 views 16736 6964 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 10:38:11,787 views 16736 6964 Nombre de salles trouvées : 1
+INFO 2025-04-23 10:38:11,788 views 16736 6964 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 10:38:11,789 views 16736 6964 Nombre de sessions trouvées : 3
+INFO 2025-04-23 10:38:11,799 basehttp 16736 6964 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 10:38:11,821 basehttp 16736 6964 "GET /static/core/css/custom.css?v=1745397491 HTTP/1.1" 200 10744
+INFO 2025-04-23 10:38:13,426 views 16736 6964 === DÉBUT session_detail pour session_id=4 ===
+INFO 2025-04-23 10:38:13,428 views 16736 6964 Session trouvée : Créer son projet d'accueil - Ouverte
+INFO 2025-04-23 10:38:13,430 views 16736 6964 Participants trouvés : 3
+INFO 2025-04-23 10:38:13,431 views 16736 6964 Dates trouvées : 3
+INFO 2025-04-23 10:38:13,433 views 16736 6964 Utilisateurs trouvés : 9
+INFO 2025-04-23 10:38:13,442 views 16736 6964 Souhaits trouvés : 1
+INFO 2025-04-23 10:38:13,443 views 16736 6964 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:38:13,444 views 16736 6964 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:38:13,449 views 16736 6964 Formateurs trouvés : 1
+INFO 2025-04-23 10:38:13,449 views 16736 6964 Contexte préparé avec succès
+INFO 2025-04-23 10:38:13,450 views 16736 6964 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-23 10:38:13,469 views 16736 6964 Template rendu avec succès
+INFO 2025-04-23 10:38:13,470 basehttp 16736 6964 "GET /manage-session/detail/4/ HTTP/1.1" 200 82583
+ERROR 2025-04-23 10:38:16,129 log 16736 6964 Internal Server Error: /export-session/4/participants/pdf/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 953, in export_session_pdf
+    buffer = BytesIO()
+             ^^^^^^^
+NameError: name 'BytesIO' is not defined. Did you mean: 'bytes'?
+ERROR 2025-04-23 10:38:16,134 basehttp 16736 6964 "GET /export-session/4/participants/pdf/ HTTP/1.1" 500 76814
+INFO 2025-04-23 10:38:34,332 autoreload 16736 572 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:38:35,224 autoreload 20276 19876 Watching for file changes with StatReloader
+INFO 2025-04-23 10:38:36,288 basehttp 20276 18156 "GET /export-session/4/participants/pdf/ HTTP/1.1" 200 2282
+INFO 2025-04-23 10:39:58,377 autoreload 20276 19876 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:39:59,265 autoreload 25336 31320 Watching for file changes with StatReloader
+INFO 2025-04-23 10:40:05,524 autoreload 25336 31320 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:40:06,374 autoreload 552 1800 Watching for file changes with StatReloader
+ERROR 2025-04-23 10:40:15,036 log 552 26072 Internal Server Error: /export-session/4/participants/pdf/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 966, in export_session_pdf
+    field_style = ParagraphStyle(name='Field', fontSize=11, leading=14, spaceAfter=5)
+                  ^^^^^^^^^^^^^^
+NameError: name 'ParagraphStyle' is not defined
+ERROR 2025-04-23 10:40:15,043 basehttp 552 26072 "GET /export-session/4/participants/pdf/ HTTP/1.1" 500 83759
+INFO 2025-04-23 10:40:50,764 autoreload 552 1800 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:40:51,596 autoreload 12404 5080 Watching for file changes with StatReloader
+INFO 2025-04-23 10:40:54,758 autoreload 12404 5080 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:40:55,622 autoreload 21988 5232 Watching for file changes with StatReloader
+INFO 2025-04-23 10:41:01,396 basehttp 21988 29008 "GET /export-session/4/participants/pdf/ HTTP/1.1" 200 2177
+ERROR 2025-04-23 10:42:11,118 log 21988 29008 Internal Server Error: /manage-session/participants/9/comments/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 3875, in get_participant_comments
+    'text': comment.text,
+            ^^^^^^^^^^^^
+AttributeError: 'ParticipantComment' object has no attribute 'text'
+ERROR 2025-04-23 10:42:11,123 basehttp 21988 29008 "GET /manage-session/participants/9/comments/ HTTP/1.1" 500 82046
+INFO 2025-04-23 10:42:17,929 basehttp 21988 29008 "POST /manage-session/participants/9/update-comments/ HTTP/1.1" 200 72
+ERROR 2025-04-23 10:42:17,975 log 21988 29008 Internal Server Error: /manage-session/participants/9/comments/
+Traceback (most recent call last):
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\core\handlers\base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\venv\Lib\site-packages\django\contrib\auth\decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py", line 3875, in get_participant_comments
+    'text': comment.text,
+            ^^^^^^^^^^^^
+AttributeError: 'ParticipantComment' object has no attribute 'text'
+ERROR 2025-04-23 10:42:17,977 basehttp 21988 29008 "GET /manage-session/participants/9/comments/ HTTP/1.1" 500 82170
+INFO 2025-04-23 10:42:42,873 autoreload 21988 5232 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
+INFO 2025-04-23 10:42:43,792 autoreload 8828 24280 Watching for file changes with StatReloader
+INFO 2025-04-23 10:42:49,236 basehttp 8828 16740 "GET /export-session/4/participants/pdf/ HTTP/1.1" 200 2327
+INFO 2025-04-23 10:43:05,073 views 8828 16740 === DÉBUT session_detail pour session_id=2 ===
+INFO 2025-04-23 10:43:05,077 views 8828 16740 Session trouvée : Créer son projet d'accueil - Non ouverte
+INFO 2025-04-23 10:43:05,079 views 8828 16740 Participants trouvés : 2
+INFO 2025-04-23 10:43:05,085 views 8828 16740 Dates trouvées : 0
+INFO 2025-04-23 10:43:05,087 views 8828 16740 Utilisateurs trouvés : 10
+INFO 2025-04-23 10:43:05,091 views 8828 16740 Souhaits trouvés : 0
+INFO 2025-04-23 10:43:05,092 views 8828 16740 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:43:05,092 views 8828 16740 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:43:05,094 views 8828 16740 Formateurs trouvés : 1
+INFO 2025-04-23 10:43:05,095 views 8828 16740 Contexte préparé avec succès
+INFO 2025-04-23 10:43:05,095 views 8828 16740 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-23 10:43:05,169 views 8828 16740 Template rendu avec succès
+INFO 2025-04-23 10:43:05,172 basehttp 8828 16740 "GET /manage-session/detail/2/ HTTP/1.1" 200 74180
+INFO 2025-04-23 10:43:10,602 basehttp 8828 16740 "GET /export-session/2/participants/pdf/ HTTP/1.1" 200 2203
+INFO 2025-04-23 11:02:37,642 views 8828 14648 === DÉBUT manage_session ===
+INFO 2025-04-23 11:02:37,642 views 8828 14648 Méthode : GET
+INFO 2025-04-23 11:02:37,642 views 8828 14648 User : paris paris
+INFO 2025-04-23 11:02:37,643 views 8828 14648 Staff : True
+INFO 2025-04-23 11:02:37,644 views 8828 14648 
+=== Chargement des données de base ===
+INFO 2025-04-23 11:02:37,645 views 8828 14648 Nombre de formations trouvées : 9
+INFO 2025-04-23 11:02:37,646 views 8828 14648 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 11:02:37,646 views 8828 14648 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 11:02:37,646 views 8828 14648 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 11:02:37,647 views 8828 14648 Nombre de salles trouvées : 1
+INFO 2025-04-23 11:02:37,649 views 8828 14648 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 11:02:37,650 views 8828 14648 Nombre de sessions trouvées : 3
+INFO 2025-04-23 11:02:37,674 basehttp 8828 14648 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 11:02:37,698 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745398957 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:02:47,573 views 8828 14648 === DÉBUT manage_session ===
+INFO 2025-04-23 11:02:47,574 views 8828 14648 Méthode : GET
+INFO 2025-04-23 11:02:47,574 views 8828 14648 User : paris paris
+INFO 2025-04-23 11:02:47,574 views 8828 14648 Staff : True
+INFO 2025-04-23 11:02:47,576 views 8828 14648 
+=== Chargement des données de base ===
+INFO 2025-04-23 11:02:47,577 views 8828 14648 Nombre de formations trouvées : 9
+INFO 2025-04-23 11:02:47,578 views 8828 14648 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 11:02:47,578 views 8828 14648 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 11:02:47,579 views 8828 14648 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 11:02:47,581 views 8828 14648 Nombre de salles trouvées : 1
+INFO 2025-04-23 11:02:47,583 views 8828 14648 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 11:02:47,585 views 8828 14648 Nombre de sessions trouvées : 3
+INFO 2025-04-23 11:02:47,597 basehttp 8828 14648 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 11:02:47,617 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745398967 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:02:48,631 basehttp 8828 14648 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-23 11:03:25,103 basehttp 8828 14648 "GET /profile/ HTTP/1.1" 200 13831
+INFO 2025-04-23 11:03:25,128 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745399005 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:03:32,674 basehttp 8828 14648 "GET /training-wishes/ HTTP/1.1" 200 29101
+INFO 2025-04-23 11:03:32,699 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745399012 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:03:35,342 basehttp 8828 14648 "GET /training-wishes/15/assign/ HTTP/1.1" 200 6276
+INFO 2025-04-23 11:03:35,367 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745399015 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:04:01,636 basehttp 8828 14648 "GET /api/create-session/?formation=10 HTTP/1.1" 302 0
+INFO 2025-04-23 11:04:01,648 basehttp 8828 14648 "GET /manage-session/create/?formation=10 HTTP/1.1" 200 10761
+INFO 2025-04-23 11:04:01,671 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745399041 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:04:05,282 views 8828 14648 === DÉBUT manage_session ===
+INFO 2025-04-23 11:04:05,283 views 8828 14648 Méthode : GET
+INFO 2025-04-23 11:04:05,283 views 8828 14648 User : paris paris
+INFO 2025-04-23 11:04:05,284 views 8828 14648 Staff : True
+INFO 2025-04-23 11:04:05,285 views 8828 14648 
+=== Chargement des données de base ===
+INFO 2025-04-23 11:04:05,287 views 8828 14648 Nombre de formations trouvées : 9
+INFO 2025-04-23 11:04:05,294 views 8828 14648 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 11:04:05,295 views 8828 14648 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 11:04:05,295 views 8828 14648 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 11:04:05,296 views 8828 14648 Nombre de salles trouvées : 1
+INFO 2025-04-23 11:04:05,297 views 8828 14648 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 11:04:05,302 views 8828 14648 Nombre de sessions trouvées : 3
+INFO 2025-04-23 11:04:05,312 basehttp 8828 14648 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 11:04:05,339 basehttp 8828 14648 "GET /static/core/css/custom.css?v=1745399045 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:07,769 basehttp 8828 24460 "GET / HTTP/1.1" 302 0
+INFO 2025-04-23 11:09:07,781 views 8828 24460 === DÉBUT manage_session ===
+INFO 2025-04-23 11:09:07,781 views 8828 24460 Méthode : GET
+INFO 2025-04-23 11:09:07,781 views 8828 24460 User : paris paris
+INFO 2025-04-23 11:09:07,781 views 8828 24460 Staff : True
+INFO 2025-04-23 11:09:07,783 views 8828 24460 
+=== Chargement des données de base ===
+INFO 2025-04-23 11:09:07,784 views 8828 24460 Nombre de formations trouvées : 9
+INFO 2025-04-23 11:09:07,785 views 8828 24460 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 11:09:07,786 views 8828 24460 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 11:09:07,786 views 8828 24460 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 11:09:07,788 views 8828 24460 Nombre de salles trouvées : 1
+INFO 2025-04-23 11:09:07,789 views 8828 24460 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 11:09:07,789 views 8828 24460 Nombre de sessions trouvées : 3
+INFO 2025-04-23 11:09:07,805 basehttp 8828 24460 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 11:09:07,835 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399347 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:08,811 basehttp 8828 24460 "GET / HTTP/1.1" 302 0
+INFO 2025-04-23 11:09:08,817 views 8828 24460 === DÉBUT manage_session ===
+INFO 2025-04-23 11:09:08,818 views 8828 24460 Méthode : GET
+INFO 2025-04-23 11:09:08,818 views 8828 24460 User : paris paris
+INFO 2025-04-23 11:09:08,818 views 8828 24460 Staff : True
+INFO 2025-04-23 11:09:08,821 views 8828 24460 
+=== Chargement des données de base ===
+INFO 2025-04-23 11:09:08,822 views 8828 24460 Nombre de formations trouvées : 9
+INFO 2025-04-23 11:09:08,824 views 8828 24460 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 11:09:08,824 views 8828 24460 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 11:09:08,824 views 8828 24460 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 11:09:08,825 views 8828 24460 Nombre de salles trouvées : 1
+INFO 2025-04-23 11:09:08,826 views 8828 24460 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 11:09:08,827 views 8828 24460 Nombre de sessions trouvées : 3
+INFO 2025-04-23 11:09:08,839 basehttp 8828 24460 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 11:09:08,869 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399348 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:10,873 basehttp 8828 24460 "GET /formations/ HTTP/1.1" 200 30009
+INFO 2025-04-23 11:09:10,905 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399350 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:14,275 basehttp 8828 24460 "GET /formations/?search=&type=&min_duration=&max_duration= HTTP/1.1" 200 30009
+INFO 2025-04-23 11:09:14,304 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399354 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:16,698 basehttp 8828 24460 "GET /formations/?search=&type=initial&min_duration=&max_duration= HTTP/1.1" 200 23539
+INFO 2025-04-23 11:09:16,723 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399356 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:21,927 basehttp 8828 24460 "GET /formations/?search=&type=continue&min_duration=&max_duration= HTTP/1.1" 200 17454
+INFO 2025-04-23 11:09:21,954 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399361 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:35,150 basehttp 8828 24460 "GET /formations/?search=&type=continue&is_distanciel=true&min_duration=20&max_duration= HTTP/1.1" 200 17463
+INFO 2025-04-23 11:09:35,174 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399375 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:37,147 basehttp 8828 24460 "GET /formations/?search=&type=continue&min_duration=20&max_duration= HTTP/1.1" 200 17456
+INFO 2025-04-23 11:09:37,174 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399377 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:41,507 basehttp 8828 24460 "GET /formations/?search=&type=continue&min_duration=22&max_duration= HTTP/1.1" 200 13182
+INFO 2025-04-23 11:09:41,531 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399381 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:09:49,506 basehttp 8828 24460 "GET /formations/?search=&type=continue&min_duration=&max_duration=22 HTTP/1.1" 200 15252
+INFO 2025-04-23 11:09:49,534 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399389 HTTP/1.1" 200 10744
+INFO 2025-04-23 11:10:29,755 basehttp 8828 24460 "GET /training-wishes/ HTTP/1.1" 200 29101
+INFO 2025-04-23 11:10:29,778 basehttp 8828 24460 "GET /static/core/css/custom.css?v=1745399429 HTTP/1.1" 200 10744

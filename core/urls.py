@@ -3,6 +3,7 @@ from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from core.views import export_session_pdf
 
 app_name = 'core'
 
@@ -49,6 +50,8 @@ urlpatterns = [
     path('manage-session/<int:session_id>/participants/create-and-add/', views.create_and_add_participant, name='create_and_add_participant'),
     path('sessions/calendar/', views.sessions_calendar, name='sessions_calendar'),
     path('export-session/<int:session_id>/participants/csv/', views.export_session_csv, name='export_session_csv'),
+    path('export-session/<int:session_id>/participants/pdf/', views.export_session_pdf, name='export_session_pdf'),
+
 
 
     

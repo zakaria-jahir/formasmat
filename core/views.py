@@ -1,3 +1,4 @@
+from io import BytesIO
 from django.apps import apps
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
@@ -11,8 +12,12 @@ from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, JsonResponse
-from django.db import transaction
-from django.utils.encoding import smart_str
+
+from reportlab.lib.pagesizes import A4
+from reportlab.pdfgen import canvas
+from reportlab.platypus import  Paragraph, SimpleDocTemplate, Spacer
+from reportlab.lib import colors
+from reportlab.lib.styles import getSampleStyleSheet,ParagraphStyle
 import csv
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
@@ -941,7 +946,73 @@ def session_create(request):
         messages.error(request, 'Formation introuvable.')
         return redirect('core:formation_list')
     
-    
+@staff_member_required
+def export_session_pdf(request, session_id):
+    session = Session.objects.get(pk=session_id)
+    participants = SessionParticipant.objects.filter(session=session).select_related('user')
+    extra_data = {p.user_id: p for p in Participant.objects.filter(session=session)}
+
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer, pagesize=A4)
+    elements = []
+
+    styles = getSampleStyleSheet()
+    title_style = styles['Title']
+    title_style.alignment = 1  # Centré
+    field_style = ParagraphStyle(name='Field', fontSize=11, leading=14, spaceAfter=5)
+    separator_style = ParagraphStyle(name='Separator', fontSize=10, textColor=colors.grey, spaceAfter=12)
+
+    # Titre principal
+    elements.append(Paragraph(f"Liste des participants – Session n°{session_id}", title_style))
+    elements.append(Spacer(1, 10))
+
+    # Formateurs une seule fois
+    formateurs = ', '.join([f"{t.first_name} {t.last_name}" for t in session.trainers.all()]) or "Non renseigné"
+    elements.append(Paragraph(f"<b>Formateurs :</b> {formateurs}", field_style))
+    elements.append(Spacer(1, 15))
+
+    # Couleurs des statuts
+    color_map = {
+        'Souhait': colors.lightblue,
+        'Contacté': colors.skyblue,
+        'Relancé': colors.lightyellow,
+        'Dossier reçu par email': colors.lightgreen,
+        'Dossier reçu papier': colors.green,
+        'Erreur': colors.salmon,
+    }
+
+    for sp in participants:
+        user = sp.user
+        participant = extra_data.get(user.id)
+
+        status_text = dict(SessionParticipant.STATUS_CHOICES).get(sp.status, 'Inconnu')
+        file_status_text = dict(Participant.FILE_STATUS).get(participant.file_status, '') if participant else ''
+        comments = participant.comments if participant else ''
+        rpe = getattr(user, 'rpe_association', 'Non renseigné')
+
+        # Ligne par ligne
+        elements.append(Paragraph(f"<b>Nom :</b> {user.last_name}", field_style))
+        elements.append(Paragraph(f"<b>Prénom :</b> {user.first_name}", field_style))
+        elements.append(Paragraph(f"<b>Email :</b> {user.email}", field_style))
+        elements.append(Paragraph(f"<b>RPE/Association :</b> {rpe}", field_style))
+
+        # Statut coloré
+        color = color_map.get(status_text)
+        color_html = f"<font color='{color.hexval()}'>" if color else ""
+        end_tag = "</font>" if color else ""
+        elements.append(Paragraph(f"<b>Statut d'inscription :</b> {color_html}{status_text}{end_tag}", field_style))
+
+        elements.append(Paragraph(f"<b>Statut Dossier :</b> {file_status_text}", field_style))
+        elements.append(Paragraph(f"<b>Commentaires :</b> {comments}", field_style))
+        elements.append(Spacer(1, 8))
+        elements.append(Paragraph("─────────────────────────────────────────────", separator_style))
+
+    doc.build(elements)
+    buffer.seek(0)
+
+    return HttpResponse(buffer, content_type='application/pdf', headers={
+        'Content-Disposition': f'attachment; filename="session_{session_id}_participants.pdf"'
+    })
 @staff_member_required
 def export_session_csv(request, session_id):
     session = Session.objects.get(pk=session_id)
