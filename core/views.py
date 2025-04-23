@@ -12,6 +12,7 @@ from django.views.decorators.http import require_http_methods
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, JsonResponse
 from django.db import transaction
+from django.views.decorators.csrf import csrf_exempt
 from django.utils.encoding import smart_str
 import csv
 from openpyxl import Workbook
@@ -144,68 +145,48 @@ def profile(request):
 
 @login_required
 @staff_member_required
+@csrf_exempt
 def update_session(request, session_id):
-    """Vue pour mettre à jour une session."""
-    if request.method != 'POST':
-        return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
+    """Handles session editing via AJAX."""
+    if request.method == 'POST':
+        try:
+            session = get_object_or_404(Session, id=session_id)
+            formation_id = request.POST.get('formation')
+            trainers = request.POST.getlist('trainers[]')
+            status = request.POST.get('status')
+            session_dates = request.POST.getlist('session_dates[]')
+            session_rooms = request.POST.getlist('session_rooms[]')
+            iperia_opening = request.POST.get('iperia_opening')
+            iperia_deadline = request.POST.get('iperia_deadline')
 
-    try:
-        # Log pour le debugging
-        logger.info(f"Tentative de mise à jour de session - Données POST: {request.POST}")
-        
-        session = Session.objects.get(id=session_id)
-        
-        # Si seul le statut est fourni, ne mettre à jour que le statut
-        if 'status' in request.POST and len(request.POST) == 2:  # status et csrf_token
-            session.status = request.POST.get('status')
-        else:
-            # Mise à jour complète de la session
-            if 'formation' in request.POST:
-                session.formation_id = request.POST.get('formation')
-            if 'iperia_opening_date' in request.POST:
-                session.iperia_opening_date = request.POST.get('iperia_opening_date') or None
-            if 'iperia_deadline' in request.POST:
-                session.iperia_deadline = request.POST.get('iperia_deadline') or None
-            
-            # Mise à jour des formateurs si fournis
-            if 'trainers[]' in request.POST:
-                trainers = request.POST.getlist('trainers[]')
-                session.trainers.set(trainers)
-            
-            # Mise à jour des dates si fournies
-            if 'dates' in request.POST:
-                try:
-                    dates_data = json.loads(request.POST.get('dates'))
-                    session.dates.all().delete()  # Suppression des anciennes dates
-                    
-                    for date_data in dates_data:
-                        SessionDate.objects.create(
-                            session=session,
-                            date=date_data['date'],
-                            location_id=date_data['location'] if date_data['location'] else None
-                        )
-                except json.JSONDecodeError:
-                    logger.error("Erreur lors du décodage des dates JSON")
-                    pass  # On continue même si la mise à jour des dates échoue
-        
-        # Sauvegarde de la session
-        session.save()
-        logger.info(f"Session {session_id} mise à jour avec succès")
-        
-        return JsonResponse({
-            'success': True,
-            'message': 'Session mise à jour avec succès',
-            'status': session.get_status_display(),
-            'status_class': get_status_badge_class(session.status)
-        })
-        
-    except Session.DoesNotExist:
-        logger.error(f"Session non trouvée: {session_id}")
-        return JsonResponse({'error': 'Session non trouvée'}, status=404)
-    except Exception as e:
-        logger.error(f"Erreur lors de la mise à jour de la session: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
+            # Validate formation
+            formation = get_object_or_404(Formation, id=formation_id)
 
+            # Update session
+            with transaction.atomic():
+                session.formation = formation
+                session.status = status
+                session.iperia_opening_date = iperia_opening
+                session.iperia_deadline = iperia_deadline
+                session.save()
+
+                # Update trainers
+                session.trainers.clear()
+                for trainer_id in trainers:
+                    trainer = get_object_or_404(Trainer, id=trainer_id)
+                    session.trainers.add(trainer)
+
+                # Update session dates and rooms
+                session.dates.all().delete()  # Clear all existing dates
+                for date, room_id in zip(session_dates, session_rooms):
+                    if date:  # Ensure the date is not empty
+                        room = get_object_or_404(TrainingRoom, id=room_id) if room_id else None
+                        SessionDate.objects.create(session=session, date=date, location=room)
+
+            return JsonResponse({'success': True, 'message': 'Session updated successfully.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 @login_required
 def user_wishes(request):
@@ -1046,65 +1027,63 @@ def export_session_csv(request, session_id):
 @login_required
 @staff_member_required
 def manage_session(request):
-    """Vue de gestion des sessions."""
-    logger.info("=== DÉBUT manage_session ===")
-    logger.info(f"Méthode : {request.method}")
-    logger.info(f"User : {request.user.get_full_name()}")
-    logger.info(f"Staff : {request.user.is_staff}")
+    """Renders the session management page."""
+    sessions = Session.objects.prefetch_related('trainers', 'dates', 'formation').all()
+    formations = Formation.objects.all()
+    trainers = Trainer.objects.all()
+    training_rooms = TrainingRoom.objects.all()
+    status_choices = Session.STATUS_CHOICES
 
-    # Récupération des données de base
-    formations = Formation.objects.all().order_by('name')
-
-    # Convertir les formateurs en objets compatibles
-    trainers = []
-    for trainer in Trainer.objects.all().order_by('last_name', 'first_name'):
-        trainer_user = type('TrainerUser', (), {
-            'username': f"{trainer.first_name} {trainer.last_name}",
-            'first_name': trainer.first_name,
-            'last_name': trainer.last_name,
-            'get_full_name': lambda t=trainer: f"{t.first_name} {t.last_name}",
-            'original_trainer': trainer
-        })()
-        trainers.append(trainer_user)
-
-    training_rooms = TrainingRoom.objects.all().order_by('name')
-    sessions = Session.objects.select_related('formation').prefetch_related(
-        'dates', 
-        'trainers'
-    ).order_by('-created_at')
-
-    # Logging des données
-    logger.info("\n=== Chargement des données de base ===")
-    logger.info(f"Nombre de formations trouvées : {formations.count()}")
-    logger.info(f"Formations : {[f.name for f in formations]}")
-    logger.info(f"Nombre de formateurs trouvés : {len(trainers)}")
-    logger.info(f"Formateurs : {[f'{t.username} ({t.get_full_name()})' for t in trainers]}")
-    logger.info(f"Nombre de salles trouvées : {training_rooms.count()}")
-    logger.info(f"Salles : {[r.name for r in training_rooms]}")
-    logger.info(f"Nombre de sessions trouvées : {sessions.count()}")
-
-    context = {
+    return render(request, 'core/manage_session.html', {
+        'sessions': sessions,
         'formations': formations,
         'trainers': trainers,
         'training_rooms': training_rooms,
-        'sessions': sessions,
-        'status_choices': Session.STATUS_CHOICES,
-    }
+        'status_choices': status_choices,
+    })
 
-    return render(request, 'core/manage_session.html', context)
 
 @login_required
 @staff_member_required
+@csrf_exempt
 def create_session(request):
-    """Préparation du formulaire de création de session."""
-    formation_id = request.GET.get('formation')
-    if formation_id:
-        from django.shortcuts import redirect
-        from django.urls import reverse
-        return redirect(f"{reverse('core:session_create')}?formation={formation_id}")
-    messages.error(request, 'Formation introuvable.')
-    return redirect('core:formation_list')
+    """Handles session creation via AJAX."""
+    if request.method == 'POST':
+        try:
+            formation_id = request.POST.get('formation')
+            trainers = request.POST.getlist('trainers[]')
+            status = request.POST.get('status')
+            session_dates = request.POST.getlist('session_dates[]')
+            session_rooms = request.POST.getlist('session_rooms[]')
+            iperia_opening = request.POST.get('iperia_opening')
+            iperia_deadline = request.POST.get('iperia_deadline')
 
+            # Validate formation
+            formation = get_object_or_404(Formation, id=formation_id)
+
+            # Create session
+            with transaction.atomic():
+                session = Session.objects.create(
+                    formation=formation,
+                    status=status,
+                    iperia_opening_date=iperia_opening,
+                    iperia_deadline=iperia_deadline,
+                )
+
+                # Add trainers
+                for trainer_id in trainers:
+                    trainer = get_object_or_404(Trainer, id=trainer_id)
+                    session.trainers.add(trainer)
+
+                # Add session dates and rooms
+                for date, room_id in zip(session_dates, session_rooms):
+                    room = get_object_or_404(TrainingRoom, id=room_id)
+                    SessionDate.objects.create(session=session, date=date, location=room)
+
+            return JsonResponse({'success': True, 'message': 'Session created successfully.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
 
 @login_required
 @staff_member_required
@@ -1294,32 +1273,18 @@ def update_session_status(request):
 @login_required
 @staff_member_required
 def get_session(request, session_id):
-    """Vue pour récupérer les détails d'une session."""
-    try:
-        session = Session.objects.select_related('formation').prefetch_related(
-            'dates', 
-            'trainers'
-        ).get(id=session_id)
-        
-        data = {
-            'id': session.id,
-            'formation': session.formation.id,
-            'status': session.status,
-            'iperia_opening_date': session.iperia_opening_date.strftime('%Y-%m-%d') if session.iperia_opening_date else None,
-            'iperia_deadline': session.iperia_deadline.strftime('%Y-%m-%d') if session.iperia_deadline else None,
-            'trainers': [trainer.id for trainer in session.trainers.all()],
-            'dates': [{
-                'date': date.date.strftime('%Y-%m-%d'),
-                'location': date.location.id if date.location else None
-            } for date in session.dates.all()]
-        }
-        return JsonResponse(data)
-    except Session.DoesNotExist:
-        return JsonResponse({'error': 'Session non trouvée'}, status=404)
-    except Exception as e:
-        logger.error(f"Erreur lors de la récupération de la session {session_id}: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
-
+    """Fetches session details for editing."""
+    session = get_object_or_404(Session, id=session_id)
+    session_data = {
+        'id': session.id,
+        'formation_id': session.formation.id,
+        'status': session.status,
+        'trainers': list(session.trainers.values_list('id', flat=True)),
+        'dates': [{'date': date.date, 'room_id': date.location.id if date.location else None} for date in session.dates.all()],
+        'iperia_opening': session.iperia_opening_date,
+        'iperia_deadline': session.iperia_deadline,
+    }
+    return JsonResponse(session_data)
 
 @login_required
 @staff_member_required
@@ -1758,31 +1723,19 @@ def update_participant_comments(request, participant_id):
 @login_required
 @staff_member_required
 def get_session(request, session_id):
-    """Vue pour récupérer les détails d'une session."""
-    try:
-        session = Session.objects.select_related('formation').prefetch_related(
-            'dates', 
-            'trainers'
-        ).get(id=session_id)
-        
-        data = {
-            'id': session.id,
-            'formation': session.formation.id,
-            'status': session.status,
-            'iperia_opening_date': session.iperia_opening_date.strftime('%Y-%m-%d') if session.iperia_opening_date else None,
-            'iperia_deadline': session.iperia_deadline.strftime('%Y-%m-%d') if session.iperia_deadline else None,
-            'trainers': [trainer.id for trainer in session.trainers.all()],
-            'dates': [{
-                'date': date.date.strftime('%Y-%m-%d'),
-                'location': date.location.id if date.location else None
-            } for date in session.dates.all()]
-        }
-        return JsonResponse(data)
-    except Session.DoesNotExist:
-        return JsonResponse({'error': 'Session non trouvée'}, status=404)
-    except Exception as e:
-        logger.error(f"Erreur lors de la récupération de la session {session_id}: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
+    """Fetches session details for editing."""
+    session = get_object_or_404(Session, id=session_id)
+    logger.info(f"Session data: {session}")
+    session_data = {
+        'id': session.id,
+        'formation_id': session.formation.id,  # Ensure this is included
+        'status': session.status,
+        'trainers': list(session.trainers.values_list('id', flat=True)),
+        'dates': [{'date': date.date, 'room_id': date.location.id if date.location else None} for date in session.dates.all()],
+        'iperia_opening': session.iperia_opening_date,
+        'iperia_deadline': session.iperia_deadline,
+    }
+    return JsonResponse(session_data)
 
 
 @login_required

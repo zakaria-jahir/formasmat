@@ -10726,6 +10726,476 @@ INFO 2025-04-22 11:15:53,718 basehttp 145238 139898035390144 "GET /manage-sessio
 INFO 2025-04-22 11:15:53,814 basehttp 145238 139898035390144 "GET /static/core/css/custom.css?v=1745313353 HTTP/1.1" 200 10230
 INFO 2025-04-22 16:33:04,035 autoreload 78092 139709434345280 Watching for file changes with StatReloader
 INFO 2025-04-22 16:43:56,343 autoreload 84282 139790162757440 Watching for file changes with StatReloader
+<<<<<<< HEAD
+INFO 2025-04-23 09:18:53,445 autoreload 10400 140053780121408 Watching for file changes with StatReloader
+INFO 2025-04-23 09:20:49,554 autoreload 13263 140165468796736 Watching for file changes with StatReloader
+INFO 2025-04-23 09:22:06,914 autoreload 14231 140342485161792 Watching for file changes with StatReloader
+INFO 2025-04-23 09:22:09,966 basehttp 14231 140341942208192 "GET / HTTP/1.1" 302 0
+INFO 2025-04-23 09:22:09,975 views 14231 140341942208192 === DÉBUT manage_session ===
+INFO 2025-04-23 09:22:09,975 views 14231 140341942208192 Méthode : GET
+INFO 2025-04-23 09:22:09,975 views 14231 140341942208192 User : Brandon Dieu
+INFO 2025-04-23 09:22:09,975 views 14231 140341942208192 Staff : True
+INFO 2025-04-23 09:22:09,977 views 14231 140341942208192 
+=== Chargement des données de base ===
+INFO 2025-04-23 09:22:09,978 views 14231 140341942208192 Nombre de formations trouvées : 9
+INFO 2025-04-23 09:22:09,980 views 14231 140341942208192 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 09:22:09,980 views 14231 140341942208192 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 09:22:09,980 views 14231 140341942208192 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 09:22:09,981 views 14231 140341942208192 Nombre de salles trouvées : 1
+INFO 2025-04-23 09:22:09,982 views 14231 140341942208192 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 09:22:09,983 views 14231 140341942208192 Nombre de sessions trouvées : 3
+INFO 2025-04-23 09:22:10,011 basehttp 14231 140341942208192 "GET /manage-session/ HTTP/1.1" 200 36069
+INFO 2025-04-23 09:22:10,121 basehttp 14231 140341942208192 "GET /static/core/css/custom.css?v=1745392929 HTTP/1.1" 200 10230
+INFO 2025-04-23 09:22:10,121 basehttp 14231 140341932766912 "GET /static/core/images/forasslettre.png HTTP/1.1" 200 54669
+WARNING 2025-04-23 09:22:11,045 log 14231 140341942208192 Not Found: /favicon.ico
+WARNING 2025-04-23 09:22:11,045 basehttp 14231 140341942208192 "GET /favicon.ico HTTP/1.1" 404 18261
+INFO 2025-04-23 09:26:42,584 views 14231 140341942208192 === DÉBUT manage_session ===
+INFO 2025-04-23 09:26:42,584 views 14231 140341942208192 Méthode : GET
+INFO 2025-04-23 09:26:42,584 views 14231 140341942208192 User : Brandon Dieu
+INFO 2025-04-23 09:26:42,584 views 14231 140341942208192 Staff : True
+INFO 2025-04-23 09:26:42,586 views 14231 140341942208192 
+=== Chargement des données de base ===
+INFO 2025-04-23 09:26:42,588 views 14231 140341942208192 Nombre de formations trouvées : 9
+INFO 2025-04-23 09:26:42,590 views 14231 140341942208192 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 09:26:42,590 views 14231 140341942208192 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 09:26:42,590 views 14231 140341942208192 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 09:26:42,591 views 14231 140341942208192 Nombre de salles trouvées : 1
+INFO 2025-04-23 09:26:42,592 views 14231 140341942208192 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 09:26:42,593 views 14231 140341942208192 Nombre de sessions trouvées : 3
+INFO 2025-04-23 09:26:42,610 basehttp 14231 140341942208192 "GET /manage-session/ HTTP/1.1" 200 36129
+INFO 2025-04-23 09:26:42,648 basehttp 14231 140341942208192 "GET /static/core/css/custom.css?v=1745393202 HTTP/1.1" 200 10230
+INFO 2025-04-23 09:26:42,650 basehttp 14231 140341932766912 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 09:38:01,574 autoreload 14231 140342485161792 /home/jahir/Projects/stage/formasmat/core/urls.py changed, reloading.
+INFO 2025-04-23 09:38:02,186 autoreload 20502 139645761853248 Watching for file changes with StatReloader
+INFO 2025-04-23 09:38:03,291 autoreload 20502 139645761853248 /home/jahir/Projects/stage/formasmat/core/urls.py changed, reloading.
+INFO 2025-04-23 09:38:03,704 autoreload 20524 140505201166144 Watching for file changes with StatReloader
+INFO 2025-04-23 09:39:49,461 views 20524 140504657086144 === DÉBUT manage_session ===
+INFO 2025-04-23 09:39:49,462 views 20524 140504657086144 Méthode : GET
+INFO 2025-04-23 09:39:49,462 views 20524 140504657086144 User : Brandon Dieu
+INFO 2025-04-23 09:39:49,462 views 20524 140504657086144 Staff : True
+INFO 2025-04-23 09:39:49,464 views 20524 140504657086144 
+=== Chargement des données de base ===
+INFO 2025-04-23 09:39:49,465 views 20524 140504657086144 Nombre de formations trouvées : 9
+INFO 2025-04-23 09:39:49,468 views 20524 140504657086144 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 09:39:49,468 views 20524 140504657086144 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 09:39:49,468 views 20524 140504657086144 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 09:39:49,469 views 20524 140504657086144 Nombre de salles trouvées : 1
+INFO 2025-04-23 09:39:49,470 views 20524 140504657086144 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 09:39:49,471 views 20524 140504657086144 Nombre de sessions trouvées : 3
+ERROR 2025-04-23 09:39:49,547 log 20524 140504657086144 Internal Server Error: /manage-session/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/backends/django.py", line 107, in render
+    return self.template.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 171, in render
+    return self._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/loader_tags.py", line 159, in render
+    return compiled_parent._render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 163, in _render
+    return self.nodelist.render(context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/loader_tags.py", line 65, in render
+    result = block.nodelist.render(context)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 1008, in render
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 1008, in <listcomp>
+    return SafeString("".join([node.render_annotated(context) for node in self]))
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/base.py", line 969, in render_annotated
+    return self.render(context)
+           ^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/loader_tags.py", line 199, in render
+    template = context.template.engine.select_template(template_name)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/engine.py", line 214, in select_template
+    raise TemplateDoesNotExist(", ".join(not_found))
+django.template.exceptions.TemplateDoesNotExist: core/modals/create_session_modal.html
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/core/views.py", line 988, in manage_session
+    return render(request, 'core/manage_session.html', context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/shortcuts.py", line 25, in render
+    content = loader.render_to_string(template_name, context, request, using=using)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/loader.py", line 62, in render_to_string
+    return template.render(context, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/backends/django.py", line 109, in render
+    reraise(exc, self.backend)
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/template/backends/django.py", line 130, in reraise
+    raise new from exc
+django.template.exceptions.TemplateDoesNotExist: core/modals/create_session_modal.html
+ERROR 2025-04-23 09:39:49,551 basehttp 20524 140504657086144 "GET /manage-session/ HTTP/1.1" 500 222790
+INFO 2025-04-23 09:41:13,672 views 20524 140504657086144 === DÉBUT manage_session ===
+INFO 2025-04-23 09:41:13,672 views 20524 140504657086144 Méthode : GET
+INFO 2025-04-23 09:41:13,672 views 20524 140504657086144 User : Brandon Dieu
+INFO 2025-04-23 09:41:13,672 views 20524 140504657086144 Staff : True
+INFO 2025-04-23 09:41:13,674 views 20524 140504657086144 
+=== Chargement des données de base ===
+INFO 2025-04-23 09:41:13,676 views 20524 140504657086144 Nombre de formations trouvées : 9
+INFO 2025-04-23 09:41:13,678 views 20524 140504657086144 Formations : ['Activités à moindre coût', "Créer son projet d'accueil", "Créer son projet d'accueil", "Créer son projet d'accueil", "Livret d'accueil", "Livret d'accueil", 'la rochelle', 'paris', 'premier test']
+INFO 2025-04-23 09:41:13,678 views 20524 140504657086144 Nombre de formateurs trouvés : 1
+INFO 2025-04-23 09:41:13,679 views 20524 140504657086144 Formateurs : ['Karine Baron (Karine Baron)']
+INFO 2025-04-23 09:41:13,680 views 20524 140504657086144 Nombre de salles trouvées : 1
+INFO 2025-04-23 09:41:13,681 views 20524 140504657086144 Salles : ['Club informatique de Saint Benoît']
+INFO 2025-04-23 09:41:13,682 views 20524 140504657086144 Nombre de sessions trouvées : 3
+INFO 2025-04-23 09:41:13,698 basehttp 20524 140504657086144 "GET /manage-session/ HTTP/1.1" 200 36129
+INFO 2025-04-23 09:41:13,740 basehttp 20524 140504648693440 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 09:41:13,755 basehttp 20524 140504657086144 "GET /static/core/css/custom.css?v=1745394073 HTTP/1.1" 200 10230
+INFO 2025-04-23 09:48:54,414 autoreload 20524 140505201166144 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:48:54,928 autoreload 24679 139895986988864 Watching for file changes with StatReloader
+INFO 2025-04-23 09:48:58,497 autoreload 24679 139895986988864 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:48:59,004 autoreload 24724 139874021488448 Watching for file changes with StatReloader
+INFO 2025-04-23 09:50:07,348 autoreload 24724 139874021488448 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:50:07,845 autoreload 25161 140164061493056 Watching for file changes with StatReloader
+INFO 2025-04-23 09:52:43,217 autoreload 25161 140164061493056 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:52:43,697 autoreload 26127 140272653735744 Watching for file changes with StatReloader
+INFO 2025-04-23 09:53:30,282 autoreload 26127 140272653735744 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:53:30,844 autoreload 26469 139920216504128 Watching for file changes with StatReloader
+INFO 2025-04-23 09:54:13,309 autoreload 26469 139920216504128 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:54:13,881 autoreload 26774 139869148555072 Watching for file changes with StatReloader
+INFO 2025-04-23 09:54:18,347 autoreload 26774 139869148555072 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:54:18,805 autoreload 26834 140653445273408 Watching for file changes with StatReloader
+INFO 2025-04-23 09:54:30,579 autoreload 26834 140653445273408 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:54:31,084 autoreload 26944 140233021372224 Watching for file changes with StatReloader
+INFO 2025-04-23 09:55:13,853 autoreload 26944 140233021372224 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:55:14,368 autoreload 27251 140311738951488 Watching for file changes with StatReloader
+INFO 2025-04-23 09:55:16,977 autoreload 27251 140311738951488 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:55:17,502 autoreload 27284 139704808318784 Watching for file changes with StatReloader
+INFO 2025-04-23 09:55:19,228 autoreload 27284 139704808318784 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 09:55:19,740 autoreload 27300 140368686892864 Watching for file changes with StatReloader
+INFO 2025-04-23 10:04:21,667 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 31325
+INFO 2025-04-23 10:04:21,714 basehttp 27300 140368134584000 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 10:04:21,719 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745395461 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:04:57,838 basehttp 27300 140368142976704 "POST /api/create-session/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:04:57,870 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 33011
+INFO 2025-04-23 10:04:57,907 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745395497 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:05:16,417 basehttp 27300 140368142976704 "POST /api/create-session/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:05:16,451 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 34587
+INFO 2025-04-23 10:05:16,484 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745395516 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:05:26,992 basehttp 27300 140368142976704 "GET /manage-session/get/2/ HTTP/1.1" 200 150
+WARNING 2025-04-23 10:05:44,619 log 27300 140368142976704 Not Found: /api/update-session/2/
+WARNING 2025-04-23 10:05:44,620 basehttp 27300 140368142976704 "POST /api/update-session/2/ HTTP/1.1" 404 18292
+WARNING 2025-04-23 10:05:45,861 log 27300 140368142976704 Not Found: /api/update-session/2/
+WARNING 2025-04-23 10:05:45,862 basehttp 27300 140368142976704 "POST /api/update-session/2/ HTTP/1.1" 404 18292
+WARNING 2025-04-23 10:05:46,420 log 27300 140368142976704 Not Found: /api/update-session/2/
+WARNING 2025-04-23 10:05:46,421 basehttp 27300 140368142976704 "POST /api/update-session/2/ HTTP/1.1" 404 18292
+WARNING 2025-04-23 10:05:46,582 log 27300 140368142976704 Not Found: /api/update-session/2/
+WARNING 2025-04-23 10:05:46,583 basehttp 27300 140368142976704 "POST /api/update-session/2/ HTTP/1.1" 404 18292
+WARNING 2025-04-23 10:05:51,900 log 27300 140368142976704 Not Found: /api/update-session/2/
+WARNING 2025-04-23 10:05:51,901 basehttp 27300 140368142976704 "POST /api/update-session/2/ HTTP/1.1" 404 18292
+WARNING 2025-04-23 10:06:05,350 log 27300 140368142976704 Not Found: /api/update-session/2/
+WARNING 2025-04-23 10:06:05,350 basehttp 27300 140368142976704 "POST /api/update-session/2/ HTTP/1.1" 404 18292
+INFO 2025-04-23 10:06:39,161 views 27300 140368142976704 === DÉBUT session_detail pour session_id=2 ===
+INFO 2025-04-23 10:06:39,163 views 27300 140368142976704 Session trouvée : Créer son projet d'accueil - Non ouverte
+INFO 2025-04-23 10:06:39,166 views 27300 140368142976704 Participants trouvés : 2
+INFO 2025-04-23 10:06:39,167 views 27300 140368142976704 Dates trouvées : 0
+INFO 2025-04-23 10:06:39,169 views 27300 140368142976704 Utilisateurs trouvés : 10
+INFO 2025-04-23 10:06:39,171 views 27300 140368142976704 Souhaits trouvés : 0
+INFO 2025-04-23 10:06:39,171 views 27300 140368142976704 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 10:06:39,172 views 27300 140368142976704 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 10:06:39,174 views 27300 140368142976704 Formateurs trouvés : 1
+INFO 2025-04-23 10:06:39,174 views 27300 140368142976704 Contexte préparé avec succès
+INFO 2025-04-23 10:06:39,174 views 27300 140368142976704 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-23 10:06:39,199 views 27300 140368142976704 Template rendu avec succès
+INFO 2025-04-23 10:06:39,199 basehttp 27300 140368142976704 "GET /manage-session/detail/2/ HTTP/1.1" 200 73830
+INFO 2025-04-23 10:06:49,977 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 34587
+INFO 2025-04-23 10:06:50,016 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745395609 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:12:16,838 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 35002
+INFO 2025-04-23 10:12:16,865 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745395936 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:12:16,873 basehttp 27300 140368134584000 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 10:12:18,332 basehttp 27300 140368142976704 "GET /manage-session/get/2/ HTTP/1.1" 200 150
+INFO 2025-04-23 10:12:27,790 basehttp 27300 140368142976704 "POST /manage-session/2/update/ HTTP/1.1" 200 68
+INFO 2025-04-23 10:12:38,291 basehttp 27300 140368142976704 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:12:38,323 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 35002
+INFO 2025-04-23 10:12:38,355 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745395958 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:12:48,094 basehttp 27300 140368142976704 "GET /manage-session/get/2/ HTTP/1.1" 200 134
+INFO 2025-04-23 10:14:44,421 basehttp 27300 140368142976704 "POST /manage-session/2/update/ HTTP/1.1" 200 68
+INFO 2025-04-23 10:15:26,228 basehttp 27300 140368142976704 "POST /manage-session/2/update/ HTTP/1.1" 200 68
+INFO 2025-04-23 10:15:59,988 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 35003
+INFO 2025-04-23 10:16:00,028 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745396159 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:17:15,293 basehttp 27300 140368142976704 "GET /manage-session/get/4/ HTTP/1.1" 200 248
+INFO 2025-04-23 10:20:01,786 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 35469
+INFO 2025-04-23 10:20:01,834 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745396401 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:20:01,839 basehttp 27300 140368134584000 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 10:20:04,259 basehttp 27300 140368142976704 "GET /manage-session/get/2/ HTTP/1.1" 200 134
+INFO 2025-04-23 10:20:06,098 basehttp 27300 140368142976704 "POST /manage-session/2/update/ HTTP/1.1" 200 68
+INFO 2025-04-23 10:21:37,671 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 35545
+INFO 2025-04-23 10:21:37,714 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745396497 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:21:51,371 basehttp 27300 140368142976704 "POST /api/create-session/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:21:51,403 basehttp 27300 140368142976704 "GET /manage-session/ HTTP/1.1" 200 37135
+INFO 2025-04-23 10:21:51,443 basehttp 27300 140368142976704 "GET /static/core/css/custom.css?v=1745396511 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:21:57,372 basehttp 27300 140368142976704 "GET /manage-session/get/2/ HTTP/1.1" 200 134
+INFO 2025-04-23 10:29:04,720 autoreload 27300 140368686892864 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:29:05,235 autoreload 40849 140479955289920 Watching for file changes with StatReloader
+INFO 2025-04-23 10:30:39,345 autoreload 40849 140479955289920 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:30:39,860 autoreload 41490 139668721551168 Watching for file changes with StatReloader
+INFO 2025-04-23 10:30:41,415 autoreload 41490 139668721551168 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:30:41,870 autoreload 41523 140022936835904 Watching for file changes with StatReloader
+INFO 2025-04-23 10:30:44,289 basehttp 41523 140022393915072 "GET /manage-session/ HTTP/1.1" 200 37135
+INFO 2025-04-23 10:30:44,333 basehttp 41523 140022385522368 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 10:30:44,349 basehttp 41523 140022393915072 "GET /static/core/css/custom.css?v=1745397044 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:30:50,481 basehttp 41523 140022393915072 "GET /manage-session/get/2/ HTTP/1.1" 200 134
+INFO 2025-04-23 10:31:11,527 basehttp 41523 140022393915072 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:31:11,574 basehttp 41523 140022393915072 "GET /manage-session/ HTTP/1.1" 200 37130
+INFO 2025-04-23 10:31:11,623 basehttp 41523 140022393915072 "GET /static/core/css/custom.css?v=1745397071 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:31:15,125 basehttp 41523 140022393915072 "GET /manage-session/get/2/ HTTP/1.1" 200 134
+INFO 2025-04-23 10:31:28,509 basehttp 41523 140022393915072 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:31:28,547 basehttp 41523 140022393915072 "GET /manage-session/ HTTP/1.1" 200 37126
+INFO 2025-04-23 10:31:28,583 basehttp 41523 140022393915072 "GET /static/core/css/custom.css?v=1745397088 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:31:37,639 basehttp 41523 140022393915072 "GET /manage-session/get/2/ HTTP/1.1" 200 130
+INFO 2025-04-23 10:34:29,092 autoreload 41523 140022936835904 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:34:29,649 autoreload 43045 139780224874304 Watching for file changes with StatReloader
+INFO 2025-04-23 10:34:32,297 autoreload 43045 139780224874304 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:34:32,793 autoreload 43090 140389496268608 Watching for file changes with StatReloader
+INFO 2025-04-23 10:34:35,361 autoreload 43090 140389496268608 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:34:35,956 autoreload 43122 139715307120448 Watching for file changes with StatReloader
+INFO 2025-04-23 10:34:39,253 basehttp 43122 139714764236480 "GET /manage-session/ HTTP/1.1" 200 37226
+INFO 2025-04-23 10:34:39,297 basehttp 43122 139714764236480 "GET /static/core/css/custom.css?v=1745397279 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:34:43,230 basehttp 43122 139714764236480 "GET /manage-session/get/2/ HTTP/1.1" 200 130
+INFO 2025-04-23 10:35:18,385 basehttp 43122 139714764236480 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:35:18,419 basehttp 43122 139714764236480 "GET /manage-session/ HTTP/1.1" 200 37228
+INFO 2025-04-23 10:35:18,477 basehttp 43122 139714764236480 "GET /static/core/css/custom.css?v=1745397318 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:37:25,490 basehttp 43122 139714764236480 "GET /manage-session/get/3/ HTTP/1.1" 200 259
+INFO 2025-04-23 10:37:55,944 basehttp 43122 139714764236480 "POST /manage-session/3/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:37:55,987 basehttp 43122 139714764236480 "GET /manage-session/ HTTP/1.1" 200 37228
+INFO 2025-04-23 10:37:56,052 basehttp 43122 139714764236480 "GET /static/core/css/custom.css?v=1745397475 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:40:53,597 autoreload 43122 139715307120448 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:40:54,098 autoreload 45635 140292423649088 Watching for file changes with StatReloader
+INFO 2025-04-23 10:41:52,569 basehttp 45635 140291879667392 "GET /manage-session/ HTTP/1.1" 200 37227
+INFO 2025-04-23 10:41:52,634 basehttp 45635 140291871274688 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 10:41:52,639 basehttp 45635 140291879667392 "GET /static/core/css/custom.css?v=1745397712 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:41:54,191 basehttp 45635 140291879667392 "GET /manage-session/get/2/ HTTP/1.1" 200 131
+INFO 2025-04-23 10:42:02,805 basehttp 45635 140291879667392 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:42:02,845 basehttp 45635 140291879667392 "GET /manage-session/ HTTP/1.1" 200 37227
+INFO 2025-04-23 10:42:02,883 basehttp 45635 140291879667392 "GET /static/core/css/custom.css?v=1745397722 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:42:09,595 basehttp 45635 140291879667392 "GET /manage-session/get/3/ HTTP/1.1" 200 245
+INFO 2025-04-23 10:42:19,988 basehttp 45635 140291879667392 "POST /manage-session/3/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:42:20,020 basehttp 45635 140291879667392 "GET /manage-session/ HTTP/1.1" 200 37227
+INFO 2025-04-23 10:42:20,069 basehttp 45635 140291879667392 "GET /static/core/css/custom.css?v=1745397740 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:43:04,314 autoreload 45635 140292423649088 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:43:05,024 autoreload 46633 140529669908288 Watching for file changes with StatReloader
+INFO 2025-04-23 10:43:12,696 autoreload 46633 140529669908288 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:43:13,260 autoreload 46719 140507582605120 Watching for file changes with StatReloader
+INFO 2025-04-23 10:43:15,344 autoreload 46719 140507582605120 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:43:15,770 autoreload 46738 140110551545664 Watching for file changes with StatReloader
+INFO 2025-04-23 10:43:17,405 autoreload 46738 140110551545664 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:43:18,005 autoreload 46765 140373987641152 Watching for file changes with StatReloader
+INFO 2025-04-23 10:43:18,635 basehttp 46765 140373444785856 "GET /manage-session/ HTTP/1.1" 200 37227
+INFO 2025-04-23 10:43:18,696 basehttp 46765 140373444785856 "GET /static/core/css/custom.css?v=1745397798 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:43:21,135 basehttp 46765 140373444785856 "GET /manage-session/get/2/ HTTP/1.1" 200 131
+ERROR 2025-04-23 10:45:10,474 log 46765 140373444785856 Internal Server Error: /manage-session/2/update/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/core/views.py", line 149, in update_session
+    logger.info(f"Session dates: {session_dates}")
+                                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'session_dates' where it is not associated with a value
+ERROR 2025-04-23 10:45:10,476 basehttp 46765 140373444785856 "POST /manage-session/2/update/ HTTP/1.1" 500 89120
+ERROR 2025-04-23 10:45:31,920 log 46765 140373444785856 Internal Server Error: /manage-session/2/update/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/core/views.py", line 149, in update_session
+    logger.info(f"Session dates: {session_dates}")
+                                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'session_dates' where it is not associated with a value
+ERROR 2025-04-23 10:45:31,921 basehttp 46765 140373444785856 "POST /manage-session/2/update/ HTTP/1.1" 500 89120
+INFO 2025-04-23 10:46:30,344 autoreload 46765 140373987641152 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:46:31,011 autoreload 48088 139656563062592 Watching for file changes with StatReloader
+INFO 2025-04-23 10:46:32,601 autoreload 48088 139656563062592 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:46:33,082 autoreload 48125 140291545802560 Watching for file changes with StatReloader
+INFO 2025-04-23 10:46:45,465 basehttp 48125 140291002885824 "GET /manage-session/ HTTP/1.1" 200 37210
+INFO 2025-04-23 10:46:45,520 basehttp 48125 140291002885824 "GET /static/core/css/custom.css?v=1745398005 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:46:47,357 basehttp 48125 140291002885824 "GET /manage-session/get/2/ HTTP/1.1" 200 131
+INFO 2025-04-23 10:46:52,382 basehttp 48125 140291002885824 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:46:52,416 basehttp 48125 140291002885824 "GET /manage-session/ HTTP/1.1" 200 37210
+INFO 2025-04-23 10:46:52,458 basehttp 48125 140291002885824 "GET /static/core/css/custom.css?v=1745398012 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:52:29,825 autoreload 48125 140291545802560 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:52:30,406 autoreload 50422 139758842238784 Watching for file changes with StatReloader
+INFO 2025-04-23 10:52:31,976 autoreload 50422 139758842238784 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:52:32,458 autoreload 50455 140691379636032 Watching for file changes with StatReloader
+INFO 2025-04-23 10:52:48,532 autoreload 50455 140691379636032 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:52:49,202 autoreload 50586 140219785414464 Watching for file changes with StatReloader
+INFO 2025-04-23 10:52:55,329 autoreload 50586 140219785414464 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:52:55,749 autoreload 50656 140169893562176 Watching for file changes with StatReloader
+INFO 2025-04-23 10:53:01,435 autoreload 50656 140169893562176 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:53:02,094 autoreload 50723 140680571070272 Watching for file changes with StatReloader
+INFO 2025-04-23 10:53:04,965 basehttp 50723 140680028108480 "GET /manage-session/ HTTP/1.1" 200 37225
+INFO 2025-04-23 10:53:05,009 basehttp 50723 140680019715776 "GET /static/core/images/forasslettre.png HTTP/1.1" 304 0
+INFO 2025-04-23 10:53:05,024 basehttp 50723 140680028108480 "GET /static/core/css/custom.css?v=1745398384 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:53:26,802 basehttp 50723 140680028108480 "POST /api/create-session/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:53:26,843 basehttp 50723 140680028108480 "GET /manage-session/ HTTP/1.1" 200 38894
+INFO 2025-04-23 10:53:26,881 basehttp 50723 140680028108480 "GET /static/core/css/custom.css?v=1745398406 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:53:31,026 basehttp 50723 140680028108480 "GET /manage-session/get/8/ HTTP/1.1" 200 211
+ERROR 2025-04-23 10:53:43,527 log 50723 140680028108480 Internal Server Error: /manage-session/8/update/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/core/views.py", line 149, in update_session
+    logger.info(f"Session dates: {session_dates}")
+                                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'session_dates' where it is not associated with a value
+ERROR 2025-04-23 10:53:43,530 basehttp 50723 140680028108480 "POST /manage-session/8/update/ HTTP/1.1" 500 89140
+ERROR 2025-04-23 10:54:30,335 log 50723 140680028108480 Internal Server Error: /manage-session/8/update/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/core/views.py", line 149, in update_session
+    logger.info(f"Session dates: {session_dates}")
+                                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'session_dates' where it is not associated with a value
+ERROR 2025-04-23 10:54:30,337 basehttp 50723 140680028108480 "POST /manage-session/8/update/ HTTP/1.1" 500 89140
+ERROR 2025-04-23 10:55:56,611 log 50723 140680028108480 Internal Server Error: /manage-session/8/update/
+Traceback (most recent call last):
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/contrib/auth/decorators.py", line 60, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/venv/lib/python3.11/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/jahir/Projects/stage/formasmat/core/views.py", line 149, in update_session
+    logger.info(f"Session dates: {session_dates}")
+                                  ^^^^^^^^^^^^^
+UnboundLocalError: cannot access local variable 'session_dates' where it is not associated with a value
+ERROR 2025-04-23 10:55:56,613 basehttp 50723 140680028108480 "POST /manage-session/8/update/ HTTP/1.1" 500 89140
+INFO 2025-04-23 10:57:28,385 autoreload 50723 140680571070272 /home/jahir/Projects/stage/formasmat/core/views.py changed, reloading.
+INFO 2025-04-23 10:57:28,893 autoreload 52596 139955956807488 Watching for file changes with StatReloader
+INFO 2025-04-23 10:57:33,224 basehttp 52596 139955412809408 "GET /manage-session/ HTTP/1.1" 200 38894
+INFO 2025-04-23 10:57:33,275 basehttp 52596 139955412809408 "GET /static/core/css/custom.css?v=1745398653 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:57:36,495 basehttp 52596 139955412809408 "GET /manage-session/get/8/ HTTP/1.1" 200 211
+INFO 2025-04-23 10:57:58,888 basehttp 52596 139955412809408 "POST /manage-session/8/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:57:58,920 basehttp 52596 139955412809408 "GET /manage-session/ HTTP/1.1" 200 38981
+INFO 2025-04-23 10:57:58,970 basehttp 52596 139955412809408 "GET /static/core/css/custom.css?v=1745398678 HTTP/1.1" 200 10230
+INFO 2025-04-23 10:58:03,574 basehttp 52596 139955412809408 "GET /manage-session/get/2/ HTTP/1.1" 200 131
+INFO 2025-04-23 10:58:17,466 basehttp 52596 139955412809408 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 10:58:17,522 basehttp 52596 139955412809408 "GET /manage-session/ HTTP/1.1" 200 39155
+INFO 2025-04-23 10:58:17,560 basehttp 52596 139955412809408 "GET /static/core/css/custom.css?v=1745398697 HTTP/1.1" 200 10230
+INFO 2025-04-23 11:00:27,520 basehttp 52596 139955412809408 "GET /manage-session/get/2/ HTTP/1.1" 200 207
+INFO 2025-04-23 11:00:50,729 basehttp 52596 139955412809408 "POST /manage-session/2/update/ HTTP/1.1" 200 61
+INFO 2025-04-23 11:00:50,767 basehttp 52596 139955412809408 "GET /manage-session/ HTTP/1.1" 200 39155
+INFO 2025-04-23 11:00:50,844 basehttp 52596 139955412809408 "GET /static/core/css/custom.css?v=1745398850 HTTP/1.1" 200 10230
+INFO 2025-04-23 11:00:53,735 views 52596 139955412809408 === DÉBUT session_detail pour session_id=8 ===
+INFO 2025-04-23 11:00:53,738 views 52596 139955412809408 Session trouvée : la rochelle - Non ouverte
+INFO 2025-04-23 11:00:53,740 views 52596 139955412809408 Participants trouvés : 0
+INFO 2025-04-23 11:00:53,742 views 52596 139955412809408 Dates trouvées : 3
+INFO 2025-04-23 11:00:53,743 views 52596 139955412809408 Utilisateurs trouvés : 12
+INFO 2025-04-23 11:00:53,745 views 52596 139955412809408 Souhaits trouvés : 0
+INFO 2025-04-23 11:00:53,745 views 52596 139955412809408 Statuts participants : [('WISH', 'Souhait'), ('CONTACTED', 'Contacté'), ('REMINDED', 'Relancé'), ('FILE_EMAIL', 'Dossier reçu par email'), ('FILE_PAPER', 'Dossier reçu papier'), ('ERROR', 'Erreur')]
+INFO 2025-04-23 11:00:53,746 views 52596 139955412809408 Statuts session : [('NON_OUVERTE', 'Non ouverte'), ('DEMANDEE', 'Demandée'), ('OUVERTE', 'Ouverte'), ('COMPLETE', 'Complète'), ('PREPAREE', 'Préparée'), ('ENVOYEE_FORMATEUR', 'Envoyée formateur'), ('ATTENTE_RETOUR', 'En attente retour'), ('ATTENTE_TRAITEMENT_SYLVAN', 'En attente traitement Sylvan'), ('ATTENTE_TRAITEMENT_IPERIA', 'En attente traitement Ipéria'), ('ERREUR_SYLVAN', 'Erreur à traiter Sylvan'), ('ERREUR_IPERIA', 'Erreur à traiter Ipéria'), ('TERMINEE', 'Terminée')]
+INFO 2025-04-23 11:00:53,747 views 52596 139955412809408 Formateurs trouvés : 1
+INFO 2025-04-23 11:00:53,747 views 52596 139955412809408 Contexte préparé avec succès
+INFO 2025-04-23 11:00:53,747 views 52596 139955412809408 Clés du contexte : ['session', 'participants', 'session_dates', 'trainers', 'participant_status_choices', 'available_seats', 'total_capacity', 'registered_count', 'all_users', 'training_wishes', 'session_status_choices']
+INFO 2025-04-23 11:00:53,769 views 52596 139955412809408 Template rendu avec succès
+INFO 2025-04-23 11:00:53,770 basehttp 52596 139955412809408 "GET /manage-session/detail/8/ HTTP/1.1" 200 60383
+INFO 2025-04-23 11:00:58,118 basehttp 52596 139955412809408 "GET /manage-session/ HTTP/1.1" 200 39155
+INFO 2025-04-23 11:00:58,164 basehttp 52596 139955412809408 "GET /static/core/css/custom.css?v=1745398858 HTTP/1.1" 200 10230
+INFO 2025-04-23 11:01:04,042 basehttp 52596 139955412809408 "POST /manage-session/delete/8/ HTTP/1.1" 200 17
+INFO 2025-04-23 11:01:04,072 basehttp 52596 139955412809408 "GET /manage-session/ HTTP/1.1" 200 37399
+INFO 2025-04-23 11:01:04,138 basehttp 52596 139955412809408 "GET /static/core/css/custom.css?v=1745398864 HTTP/1.1" 200 10230
+=======
 INFO 2025-04-23 09:13:51,646 autoreload 29236 7372 Watching for file changes with StatReloader
 INFO 2025-04-23 09:13:55,340 basehttp 29236 25276 "GET / HTTP/1.1" 302 0
 INFO 2025-04-23 09:13:55,365 basehttp 29236 25276 "GET /formations/ HTTP/1.1" 200 22776
@@ -11581,3 +12051,4 @@ INFO 2025-04-23 10:12:45,235 autoreload 27116 21748 Watching for file changes wi
 INFO 2025-04-23 10:12:58,659 autoreload 27116 21748 C:\Users\ssdhp\OneDrive\Bureau\Stage-git\formasmat\core\views.py changed, reloading.
 INFO 2025-04-23 10:12:59,515 autoreload 13692 588 Watching for file changes with StatReloader
 INFO 2025-04-23 10:13:02,009 basehttp 13692 27144 "GET /export-session/4/participants/csv/ HTTP/1.1" 200 5627
+>>>>>>> master
