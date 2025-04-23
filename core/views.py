@@ -10,10 +10,14 @@ from django.db import IntegrityError
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.db import transaction
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.utils.encoding import smart_str
+import csv
+from openpyxl import Workbook
+from openpyxl.utils import get_column_letter
+from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
 from core.utils import get_coordinates_from_postal_code, haversine1
 
 from .models import (
@@ -917,7 +921,109 @@ def session_create(request):
     except Formation.DoesNotExist:
         messages.error(request, 'Formation introuvable.')
         return redirect('core:formation_list')
+    
+    
+@staff_member_required
+def export_session_csv(request, session_id):
+    session = Session.objects.get(pk=session_id)
+    session_participants = SessionParticipant.objects.filter(session=session).select_related('user')
+    participant_extra_data = {p.user_id: p for p in Participant.objects.filter(session=session)}
 
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Participants"
+
+    # Styles
+    header_fill = PatternFill(start_color="004080", end_color="004080", fill_type="solid")
+    header_font = Font(color="FFFFFF", bold=True)
+    center_alignment = Alignment(horizontal="center", vertical="center")
+    thin_border = Border(
+        left=Side(style='thin'), right=Side(style='thin'),
+        top=Side(style='thin'), bottom=Side(style='thin')
+    )
+
+    color_map = {
+        'Souhait': 'ADD8E6',
+        'Contacté': '87CEEB',
+        'Relancé': 'FFFF99',
+        'Dossier reçu par email': '90EE90',
+        'Dossier reçu papier': '32CD32',
+        'Erreur': 'FF9999',
+    }
+
+    # Ligne avec les formateurs
+    formateurs = ', '.join(f"{t.first_name} {t.last_name}" for t in session.trainers.all())
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=9)
+    cell = ws.cell(row=1, column=1)
+    cell.value = f"Formateurs : {formateurs or 'Aucun'}"
+    cell.font = Font(bold=True)
+    cell.alignment = center_alignment
+
+    # Ligne d'en-têtes
+    headers = [
+        "Nom", "Prénom", "Email", "RPE/Association",
+        "Statut d'inscription", "Statut Dossier", "Commentaires",
+        "Dates et Lieux", " "  # colonne vide pour avoir 9 colonnes
+    ]
+    ws.append(headers)
+
+    for col_num, column_title in enumerate(headers, 1):
+        cell = ws.cell(row=2, column=col_num)
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = center_alignment
+        cell.border = thin_border
+
+    # Remplir les données des participants
+    for sp in session_participants:
+        user = sp.user
+        participant = participant_extra_data.get(user.id)
+
+        status_text = dict(SessionParticipant.STATUS_CHOICES).get(sp.status, 'Inconnu')
+        file_status_text = dict(Participant.FILE_STATUS).get(participant.file_status, '') if participant else ''
+        comments = participant.comments if participant else ''
+        dates_lieux = "/n"
+
+        row_data = [
+            user.last_name,
+            user.first_name,
+            user.email,
+            getattr(user, 'rpe_association', 'Non renseigné'),
+            status_text,
+            file_status_text,
+            comments,
+            dates_lieux,
+            ""  # colonne vide pour équilibrer
+        ]
+
+        ws.append(row_data)
+        row_idx = ws.max_row
+        for col_idx, value in enumerate(row_data, 1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.alignment = center_alignment
+            cell.border = thin_border
+
+        status_color = color_map.get(status_text)
+        if status_color:
+            status_cell = ws.cell(row=row_idx, column=5)
+            status_cell.fill = PatternFill(start_color=status_color, end_color=status_color, fill_type="solid")
+
+    # Ajuster la largeur des colonnes
+    for i, column_cells in enumerate(ws.columns, 1):
+        max_length = 0
+        for cell in column_cells:
+            if cell.value:
+                max_length = max(max_length, len(str(cell.value)))
+        col_letter = get_column_letter(i)
+        ws.column_dimensions[col_letter].width = max_length + 2
+
+    # Génération du fichier
+    response = HttpResponse(
+        content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    )
+    response['Content-Disposition'] = f'attachment; filename="session_{session_id}_participants.xlsx"'
+    wb.save(response)
+    return response
 @login_required
 @staff_member_required
 def manage_session(request):
