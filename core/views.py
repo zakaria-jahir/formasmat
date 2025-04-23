@@ -3843,16 +3843,15 @@ def get_participant_comments(request, participant_id):
     
     comments_data = [{
         'id': comment.id,
-        'text': comment.text,
+        'content': comment.content,  # ✅ Correction ici
         'created_at': comment.created_at.strftime('%d/%m/%Y %H:%M'),
         'author': comment.author.get_full_name() if comment.author else 'Anonyme'
     } for comment in comments]
     
     return JsonResponse({
         'comments': comments_data,
-        'participant_name': f"{participant.first_name} {participant.last_name}"
+        'participant_name': f"{participant.user.first_name} {participant.user.last_name}"
     })
-
 @login_required
 def mark_notification_read(request, notification_id):
     """Marquer une notification comme lue."""
