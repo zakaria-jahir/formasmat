@@ -147,9 +147,14 @@ class FormationForm(forms.ModelForm):
 class TrainingRoomForm(forms.ModelForm):
     class Meta:
         model = TrainingRoom
-        fields = ['name', 'address', 'capacity', 'equipment']
+        fields = ['name', 'address', 'postal_code', 'city', 'capacity', 'equipment']
         widgets = {
-            'equipment': forms.Textarea(attrs={'rows': 4}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'postal_code': forms.TextInput(attrs={'class': 'form-control'}),
+            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'capacity': forms.NumberInput(attrs={'class': 'form-control'}),
+            'equipment': forms.Textarea(attrs={'rows': 4, 'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class TrainerForm(forms.ModelForm):
