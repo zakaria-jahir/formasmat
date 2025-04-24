@@ -2,6 +2,7 @@ db.sqlite3
 debug.log
 venv/
 __pycache__/
+.pyc
 *.py[cod]
 
 __pycache__/
