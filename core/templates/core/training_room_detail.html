@@ -2,6 +2,16 @@
 
 {% block title %}{{ room.name }}{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+    #map {
+        height: 400px;
+        width: 100%;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row mb-4">
@@ -26,18 +36,12 @@
                         <div class="col-md-6">
                             <h5><i class="fas fa-info-circle text-primary"></i> Informations générales</h5>
                             <ul class="list-unstyled">
-                                <li class="mb-2">
-                                    <strong>Capacité:</strong> {{ room.capacity }} personnes
-                                </li>
+                                <li class="mb-2"><strong>Capacité:</strong> {{ room.capacity }} personnes</li>
                                 {% if room.accessibility %}
-                                    <li class="mb-2">
-                                        <strong>Accessibilité:</strong> {{ room.accessibility }}
-                                    </li>
+                                <li class="mb-2"><strong>Accessibilité:</strong> {{ room.accessibility }}</li>
                                 {% endif %}
                                 {% if room.parking %}
-                                    <li class="mb-2">
-                                        <strong>Parking:</strong> {{ room.parking }}
-                                    </li>
+                                <li class="mb-2"><strong>Parking:</strong> {{ room.parking }}</li>
                                 {% endif %}
                             </ul>
                         </div>
@@ -52,10 +56,10 @@
                     </div>
 
                     {% if room.notes %}
-                        <div class="mt-4">
-                            <h5><i class="fas fa-sticky-note text-primary"></i> Notes supplémentaires</h5>
-                            {{ room.notes|linebreaks }}
-                        </div>
+                    <div class="mt-4">
+                        <h5><i class="fas fa-sticky-note text-primary"></i> Notes supplémentaires</h5>
+                        {{ room.notes|linebreaks }}
+                    </div>
                     {% endif %}
                 </div>
             </div>
@@ -63,66 +67,89 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title"><i class="fas fa-map-marker-alt text-primary"></i> Localisation</h5>
-                    <div id="map" style="height: 400px;" class="mt-3"></div>
+                    <div id="map" class="mt-3"></div>
                 </div>
             </div>
         </div>
 
         <div class="col-md-4">
             {% if user.is_staff %}
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h5 class="card-title">Actions administrateur</h5>
-                        <div class="d-grid gap-2">
-                            <a href="{% url 'core:training_room_edit' pk=room.pk %}" class="btn btn-primary">
-                                <i class="fas fa-edit"></i> Modifier
-                            </a>
-                            <a href="{% url 'core:training_room_delete' pk=room.pk %}" class="btn btn-danger">
-                                <i class="fas fa-trash"></i> Supprimer
-                            </a>
-                        </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Actions administrateur</h5>
+                    <div class="d-grid gap-2">
+                        <a href="{% url 'core:training_room_edit' pk=room.pk %}" class="btn btn-primary">
+                            <i class="fas fa-edit"></i> Modifier
+                        </a>
+                        <a href="{% url 'core:training_room_delete' pk=room.pk %}" class="btn btn-danger">
+                            <i class="fas fa-trash"></i> Supprimer
+                        </a>
                     </div>
                 </div>
+            </div>
             {% endif %}
 
             {% if room.upcoming_sessions %}
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Prochaines formations</h5>
-                        <ul class="list-group list-group-flush">
-                            {% for session in room.upcoming_sessions %}
-                                <li class="list-group-item">
-                                    <h6 class="mb-1">{{ session.formation.name }}</h6>
-                                    <small class="text-muted">
-                                        Du {{ session.start_date|date:"d/m/Y" }}
-                                        au {{ session.end_date|date:"d/m/Y" }}
-                                    </small>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Prochaines formations</h5>
+                    <ul class="list-group list-group-flush">
+                        {% for session in room.upcoming_sessions %}
+                        <li class="list-group-item">
+                            <h6 class="mb-1">{{ session.formation.name }}</h6>
+                            <small class="text-muted">
+                                Du {{ session.start_date|date:"d/m/Y" }} au {{ session.end_date|date:"d/m/Y" }}
+                            </small>
+                        </li>
+                        {% endfor %}
+                    </ul>
                 </div>
+            </div>
             {% endif %}
         </div>
     </div>
 </div>
+{% endblock %}
 
 {% block extra_js %}
-<script src="https://maps.googleapis.com/maps/api/js?key={{ google_maps_api_key }}"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
 <script>
-    function initMap() {
-        const location = { lat: {{ room.latitude }}, lng: {{ room.longitude }} };
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 15,
-            center: location,
-        });
-        const marker = new google.maps.Marker({
-            position: location,
-            map: map,
-            title: "{{ room.name }}"
-        });
-    }
-    window.onload = initMap;
+    document.addEventListener("DOMContentLoaded", function () {
+        const address = "{{ room.address|escapejs }}";
+        const city = "{{ room.city|default_if_none:''|escapejs }}";
+        const postalCode = "{{ room.postal_code|default_if_none:''|escapejs }}";
+        const fullAddress = `${address}, ${postalCode} ${city}, France`;
+
+        console.log("Adresse utilisée :", fullAddress);
+
+        // Appel à l'API Nominatim pour obtenir les coordonnées
+        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(fullAddress)}`)
+            .then(response => response.json())
+            .then(data => {
+                if (data && data.length > 0) {
+                    const lat = parseFloat(data[0].lat);
+                    const lon = parseFloat(data[0].lon);
+
+                    const map = L.map('map').setView([lat, lon], 15);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    }).addTo(map);
+
+                    L.marker([lat, lon])
+                        .addTo(map)
+                        .bindPopup("{{ room.name|escapejs }}")
+                        .openPopup();
+                } else {
+                    document.getElementById('map').innerHTML =
+                        '<p class="text-danger">Adresse non localisée. Veuillez vérifier les informations saisies.</p>';
+                }
+            })
+            .catch(err => {
+                console.error("Erreur géocodage :", err);
+                document.getElementById('map').innerHTML =
+                    '<p class="text-danger">Erreur lors de la localisation.</p>';
+            });
+    });
 </script>
-{% endblock %}
 {% endblock %}

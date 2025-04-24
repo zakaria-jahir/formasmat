@@ -30,3 +30,17 @@ def haversine1(lat1, lon1, lat2, lon2):
     c = 2 * math.atan2(math.sqrt(a), math.sqrt(1 - a))
 
     return R * c
+
+
+from geopy.geocoders import Nominatim
+
+def get_coordinates_from_address(address, postal_code=None, city=None):
+    geolocator = Nominatim(user_agent="formasmat_app")
+    try:
+        full_address = f"{address}, {postal_code or ''} {city or ''}, France"
+        location = geolocator.geocode(full_address.strip())
+        if location:
+            return location.latitude, location.longitude
+    except Exception as e:
+        print("Erreur géocodage :", e)
+    return None, None

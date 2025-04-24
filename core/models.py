@@ -121,6 +121,8 @@ class Trainer(models.Model):
     specialties = models.ManyToManyField('Formation', blank=True, verbose_name="Spécialités")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    latitude = models.FloatField(null=True, blank=True)
+    longitude = models.FloatField(null=True, blank=True)
 
     def get_full_name(self):
         """Retourne le nom complet du formateur."""
@@ -140,13 +142,14 @@ class Trainer(models.Model):
 class TrainingRoom(models.Model):
     name = models.CharField(max_length=255, verbose_name="Nom")
     address = models.CharField(max_length=255, verbose_name="Adresse")
+    postal_code = models.CharField(max_length=20, verbose_name="Code postal", blank=True, null=True)
+    city = models.CharField(max_length=100, verbose_name="Ville", blank=True, null=True)
     capacity = models.IntegerField(validators=[MinValueValidator(1)], verbose_name="Capacité")
     equipment = models.TextField(blank=True, verbose_name="Équipement")
     latitude = models.FloatField(null=True, blank=True)
     longitude = models.FloatField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date de création")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de mise à jour")
-
     def __str__(self):
         return f"{self.name} ({self.capacity} places)"
 
