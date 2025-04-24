@@ -4,36 +4,20 @@
 {% block title %}Inscription{% endblock %}
 
 {% block content %}
-<div class="row">
+<div class="row mb-5">
     <div class="col-md-8 offset-md-2">
         <div class="card">
             <div class="card-header">
                 <h2 class="text-center">Inscription</h2>
             </div>
             <div class="card-body">
-                <form method="post" action="{% url 'core:register' %}" id="registration-form">
+                <form method="post" action="{% url 'core:register' %}" id="registration-form" novalidate>
                     {% csrf_token %}
-                    
-                    {% if form.errors %}
-                        <div class="alert alert-danger">
-                            Veuillez corriger les erreurs ci-dessous.
-                        </div>
-                    {% endif %}
-
-                    {% if form.non_field_errors %}
-                        <div class="alert alert-danger">
-                            {% for error in form.non_field_errors %}
-                                <p>{{ error }}</p>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
 
                     <div class="mb-3">
                         <label for="id_username" class="form-label">{{ form.username.label }}</label>
                         {% render_field form.username class="form-control" id="id_username" %}
-                        {% for error in form.username.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="row">
@@ -41,18 +25,14 @@
                             <div class="mb-3">
                                 <label for="id_first_name" class="form-label">{{ form.first_name.label }}</label>
                                 {% render_field form.first_name class="form-control" id="id_first_name" %}
-                                {% for error in form.first_name.errors %}
-                                    <div class="invalid-feedback d-block">{{ error }}</div>
-                                {% endfor %}
+                                <div class="invalid-feedback"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_last_name" class="form-label">{{ form.last_name.label }}</label>
                                 {% render_field form.last_name class="form-control" id="id_last_name" %}
-                                {% for error in form.last_name.errors %}
-                                    <div class="invalid-feedback d-block">{{ error }}</div>
-                                {% endfor %}
+                                <div class="invalid-feedback"></div>
                             </div>
                         </div>
                     </div>
@@ -60,57 +40,31 @@
                     <div class="mb-3">
                         <label for="id_email" class="form-label">{{ form.email.label }}</label>
                         {% render_field form.email class="form-control" id="id_email" %}
-                        {% for error in form.email.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="id_phone" class="form-label">{{ form.phone.label }}</label>
                         {% render_field form.phone class="form-control" id="id_phone" %}
-                        {% for error in form.phone.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="id_city" class="form-label">{{ form.city.label }}</label>
-                        {% render_field form.city class="form-control" id="id_city" placeholder="Ex. : La Rochelle" %}
-                        {% for error in form.city.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
+                        {% render_field form.city class="form-control" id="id_city" %}
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="id_code_postal" class="form-label">{{ form.code_postal.label }}</label>
-                        {% render_field form.code_postal class="form-control" id="id_code_postal" placeholder="17000" %}
-                        {% for error in form.code_postal.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
+                        {% render_field form.code_postal class="form-control" id="id_code_postal" %}
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="mb-3">
                         <label for="id_address" class="form-label">{{ form.address.label }}</label>
                         {% render_field form.address class="form-control" id="id_address" %}
-                        {% for error in form.address.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="id_rpe" class="form-label">{{ form.rpe.label }}</label>
-                        {% render_field form.rpe class="form-select" id="id_rpe" onchange="toggleOtherRPE(this)" %}
-                        {% for error in form.rpe.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
-                    </div>
-
-                    <div class="mb-3" id="other_rpe_div" style="display: none;">
-                        <label for="id_other_rpe" class="form-label">{{ form.other_rpe.label }}</label>
-                        {% render_field form.other_rpe class="form-control" id="id_other_rpe" %}
-                        {% for error in form.other_rpe.errors %}
-                            <div class="invalid-feedback d-block">{{ error }}</div>
-                        {% endfor %}
+                        <div class="invalid-feedback"></div>
                     </div>
 
                     <div class="row">
@@ -118,18 +72,14 @@
                             <div class="mb-3">
                                 <label for="id_password1" class="form-label">{{ form.password1.label }}</label>
                                 {% render_field form.password1 class="form-control" id="id_password1" %}
-                                {% for error in form.password1.errors %}
-                                    <div class="invalid-feedback d-block">{{ error }}</div>
-                                {% endfor %}
+                                <div class="invalid-feedback"></div>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="id_password2" class="form-label">{{ form.password2.label }}</label>
                                 {% render_field form.password2 class="form-control" id="id_password2" %}
-                                {% for error in form.password2.errors %}
-                                    <div class="invalid-feedback d-block">{{ error }}</div>
-                                {% endfor %}
+                                <div class="invalid-feedback"></div>
                             </div>
                         </div>
                     </div>
@@ -149,27 +99,106 @@
 
 {% block extra_js %}
 <script>
-function toggleOtherRPE(select) {
-    const otherRpeDiv = document.getElementById('other_rpe_div');
-    const otherRpeInput = document.getElementById('id_other_rpe');
-
-    if (otherRpeInput) {
-        if (!select.value || select.value === "") {
-            otherRpeDiv.style.display = 'block';
-            otherRpeInput.setAttribute('required', 'required');
-        } else {
-            otherRpeDiv.style.display = 'none';
-            otherRpeInput.removeAttribute('required');
-            otherRpeInput.value = '';
-        }
-    }
-}
-
-document.addEventListener('DOMContentLoaded', function () {
-    const rpeSelect = document.getElementById('id_rpe');
-    if (rpeSelect) {
-        toggleOtherRPE(rpeSelect);
-    }
-});
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('registration-form');
+    
+        form.addEventListener('submit', async function (event) {
+            // Empêcher l'envoi du formulaire par défaut
+            event.preventDefault();
+    
+            // Réinitialiser les messages d'erreur
+            const errorMessages = document.querySelectorAll('.invalid-feedback');
+            errorMessages.forEach(error => error.textContent = '');
+    
+            const formFields = form.querySelectorAll('.form-control');
+            formFields.forEach(field => field.classList.remove('is-invalid'));
+    
+            let isValid = true;
+    
+            // Validation des champs
+            const username = document.getElementById('id_username');
+            const email = document.getElementById('id_email');
+    
+            // Vérification AJAX pour l'email et le nom d'utilisateur
+            const response = await fetch(`/check-user-existence/?username=${username.value}&email=${email.value}`);
+            const data = await response.json();
+    
+            if (data.username_exists) {
+                isValid = false;
+                username.classList.add('is-invalid');
+                username.nextElementSibling.textContent = "Le nom d'utilisateur existe déjà.";
+            }
+    
+            if (data.email_exists) {
+                isValid = false;
+                email.classList.add('is-invalid');
+                email.nextElementSibling.textContent = "L'email existe déjà.";
+            }
+    
+            const firstName = document.getElementById('id_first_name');
+            if (firstName.value.length < 3 || firstName.value.length > 8) {
+                isValid = false;
+                firstName.classList.add('is-invalid');
+                firstName.nextElementSibling.textContent = "Le prénom doit contenir entre 3 et 8 caractères.";
+            }
+    
+            const lastName = document.getElementById('id_last_name');
+            if (lastName.value.length < 3 || lastName.value.length > 8) {
+                isValid = false;
+                lastName.classList.add('is-invalid');
+                lastName.nextElementSibling.textContent = "Le nom doit contenir entre 3 et 8 caractères.";
+            }
+    
+            const phone = document.getElementById('id_phone');
+            const phoneRegex = /^0\d{9}$/;
+            if (!phoneRegex.test(phone.value)) {
+                isValid = false;
+                phone.classList.add('is-invalid');
+                phone.nextElementSibling.textContent = "Veuillez entrer un numéro de téléphone valide.";
+            }
+    
+            const city = document.getElementById('id_city');
+            if (city.value.trim() === "") {
+                isValid = false;
+                city.classList.add('is-invalid');
+                city.nextElementSibling.textContent = "La ville est obligatoire.";
+            }
+    
+            const codePostal = document.getElementById('id_code_postal');
+            const codePostalRegex = /^\d{2,7}$/;
+            if (!codePostalRegex.test(codePostal.value)) {
+                isValid = false;
+                codePostal.classList.add('is-invalid');
+                codePostal.nextElementSibling.textContent = "Veuillez entrer un code postal valide.";
+            }
+    
+            const address = document.getElementById('id_address');
+            if (address.value.trim() === "") {
+                isValid = false;
+                address.classList.add('is-invalid');
+                address.nextElementSibling.textContent = "L'adresse est obligatoire.";
+            }
+    
+            const password1 = document.getElementById('id_password1');
+            const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+            if (!passwordRegex.test(password1.value)) {
+                isValid = false;
+                password1.classList.add('is-invalid');
+                password1.nextElementSibling.textContent = "Le mot de passe doit contenir au moins 8 caractères, dont une majuscule, une minuscule, un chiffre et un symbole.";
+            }
+    
+            const password2 = document.getElementById('id_password2');
+            if (password1.value !== password2.value) {
+                isValid = false;
+                password2.classList.add('is-invalid');
+                password2.nextElementSibling.textContent = "Les mots de passe ne correspondent pas.";
+            }
+    
+            // Si tout est valide, soumettre le formulaire
+            if (isValid) {
+                form.submit();
+            }
+        });
+    });
 </script>
 {% endblock %}

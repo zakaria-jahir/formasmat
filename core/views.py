@@ -41,6 +41,9 @@ from .forms import (
     SessionForm, CustomSessionForm
 )
 
+from django.http import JsonResponse
+from django.contrib.auth import get_user_model
+
 import json
 import random
 from geopy.distance import geodesic
@@ -105,6 +108,26 @@ def register(request):
         form = UserRegistrationForm()
     
     return render(request, 'core/register.html', {'form': form})
+
+    # check email && username in database
+User = get_user_model()
+def check_user_existence(request):
+    """Vérifie si l'email ou le nom d'utilisateur existe déjà."""
+    username = request.GET.get('username', None)
+    email = request.GET.get('email', None)
+
+    response = {
+        'username_exists': False,
+        'email_exists': False,
+    }
+
+    if username and User.objects.filter(username=username).exists():
+        response['username_exists'] = True
+
+    if email and User.objects.filter(email=email).exists():
+        response['email_exists'] = True
+
+    return JsonResponse(response)
 
 @login_required
 def profile(request):

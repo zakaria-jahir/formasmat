@@ -14,6 +14,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('register/', views.register, name='register'),
     path('profile/', views.profile, name='profile'),
+    path('check-user-existence/', views.check_user_existence, name='check_user_existence'),
     
     # Formations
     path('formations/', views.formation_list, name='formation_list'),
