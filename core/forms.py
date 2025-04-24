@@ -47,6 +47,7 @@ class UserRegistrationForm(UserCreationForm):
         widget=forms.TextInput(attrs={
             'class': 'form-control',
             'autocomplete': 'tel',
+            'placeholder': "0712121212",
             'id': 'id_phone',
             'pattern': '[0-9]{10}'
         })
