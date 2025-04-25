@@ -544,10 +544,10 @@ def trainer_create(request):
         if form.is_valid():
             trainer = form.save()
             messages.success(request, f'Formateur {trainer.first_name} {trainer.last_name} créé avec succès.')
-            return redirect('core:trainer_detail', pk=trainer.pk)
+            return redirect('core:trainers_list')
     else:
         form = TrainerForm()
-    
+
     return render(request, 'core/trainer_form.html', {
         'form': form,
         'title': 'Nouveau formateur'
@@ -558,16 +558,16 @@ def trainer_create(request):
 def trainer_edit(request, pk):
     """Modification d'un formateur."""
     trainer = get_object_or_404(Trainer, pk=pk)
-    
+
     if request.method == 'POST':
-        form = TrainerForm(request.POST, instance=trainer)
+        form = TrainerForm(request.POST, request.FILES, instance=trainer)
         if form.is_valid():
             form.save()
             messages.success(request, 'Formateur modifié avec succès.')
-            return redirect('core:trainer_detail', pk=pk)
+            return redirect('core:trainers_list')
     else:
         form = TrainerForm(instance=trainer)
-    
+
     return render(request, 'core/trainer_form.html', {
         'form': form,
         'trainer': trainer,

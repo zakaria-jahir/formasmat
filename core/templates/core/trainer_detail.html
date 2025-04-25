@@ -16,8 +16,14 @@
                 <div class="card-body">
                     <p><strong>Email :</strong> {{ trainer.email }}</p>
                     <p><strong>Téléphone :</strong> {{ trainer.phone }}</p>
-                    {% if trainer.specialties %}
-                        <p><strong>Spécialités :</strong><br>{{ trainer.specialties }}</p>
+                    {% if trainer.specialties.all %}
+                    <p><strong>Spécialités :</strong>
+                        <span style="display: inline;">
+                            {% for specialty in trainer.specialties.all %}
+                                {{ specialty.name }}{% if not forloop.last %}, {% endif %} 
+                            {% endfor %}
+                        </span>
+                    </p>
                     {% endif %}
                 </div>
             </div>

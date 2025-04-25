@@ -47,7 +47,9 @@ urlpatterns = [
     path('manage-session/<int:session_id>/update/', views.update_session, name='update_session'),
     path('manage-session/delete/<int:session_id>/', views.delete_session, name='delete_session'),
     path('session/<int:session_id>/update_status/', views.update_session_status, name='update_session_status'),
-    path('manage-session/create/', views.session_create, name='session_create'),
+   
+    
+    #path('manage-session/create/', views.session_create, name='session_create'),# url non utilisé la creation du session se faite par l'url 'api/create-session' voir API endpoints
     path('manage-session/<int:session_id>/participants/create-and-add/', views.create_and_add_participant, name='create_and_add_participant'),
     path('sessions/calendar/', views.sessions_calendar, name='sessions_calendar'),
     path('export-session/<int:session_id>/participants/csv/', views.export_session_csv, name='export_session_csv'),

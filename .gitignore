@@ -1,9 +1,17 @@
-db.sqlite3
-debug.log
+# Environnements virtuels
 venv/
+.env/
+.venv/
+
+# Fichiers Python compilés
 __pycache__/
-.pyc
 *.py[cod]
 
-__pycache__/
-*.pyc
+# Fichiers de base de données
+db.sqlite3
+
+# Logs
+debug.log
+
+# Autres
+*.log
