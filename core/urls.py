@@ -79,6 +79,7 @@ urlpatterns = [
     path('training-rooms/create/', views.training_room_create, name='training_room_create'),
     path('training-rooms/<int:pk>/edit/', views.training_room_edit, name='training_room_edit'),
     path('training-rooms/<int:pk>/delete/', views.training_room_delete, name='training_room_delete'),
+    #sesions
     
     # Notifications
     path('notifications/', views.notifications_list, name='notifications_list'),

@@ -13,9 +13,10 @@ from django.db.models import Q, F
 from django.utils import timezone
 from django.db import IntegrityError
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods
+from django.views.decorators.http import require_http_methods,require_GET
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, JsonResponse
+
 
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -747,28 +748,6 @@ def get_formation_rooms(request):
     return JsonResponse({'rooms': rooms_data})
 
 @staff_member_required
-def get_formation_sessions(request):
-    formation_id = request.GET.get('formation_id')
-    if not formation_id:
-        return JsonResponse({'error': 'Formation non spécifiée'}, status=400)
-
-    sessions = Session.objects.filter(
-        formation_id=formation_id,
-        start_date__gte=timezone.now().date()
-    ).select_related('trainer', 'room')
-
-    sessions_data = [{
-        'id': session.id,
-        'startDate': session.start_date.strftime('%d/%m/%Y'),
-        'endDate': session.end_date.strftime('%d/%m/%Y'),
-        'trainer': str(session.trainer),
-        'room': str(session.room),
-        'availableSeats': session.room.capacity - session.registered_users.count()
-    } for session in sessions]
-
-    return JsonResponse({'sessions': sessions_data})
-
-@staff_member_required
 @require_http_methods(["POST"])
 def assign_to_session(request):
     try:
@@ -857,7 +836,31 @@ def session_list(request):
     return render(request, 'core/sessions_list.html', {
         'sessions': sessions
     })
+@require_GET
+def get_formation_sessions(request):
+    formation_id = request.GET.get('formation_id')
 
+    if not formation_id:
+        return JsonResponse([], safe=False)
+
+    try:
+        formation = Formation.objects.get(pk=formation_id)
+    except Formation.DoesNotExist:
+        return JsonResponse([], safe=False)
+
+    sessions = Session.objects.filter(formation=formation).order_by('-start_date')
+
+    data = [
+        {
+            "id": session.id,
+            "start_date": session.start_date.isoformat() if session.start_date else None,
+            "end_date": session.end_date.isoformat() if session.end_date else None,
+            "room": session.room.name if session.room else None
+        }
+        for session in sessions
+    ]
+
+    return JsonResponse(data, safe=False)
 @staff_member_required
 def session_create(request):
     if request.method == 'POST':
