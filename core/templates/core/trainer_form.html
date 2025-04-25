@@ -1,44 +1,132 @@
-{% extends "core/base.html" %}
+{% extends 'core/base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}{{ title }}{% endblock %}
 
 {% block content %}
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">
-                    <h2>{{ title }}</h2>
-                </div>
-                <div class="card-body">
-                    <form method="post">
-                        {% csrf_token %}
-                        
-                        {% for field in form %}
-                            <div class="form-group mb-3">
-                                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                                {{ field }}
-                                {% if field.help_text %}
-                                    <small class="form-text text-muted">{{ field.help_text }}</small>
-                                {% endif %}
-                                {% if field.errors %}
-                                    <div class="alert alert-danger">
-                                        {{ field.errors }}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        {% endfor %}
-                        
-                        <div class="d-flex justify-content-between">
-                            <a href="{% url 'core:trainers_list' %}" class="btn btn-secondary">
-                                <i class="fas fa-arrow-left"></i> Retour
-                            </a>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="fas fa-save"></i> Enregistrer
-                            </button>
-                        </div>
-                    </form>
-                </div>
+<div class="row mb-5">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">{{ title }}</h2>
+            </div>
+            <div class="card-body">
+                <form method="post" action="{% if trainer %}{% url 'core:trainer_edit' trainer.id %}{% else %}{% url 'core:trainer_create' %}{% endif %}" id="trainer-form" enctype="multipart/form-data" novalidate>
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="id_first_name" class="form-label">{{ form.first_name.label }}</label>
+                        {% render_field form.first_name class="form-control" id="id_first_name" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_last_name" class="form-label">{{ form.last_name.label }}</label>
+                        {% render_field form.last_name class="form-control" id="id_last_name" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_email" class="form-label">{{ form.email.label }}</label>
+                        {% render_field form.email class="form-control" id="id_email" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_phone" class="form-label">{{ form.phone.label }}</label>
+                        {% render_field form.phone class="form-control" id="id_phone" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_specialties" class="form-label">{{ form.specialties.label }}</label>
+                        {% render_field form.specialties class="form-select" id="id_specialties" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_bio" class="form-label">{{ form.bio.label }}</label>
+                        {% render_field form.bio class="form-control" id="id_bio" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="id_photo" class="form-label">{{ form.photo.label }}</label>
+                        {% render_field form.photo class="form-control" id="id_photo" %}
+                        <div class="invalid-feedback"></div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                        <a href="{% url 'core:trainers_list' %}" class="btn btn-secondary">Annuler</a>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('trainer-form');
+
+        form.addEventListener('submit', function (event) {
+            // Empêcher l'envoi du formulaire par défaut
+            event.preventDefault();
+
+            // Réinitialiser les messages d'erreur
+            const errorMessages = document.querySelectorAll('.invalid-feedback');
+            errorMessages.forEach(error => error.textContent = '');
+
+            const formFields = form.querySelectorAll('.form-control, .form-select');
+            formFields.forEach(field => field.classList.remove('is-invalid'));
+
+            let isValid = true;
+
+            // Validation des champs
+            const firstName = document.getElementById('id_first_name');
+            if (firstName.value.trim() === "") {
+                isValid = false;
+                firstName.classList.add('is-invalid');
+                firstName.nextElementSibling.textContent = "Le prénom est obligatoire.";
+            }
+
+            const lastName = document.getElementById('id_last_name');
+            if (lastName.value.trim() === "") {
+                isValid = false;
+                lastName.classList.add('is-invalid');
+                lastName.nextElementSibling.textContent = "Le nom est obligatoire.";
+            }
+
+            const email = document.getElementById('id_email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email.value)) {
+                isValid = false;
+                email.classList.add('is-invalid');
+                email.nextElementSibling.textContent = "Veuillez entrer une adresse email valide.";
+            }
+
+            const specialties = document.getElementById('id_specialties');
+            if (specialties.selectedOptions.length === 0) {
+                isValid = false;
+                specialties.classList.add('is-invalid');
+                specialties.nextElementSibling.textContent = "Veuillez sélectionner au moins une spécialité.";
+            }
+
+            const bio = document.getElementById('id_bio');
+            if (bio.value.trim() === "") {
+                isValid = false;
+                bio.classList.add('is-invalid');
+                bio.nextElementSibling.textContent = "La biographie est obligatoire.";
+            }
+
+            // Si tout est valide, soumettre le formulaire
+            if (isValid) {
+                form.submit();
+            }
+        });
+    });
+</script>
 {% endblock %}
