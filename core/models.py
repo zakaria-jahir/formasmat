@@ -152,7 +152,6 @@ class TrainingRoom(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de mise à jour")
     def __str__(self):
         return f"{self.name} ({self.capacity} places)"
-
 class Session(models.Model):
     """Modèle représentant une session de formation."""
     
@@ -190,13 +189,18 @@ class Session(models.Model):
     end_date = models.DateField(null=True, blank=True)
     iperia_opening_date = models.DateField(null=True, blank=True)
     iperia_deadline = models.DateField(null=True, blank=True)
+    
+    # Nouveaux champs pour l'adresse
+    address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
+    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
+    postal_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
+    
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_status_change = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.formation.name} - {self.get_status_display()}"
-
     def save(self, *args, **kwargs):
         # Sauvegarder d'abord la session
         super().save(*args, **kwargs)

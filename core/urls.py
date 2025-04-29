@@ -33,6 +33,7 @@ urlpatterns = [
     # Souhaits de formation
     path('wishes/', views.user_wishes, name='user_wishes'),
     path('formations/<int:formation_pk>/add_wish/', views.add_training_wish, name='add_training_wish'),
+
     path('manage-wishes/', views.manage_training_wishes, name='manage_training_wishes'),
     path('wishes/<int:pk>/delete/', views.delete_wish, name='delete_wish'),
     
@@ -81,6 +82,7 @@ urlpatterns = [
     path('training-rooms/create/', views.training_room_create, name='training_room_create'),
     path('training-rooms/<int:pk>/edit/', views.training_room_edit, name='training_room_edit'),
     path('training-rooms/<int:pk>/delete/', views.training_room_delete, name='training_room_delete'),
+    #sesions
     
     # Notifications
     path('notifications/', views.notifications_list, name='notifications_list'),

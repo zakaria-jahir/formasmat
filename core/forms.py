@@ -214,12 +214,15 @@ class SessionForm(forms.ModelForm):
     """Version minimale du formulaire de session pour la compatibilité."""
     class Meta:
         model = Session
-        fields = ['formation', 'status', 'iperia_opening_date', 'iperia_deadline']
+        fields = ['formation', 'status', 'iperia_opening_date', 'iperia_deadline', 'address', 'city', 'postal_code']
         widgets = {
             'formation': forms.Select(attrs={'class': 'form-select'}),
             'status': forms.Select(attrs={'class': 'form-select'}),
             'iperia_opening_date': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
-            'iperia_deadline': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'})
+            'iperia_deadline': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
+            'address': forms.TextInput(attrs={'class': 'form-control'}),
+            'city': forms.TextInput(attrs={'class': 'form-control'}),
+            'postal_code': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 class CustomSessionForm(forms.Form):

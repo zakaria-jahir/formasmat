@@ -13,9 +13,10 @@ from django.db.models import Q, F
 from django.utils import timezone
 from django.db import IntegrityError
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods
+from django.views.decorators.http import require_http_methods,require_GET
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
+
 
 from reportlab.lib.pagesizes import A4
 from reportlab.pdfgen import canvas
@@ -28,7 +29,7 @@ from django.utils.encoding import smart_str
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
-from core.utils import get_coordinates_from_postal_code, haversine1
+from core.utils import ajax_login_required, get_coordinates_from_postal_code, haversine1
 
 from .models import (
     User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
@@ -747,28 +748,6 @@ def get_formation_rooms(request):
     return JsonResponse({'rooms': rooms_data})
 
 @staff_member_required
-def get_formation_sessions(request):
-    formation_id = request.GET.get('formation_id')
-    if not formation_id:
-        return JsonResponse({'error': 'Formation non spécifiée'}, status=400)
-
-    sessions = Session.objects.filter(
-        formation_id=formation_id,
-        start_date__gte=timezone.now().date()
-    ).select_related('trainer', 'room')
-
-    sessions_data = [{
-        'id': session.id,
-        'startDate': session.start_date.strftime('%d/%m/%Y'),
-        'endDate': session.end_date.strftime('%d/%m/%Y'),
-        'trainer': str(session.trainer),
-        'room': str(session.room),
-        'availableSeats': session.room.capacity - session.registered_users.count()
-    } for session in sessions]
-
-    return JsonResponse({'sessions': sessions_data})
-
-@staff_member_required
 @require_http_methods(["POST"])
 def assign_to_session(request):
     try:
@@ -857,7 +836,31 @@ def session_list(request):
     return render(request, 'core/sessions_list.html', {
         'sessions': sessions
     })
+@require_GET
+def get_formation_sessions(request):
+    formation_id = request.GET.get('formation_id')
 
+    if not formation_id:
+        return JsonResponse([], safe=False)
+
+    try:
+        formation = Formation.objects.get(pk=formation_id)
+    except Formation.DoesNotExist:
+        return JsonResponse([], safe=False)
+
+    sessions = Session.objects.filter(formation=formation).order_by('-start_date')
+
+    data = [
+        {
+            "id": session.id,
+            "start_date": session.start_date.isoformat() if session.start_date else None,
+            "end_date": session.end_date.isoformat() if session.end_date else None,
+            "room": session.room.name if session.room else None
+        }
+        for session in sessions
+    ]
+
+    return JsonResponse(data, safe=False)
 @staff_member_required
 def session_create(request):
     if request.method == 'POST':
@@ -1615,26 +1618,17 @@ def calculate_distance(address1, address2):
     # TODO: Implémenter le calcul de distance réel avec une API de géocodage
     # Pour l'instant, on retourne une distance aléatoire entre 1 et 100 km
     return geodesic(address1, address2).km
-
+@require_POST
 @login_required
 def add_training_wish(request, formation_pk):
-    """Ajouter un souhait de formation depuis la page de détail de formation."""
     formation = get_object_or_404(Formation, pk=formation_pk)
-    
-    if request.method == 'POST':
-        try:
-            # Créer le souhait de formation
-            wish = TrainingWish.objects.create(
-                user=request.user,
-                formation=formation,
-                notes=request.POST.get('message', '')
-            )
-            messages.success(request, 'Votre souhait de formation a été enregistré.')
-        except IntegrityError:
-            messages.error(request, 'Vous avez déjà exprimé un souhait pour cette formation.')
-        
-        return redirect('core:formation_detail', pk=formation_pk)
+    try:
+        TrainingWish.objects.create(user=request.user, formation=formation, notes="")
+        messages.success(request, "Souhait ajouté avec succès !")
+    except IntegrityError:
+        messages.warning(request, "Vous avez déjà souhaité cette formation.")
 
+    return redirect('core:formation_list')
 @login_required
 def notifications_list(request):
     # Ajoutez votre logique ici

@@ -1,5 +1,5 @@
+
 {% extends 'core/base.html' %}
-{% load static %}
 
 {% block title %}Créer une nouvelle session pour {{ formation.name }}{% endblock %}
 
@@ -62,7 +62,25 @@
                         <input type="date" name="iperia_deadline" id="iperia_deadline" class="form-control">
                     </div>
                 </div>
-                
+
+                <!-- Nouveaux champs -->
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="address" class="form-label">Adresse</label>
+                        <input type="text" name="address" id="address" class="form-control" value="{{ form.address.value }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="city" class="form-label">Ville</label>
+                        <input type="text" name="city" id="city" class="form-control" value="{{ form.city.value }}">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="postal_code" class="form-label">Code Postal</label>
+                        <input type="text" name="postal_code" id="postal_code" class="form-control" value="{{ form.postal_code.value }}">
+                    </div>
+                </div>
+
                 <div class="mb-3">
                     <label for="session_dates" class="form-label">Dates de la session</label>
                     <div id="session-dates-container">
@@ -100,7 +118,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     const sessionDatesContainer = document.getElementById('session-dates-container');
     const addDateBtn = document.querySelector('.add-date-btn');
-    
+
+    // Fonction pour ajouter une nouvelle date et salle
     addDateBtn.addEventListener('click', function() {
         const newDateInput = document.createElement('div');
         newDateInput.classList.add('input-group', 'mb-2', 'session-date-row');
@@ -114,14 +133,16 @@ document.addEventListener('DOMContentLoaded', function() {
             </select>
             <button type="button" class="btn btn-danger remove-date-btn">-</button>
         `;
-        
+
+        // Ajouter un bouton pour supprimer une ligne de date
         const removeBtn = newDateInput.querySelector('.remove-date-btn');
         removeBtn.addEventListener('click', function() {
             newDateInput.remove();
         });
-        
+
         sessionDatesContainer.appendChild(newDateInput);
     });
 });
+
 </script>
 {% endblock %}

@@ -1,4 +1,6 @@
 from geopy.geocoders import Nominatim
+from django.http import JsonResponse
+from functools import wraps
 
 def get_coordinates_from_postal_code(postal_code, city_name=None):
     geolocator = Nominatim(user_agent="formasmat_app")
@@ -44,3 +46,12 @@ def get_coordinates_from_address(address, postal_code=None, city=None):
     except Exception as e:
         print("Erreur géocodage :", e)
     return None, None
+
+
+def ajax_login_required(view_func):
+    @wraps(view_func)
+    def _wrapped_view(request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return JsonResponse({'success': False, 'error': 'auth_required'}, status=401)
+        return view_func(request, *args, **kwargs)
+    return _wrapped_view
