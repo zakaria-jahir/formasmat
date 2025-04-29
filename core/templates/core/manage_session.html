@@ -425,19 +425,21 @@ function addDateInput() {
     roomSelect.name = 'session_rooms[]';
     roomSelect.className = 'form-control';
     roomSelect.required = true;
-    
+
     const defaultOption = document.createElement('option');
     defaultOption.value = '';
     defaultOption.textContent = 'Sélectionner une salle';
     roomSelect.appendChild(defaultOption);
-    
+
     {% for room in training_rooms %}
-    const option = document.createElement('option');
-    option.value = '{{ room.id }}';
-    option.textContent = '{{ room.name }}';
-    roomSelect.appendChild(option);
+    {
+        let opt = document.createElement('option');
+        opt.value = '{{ room.id }}';
+        opt.textContent = '{{ room.name }}';
+        roomSelect.appendChild(opt);
+    }
     {% endfor %}
-    
+
     roomField.appendChild(roomSelect);
     dateInput.appendChild(dateField);
     dateInput.appendChild(roomField);

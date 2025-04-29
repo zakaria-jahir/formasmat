@@ -15,7 +15,7 @@ from django.db import IntegrityError
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods,require_GET
 from django.contrib.auth.forms import AuthenticationForm
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
 
 
 from reportlab.lib.pagesizes import A4
@@ -29,7 +29,7 @@ from django.utils.encoding import smart_str
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
 from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
-from core.utils import get_coordinates_from_postal_code, haversine1
+from core.utils import ajax_login_required, get_coordinates_from_postal_code, haversine1
 
 from .models import (
     User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
@@ -1618,26 +1618,17 @@ def calculate_distance(address1, address2):
     # TODO: Implémenter le calcul de distance réel avec une API de géocodage
     # Pour l'instant, on retourne une distance aléatoire entre 1 et 100 km
     return geodesic(address1, address2).km
-
+@require_POST
 @login_required
 def add_training_wish(request, formation_pk):
-    """Ajouter un souhait de formation depuis la page de détail de formation."""
     formation = get_object_or_404(Formation, pk=formation_pk)
-    
-    if request.method == 'POST':
-        try:
-            # Créer le souhait de formation
-            wish = TrainingWish.objects.create(
-                user=request.user,
-                formation=formation,
-                notes=request.POST.get('message', '')
-            )
-            messages.success(request, 'Votre souhait de formation a été enregistré.')
-        except IntegrityError:
-            messages.error(request, 'Vous avez déjà exprimé un souhait pour cette formation.')
-        
-        return redirect('core:formation_detail', pk=formation_pk)
+    try:
+        TrainingWish.objects.create(user=request.user, formation=formation, notes="")
+        messages.success(request, "Souhait ajouté avec succès !")
+    except IntegrityError:
+        messages.warning(request, "Vous avez déjà souhaité cette formation.")
 
+    return redirect('core:formation_list')
 @login_required
 def notifications_list(request):
     # Ajoutez votre logique ici

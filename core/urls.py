@@ -33,6 +33,7 @@ urlpatterns = [
     # Souhaits de formation
     path('wishes/', views.user_wishes, name='user_wishes'),
     path('formations/<int:formation_pk>/add_wish/', views.add_training_wish, name='add_training_wish'),
+
     path('manage-wishes/', views.manage_training_wishes, name='manage_training_wishes'),
     path('wishes/<int:pk>/delete/', views.delete_wish, name='delete_wish'),
     
