@@ -2,7 +2,7 @@ from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
 from io import BytesIO
-from django.db.models import Prefetch
+from django.db.models import Prefetch,Case, When, Value, IntegerField
 from django.apps import apps
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, logout, authenticate
@@ -16,6 +16,8 @@ from django.urls import reverse
 from django.views.decorators.http import require_http_methods,require_GET
 from django.contrib.auth.forms import AuthenticationForm
 from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
+
+
 
 
 from reportlab.lib.pagesizes import A4
@@ -93,22 +95,36 @@ def register(request):
         if form.is_valid():
             user = form.save(commit=False)
 
-            # Géolocalisation via code postal et ville
+            # Géolocalisation via code postal uniquement
             code_postal = form.cleaned_data.get('code_postal')
             city = form.cleaned_data.get('city')
-            lat, lng = get_coordinates_from_postal_code(code_postal,city)
+            print(f"Tentative de géolocalisation pour CP: {code_postal}, Ville: {city}")
+
+            lat, lng = get_coordinates_from_postal_code(code_postal, city)
+            print(f"Coordonnées obtenues : lat={lat}, lng={lng}")
+
+            if lat is None or lng is None:
+                print("⚠️ Échec de la géolocalisation, lat/lon sont None")
 
             user.latitude = lat
             user.longitude = lng
 
-            user.save()
+            try:
+                user.save()
+                print(f"Utilisateur {user.get_full_name()} enregistré avec succès.")
+            except Exception as e:
+                print(f"❌ Erreur lors de la sauvegarde de l'utilisateur : {e}")
+            
             login(request, user)
             messages.success(request, 'Inscription réussie !')
             return redirect('core:home')
+        else:
+            print(f"❌ Formulaire invalide : {form.errors}")
     else:
         form = UserRegistrationForm()
     
     return render(request, 'core/register.html', {'form': form})
+
 
     # check email && username in database
 User = get_user_model()
@@ -295,6 +311,7 @@ def get_training_wishes(request):
     return JsonResponse(data, safe=False)
 
 from django.views.decorators.http import require_POST
+
 @require_POST
 @login_required
 @staff_member_required
@@ -1146,8 +1163,6 @@ def manage_session(request):
         'training_rooms': training_rooms,
         'status_choices': status_choices,
     })
-
-
 @login_required
 @staff_member_required
 @csrf_exempt
@@ -1155,6 +1170,8 @@ def create_session(request):
     """Handles session creation via AJAX."""
     if request.method == 'POST':
         try:
+            print("🔧 Début de la création de session")
+
             formation_id = request.POST.get('formation')
             trainers = request.POST.getlist('trainers[]')
             status = request.POST.get('status')
@@ -1163,8 +1180,18 @@ def create_session(request):
             iperia_opening = request.POST.get('iperia_opening')
             iperia_deadline = request.POST.get('iperia_deadline')
 
+            address = request.POST.get('address')
+            city = request.POST.get('city')
+            postal_code = request.POST.get('postal_code')
+
+            print(f"📥 Données reçues : formation_id={formation_id}, status={status}, address={address}, city={city}, postal_code={postal_code}")
+            print(f"📅 Dates de session : {session_dates}")
+            print(f"🏫 Salles de session : {session_rooms}")
+            print(f"👥 Formateurs : {trainers}")
+
             # Validate formation
             formation = get_object_or_404(Formation, id=formation_id)
+            print(f"✅ Formation trouvée : {formation.name}")
 
             # Create session
             with transaction.atomic():
@@ -1173,23 +1200,109 @@ def create_session(request):
                     status=status,
                     iperia_opening_date=iperia_opening,
                     iperia_deadline=iperia_deadline,
+                    address=address,
+                    city=city,
+                    postal_code=postal_code,
                 )
+                print(f"🆕 Session créée avec ID : {session.id}")
+
+                # Géolocalisation automatique
+                if postal_code:
+                    lat, lon = get_coordinates_from_postal_code(postal_code, city)
+                    print(f"📍 Coordonnées obtenues : lat={lat}, lon={lon}")
+                    if lat is not None and lon is not None:
+                        session.latitude = lat
+                        session.longitude = lon
+                        session.save()
+                        print("✅ Coordonnées enregistrées dans la session")
+                    else:
+                        print("⚠️ Coordonnées non disponibles pour le code postal et la ville fournis")
+                else:
+                    print("⚠️ Code postal non fourni, géolocalisation ignorée")
 
                 # Add trainers
                 for trainer_id in trainers:
                     trainer = get_object_or_404(Trainer, id=trainer_id)
                     session.trainers.add(trainer)
+                    print(f"👤 Formateur ajouté : {trainer}")
 
                 # Add session dates and rooms
                 for date, room_id in zip(session_dates, session_rooms):
                     room = get_object_or_404(TrainingRoom, id=room_id)
                     SessionDate.objects.create(session=session, date=date, location=room)
+                    print(f"📆 Date ajoutée : {date} avec salle ID : {room_id}")
 
-            return JsonResponse({'success': True, 'message': 'Session created successfully.'})
+            print("✅ Création de session terminée avec succès")
+            return JsonResponse({'success': True, 'message': 'Session créée avec succès.'})
         except Exception as e:
+            print(f"❌ Erreur lors de la création de la session : {e}")
             return JsonResponse({'success': False, 'error': str(e)})
-    return JsonResponse({'success': False, 'error': 'Invalid request method.'})
+    print("⚠️ Méthode de requête invalide")
+    return JsonResponse({'success': False, 'error': 'Méthode de requête invalide.'})
+@staff_member_required
+def assign_wishes_to_session(request, session_id):
+    session = get_object_or_404(Session, pk=session_id)
+    wishes = TrainingWish.objects.filter(
+        formation=session.formation,
+        session__isnull=True
+    ).select_related('user')
 
+    sort_by = request.GET.get('sort')
+    wishes_with_distances = []
+
+    # Récupérer les coordonnées de la session
+    session_lat, session_lon = get_coordinates_from_postal_code(session.postal_code, session.city)
+
+    if session_lat and session_lon:
+        for wish in wishes:
+            user = wish.user
+
+            # ⚡ D'abord utiliser les coordonnées existantes si disponibles
+            if user.latitude and user.longitude:
+                user_lat, user_lon = user.latitude, user.longitude
+            else:
+                # Sinon essayer de récupérer via Nominatim
+                user_lat, user_lon = get_coordinates_from_postal_code(user.code_postal, user.city)
+
+            print(f"USER: {user.get_full_name()}, CP: {user.code_postal}, VILLE: {user.city}, coords: {user_lat}, {user_lon}")
+
+            if user_lat and user_lon:
+                distance = haversine1(session_lat, session_lon, user_lat, user_lon)
+            else:
+                distance = float('inf')  # Très loin si pas de coordonnées
+
+            wishes_with_distances.append((wish, distance))
+
+        if sort_by == 'distance':
+            wishes_with_distances.sort(key=lambda x: x[1])
+        elif sort_by == 'date':
+            wishes_with_distances.sort(key=lambda x: x[0].created_at)
+    else:
+        # Si pas de coordonnées pour la session, on met infini pour tous
+        wishes_with_distances = [(wish, float('inf')) for wish in wishes]
+
+    context = {
+        'session': session,
+        'wishes_with_distances': wishes_with_distances,
+    }
+    return render(request, 'core/assign_wishes_to_session.html', context)
+@login_required
+@staff_member_required
+def assign_single_wish_to_session(request, session_id, wish_id):
+    session = get_object_or_404(Session, id=session_id)
+    wish = get_object_or_404(TrainingWish, id=wish_id, session__isnull=True)
+
+    wish.session = session
+    wish.save()
+
+    SessionParticipant.objects.create(
+        session=session,
+        user=wish.user,
+        status=SessionParticipant.STATUS_WISH
+    )
+
+    messages.success(request, f"Le souhait de {wish.user.get_full_name()} a été affecté à la session.")
+    return redirect('core:assign_wishes_to_session', session_id=session.id)
 @login_required
 @staff_member_required
 def get_users(request):
@@ -1374,7 +1487,54 @@ def update_session_status(request):
     except Exception as e:
         logger.error(f"Erreur lors de la mise à jour du statut de la session: {e}")
         return JsonResponse({'error': str(e)}, status=400)
+    
+def admin_training_sessions(request):
+    user = request.user
+    user_lat, user_lon = user.latitude, user.longitude
 
+    formations = Formation.objects.all()
+    selected_formation_id = request.GET.get('formation')
+    city_filter = request.GET.get('rpe')
+    date_from = request.GET.get('date_from')
+    date_to = request.GET.get('date_to')
+
+    sessions = Session.objects.select_related('formation')
+
+    if selected_formation_id:
+        sessions = sessions.filter(formation__id=selected_formation_id)
+
+    if city_filter:
+        sessions = sessions.filter(city__icontains=city_filter)
+
+    if date_from:
+        sessions = sessions.filter(start_date__gte=parse_date(date_from))
+    if date_to:
+        sessions = sessions.filter(end_date__lte=parse_date(date_to))
+
+    # Filtrage terminé, on calcule les distances :
+    sessions_with_distance = []
+    for session in sessions:
+        if session.latitude and session.longitude and user_lat and user_lon:
+            distance = haversine(user_lat, user_lon, session.latitude, session.longitude)
+        else:
+            distance = float('inf')  # On met les distances inconnues en dernier
+        sessions_with_distance.append((distance, session))
+
+    # Tri par distance
+    sessions_with_distance.sort(key=lambda x: x[0])
+
+    # Extraire les sessions triées seules
+    sessions = [s for _, s in sessions_with_distance]
+
+    context = {
+        'formations': formations,
+        'sessions': sessions,
+        'current_formation_filter': selected_formation_id,
+        'current_rpe_filter': city_filter,
+        'current_date_from': date_from,
+        'current_date_to': date_to,
+    }
+    return render(request, 'core/admin_training_sessions.html', context)
 @login_required
 @staff_member_required
 def get_session(request, session_id):

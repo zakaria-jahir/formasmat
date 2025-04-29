@@ -152,9 +152,10 @@ class TrainingRoom(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de mise à jour")
     def __str__(self):
         return f"{self.name} ({self.capacity} places)"
+    
 class Session(models.Model):
     """Modèle représentant une session de formation."""
-    
+
     STATUS_CHOICES = [
         ('NON_OUVERTE', 'Non ouverte'),
         ('DEMANDEE', 'Demandée'),
@@ -189,12 +190,16 @@ class Session(models.Model):
     end_date = models.DateField(null=True, blank=True)
     iperia_opening_date = models.DateField(null=True, blank=True)
     iperia_deadline = models.DateField(null=True, blank=True)
-    
-    # Nouveaux champs pour l'adresse
+
+    # Adresse de la session
     address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
     city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
     postal_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
-    
+
+    # ➡️ Coordonnées GPS
+    latitude = models.FloatField(null=True, blank=True, verbose_name="Latitude")
+    longitude = models.FloatField(null=True, blank=True, verbose_name="Longitude")
+
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     last_status_change = models.DateTimeField(default=timezone.now)

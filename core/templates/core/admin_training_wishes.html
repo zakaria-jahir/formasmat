@@ -1,11 +1,11 @@
 {% extends 'core/base.html' %}
 {% load static %}
 
-{% block title %}Gestion des souhaits de formation{% endblock %}
+{% block title %}Gestion des sessions de formation{% endblock %}
 
 {% block content %}
 <div class="container py-5">
-    <h1 class="mb-4">Gestion des souhaits de formation</h1>
+    <h1 class="mb-4">Gestion des sessions de formation</h1>
 
     {% if messages %}
         {% for message in messages %}
@@ -25,34 +25,29 @@
                     <select name="formation" id="formation" class="form-select">
                         <option value="">Toutes les formations</option>
                         {% for formation in formations %}
-                            <option value="{{ formation.name }}" 
-                                    {% if formation.name == current_formation_filter %}selected{% endif %}>
+                            <option value="{{ formation.name }}" {% if formation.name == current_formation_filter %}selected{% endif %}>
                                 {{ formation.name }}
                             </option>
                         {% endfor %}
                     </select>
                 </div>
                 <div class="col-md-3">
-                    <label for="rpe" class="form-label">RPE/Association</label>
-                    <input type="text" name="rpe" id="rpe" class="form-control" 
-                           placeholder="Filtrer par RPE/Association"
-                           value="{{ current_rpe_filter }}">
+                    <label for="city" class="form-label">Ville</label>
+                    <input type="text" name="city" id="city" class="form-control" placeholder="Filtrer par ville" value="{{ current_city_filter }}">
                 </div>
                 <div class="col-md-3">
                     <label for="date_from" class="form-label">Date de début</label>
-                    <input type="date" name="date_from" id="date_from" class="form-control"
-                           value="{{ current_date_from }}">
+                    <input type="date" name="date_from" id="date_from" class="form-control" value="{{ current_date_from }}">
                 </div>
                 <div class="col-md-3">
                     <label for="date_to" class="form-label">Date de fin</label>
-                    <input type="date" name="date_to" id="date_to" class="form-control"
-                           value="{{ current_date_to }}">
+                    <input type="date" name="date_to" id="date_to" class="form-control" value="{{ current_date_to }}">
                 </div>
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">
                         <i class="fas fa-filter"></i> Filtrer
                     </button>
-                    <a href="{% url 'core:admin_training_wishes' %}" class="btn btn-secondary">
+                    <a href="{% url 'core:admin_training_sessions' %}" class="btn btn-secondary">
                         <i class="fas fa-times"></i> Réinitialiser
                     </a>
                 </div>
@@ -60,70 +55,52 @@
         </div>
     </div>
 
-    {% if wishes %}
-        <div class="card">
-            <div class="card-body">
-                <table class="table table-striped table-hover">
-                    <thead class="table-light">
-                        <tr>
-                            <th>Nom et Prénom</th>
-                            <th>RPE/Association</th>
-                            <th>Formation souhaitée</th>
-                            <th>Date du vœu</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for wish in wishes %}
-                            <tr>
-                                <td>{{ wish.user.last_name }} {{ wish.user.first_name }}</td>
-                                <td>{{ wish.user.rpe_association|default:"Non renseigné" }}</td>
-                                <td>
-                                    {{ wish.formation.name }}
-                                    <small class="text-muted d-block">Code Ipéria : {{ wish.formation.code_iperia }}</small>
-                                </td>
-                                <td>{{ wish.created_at|date:"d/m/Y" }}</td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <a href="{% url 'core:assign_wish_to_session' wish.id %}" class="btn btn-sm btn-primary">
-                                            <i class="fas fa-plus-circle"></i> Affecter
-                                        </a>
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteWishModal{{ wish.id }}">
-                                            <i class="fas fa-trash"></i> Supprimer
-                                        </button>
-                                    </div>
-                                    
-                                    <!-- Modal de confirmation de suppression -->
-                                    <div class="modal fade" id="deleteWishModal{{ wish.id }}" tabindex="-1">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Confirmer la suppression</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Voulez-vous vraiment supprimer ce vœu de formation ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                                    <a href="{% url 'core:delete_wish' wish.id %}" class="btn btn-danger">Supprimer</a>
-                                                </div>
+    {% if formations %}
+        {% for formation in formations %}
+            {% if formation.sessions.exists %}
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h4>{{ formation.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <table class="table table-striped table-hover">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Ville</th>
+                                    <th>Statut</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for session in formation.sessions.all %}
+                                    <tr>
+                                        <td>{{ session.city|default:"Non renseigné" }}</td>
+                                        <td>{{ session.get_status_display }}</td>
+                                        <td>
+                                            <div class="btn-group" role="group">
+                                                <a href="{% url 'core:session_detail' session.id %}" class="btn btn-sm btn-info">
+                                                    <i class="fas fa-eye"></i> Voir
+                                                </a>
+                                                <a href="{% url 'core:assign_wishes_to_session' session.id %}" class="btn btn-sm btn-primary">
+                                                    Affecter
+                                                </a>
+                                                
                                             </div>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-                <div class="text-muted">
-                    Total : {{ wishes.count }} souhait(s) de formation
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                        <div class="text-muted">
+                            Total : {{ formation.sessions.count }} session(s) pour cette formation
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            {% endif %}
+        {% endfor %}
     {% else %}
         <div class="alert alert-info">
-            Aucun souhait de formation ne correspond aux filtres sélectionnés.
+            Aucune formation avec des sessions disponibles.
         </div>
     {% endif %}
 </div>
@@ -132,12 +109,11 @@
 {% block extra_js %}
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Réinitialiser les filtres
-        const resetButton = document.querySelector('a[href="{% url 'core:admin_training_wishes' %}"]');
+        const resetButton = document.querySelector('a[href="{% url 'core:admin_training_sessions' %}"]');
         resetButton.addEventListener('click', function(e) {
             e.preventDefault();
             document.getElementById('formation').selectedIndex = 0;
-            document.getElementById('rpe').value = '';
+            document.getElementById('city').value = '';
             document.getElementById('date_from').value = '';
             document.getElementById('date_to').value = '';
             window.location.href = this.href;

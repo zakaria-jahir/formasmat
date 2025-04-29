@@ -1,0 +1,63 @@
+{% extends 'core/base.html' %}
+{% block title %}Assigner des souhaits à la session{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="d-flex justify-content-between mb-4 align-items-center">
+        <h1>Souhaits pour {{ session.formation.name }}</h1>
+        <div>
+            <a href="?sort=distance" class="btn btn-outline-primary me-2">
+                Trier par distance
+            </a>
+            <a href="?sort=date" class="btn btn-outline-secondary">
+                Trier par date du souhait
+            </a>
+        </div>
+    </div>
+
+    {% if wishes_with_distances %}
+        <div class="card">
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>RPE/Association</th>
+                            <th>Date du souhait</th>
+                            <th>Distance</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for wish, distance in wishes_with_distances %}
+                        <tr>
+                            <td>{{ wish.user.get_full_name }}</td>
+                            <td>{{ wish.user.rpe_association|default:"Non renseigné" }}</td>
+                            <td>{{ wish.created_at|date:"d/m/Y" }}</td>
+                            <td>
+                                {% if distance < 9999 %}
+                                    {{ distance|floatformat:1 }} km
+                                {% else %}
+                                    Non disponible
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'core:assign_single_wish_to_session' session.id wish.id %}" class="btn btn-sm btn-success">
+                                    Affecter
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-info">
+            Aucun souhait disponible pour cette formation.
+        </div>
+    {% endif %}
+
+    <a href="{% url 'core:admin_training_sessions' %}" class="btn btn-secondary mt-3">Retour aux sessions</a>
+</div>
+{% endblock %}
