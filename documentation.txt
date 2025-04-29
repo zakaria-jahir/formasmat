@@ -1,9 +1,10 @@
 ###zack
-consulter les urls pour voir les urls non utilisé voir urls.py 
-commencer par urls du sessions 
+consulter les urls pour voir les urls non utilisé voir urls.py
+commencer par urls du sessions
 
 ajout du trainer se fait tout d'abord on trouve la list du formateur voir trainers_list.html pour l'ajout et la modification voir trainer_form.html
 #Ajout d'un formateur
-dans vu trainer_create 
+dans vu trainer_create
 Si la requête est une requête GET, un formulaire vide (TrainerForm)"core/forms"  est affiché à l'utilisateur.
 Le formulaire est rendu dans le template core/trainer_form.html
+on a deux options pour l'encapsulation mobile on peut utilisé flutter or react native 
