@@ -2,15 +2,29 @@ from geopy.geocoders import Nominatim
 from django.http import JsonResponse
 from functools import wraps
 
+from geopy.geocoders import Nominatim
+
+from geopy.geocoders import Nominatim
+
 def get_coordinates_from_postal_code(postal_code, city_name=None):
+    """
+    Retourne (latitude, longitude) à partir du code postal et éventuellement du nom de la ville.
+    """
     geolocator = Nominatim(user_agent="formasmat_app")
     try:
-        location = geolocator.geocode(f"{postal_code} {city_name}")
+        if city_name:
+            query = f"{postal_code} {city_name}, France"
+        else:
+            query = f"{postal_code}, France"
+
+        location = geolocator.geocode(query)
         if location:
             return location.latitude, location.longitude
     except Exception:
         pass
     return None, None
+
+
 import math
 
 def haversine1(lat1, lon1, lat2, lon2):

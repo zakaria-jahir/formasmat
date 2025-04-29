@@ -32,7 +32,11 @@ urlpatterns = [
     
     # Souhaits de formation
     path('wishes/', views.user_wishes, name='user_wishes'),
+    path('sessions/', views.admin_training_sessions, name='admin_training_sessions'),
     path('formations/<int:formation_pk>/add_wish/', views.add_training_wish, name='add_training_wish'),
+    path('sessions/<int:session_id>/assign-wishes/', views.assign_wishes_to_session, name='assign_wishes_to_session'),
+    path('sessions/<int:session_id>/assign-wish/<int:wish_id>/', views.assign_single_wish_to_session, name='assign_single_wish_to_session'),
+
 
     path('manage-wishes/', views.manage_training_wishes, name='manage_training_wishes'),
     path('wishes/<int:pk>/delete/', views.delete_wish, name='delete_wish'),

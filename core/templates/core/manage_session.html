@@ -182,7 +182,6 @@
         </div>
     </div>
 </div>
-
 <!-- Create Session Modal -->
 <div class="modal fade" id="createSessionModal" tabindex="-1">
     <div class="modal-dialog">
@@ -199,28 +198,48 @@
                         <option value="{{ formation.id }}">{{ formation.name }}</option>
                         {% endfor %}
                     </select>
+
                     <label>Formateurs</label>
                     <select name="trainers[]" class="form-control" multiple>
                         {% for trainer in trainers %}
                         <option value="{{ trainer.id }}">{{ trainer.get_full_name }}</option>
                         {% endfor %}
                     </select>
+
                     <label>Statut</label>
                     <select name="status" class="form-control">
                         {% for status in status_choices %}
                         <option value="{{ status.0 }}">{{ status.1 }}</option>
                         {% endfor %}
                     </select>
+
+                    <label>Adresse</label>
+                    <input type="text" name="address" class="form-control">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Ville</label>
+                            <input type="text" name="city" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Code Postal</label>
+                            <input type="text" name="postal_code" class="form-control">
+                        </div>
+                    </div>
+
                     <label>Dates</label>
                     <div id="dates-container">
-                        <input type="date" name="session_dates[]" class="form-control">
-                        <select name="session_rooms[]" class="form-control">
-                            {% for room in training_rooms %}
-                            <option value="{{ room.id }}">{{ room.name }}</option>
-                            {% endfor %}
-                        </select>
+                        <div class="input-group mb-2">
+                            <input type="date" name="session_dates[]" class="form-control">
+                            <select name="session_rooms[]" class="form-control" style="max-width: 200px;">
+                                {% for room in training_rooms %}
+                                <option value="{{ room.id }}">{{ room.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
                     </div>
-                    <button type="button" onclick="addDateInput()">Ajouter une date</button>
+
+                    <button type="button" onclick="addDateInput()" class="btn btn-secondary my-2">Ajouter une date</button>
                 </form>
             </div>
             <div class="modal-footer">
@@ -230,8 +249,7 @@
         </div>
     </div>
 </div>
-
-<!-- Edit Session Modal -->
+   <!-- Edit Session Modal -->
 <div class="modal fade" id="editSessionModal" tabindex="-1">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -242,29 +260,49 @@
             <div class="modal-body">
                 <form id="editSessionForm">
                     <input type="hidden" name="session_id" id="edit-session-id">
+
                     <label>Formation</label>
                     <select name="formation" id="edit-formation" class="form-control">
                         {% for formation in formations %}
                         <option value="{{ formation.id }}">{{ formation.name }}</option>
                         {% endfor %}
                     </select>
+
                     <label>Formateurs</label>
                     <select name="trainers[]" id="edit-trainers" class="form-control" multiple>
                         {% for trainer in trainers %}
                         <option value="{{ trainer.id }}">{{ trainer.get_full_name }}</option>
                         {% endfor %}
                     </select>
+
                     <label>Statut</label>
                     <select name="status" id="edit-status" class="form-control">
                         {% for status in status_choices %}
                         <option value="{{ status.0 }}">{{ status.1 }}</option>
                         {% endfor %}
                     </select>
+
+                    <label>Adresse</label>
+                    <input type="text" name="address" id="edit-address" class="form-control">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <label>Ville</label>
+                            <input type="text" name="city" id="edit-city" class="form-control">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Code Postal</label>
+                            <input type="text" name="postal_code" id="edit-postal-code" class="form-control">
+                        </div>
+                    </div>
+
                     <label>Dates</label>
                     <div id="edit-dates-container"></div>
-                    <button type="button" onclick="addEditDateInput()">Ajouter une date</button>
+
+                    <button type="button" onclick="addEditDateInput()" class="btn btn-secondary my-2">Ajouter une date</button>
                 </form>
             </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                 <button type="button" class="btn btn-primary" onclick="updateSession()">Enregistrer</button>
