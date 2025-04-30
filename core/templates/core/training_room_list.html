@@ -6,7 +6,7 @@
 <div class="container">
     <div class="row mb-4">
         <div class="col">
-            <h1>Salles de formation</h1>
+            <h1>Salles de formations</h1>
             {% if user.is_staff %}
                 <a href="{% url 'core:training_room_create' %}" class="btn btn-primary">
                     <i class="fas fa-plus"></i> Nouvelle salle
@@ -20,7 +20,7 @@
             {% for room in rooms %}
                 <div class="col-md-6 col-lg-4 mb-4">
                     <div class="card h-100">
-                        <div class="card-body">
+                        <div class="card-body d-flex flex-column">
                             <h5 class="card-title">{{ room.name }}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{ room.address }}</h6>
                             
@@ -30,19 +30,30 @@
                                     <strong>Capacité:</strong> {{ room.capacity }} personnes
                                 </li>
                                 {% if room.equipment %}
-                                    <li class="mb-2">
-                                        <i class="fas fa-tools text-primary"></i>
-                                        <strong>Équipement:</strong>
-                                        <p class="mt-1">{{ room.equipment|linebreaks }}</p>
-                                    </li>
+                                <li class="mb-2">
+                                    <i class="fas fa-tools text-primary"></i>
+                                    <strong>Équipement:</strong>
+                                    <p class="mt-1">{{ room.equipment|linebreaks }}</p>
+                                </li>
                                 {% endif %}
                             </ul>
 
-                            <div class="d-flex justify-content-between align-items-center mt-3">
-                                <a href="{% url 'core:training_room_detail' pk=room.pk %}" class="btn btn-outline-primary">
-                                    Détails
+                            <div class="mt-auto">
+                                <a href="{% url 'core:training_room_detail' pk=room.pk %}" class="btn btn-outline-primary btn-sm me-1">
+                                    <i class="fas fa-eye"></i> Détails
                                 </a>
+
+                                <button type="button"
+                                        class="btn btn-outline-success btn-sm me-1"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#commentModal"
+                                        data-room-id="{{ room.id }}"
+                                        data-room-name="{{ room.name }}">
+                                    <i class="fas fa-comment-alt"></i> Commenter
+                                </button>
+
                                 {% if user.is_staff %}
+
                                     <div class="btn-group">
                                         <a href="{% url 'core:training_room_edit' pk=room.pk %}" class="btn btn-outline-secondary">
                                             <i class="fas fa-edit"></i>
@@ -51,6 +62,7 @@
                                             <i class="fas fa-trash"></i>
                                         </button>
                                     </div>
+
                                 {% endif %}
                             </div>
                         </div>
@@ -87,4 +99,46 @@
         </div>
     {% endif %}
 </div>
+
+<!-- Modal Commentaire -->
+<div class="modal fade" id="commentModal" tabindex="-1" aria-labelledby="commentModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <form method="post" action="{% url 'core:add_room_comment' %}">
+      {% csrf_token %}
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="commentModalLabel">Ajouter un commentaire pour <span id="modalRoomName"></span></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+        </div>
+        <div class="modal-body">
+          <input type="hidden" name="room_id" id="modalRoomId">
+          <div class="mb-3">
+            <label for="commentContent" class="form-label">Commentaire</label>
+            <textarea name="content" id="commentContent" class="form-control" rows="4" required></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const commentModal = document.getElementById('commentModal');
+    commentModal.addEventListener('show.bs.modal', function (event) {
+        const button = event.relatedTarget;
+        const roomId = button.getAttribute('data-room-id');
+        const roomName = button.getAttribute('data-room-name');
+
+        document.getElementById('modalRoomId').value = roomId;
+        document.getElementById('modalRoomName').textContent = roomName;
+    });
+});
+</script>
 {% endblock %}

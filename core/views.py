@@ -1,3 +1,4 @@
+import csv
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
@@ -34,7 +35,7 @@ from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
 from core.utils import ajax_login_required, get_coordinates_from_postal_code, haversine1
 
 from .models import (
-    User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
+    TrainingRoomComment, User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
     SessionDate, Participant, SessionParticipant, ParticipantComment, 
     Notification, CompletedTraining
 )
@@ -1042,11 +1043,21 @@ def export_session_pdf(request, session_id):
     return HttpResponse(buffer, content_type='application/pdf', headers={
         'Content-Disposition': f'attachment; filename="session_{session_id}_participants.pdf"'
     })
+
+
 @staff_member_required
 def export_session_csv(request, session_id):
     session = Session.objects.get(pk=session_id)
     session_participants = SessionParticipant.objects.filter(session=session).select_related('user')
     participant_extra_data = {p.user_id: p for p in Participant.objects.filter(session=session)}
+    
+    # Charger les commentaires groupés par participant_id
+    comments_map = {}
+    for comment in ParticipantComment.objects.filter(participant__session=session).select_related('participant__user', 'author'):
+        pid = comment.participant_id
+        if pid not in comments_map:
+            comments_map[pid] = []
+        comments_map[pid].append(f"[{comment.created_at.strftime('%d/%m/%Y')} - {comment.author.get_full_name() if comment.author else 'Anonyme'}] {comment.content}")
 
     wb = Workbook()
     ws = wb.active
@@ -1070,38 +1081,47 @@ def export_session_csv(request, session_id):
         'Erreur': 'FF9999',
     }
 
-    # Ligne avec les formateurs
+    # Ligne 1 : Formateurs
     formateurs = ', '.join(f"{t.first_name} {t.last_name}" for t in session.trainers.all())
-    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=9)
+    ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
     cell = ws.cell(row=1, column=1)
     cell.value = f"Formateurs : {formateurs or 'Aucun'}"
     cell.font = Font(bold=True)
     cell.alignment = center_alignment
 
-    # Ligne d'en-têtes
+    # Ligne 2 : Date et Lieu fusionnés
+    session_date = session.start_date.strftime("%d/%m/%Y") if session.start_date else "Date inconnue"
+    session_location = f"{session.postal_code or 'CP inconnu'} {session.city or 'Ville inconnue'}"
+    date_lieu_str = f"Date : {session_date} / Lieu : {session_location}"
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=7)
+    cell = ws.cell(row=2, column=1)
+    cell.value = date_lieu_str
+    cell.font = Font(bold=True)
+    cell.alignment = center_alignment
+
+    # Ligne 3 : En-têtes
     headers = [
         "Nom", "Prénom", "Email", "RPE/Association",
-        "Statut d'inscription", "Statut Dossier", "Commentaires",
-        "Dates et Lieux", " "  # colonne vide pour avoir 9 colonnes
+        "Statut d'inscription", "Statut Dossier", "Commentaires"
     ]
     ws.append(headers)
-
     for col_num, column_title in enumerate(headers, 1):
-        cell = ws.cell(row=2, column=col_num)
+        cell = ws.cell(row=3, column=col_num)
         cell.fill = header_fill
         cell.font = header_font
         cell.alignment = center_alignment
         cell.border = thin_border
 
-    # Remplir les données des participants
+    # Lignes 4+ : Données des participants
     for sp in session_participants:
         user = sp.user
         participant = participant_extra_data.get(user.id)
 
         status_text = dict(SessionParticipant.STATUS_CHOICES).get(sp.status, 'Inconnu')
         file_status_text = dict(Participant.FILE_STATUS).get(participant.file_status, '') if participant else ''
-        comments = participant.comments if participant else ''
-        dates_lieux = "/n"
+
+        # Récupération des commentaires associés à ce SessionParticipant
+        comments = "\n".join(comments_map.get(sp.id, [])) or ''
 
         row_data = [
             user.last_name,
@@ -1111,8 +1131,6 @@ def export_session_csv(request, session_id):
             status_text,
             file_status_text,
             comments,
-            dates_lieux,
-            ""  # colonne vide pour équilibrer
         ]
 
         ws.append(row_data)
@@ -1122,12 +1140,13 @@ def export_session_csv(request, session_id):
             cell.alignment = center_alignment
             cell.border = thin_border
 
+        # Colorier la cellule de statut
         status_color = color_map.get(status_text)
         if status_color:
             status_cell = ws.cell(row=row_idx, column=5)
             status_cell.fill = PatternFill(start_color=status_color, end_color=status_color, fill_type="solid")
 
-    # Ajuster la largeur des colonnes
+    # Ajuster les largeurs de colonnes
     for i, column_cells in enumerate(ws.columns, 1):
         max_length = 0
         for cell in column_cells:
@@ -1136,11 +1155,87 @@ def export_session_csv(request, session_id):
         col_letter = get_column_letter(i)
         ws.column_dimensions[col_letter].width = max_length + 2
 
-    # Génération du fichier
+    # Retourner le fichier Excel
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
     response['Content-Disposition'] = f'attachment; filename="session_{session_id}_participants.xlsx"'
+    wb.save(response)
+    return response
+@staff_member_required
+def archive_session(request, session_id):
+    if request.method == "POST":
+        session = get_object_or_404(Session, pk=session_id)
+        session.is_archive = True
+        session.save()
+        messages.success(request, "La session a été archivée.")
+    return redirect('core:manage_session')  # ou la page vers laquelle tu veux revenir
+@staff_member_required
+def add_room_comment(request):
+    if request.method == 'POST':
+        room_id = request.POST.get('room_id')
+        content = request.POST.get('content')
+        room = get_object_or_404(TrainingRoom, pk=room_id)
+        TrainingRoomComment.objects.create(
+            room=room,
+            content=content,
+            author=request.user
+        )
+    return redirect('core:training_room_list')  # Redirige vers la liste des salles
+@staff_member_required
+def export_archived_sessions_xlsx(request):
+    sessions = Session.objects.filter(is_archive=True)
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Sessions archivées"
+
+    # Définir styles
+    header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")
+    header_font = Font(color="FFFFFF", bold=True)
+    center_alignment = Alignment(horizontal="center", vertical="center")
+    thin_border = Border(
+        left=Side(style='thin'), right=Side(style='thin'),
+        top=Side(style='thin'), bottom=Side(style='thin')
+    )
+
+    # En-têtes
+    headers = ["Formation", "Date de début", "Date de fin", "Ville", "Code postal", "Statut"]
+    ws.append(headers)
+
+    for col_num, title in enumerate(headers, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = title
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = center_alignment
+        cell.border = thin_border
+
+    # Remplir les données
+    for session in sessions:
+        row = [
+            session.formation.name,
+            session.start_date.strftime('%d/%m/%Y') if session.start_date else '',
+            session.end_date.strftime('%d/%m/%Y') if session.end_date else '',
+            session.city or '',
+            session.postal_code or '',
+            session.get_status_display(),
+        ]
+        ws.append(row)
+        row_idx = ws.max_row
+        for col_idx in range(1, len(row)+1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.alignment = center_alignment
+            cell.border = thin_border
+
+    # Ajuster la largeur
+    for col in ws.columns:
+        max_length = max(len(str(cell.value or '')) for cell in col)
+        ws.column_dimensions[col[0].column_letter].width = max_length + 2
+
+    # Générer le fichier
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="sessions_archivees.xlsx"'
     wb.save(response)
     return response
 @login_required

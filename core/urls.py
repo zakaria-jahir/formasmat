@@ -52,6 +52,10 @@ urlpatterns = [
     path('manage-session/<int:session_id>/update/', views.update_session, name='update_session'),
     path('manage-session/<int:session_id>/delete/', views.delete_session, name='delete_session'),
     path('session/<int:session_id>/update_status/', views.update_session_status, name='update_session_status'),
+    path('session/<int:session_id>/archive/', views.archive_session, name='archive_session'),
+    path('sessions/export-archives/', views.export_archived_sessions_xlsx, name='export_archived_sessions'),
+
+
    
     
     path('manage-session/create/', views.session_create, name='session_create'),# url non utilisé la creation du session se faite par l'url 'api/create-session' voir API endpoints
@@ -86,7 +90,11 @@ urlpatterns = [
     path('training-rooms/create/', views.training_room_create, name='training_room_create'),
     path('training-rooms/<int:pk>/edit/', views.training_room_edit, name='training_room_edit'),
     path('training-rooms/<int:pk>/delete/', views.training_room_delete, name='training_room_delete'),
-    #sesions
+    path('rooms/add-comment/', views.add_room_comment, name='add_room_comment'),
+
+    
+
+
     
     # Notifications
     path('notifications/', views.notifications_list, name='notifications_list'),

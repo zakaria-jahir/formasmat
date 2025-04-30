@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
 from django.utils import timezone
@@ -152,7 +153,32 @@ class TrainingRoom(models.Model):
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Date de mise à jour")
     def __str__(self):
         return f"{self.name} ({self.capacity} places)"
-    
+class TrainingRoomComment(models.Model):
+    """Commentaire sur une salle de formation."""
+    room = models.ForeignKey(
+        'TrainingRoom',
+        on_delete=models.CASCADE,
+        related_name='comments',
+        verbose_name="Salle de formation"
+    )
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name='trainingroom_comments',
+        verbose_name="Auteur"
+    )
+    content = models.TextField(verbose_name="Contenu du commentaire")
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Date de création")
+
+    class Meta:
+        verbose_name = "Commentaire de salle"
+        verbose_name_plural = "Commentaires de salles"
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return f"Commentaire par {self.author or 'Anonyme'} le {self.created_at.strftime('%d/%m/%Y')}"
 class Session(models.Model):
     """Modèle représentant une session de formation."""
 
@@ -190,6 +216,24 @@ class Session(models.Model):
     end_date = models.DateField(null=True, blank=True)
     iperia_opening_date = models.DateField(null=True, blank=True)
     iperia_deadline = models.DateField(null=True, blank=True)
+
+    address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
+    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
+    postal_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
+
+    latitude = models.FloatField(null=True, blank=True, verbose_name="Latitude")
+    longitude = models.FloatField(null=True, blank=True, verbose_name="Longitude")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    last_status_change = models.DateTimeField(default=timezone.now)
+
+    # ✅ Champ pour indiquer si la session est archivée
+    is_archive = models.BooleanField(default=False, verbose_name="Archivée")
+
+    def __str__(self):
+        return f"{self.formation.name} - {self.start_date or 'Date inconnue'}"
+
 
     # Adresse de la session
     address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
