@@ -53,15 +53,40 @@
                                 </button>
 
                                 {% if user.is_staff %}
-                                <div class="btn-group mt-2">
-                                    <a href="{% url 'core:training_room_edit' pk=room.pk %}" class="btn btn-outline-secondary btn-sm">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <a href="{% url 'core:training_room_delete' pk=room.pk %}" class="btn btn-outline-danger btn-sm">
-                                        <i class="fas fa-trash"></i>
-                                    </a>
-                                </div>
+
+                                    <div class="btn-group">
+                                        <a href="{% url 'core:training_room_edit' pk=room.pk %}" class="btn btn-outline-secondary">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteRoomModal{{ room.pk }}">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+
                                 {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="deleteRoomModal{{ room.pk }}" tabindex="-1" aria-labelledby="deleteRoomModalLabel{{ room.pk }}" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header bg-danger text-white">
+                                <h5 class="modal-title" id="deleteRoomModalLabel{{ room.pk }}">
+                                    Confirmer la suppression
+                                </h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Êtes-vous sûr de vouloir supprimer la salle <strong>{{ room.name }}</strong> ?</p>
+                                <p class="text-muted">Cette action est irréversible.</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                <form method="post" action="{% url 'core:training_room_delete' pk=room.pk %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Supprimer</button>
+                                </form>
                             </div>
                         </div>
                     </div>

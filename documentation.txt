@@ -7,12 +7,26 @@ ajout du trainer se fait tout d'abord on trouve la list du formateur voir traine
 dans vu trainer_create
 Si la requête est une requête GET, un formulaire vide (TrainerForm)"core/forms"  est affiché à l'utilisateur.
 Le formulaire est rendu dans le template core/trainer_form.html
-on a deux options pour l'encapsulation mobile on peut utilisé flutter or react native
+on a deux options pour l'encapsulation mobile on peut utilisé flutter or react native.
+
+j'ai supprimé le fichier admin/manage_training_whishes.html, manage_training_wishes.html, assign_wish_to_session.html et training_wishes.html
+
+admin_training_wishes.html est la pages utilisé pour la gestion des wishes 
+assign_wishes_to_session.html est la page responsable pour affecter un souhaits
+user_wishes.html est la page responsable de l'affichage des souhaits de chaque user 
+
+j'ai supprimer le fichier formations_list.html 
+
+formation_list.html est la page responsable de l'affichage des formations 
+j'ai replacer la page formation_confirm_delete.html par un modal dans la page formation_list.html
+j'ai replacer la page training_room_confirm_delete.html par un modal dans la page training_room_list.html
+j'ai replacer la page wish_confirm_delete.html par un modal dans la page user_wishes.html
+j'ai replacer la page trainer_confirm_delete.html par un modal dans la page trainers_list.html
+
+ajouter un modal de confirmation de suppression des session 
+
 
 TODO: 
-    * vérifier les pages admin/manage_training_wishes.html, admin_training_wishes.html, assign_wish_to_session.html, manage_training_wishes.html, training_wishes.html
-et voir la différence entre eux et supprimer les pages inutile. 
-    * supprimer les pages formation_confirm_delete.html, trainer_confirm_delete.html, training_room_confirm_delete.html, wish_confirm_delete.html et les remplacé avec des modals
     * Vérifier tout les urls inutile et les supprimer
     * voir le problem du rest API et comment rendre les urls.py comme des api que nous pouvons les consomer sur le web et le mobile.
 

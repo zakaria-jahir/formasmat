@@ -6,6 +6,32 @@
 
 
 {% block content %}
+
+<style>
+    .btn-custom {
+        background: linear-gradient(45deg, #ff6b6b, #f06595);
+        color: white;
+        border: none;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-custom:hover {
+        background: linear-gradient(45deg, #f06595, #ff6b6b);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        transform: translateY(-2px);
+    }
+
+    .btn-custom:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(255, 107, 107, 0.5);
+    }
+</style>
+
+
 <div class="container-fluid py-4">
     <div class="row">
         <div class="col-md-3">
@@ -32,7 +58,7 @@
                     <h2 class="mb-0">
                         <i class="fas fa-clipboard-list me-2"></i>Mes souhaits de formation
                     </h2>
-                    <button type="button" class="btn btn-light btn-sm" data-bs-toggle="modal" data-bs-target="#addWishModal">
+                    <button type="button" class="btn btn-custom btn-sm"  data-bs-toggle="modal" data-bs-target="#addWishModal">
                         <i class="fas fa-plus me-1"></i>Nouveau souhait
                     </button>
                 </div>
@@ -63,13 +89,34 @@
                                         <td>
                                             <div class="btn-group btn-group-sm wish-actions" role="group">
                                                 {% if not wish.session %}
-                                                    <button class="btn btn-outline-danger delete-wish" data-wish-id="{{ wish.id }}">
-                                                        <i class="fas fa-trash me-1"></i>Supprimer
-                                                    </button>
+                                                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteWishModal{{ wish.id }}">
+                                                    <i class="fas fa-trash me-1"></i>Supprimer
+                                                </button>
                                                 {% endif %}
                                             </div>
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="deleteWishModal{{ wish.id }}" tabindex="-1" aria-labelledby="deleteWishModalLabel{{ wish.id }}" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header bg-danger text-white">
+                                                    <h5 class="modal-title" id="deleteWishModalLabel{{ wish.id }}">Confirmer la suppression</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Êtes-vous sûr de vouloir supprimer le souhait pour la formation <strong>{{ wish.formation.name }}</strong> ?</p>
+                                                    <p class="text-muted">Cette action est irréversible.</p>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                                    <form method="post" action="{% url 'core:delete_wish' pk=wish.id %}">
+                                                        {% csrf_token %}
+                                                        <button type="submit" class="btn btn-danger">Supprimer</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 {% endfor %}
                                 </tbody>
                             </table>
