@@ -1,3 +1,4 @@
+import csv
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
@@ -1162,6 +1163,71 @@ def export_session_csv(request, session_id):
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
     response['Content-Disposition'] = f'attachment; filename="session_{session_id}_participants.xlsx"'
+    wb.save(response)
+    return response
+@staff_member_required
+def archive_session(request, session_id):
+    if request.method == "POST":
+        session = get_object_or_404(Session, pk=session_id)
+        session.is_archive = True
+        session.save()
+        messages.success(request, "La session a été archivée.")
+    return redirect('core:manage_session')  # ou la page vers laquelle tu veux revenir
+
+@staff_member_required
+def export_archived_sessions_xlsx(request):
+    sessions = Session.objects.filter(is_archive=True)
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Sessions archivées"
+
+    # Définir styles
+    header_fill = PatternFill(start_color="4F81BD", end_color="4F81BD", fill_type="solid")
+    header_font = Font(color="FFFFFF", bold=True)
+    center_alignment = Alignment(horizontal="center", vertical="center")
+    thin_border = Border(
+        left=Side(style='thin'), right=Side(style='thin'),
+        top=Side(style='thin'), bottom=Side(style='thin')
+    )
+
+    # En-têtes
+    headers = ["Formation", "Date de début", "Date de fin", "Ville", "Code postal", "Statut"]
+    ws.append(headers)
+
+    for col_num, title in enumerate(headers, 1):
+        cell = ws.cell(row=1, column=col_num)
+        cell.value = title
+        cell.fill = header_fill
+        cell.font = header_font
+        cell.alignment = center_alignment
+        cell.border = thin_border
+
+    # Remplir les données
+    for session in sessions:
+        row = [
+            session.formation.name,
+            session.start_date.strftime('%d/%m/%Y') if session.start_date else '',
+            session.end_date.strftime('%d/%m/%Y') if session.end_date else '',
+            session.city or '',
+            session.postal_code or '',
+            session.get_status_display(),
+        ]
+        ws.append(row)
+        row_idx = ws.max_row
+        for col_idx in range(1, len(row)+1):
+            cell = ws.cell(row=row_idx, column=col_idx)
+            cell.alignment = center_alignment
+            cell.border = thin_border
+
+    # Ajuster la largeur
+    for col in ws.columns:
+        max_length = max(len(str(cell.value or '')) for cell in col)
+        ws.column_dimensions[col[0].column_letter].width = max_length + 2
+
+    # Générer le fichier
+    response = HttpResponse(content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+    response['Content-Disposition'] = 'attachment; filename="sessions_archivees.xlsx"'
     wb.save(response)
     return response
 @login_required

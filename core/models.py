@@ -191,6 +191,24 @@ class Session(models.Model):
     iperia_opening_date = models.DateField(null=True, blank=True)
     iperia_deadline = models.DateField(null=True, blank=True)
 
+    address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
+    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
+    postal_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
+
+    latitude = models.FloatField(null=True, blank=True, verbose_name="Latitude")
+    longitude = models.FloatField(null=True, blank=True, verbose_name="Longitude")
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    last_status_change = models.DateTimeField(default=timezone.now)
+
+    # ✅ Champ pour indiquer si la session est archivée
+    is_archive = models.BooleanField(default=False, verbose_name="Archivée")
+
+    def __str__(self):
+        return f"{self.formation.name} - {self.start_date or 'Date inconnue'}"
+
+
     # Adresse de la session
     address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
     city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
