@@ -1,11 +1,20 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from core.views import export_session_pdf
+from rest_framework.routers import DefaultRouter
+from .api_views import FormationViewSet
 
 app_name = 'core'
+
+
+# DRF Router
+router = DefaultRouter()
+router.register(r'formations', FormationViewSet, basename='formation')
+
+
 
 urlpatterns = [
     # Pages principales
@@ -123,6 +132,9 @@ urlpatterns = [
              template_name='core/password/password_reset_complete.html'
          ),
          name='password_reset_complete'),
+
+
+    path('api/', include(router.urls)),
 
 ] 
 
