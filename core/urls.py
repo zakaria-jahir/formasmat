@@ -50,7 +50,7 @@ urlpatterns = [
     path('manage-session/detail/<int:session_id>/', views.session_detail, name='session_detail'),
     path('manage-session/get/<int:session_id>/', views.get_session, name='get_session'),
     path('manage-session/<int:session_id>/update/', views.update_session, name='update_session'),
-    path('manage-session/delete/<int:session_id>/', views.delete_session, name='delete_session'),
+    path('manage-session/<int:session_id>/delete/', views.delete_session, name='delete_session'),
     path('session/<int:session_id>/update_status/', views.update_session_status, name='update_session_status'),
    
     

@@ -109,7 +109,8 @@
                                     <form method="post" action="{% url 'core:add_training_wish' formation_pk=formation.pk %}" style="display:inline;">
                                         {% csrf_token %}
                                         <button type="submit" class="btn btn-outline-success btn-sm">
-                                            <i class="bi bi-heart"></i> Souhaiter
+                                            <i class="bi bi-heart"></i> Souhaiter 
+                                            {# à VOIR  #}
                                         </button>
                                     </form>
                                     {% endif %}
@@ -117,9 +118,39 @@
                                     {% if user.is_staff %}
                                         <div class="btn-group" role="group">
                                             <a href="{% url 'core:formation_edit' pk=formation.pk %}" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
-                                            <a href="{% url 'core:formation_delete' pk=formation.pk %}" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></a>
+                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ formation.pk }}">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
                                         </div>
                                     {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Delete Confirmation Modal -->
+                        <div class="modal fade" id="deleteModal{{ formation.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ formation.pk }}" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger text-white">
+                                        <h5 class="modal-title" id="deleteModalLabel{{ formation.pk }}">
+                                            <i class="bi bi-exclamation-triangle"></i> Confirmation de suppression
+                                        </h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Êtes-vous sûr de vouloir supprimer la formation : <strong>{{ formation.name }}</strong> ?</p>
+                                        <div class="alert alert-warning">
+                                            <i class="bi bi-info-circle"></i> Cette action est irréversible.
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        <form method="post" action="{% url 'core:formation_delete' pk=formation.pk %}">
+                                            {% csrf_token %}
+                                            <button type="submit" class="btn btn-danger">
+                                                <i class="bi bi-trash"></i> Confirmer la suppression
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>

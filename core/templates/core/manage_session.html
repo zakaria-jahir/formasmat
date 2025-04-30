@@ -163,14 +163,32 @@
                                     <a href="{% url 'core:session_detail' session_id=session.id %}" class="btn btn-info btn-sm">
                                         <i class="fas fa-info-circle"></i> Détails
                                     </a>
-                                    <button type="button" 
-                                            class="btn btn-sm btn-outline-danger"
-                                            onclick="deleteSession({{ session.id }})">  
+                                    <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteSessionModal{{ session.id }}">
                                         <i class="fas fa-trash"></i> Supprimer
                                     </button>
                                 </div>
                             </td>
                         </tr>
+                        <div class="modal fade" id="deleteSessionModal{{ session.id }}" tabindex="-1" aria-labelledby="deleteSessionModalLabel{{ session.id }}" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header bg-danger text-white">
+                                        <h5 class="modal-title" id="deleteSessionModalLabel{{ session.id }}">Confirm Deletion</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>Êtes-vous sûr de vouloir supprimer la session <strong>{{ session.formation.name }}</strong>?</p>
+                                        <p class="text-muted">Cette action est irréversible.</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                                        <button type="button" class="btn btn-danger btn-sm delete-session-btn" data-id="{{ session.id }}">
+                                            <i class="fas fa-trash"></i> Supprimer
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         {% empty %}
                         <tr>
                             <td colspan="5" class="text-center">Aucune session trouvée</td>
@@ -424,24 +442,6 @@ function addEditDateInput(dateData = null) {
     container.appendChild(dateGroup);
 }
 
-function deleteSession(sessionId) {
-    if (confirm('Êtes-vous sûr de vouloir supprimer cette session ?')) {
-        fetch(`/manage-session/delete/${sessionId}/`, {
-            method: 'POST',
-            headers: {
-                'X-CSRFToken': getCookie('csrftoken'),
-            },
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.success) {
-                location.reload();
-            } else {
-                alert('Erreur lors de la suppression de la session');
-            }
-        });
-    }
-}
 
 function addDateInput() {
     const container = document.getElementById('dates-container');
@@ -534,5 +534,51 @@ document.addEventListener('DOMContentLoaded', function() {
     formationFilter.addEventListener('change', applyFilters);
     statusFilter.addEventListener('change', applyFilters);
 });
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    $(document).ready(function () {
+        // Handle delete button click
+        $('.delete-session-btn').on('click', function (event) {
+            event.preventDefault(); // Prevent the default behavior of the button
+    
+            const sessionId = $(this).data('id'); // Get the session ID
+            if (!sessionId) {
+                alert('Erreur : ID de session introuvable.');
+                return;
+            }
+    
+            const url = `/manage-session/${sessionId}/delete/`; // Construct the URL
+            const button = $(this); // Reference to the button
+    
+
+    
+            // Send the AJAX request to delete the session
+            $.ajax({
+                url: url,
+                type: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}', // Include CSRF token
+                },
+                success: function (response) {
+                    if (response.success) {
+                        // Redirect to the manage_session page
+                        window.location.href = '/manage-session/';
+                    } else {
+                        alert(response.message || 'Une erreur est survenue.');
+                    }
+                },
+                error: function (xhr) {
+                    alert('Une erreur est survenue : ' + (xhr.responseJSON?.message || 'Erreur inconnue.'));
+                },
+                complete: function () {
+                    // Re-enable the button
+                    button.prop('disabled', false);
+                }
+            });
+        });
+    });
+
 </script>
 {% endblock %}
