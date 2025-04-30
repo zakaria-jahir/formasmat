@@ -35,7 +35,7 @@ from openpyxl.styles import PatternFill, Alignment, Font, Border, Side
 from core.utils import ajax_login_required, get_coordinates_from_postal_code, haversine1
 
 from .models import (
-    User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
+    TrainingRoomComment, User, Formation, Trainer, TrainingRoom, TrainingWish, Session, 
     SessionDate, Participant, SessionParticipant, ParticipantComment, 
     Notification, CompletedTraining
 )
@@ -1173,7 +1173,18 @@ def archive_session(request, session_id):
         session.save()
         messages.success(request, "La session a été archivée.")
     return redirect('core:manage_session')  # ou la page vers laquelle tu veux revenir
-
+@staff_member_required
+def add_room_comment(request):
+    if request.method == 'POST':
+        room_id = request.POST.get('room_id')
+        content = request.POST.get('content')
+        room = get_object_or_404(TrainingRoom, pk=room_id)
+        TrainingRoomComment.objects.create(
+            room=room,
+            content=content,
+            author=request.user
+        )
+    return redirect('core:training_room_list')  # Redirige vers la liste des salles
 @staff_member_required
 def export_archived_sessions_xlsx(request):
     sessions = Session.objects.filter(is_archive=True)
