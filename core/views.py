@@ -484,10 +484,7 @@ def formation_delete(request, pk):
         formation.delete()
         messages.success(request, 'Formation supprimée avec succès.')
         return redirect('core:formation_list')
-    
-    return render(request, 'core/formation_confirm_delete.html', {
-        'object': formation
-    })
+    return redirect('core:formation_list')
 
 # Salles
 @staff_member_required
@@ -532,7 +529,7 @@ def training_room_delete(request, pk):
         room.delete()
         messages.success(request, 'Salle supprimée avec succès !')
         return redirect('core:training_room_list')
-    return render(request, 'core/training_room_confirm_delete.html', {'room': room})
+    return redirect('core:training_room_list')
 
 # Formateurs
 @login_required
@@ -1650,16 +1647,18 @@ def get_session(request, session_id):
 @login_required
 @staff_member_required
 def delete_session(request, session_id):
-    """Vue pour supprimer une session."""
-    try:
-        session = Session.objects.get(id=session_id)
-        session.delete()
-        return JsonResponse({'success': True})
-    except Session.DoesNotExist:
-        return JsonResponse({'error': 'Session non trouvée'}, status=404)
-    except Exception as e:
-        logger.error(f"Erreur lors de la suppression de la session {session_id}: {str(e)}")
-        return JsonResponse({'error': str(e)}, status=500)
+    """View to delete a session."""
+    if request.method == 'POST':  # Ensure the request is POST
+        try:
+            session = Session.objects.get(id=session_id)
+            session.delete()
+            return JsonResponse({'success': True, 'message': 'Session deleted successfully.'})
+        except Session.DoesNotExist:
+            return JsonResponse({'success': False, 'message': 'Session does not exist.'}, status=404)
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)}, status=500)
+    else:
+        return JsonResponse({'success': False, 'message': 'Invalid request method.'}, status=405)
 
 @login_required
 @staff_member_required
