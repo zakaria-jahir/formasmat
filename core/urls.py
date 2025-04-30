@@ -54,6 +54,10 @@ urlpatterns = [
     path('session/<int:session_id>/update_status/', views.update_session_status, name='update_session_status'),
     path('session/<int:session_id>/archive/', views.archive_session, name='archive_session'),
     path('sessions/export-archives/', views.export_archived_sessions_xlsx, name='export_archived_sessions'),
+    path('sessions/list/', views.session_list, name='session_list'),
+
+
+
 
 
    

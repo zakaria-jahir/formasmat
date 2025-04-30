@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
@@ -233,23 +234,21 @@ class Session(models.Model):
 
     def __str__(self):
         return f"{self.formation.name} - {self.start_date or 'Date inconnue'}"
+    def check_and_archive(self):
+        """Archive la session si elle est terminée depuis plus de 18 mois."""
+        if self.status == "TERMINEE" and not self.is_archive:
+            if self.last_status_change and timezone.now() - self.last_status_change > timedelta(days=18*30):  # ~18 mois
+                self.is_archive = True
+                self.save()
 
-
-    # Adresse de la session
-    address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
-    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
-    postal_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
-
-    # ➡️ Coordonnées GPS
-    latitude = models.FloatField(null=True, blank=True, verbose_name="Latitude")
-    longitude = models.FloatField(null=True, blank=True, verbose_name="Longitude")
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    last_status_change = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.formation.name} - {self.get_status_display()}"
+        try:
+            formation_name = self.formation.name
+        except:
+            formation_name = "Formation inconnue"
+        return f"{formation_name} - {self.get_status_display()}"
+
     def save(self, *args, **kwargs):
         # Sauvegarder d'abord la session
         super().save(*args, **kwargs)
