@@ -1,3 +1,4 @@
+from datetime import timedelta
 from django.conf import settings
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
@@ -233,6 +234,12 @@ class Session(models.Model):
 
     def __str__(self):
         return f"{self.formation.name} - {self.start_date or 'Date inconnue'}"
+    def check_and_archive(self):
+        """Archive la session si elle est terminée depuis plus de 18 mois."""
+        if self.status == "TERMINEE" and not self.is_archive:
+            if self.last_status_change and timezone.now() - self.last_status_change > timedelta(days=18*30):  # ~18 mois
+                self.is_archive = True
+                self.save()
 
 
     def __str__(self):

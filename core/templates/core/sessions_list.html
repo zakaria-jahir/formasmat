@@ -1,77 +1,77 @@
-{% extends 'core/base.html' %}
-{% load django_bootstrap5 %}
+    {% extends 'core/base.html' %}
+    {% load django_bootstrap5 %}
 
-{% block title %}Sessions de formation - Formation AssMat{% endblock %}
+    {% block title %}Sessions de formation - Formation AssMat{% endblock %}
 
-{% block content %}
-<div class="container mt-4">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="mb-4">Sessions de formation à venir</h1>
-        {% if user.is_staff %}
-        <a href="{% url 'core:session_create' %}" class="btn btn-primary">
-            <i class="fas fa-plus"></i> Créer une session
-        </a>
-        {% endif %}
-    </div>
+    {% block content %}
+    <div class="container mt-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-4">Sessions de formation à venir</h1>
+            {% if user.is_staff %}
+            <a href="{% url 'core:session_create' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Créer une session
+            </a>
+            {% endif %}
+        </div>
 
-    <div class="row">
-        {% for session in sessions %}
-        <div class="col-md-6 mb-4">
-            <div class="card h-100">
-                <div class="card-body">
-                    <h5 class="card-title">{{ session.formation.name }}</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Code IPERIA : {{ session.formation.code_iperia }}</h6>
-                    
-                    <p class="card-text">
-                        <i class="fas fa-map-marker-alt"></i> Lieu : {{ session.location }}<br>
-                        <i class="fas fa-calendar"></i> Date de début : {{ session.start_date }}<br>
-                        <i class="fas fa-users"></i> Participants : {{ session.participants.count }}/12
-                    </p>
+        <div class="row">
+            {% for session in sessions %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ session.formation.name }}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Code IPERIA : {{ session.formation.code_iperia }}</h6>
+                        
+                        <p class="card-text">
+                            <i class="fas fa-map-marker-alt"></i> Lieu : {{ session.location }}<br>
+                            <i class="fas fa-calendar"></i> Date de début : {{ session.start_date }}<br>
+                            <i class="fas fa-users"></i> Participants : {{ session.participants.count }}/12
+                        </p>
 
-                    <h6 class="mb-2">Formateurs :</h6>
-                    <ul class="list-unstyled">
-                        {% for trainer in session.trainers.all %}
-                        <li><i class="fas fa-chalkboard-teacher"></i> {{ trainer.get_full_name|default:trainer.username }}</li>
-                        {% endfor %}
-                    </ul>
+                        <h6 class="mb-2">Formateurs :</h6>
+                        <ul class="list-unstyled">
+                            {% for trainer in session.trainers.all %}
+                            <li><i class="fas fa-chalkboard-teacher"></i> {{ trainer.get_full_name|default:trainer.username }}</li>
+                            {% endfor %}
+                        </ul>
 
-                    {% if user.is_authenticated %}
-                        {% if user in session.participants.all %}
-                        <form method="post" action="{% url 'core:unregister_session' session.id %}" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-danger">
-                                <i class="fas fa-times"></i> Se désinscrire
-                            </button>
-                        </form>
-                        {% else %}
-                            {% if session.participants.count < 12 %}
-                            <form method="post" action="{% url 'core:register_session' session.id %}" class="d-inline">
+                        {% if user.is_authenticated %}
+                            {% if user in session.participants.all %}
+                            <form method="post" action="{% url 'core:unregister_session' session.id %}" class="d-inline">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-success">
-                                    <i class="fas fa-check"></i> S'inscrire
+                                <button type="submit" class="btn btn-danger">
+                                    <i class="fas fa-times"></i> Se désinscrire
                                 </button>
                             </form>
                             {% else %}
-                            <button class="btn btn-secondary" disabled>
-                                <i class="fas fa-ban"></i> Session complète
-                            </button>
+                                {% if session.participants.count < 12 %}
+                                <form method="post" action="{% url 'core:register_session' session.id %}" class="d-inline">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-success">
+                                        <i class="fas fa-check"></i> S'inscrire
+                                    </button>
+                                </form>
+                                {% else %}
+                                <button class="btn btn-secondary" disabled>
+                                    <i class="fas fa-ban"></i> Session complète
+                                </button>
+                                {% endif %}
                             {% endif %}
+                        {% else %}
+                        <a href="{% url 'core:login' %}?next={{ request.path }}" class="btn btn-primary">
+                            <i class="fas fa-sign-in-alt"></i> Connectez-vous pour vous inscrire
+                        </a>
                         {% endif %}
-                    {% else %}
-                    <a href="{% url 'core:login' %}?next={{ request.path }}" class="btn btn-primary">
-                        <i class="fas fa-sign-in-alt"></i> Connectez-vous pour vous inscrire
-                    </a>
-                    {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-        {% empty %}
-        <div class="col-12">
-            <div class="alert alert-info">
-                Aucune session n'est prévue pour le moment.
+            {% empty %}
+            <div class="col-12">
+                <div class="alert alert-info">
+                    Aucune session n'est prévue pour le moment.
+                </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
-</div>
-{% endblock %}
+    {% endblock %}

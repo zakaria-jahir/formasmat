@@ -1,4 +1,5 @@
 import csv
+from email.utils import parsedate
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from . import views
@@ -16,6 +17,8 @@ from django.db import IntegrityError
 from django.urls import reverse
 from django.views.decorators.http import require_http_methods,require_GET
 from django.contrib.auth.forms import AuthenticationForm
+from django.utils.timezone import now
+from datetime import timedelta
 from django.http import HttpResponse, HttpResponseNotAllowed, JsonResponse
 
 
@@ -845,12 +848,24 @@ def delete_wish(request, pk):
         return redirect('core:user_wishes')
     return render(request, 'core/wish_confirm_delete.html', {'wish': wish})
 
-@login_required
 def session_list(request):
-    sessions = Session.objects.all().select_related('formation', 'room')
+    # 🔍 Vérification automatique des sessions "TERMINEE" à archiver
+    print("📦 Vérification des sessions à archiver...")
+
+    for session in Session.objects.filter(status='TERMINEE', is_archive=False):
+        if session.last_status_change:
+            time_diff = now() - session.last_status_change
+            print(f"🔍 Session ID {session.id} — Temps écoulé : {time_diff}")
+            if time_diff > timedelta(minutes=2):  # ⚠️ tu voulais 2 minutes
+                session.is_archive = True
+                session.save()
+                print(f"✅ Session ID {session.id} archivée.")
+
+    sessions = Session.objects.filter(is_archive=False).select_related('formation')
     return render(request, 'core/sessions_list.html', {
         'sessions': sessions
     })
+
 @require_GET
 def get_formation_sessions(request):
     formation_id = request.GET.get('formation_id')
@@ -1242,7 +1257,23 @@ def export_archived_sessions_xlsx(request):
 @login_required
 @staff_member_required
 def manage_session(request):
-    """Renders the session management page."""
+    """Renders the session management page and archives old sessions."""
+
+    # 🔍 Archivage automatique
+    print("📦 [DEBUG] Début vérification des sessions à archiver...")
+
+    for session in Session.objects.filter(status='TERMINEE', is_archive=False):
+        if session.last_status_change:
+            time_diff = now() - session.last_status_change
+            print(f"🔍 Session ID {session.id} — Temps écoulé : {time_diff}")
+            if time_diff > timedelta(days=30*18):
+                session.is_archive = True
+                session.save()
+                print(f"✅ Session ID {session.id} archivée automatiquement.")
+        else:
+            print(f"⚠️ Session ID {session.id} n'a pas de date de changement de statut.")
+
+    # Rendu de la page avec les données habituelles
     sessions = Session.objects.prefetch_related('trainers', 'dates', 'formation').all()
     formations = Formation.objects.all()
     trainers = Trainer.objects.all()
@@ -1580,10 +1611,24 @@ def update_session_status(request):
     except Exception as e:
         logger.error(f"Erreur lors de la mise à jour du statut de la session: {e}")
         return JsonResponse({'error': str(e)}, status=400)
-    
 def admin_training_sessions(request):
     user = request.user
-    user_lat, user_lon = user.latitude, user.longitude
+
+    # Vérifie que l'utilisateur a bien latitude et longitude
+    user_lat = getattr(user, 'latitude', None)
+    user_lon = getattr(user, 'longitude', None)
+
+    # 🔍 Vérification automatique des sessions "TERMINEE" à archiver
+    print("📦 Vérification des sessions à archiver...")
+
+    for session in Session.objects.filter(status='TERMINEE', is_archive=False):
+        if session.last_status_change:
+            time_diff = now() - session.last_status_change
+            print(f"🔍 Session ID {session.id} — Temps écoulé : {time_diff}")
+            if time_diff > timedelta(minutes=1):
+                session.is_archive = True
+                session.save()
+                print(f"✅ Session ID {session.id} archivée.")
 
     formations = Formation.objects.all()
     selected_formation_id = request.GET.get('formation')
@@ -1591,7 +1636,8 @@ def admin_training_sessions(request):
     date_from = request.GET.get('date_from')
     date_to = request.GET.get('date_to')
 
-    sessions = Session.objects.select_related('formation')
+    # 🔒 On filtre pour n'afficher que les sessions non archivées
+    sessions = Session.objects.filter(is_archive=False).select_related('formation')
 
     if selected_formation_id:
         sessions = sessions.filter(formation__id=selected_formation_id)
@@ -1600,23 +1646,20 @@ def admin_training_sessions(request):
         sessions = sessions.filter(city__icontains=city_filter)
 
     if date_from:
-        sessions = sessions.filter(start_date__gte=parse_date(date_from))
+        sessions = sessions.filter(start_date__gte=parsedate(date_from))
     if date_to:
-        sessions = sessions.filter(end_date__lte=parse_date(date_to))
+        sessions = sessions.filter(end_date__lte=parsedate(date_to))
 
-    # Filtrage terminé, on calcule les distances :
+    # Ajoute la distance si latitude et longitude sont connues
     sessions_with_distance = []
     for session in sessions:
         if session.latitude and session.longitude and user_lat and user_lon:
-            distance = haversine(user_lat, user_lon, session.latitude, session.longitude)
+            distance = haversine1(user_lat, user_lon, session.latitude, session.longitude)
         else:
-            distance = float('inf')  # On met les distances inconnues en dernier
+            distance = float('inf')
         sessions_with_distance.append((distance, session))
 
-    # Tri par distance
     sessions_with_distance.sort(key=lambda x: x[0])
-
-    # Extraire les sessions triées seules
     sessions = [s for _, s in sessions_with_distance]
 
     context = {
@@ -1631,8 +1674,20 @@ def admin_training_sessions(request):
 @login_required
 @staff_member_required
 def get_session(request, session_id):
-    """Fetches session details for editing."""
+    """Fetches session details for editing, and archive old sessions if needed."""
+
+    print("🔍 Vérification des sessions terminées non archivées...")
+    for session in Session.objects.filter(status='TERMINEE', is_archive=False):
+        delta = now() - session.last_status_change
+        print(f"🕓 Session ID {session.id} - Dernier changement : {session.last_status_change} (delta: {delta})")
+        if session.last_status_change and delta > timedelta(minutes=1):
+            session.is_archive = True
+            session.save()
+            print(f"✅ Session ID {session.id} archivée automatiquement.")
+
     session = get_object_or_404(Session, id=session_id)
+    print(f"📦 Chargement de la session ID {session.id}")
+
     session_data = {
         'id': session.id,
         'formation_id': session.formation.id,
@@ -1643,6 +1698,7 @@ def get_session(request, session_id):
         'iperia_deadline': session.iperia_deadline,
     }
     return JsonResponse(session_data)
+
 
 @login_required
 @staff_member_required
