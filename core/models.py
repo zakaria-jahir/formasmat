@@ -235,21 +235,13 @@ class Session(models.Model):
         return f"{self.formation.name} - {self.start_date or 'Date inconnue'}"
 
 
-    # Adresse de la session
-    address = models.CharField(max_length=255, null=True, blank=True, verbose_name="Adresse")
-    city = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ville")
-    postal_code = models.CharField(max_length=10, null=True, blank=True, verbose_name="Code postal")
-
-    # ➡️ Coordonnées GPS
-    latitude = models.FloatField(null=True, blank=True, verbose_name="Latitude")
-    longitude = models.FloatField(null=True, blank=True, verbose_name="Longitude")
-
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    last_status_change = models.DateTimeField(default=timezone.now)
-
     def __str__(self):
-        return f"{self.formation.name} - {self.get_status_display()}"
+        try:
+            formation_name = self.formation.name
+        except:
+            formation_name = "Formation inconnue"
+        return f"{formation_name} - {self.get_status_display()}"
+
     def save(self, *args, **kwargs):
         # Sauvegarder d'abord la session
         super().save(*args, **kwargs)

@@ -56,6 +56,8 @@ urlpatterns = [
     path('sessions/export-archives/', views.export_archived_sessions_xlsx, name='export_archived_sessions'),
 
 
+
+
    
     
     #path('manage-session/create/', views.session_create, name='session_create'),# url non utilisé la creation du session se faite par l'url 'api/create-session' voir API endpoints

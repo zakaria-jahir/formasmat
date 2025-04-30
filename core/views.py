@@ -1185,6 +1185,7 @@ def add_room_comment(request):
             author=request.user
         )
     return redirect('core:training_room_list')  # Redirige vers la liste des salles
+
 @staff_member_required
 def export_archived_sessions_xlsx(request):
     sessions = Session.objects.filter(is_archive=True)
