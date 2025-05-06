@@ -4,6 +4,5 @@ from .models import Formation
 class FormationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Formation
-        fields = '__all__'  # Include all fields from the Formation model
+        fields = '__all__'  
 
-        
