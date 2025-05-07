@@ -1,0 +1,214 @@
+
+/* Sylvan-like theme for Bootstrap templates
+   --------------------------------------------------
+   Inspired by https://www.sylvan-formations.com
+   Author: ChatGPT (OpenAI o3)
+   Modifieur: Brandon Dieu
+   -------------------------------------------------- */
+
+/* 1. Typography & base colours
+   -------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
+
+:root{
+    --sylvan-primary:#0d4a91;      /* deep blue */
+    --sylvan-primary-light:#1972d5;
+    --sylvan-primary-dark:#063067;
+    --sylvan-accent:#f39200;       /* warm orange accent */
+    --sylvan-body:#333333;
+    --sylvan-muted:#d9dee1;
+    --bs-border-radius-lg:1rem;    /* overrides Bootstrap radius variables */
+
+    --primary-color: #F9B72A; /* Jaune chaleureux */
+    --secondary-color: #2E2E2E; /* Gris foncé */
+    --background-color: #ffffff;
+    --text-color: #141414; /* Gris très foncé */
+    --hover-color: #fccc64;
+    --border-radius: 8px;
+}
+
+body{
+    font-family:'Montserrat', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-size:1rem;
+    color:var(--sylvan-body);
+    background-color:#ffffff;
+}
+
+h1,h2,h3,h4,h5,h6{
+    color:var(--primary-color);
+    font-weight:700;
+    letter-spacing:0.02em;
+}
+h1{font-size:2.25rem;}
+h2{font-size:1.75rem;}
+h3{font-size:1.5rem;}
+
+/* 2. Links
+   -------------------------------------------------- */
+a{
+    color:var(--sylvan-primary);
+    transition:color .2s ease;
+    text-decoration:none;
+}
+a:hover,
+a:focus{
+    color:var(--sylvan-accent);
+    text-decoration:none;
+}
+
+/* 3. Navbar
+   -------------------------------------------------- */
+img {
+    width: 150px;
+    height: auto;
+}
+
+.navbar{
+    background-color: #fff;
+}
+.navbar-brand,
+.navbar-nav .nav-link{
+    color:var(--sylvan-body);
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+}
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus{
+    color:var(--sylvan-accent);
+}
+
+/* Barre secondaire */
+.below-bar {
+    background: linear-gradient(to right, var(--primary-color), var(--sylvan-accent));
+    width: 120%;
+    height: 4px;
+}
+
+/* 4. Buttons – keep original Bootstrap background colour, only tweak radius & text
+   -------------------------------------------------- */
+.btn{
+    border-radius:50rem;          /* pill shape */
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+}
+.btn i{margin-right:.35rem;}
+
+/* Primary outline using Sylvan colours */
+.btn-outline-primary{
+    color:var(--sylvan-primary);
+    border-color:var(--sylvan-primary);
+}
+.btn-outline-primary:hover{
+    background-color:var(--sylvan-primary);
+    color:#ffffff;
+}
+
+/* 5. Cards
+   -------------------------------------------------- */
+.card{
+    border:none;
+    border-radius:var(--bs-border-radius-lg);
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.1);
+}
+.card-header{
+    background-color:var(--sylvan-muted);
+    color:#ffffff;
+    border-top-left-radius:var(--bs-border-radius-lg);
+    border-top-right-radius:var(--bs-border-radius-lg);
+    font-weight:600;
+    letter-spacing:.03em;
+}
+.card-title{
+    color:var(--primary-color);
+    font-weight:700;
+}
+.card-footer{
+    background-color:transparent;
+    border-top:none;
+}
+
+/* 6. Tables
+-------------------------------------------------- */
+.table thead{
+    background-color:var(--sylvan-primary);
+    color:#ffffff;
+    text-transform:uppercase;
+    letter-spacing:.03em;
+    font-size:.9rem;
+}
+.table-striped>tbody>tr:nth-of-type(odd)>*{
+    background-color:#f9fbff;
+}
+
+/* 7. Badges & Status chips
+   -------------------------------------------------- */
+.badge{
+    border-radius:.5rem;
+    font-size:.75rem;
+    padding:.45em .7em;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.02em;
+}
+/* Example custom colours mapping from status context */
+.badge-success{background:#28a745;}
+.badge-warning{background:#f9b115; color:#212529;}
+.badge-danger{background:#dc3545;}
+.badge-info{background:#17a2b8;}
+
+/* 8. Breadcrumb
+   -------------------------------------------------- */
+.breadcrumb{
+    background-color:transparent;
+}
+.breadcrumb-item a{
+    color:var(--sylvan-primary);
+}
+.breadcrumb-item+.breadcrumb-item::before{
+    color:var(--sylvan-muted);
+}
+
+/* 9. Forms
+   -------------------------------------------------- */
+.form-control:focus{
+    border-color:var(--sylvan-primary-light);
+    box-shadow:0 0 0 .25rem rgba(13,74,145,.25);
+}
+.form-label,
+.form-text{
+    color:var(--sylvan-muted);
+}
+.invalid-feedback{
+    font-size:.875em;
+}
+
+/* 10. Lists & list-group
+   -------------------------------------------------- */
+.list-group-item{
+    border-left:4px solid transparent;
+    transition:border-color .2s ease;
+}
+.list-group-item:hover{
+    border-color:var(--sylvan-primary);
+}
+
+.list-group-item.active {
+    background-color: var(--sylvan-muted);
+    border-color: var(--sylvan-muted);
+    color: var(--primary-color);
+}
+
+/* 11. Utilities
+   -------------------------------------------------- */
+.text-primary-sylvan{color:var(--sylvan-primary)!important;}
+.bg-primary-sylvan{background-color:var(--sylvan-primary)!important;}
+.font-weight-600{font-weight:600!important;}
+
+/* 12. Media queries tweaks
+   -------------------------------------------------- */
+@media (min-width:768px){
+    h1{font-size:2.75rem;}
+    h2{font-size:2rem;}
+}
