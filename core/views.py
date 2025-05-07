@@ -241,7 +241,25 @@ def update_session(request, session_id):
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)})
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
+@login_required
+def update_session(request, session_id):
+    if request.method == 'POST':
+        try:
+            session = Session.objects.get(pk=session_id)
+            new_status = request.POST.get('status')
+            session.status = new_status
+            session.save()
 
+            return JsonResponse({
+                'success': True,
+                'status': session.get_status_display(),
+                'status_class': session.get_status_class()
+            })
+        except Session.DoesNotExist:
+            return JsonResponse({'success': False, 'error': 'Session non trouvée'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'error': str(e)})
+    return JsonResponse({'success': False, 'error': 'Méthode non autorisée'})
 @login_required
 def user_wishes(request):
     """Liste des souhaits de formation de l'utilisateur."""
