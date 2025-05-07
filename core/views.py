@@ -241,25 +241,7 @@ def update_session(request, session_id):
         except Exception as e:
             return JsonResponse({'success': False, 'error': str(e)})
     return JsonResponse({'success': False, 'error': 'Invalid request method.'})
-@login_required
-def update_session(request, session_id):
-    if request.method == 'POST':
-        try:
-            session = Session.objects.get(pk=session_id)
-            new_status = request.POST.get('status')
-            session.status = new_status
-            session.save()
 
-            return JsonResponse({
-                'success': True,
-                'status': session.get_status_display(),
-                'status_class': session.get_status_class()
-            })
-        except Session.DoesNotExist:
-            return JsonResponse({'success': False, 'error': 'Session non trouvée'})
-        except Exception as e:
-            return JsonResponse({'success': False, 'error': str(e)})
-    return JsonResponse({'success': False, 'error': 'Méthode non autorisée'})
 @login_required
 def user_wishes(request):
     """Liste des souhaits de formation de l'utilisateur."""
@@ -1284,7 +1266,7 @@ def manage_session(request):
         if session.last_status_change:
             time_diff = now() - session.last_status_change
             print(f"🔍 Session ID {session.id} — Temps écoulé : {time_diff}")
-            if time_diff > timedelta(days=30*18):
+            if time_diff > timedelta(days=30*19):
                 session.is_archive = True
                 session.save()
                 print(f"✅ Session ID {session.id} archivée automatiquement.")
@@ -1293,10 +1275,17 @@ def manage_session(request):
 
     # Rendu de la page avec les données habituelles
     sessions = Session.objects.prefetch_related('trainers', 'dates', 'formation').all()
+    archived_filter = request.GET.get('archived_filter', 'non')
+
     formations = Formation.objects.all()
     trainers = Trainer.objects.all()
     training_rooms = TrainingRoom.objects.all()
     status_choices = Session.STATUS_CHOICES
+    if archived_filter == 'non':
+        sessions = sessions.filter(is_archive=False)
+    elif archived_filter == 'oui':
+        sessions = sessions.filter(is_archive=True)
+    
 
     return render(request, 'core/manage_session.html', {
         'sessions': sessions,
@@ -1304,6 +1293,7 @@ def manage_session(request):
         'trainers': trainers,
         'training_rooms': training_rooms,
         'status_choices': status_choices,
+        'archived_filter': archived_filter, 
     })
 @login_required
 @staff_member_required
