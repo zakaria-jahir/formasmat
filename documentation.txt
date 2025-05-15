@@ -29,4 +29,5 @@ ajouter un modal de confirmation de suppression des session
 TODO: 
     * Vérifier tout les urls inutile et les supprimer
     * voir le problem du rest API et comment rendre les urls.py comme des api que nous pouvons les consomer sur le web et le mobile.
+    * vérifier les filter pour tout les pages et même le style 
 
