@@ -1,0 +1,56 @@
+from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
+from rest_framework.decorators import action
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+from .serializers import *
+from .models import *
+
+class CustomAuthToken(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data)
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        return Response({
+            'token': token.key,
+            'user_id': user.pk,
+            'email': user.email
+        })
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @action(detail=False, methods=['GET'])
+    def profile(self, request):
+        serializer = self.serializer_class(request.user)
+        return Response(serializer.data)
+
+class FormationViewSet(viewsets.ModelViewSet):
+    queryset = Formation.objects.all()
+    serializer_class = FormationSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+class SessionViewSet(viewsets.ModelViewSet):
+    queryset = Session.objects.all()
+    serializer_class = SessionSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @action(detail=True, methods=['POST'])
+    def add_participant(self, request, pk=None):
+        session = self.get_object()
+        user_id = request.data.get('user_id')
+
+        try:
+            user = User.objects.get(id=user_id)
+            participant = SessionParticipant.objects.create(
+                session=session,
+                user=user,
+                status='CONTACTED'
+            )
+            return Response({'status': 'participant added'})
+        except User.DoesNotExist:
+            return Response({'error': 'user not found'},
+                          status=status.HTTP_404_NOT_FOUND)

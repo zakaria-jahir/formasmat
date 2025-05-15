@@ -15,7 +15,7 @@ from django.db.models import Q, F
 from django.utils import timezone
 from django.db import IntegrityError
 from django.urls import reverse
-from django.views.decorators.http import require_http_methods,require_GET
+from django.views.decorators.http import require_http_methods,require_GET   
 from django.contrib.auth.forms import AuthenticationForm
 from django.utils.timezone import now
 from datetime import timedelta

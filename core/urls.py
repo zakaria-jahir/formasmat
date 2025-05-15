@@ -1,14 +1,28 @@
-from django.urls import path
+from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
 from core.views import export_session_pdf
+from rest_framework.routers import DefaultRouter
+from .api import *
+
+
+router = DefaultRouter()
+router.register(r'users', UserViewSet)
+router.register(r'formations', FormationViewSet)
+router.register(r'sessions', SessionViewSet)
+
+
 
 app_name = 'core'
 
+
+
 urlpatterns = [
     # Pages principales
+    path('api/', include(router.urls)),
+    path('api/auth/', CustomAuthToken.as_view()),
     path('', views.home, name='home'),
     path('login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
