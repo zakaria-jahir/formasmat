@@ -59,6 +59,21 @@ import pandas as pd
 import os
 
 logger = logging.getLogger(__name__)
+@csrf_exempt
+def api_login(request):
+    if request.method == 'POST':
+        import json
+        data = json.loads(request.body)
+        email = data.get('email')
+        password = data.get('password')
+
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return JsonResponse({'success': True, 'message': 'Connexion réussie', 'user_id': user.id})
+        else:
+            return JsonResponse({'success': False, 'message': 'Identifiants invalides'}, status=401)
+    return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
 def home(request):
     """Page d'accueil du site."""
@@ -342,8 +357,23 @@ def assign_to_session(request):
         return JsonResponse({'status': 'success'})
     return JsonResponse({'status': 'error'}, status=400)
 
+
 # Formations
-# Formations
+def formation_list_api(request):
+    formations = Formation.objects.filter(is_active=True)  # facultatif : filtre les formations actives
+    data = []
+    for formation in formations:
+        data.append({
+            "id": formation.id,
+            "name": formation.name,
+            "code_iperia": formation.code_iperia,
+            "description": formation.description,
+            "duration": formation.duration,
+            "type": formation.type,
+            "city": formation.city,
+            "code_postal": formation.code_postal,
+        })
+    return JsonResponse(data, safe=False)
 @login_required
 def formation_list(request):
     """Liste des formations disponibles, triées par proximité (puis par défaut)."""
@@ -542,7 +572,25 @@ def trainers_list(request):
     return render(request, 'core/trainers_list.html', {
         'trainers': trainers
     })
+def trainer_list_api(request):
+    trainers = Trainer.objects.all()
+    data = []
 
+    for trainer in trainers:
+        specialties = [formation.name for formation in trainer.specialties.all()]
+
+        data.append({
+            "id": trainer.id,
+            "first_name": trainer.first_name,
+            "last_name": trainer.last_name,
+            "email": trainer.email,
+            "phone": trainer.phone,
+            "bio": trainer.bio,
+            "photo": trainer.photo.url if trainer.photo else None,
+            "specialties": specialties,
+        })
+
+    return JsonResponse(data, safe=False)
 @login_required
 def trainer_detail(request, pk):
     """Détails d'un formateur."""
@@ -1177,6 +1225,22 @@ def export_session_csv(request, session_id):
     response['Content-Disposition'] = f'attachment; filename="session_{session_id}_participants.xlsx"'
     wb.save(response)
     return response
+def session_list_api(request):
+    sessions = Session.objects.all()
+
+    data = []
+    for session in sessions:
+        data.append({
+            "id": session.id,
+            "title": f"{session.formation.name if session.formation else 'Sans formation'}",  # titre généré
+            "start_date": session.start_date,
+            "end_date": session.end_date,
+            "status": session.status,
+            "city": session.city,
+            "address": session.address
+        })
+
+    return JsonResponse(data, safe=False)
 @staff_member_required
 def archive_session(request, session_id):
     if request.method == "POST":

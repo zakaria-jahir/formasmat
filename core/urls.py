@@ -67,10 +67,18 @@ urlpatterns = [
     path('sessions/calendar/', views.sessions_calendar, name='sessions_calendar'),
     path('export-session/<int:session_id>/participants/csv/', views.export_session_csv, name='export_session_csv'),
     path('export-session/<int:session_id>/participants/pdf/', views.export_session_pdf, name='export_session_pdf'),
+    #API mobile
+    path('api/sessions/', views.session_list_api, name='session_list_api'),
+    path('api/formations/', views.formation_list_api, name='formation_list_api'),
+    path('api/trainers/', views.trainer_list_api, name='trainer_list_api'),
+    path('api/login/', views.api_login, name='api_login'),
 
 
 
-    
+
+
+
+
     # API endpoints
     path('api/users/', views.get_users, name='get_users'),
     path('api/create-session/', views.create_session, name='create_session'),
