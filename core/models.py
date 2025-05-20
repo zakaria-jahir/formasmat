@@ -272,6 +272,22 @@ class Session(models.Model):
             Session.objects.filter(pk=self.pk).update(
                 last_status_change=self.last_status_change
             )
+    def get_status_class(self):
+        """Retourne une classe Bootstrap en fonction du statut pour styliser le bouton."""
+        return {
+            'NON_OUVERTE': 'secondary',
+            'DEMANDEE': 'info',
+            'OUVERTE': 'primary',
+            'COMPLETE': 'success',
+            'PREPAREE': 'warning',
+            'ENVOYEE_FORMATEUR': 'info',
+            'ATTENTE_RETOUR': 'warning',
+            'ATTENTE_TRAITEMENT_SYLVAN': 'warning',
+            'ATTENTE_TRAITEMENT_IPERIA': 'warning',
+            'ERREUR_SYLVAN': 'danger',
+            'ERREUR_IPERIA': 'danger',
+            'TERMINEE': 'dark',
+        }.get(self.status, 'secondary')
 
 class SessionDate(models.Model):
     """Modèle représentant une date de session avec sa salle."""
