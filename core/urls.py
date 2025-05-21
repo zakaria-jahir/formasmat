@@ -86,6 +86,13 @@ urlpatterns = [
     path('api/formations/', views.formation_list_api, name='formation_list_api'),
     path('api/trainers/', views.trainer_list_api, name='trainer_list_api'),
     path('api/login/', views.api_login, name='api_login'),
+    path('api/register/', views.api_register, name='api_register'),
+    path('api/training-rooms/', views.api_training_rooms, name='api_training_rooms'),
+    path('api/training-rooms/<int:room_id>/', views.api_training_room_detail, name='api_training_room_detail'),
+    path('api/me/', views.get_user_info, name='get_user_info'),
+
+
+
 
 
 

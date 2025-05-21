@@ -59,6 +59,19 @@ import pandas as pd
 import os
 
 logger = logging.getLogger(__name__)
+
+@login_required
+def get_user_info(request):
+    user = request.user
+    data = {
+        "id": user.id,
+        "email": user.email,
+        "first_name": user.first_name,
+        "last_name": user.last_name,
+        "phone": getattr(user, "phone", ""),  # si champ personnalisé
+        "role": getattr(user, "role", ""),
+    }
+    return JsonResponse(data)
 @csrf_exempt
 def api_login(request):
     if request.method == 'POST':
@@ -73,6 +86,33 @@ def api_login(request):
             return JsonResponse({'success': True, 'message': 'Connexion réussie', 'user_id': user.id})
         else:
             return JsonResponse({'success': False, 'message': 'Identifiants invalides'}, status=401)
+    return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
+@csrf_exempt
+def api_register(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+
+            username = data.get('username')
+            first_name = data.get('firstName')
+            last_name = data.get('lastName')
+            email = data.get('email')
+            password = data.get('password1')
+
+            if User.objects.filter(username=username).exists():
+                return JsonResponse({'success': False, 'message': 'Ce nom d’utilisateur existe déjà.'}, status=400)
+
+            user = User.objects.create_user(
+                username=username,
+                password=password,
+                email=email,
+                first_name=first_name,
+                last_name=last_name
+            )
+            return JsonResponse({'success': True, 'message': 'Utilisateur créé avec succès.'})
+        except Exception as e:
+            return JsonResponse({'success': False, 'message': str(e)}, status=500)
+
     return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
 def home(request):
@@ -520,6 +560,27 @@ def formation_delete(request, pk):
     return redirect('core:formation_list')
 
 # Salles
+def api_training_room_detail(request, room_id):
+    room = get_object_or_404(TrainingRoom, pk=room_id)
+    data = {
+        "id": room.id,
+        "name": room.name,
+        "address": room.address,
+        "postal_code": room.postal_code,
+        "city": room.city,
+        "capacity": room.capacity,
+        "equipment": room.equipment,
+        "latitude": room.latitude,
+        "longitude": room.longitude,
+    }
+    return JsonResponse(data)
+def api_training_rooms(request):
+    rooms = TrainingRoom.objects.all().values(
+        'id', 'name', 'address', 'postal_code', 'city',
+        'capacity', 'equipment', 'latitude', 'longitude'
+    )
+    return JsonResponse(list(rooms), safe=False)
+
 @staff_member_required
 def training_room_list(request):
     rooms = TrainingRoom.objects.all()
