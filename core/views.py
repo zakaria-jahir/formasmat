@@ -2058,10 +2058,53 @@ def create_and_add_participant(request, session_id):
     
     return JsonResponse({'error': 'Méthode non autorisée'}, status=405)
 
-def calculate_distance(address1, address2):
-    # TODO: Implémenter le calcul de distance réel avec une API de géocodage
-    # Pour l'instant, on retourne une distance aléatoire entre 1 et 100 km
-    return geodesic(address1, address2).km
+@csrf_exempt
+@require_POST
+@login_required
+def api_add_training_wish(request):
+    try:
+        data = json.loads(request.body)  # ✅ lire le JSON envoyé
+        formation_id = data.get("formation_id")
+        if not formation_id:
+            return JsonResponse({"error": "ID de formation manquant"}, status=400)
+
+        formation = get_object_or_404(Formation, pk=formation_id)
+
+        TrainingWish.objects.create(user=request.user, formation=formation, notes="")
+        return JsonResponse({"success": True, "message": "Souhait ajouté avec succès !"})
+
+    except IntegrityError:
+        return JsonResponse({"success": False, "message": "Souhait déjà existant."})
+    except Exception as e:
+        return JsonResponse({"error": str(e)}, status=400)
+import json
+@csrf_exempt
+@login_required
+def api_remove_training_wish(request):
+    if request.method != "POST":
+        return JsonResponse({"error": "Méthode non autorisée"}, status=405)
+
+    try:
+        body = json.loads(request.body)
+        formation_id = body.get("formation_id")
+    except json.JSONDecodeError:
+        return JsonResponse({"error": "Requête invalide"}, status=400)
+
+    if not formation_id:
+        return JsonResponse({"error": "ID de formation manquant"}, status=400)
+
+    formation = get_object_or_404(Formation, pk=formation_id)
+
+    try:
+        wish = TrainingWish.objects.get(user=request.user, formation=formation)
+        wish.delete()
+        return JsonResponse({"success": True, "message": "Souhait supprimé avec succès !"})
+    except TrainingWish.DoesNotExist:
+        return JsonResponse({"success": False, "message": "Souhait introuvable."})
+@login_required
+def api_user_wishes(request):
+    wishes = TrainingWish.objects.filter(user=request.user).values_list('formation_id', flat=True)
+    return JsonResponse({"wished_ids": list(wishes)})
 @require_POST
 @login_required
 def add_training_wish(request, formation_pk):
