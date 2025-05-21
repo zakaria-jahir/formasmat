@@ -90,6 +90,11 @@ urlpatterns = [
     path('api/training-rooms/', views.api_training_rooms, name='api_training_rooms'),
     path('api/training-rooms/<int:room_id>/', views.api_training_room_detail, name='api_training_room_detail'),
     path('api/me/', views.get_user_info, name='get_user_info'),
+    path('api/add-wish/', views.api_add_training_wish, name='api_add_training_wish'),
+    path('api/my-wishes/', views.api_user_wishes, name='api_user_wishes'),
+    path('api/remove-wish/', views.api_remove_training_wish, name='api_remove_training_wish'),
+
+
 
 
 
