@@ -1,6 +1,6 @@
 # core/serializers.py
 from rest_framework import serializers
-from .models import (User, Formation, Trainer, TrainingRoom, TrainingWish,
+from .models import (CompletedTraining, User, Formation, Trainer, TrainingRoom, TrainingWish,
                     Session, SessionParticipant, Notification)
 
 class UserSerializer(serializers.ModelSerializer):
@@ -28,6 +28,14 @@ class SessionSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TrainingWishSerializer(serializers.ModelSerializer):
+    formation = FormationSerializer(read_only=True)
     class Meta:
-        model = TrainingWish
+        model = TrainingWish    
         fields = '__all__'
+
+class CompletedTrainingSerializer(serializers.ModelSerializer):
+    formation_name = serializers.CharField(source='formation.name', read_only=True)
+
+    class Meta:
+        model = CompletedTraining
+        fields = ['id', 'formation_name', 'completion_date']

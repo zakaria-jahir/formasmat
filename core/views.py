@@ -2,6 +2,8 @@ import csv
 from email.utils import parsedate
 from django.urls import path
 from django.contrib.auth import views as auth_views
+from rest_framework.response import Response
+from core.serializers import CompletedTrainingSerializer, SessionSerializer, TrainingWishSerializer
 from . import views
 from io import BytesIO
 from django.db.models import Prefetch,Case, When, Value, IntegerField
@@ -50,6 +52,7 @@ from .forms import (
 
 from django.http import JsonResponse
 from django.contrib.auth import get_user_model
+from rest_framework.decorators import api_view
 
 import json
 import random
@@ -61,17 +64,26 @@ import os
 logger = logging.getLogger(__name__)
 
 @login_required
+@api_view(['GET'])
 def get_user_info(request):
     user = request.user
-    data = {
+    sessions = Session.objects.filter(session_participants__user=user).distinct()
+    wishes = TrainingWish.objects.filter(user=user).distinct()
+    completed_trainings = CompletedTraining.objects.filter(user=user).distinct()
+
+    sessions_data = SessionSerializer(sessions, many=True).data
+    wishes_data = TrainingWishSerializer(wishes, many=True).data
+    completed_trainings_data = CompletedTrainingSerializer(completed_trainings, many=True).data
+
+    return Response({
         "id": user.id,
         "email": user.email,
         "first_name": user.first_name,
         "last_name": user.last_name,
-        "phone": getattr(user, "phone", ""),  # si champ personnalisé
-        "role": getattr(user, "role", ""),
-    }
-    return JsonResponse(data)
+        "sessions": sessions_data,
+        "wishes": wishes_data,
+        "completed_trainings": completed_trainings_data,
+    })
 @csrf_exempt
 def api_login(request):
     if request.method == 'POST':
