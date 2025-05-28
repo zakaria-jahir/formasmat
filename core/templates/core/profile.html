@@ -1,10 +1,10 @@
 {% extends 'core/base.html' %}
 {% load widget_tweaks %}
-
 {% block title %}Mon Profil{% endblock %}
 
 {% block content %}
-<div class="container py-5">
+<div class="container py-4">
+
     {% if messages %}
         {% for message in messages %}
             <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
@@ -14,207 +14,106 @@
         {% endfor %}
     {% endif %}
 
-    <div class="row">
-        <!-- Informations personnelles -->
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title mb-4">Informations personnelles</h2>
-                    <form method="post">
-                        {% csrf_token %}
-                        
-                        {% for field in form %}
-                            {% if field.name != 'rpe' and field.name != 'other_rpe' %}
-                            <div class="mb-3">
-                                <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-                                {{ field }}
-                                {% if field.help_text %}
-                                    <div class="form-text">{{ field.help_text }}</div>
-                                {% endif %}
-                                {% if field.errors %}
-                                    {% for error in field.errors %}
-                                        <div class="alert alert-danger">
-                                            {{ error }}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                            {% endif %}
-                        {% endfor %}
-
-                        <!-- Section RPE -->
-                        <div class="mb-4">
-                            <h4 class="mb-3">RPE / Association</h4>
-                            <div class="mb-3">
-                                <label for="{{ form.rpe.id_for_label }}" class="form-label">{{ form.rpe.label }}</label>
-                                {{ form.rpe|add_class:"form-control"|attr:"onchange:toggleOtherRPE(this)" }}
-                                {% if form.rpe.errors %}
-                                    {% for error in form.rpe.errors %}
-                                        <div class="alert alert-danger">
-                                            {{ error }}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-
-                            <div class="mb-3" id="other_rpe_div" style="display: {% if not form.rpe.value %}block{% else %}none{% endif %};">
-                                <label for="{{ form.other_rpe.id_for_label }}" class="form-label">{{ form.other_rpe.label }}</label>
-                                {{ form.other_rpe }}
-                                {% if form.other_rpe.errors %}
-                                    {% for error in form.other_rpe.errors %}
-                                        <div class="alert alert-danger">
-                                            {{ error }}
-                                        </div>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary">
-                            <i class="fas fa-save"></i> Enregistrer
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <!-- Formations à venir -->
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title mb-4">Mes Formations</h2>
-                    {% if upcoming_sessions %}
-                        <div class="list-group">
-                            {% for session in upcoming_sessions %}
-                                <div class="list-group-item list-group-item-action">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">{{ session.formation.name }}</h5>
-                                        <small class="text-muted">
-                                            {% for participant in session.session_participants.all %}
-                                                {% if participant.user == user %}
-                                                    {{ participant.get_status_display }}
-                                                {% endif %}
-                                            {% endfor %}
-                                        </small>
-                                    </div>
-                                    <p class="mb-1 text-muted small">
-                                        {% for date in session.dates.all %}
-                                            <strong>{{ date.date|date:"d/m/Y" }}</strong> 
-                                            {% if date.location %}
-                                                - {{ date.location.name }} ({{ date.location.address }})
-                                            {% endif %}
-                                            {% if not forloop.last %}<br>{% endif %}
-                                        {% endfor %}
-                                    </p>
-                                </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title mb-3">Mes informations</h4>
+            <form method="post">
+                {% csrf_token %}
+                {% for field in form %}
+                    {% if field.name != 'rpe' and field.name != 'other_rpe' %}
+                        <div class="mb-3">
+                            <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                            {{ field|add_class:"form-control" }}
+                            {% for error in field.errors %}
+                                <div class="text-danger small">{{ error }}</div>
                             {% endfor %}
                         </div>
-                    {% else %}
-                        <div class="alert alert-info text-center">
-                            <p>Vous n'êtes inscrit à aucune formation pour le moment.</p>
-                            <p>Consultez les formations disponibles et inscrivez-vous !</p>
-                        </div>
                     {% endif %}
-                </div>
-            </div>
-        </div>
+                {% endfor %}
 
-        <!-- Souhaits de formation -->
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title mb-4">Souhaits de formation</h2>
-                    
-                    {% if training_wishes_with_session or training_wishes_without_session %}
-                        <!-- Souhaits avec session -->
-                        {% if training_wishes_with_session %}
-                            <h5 class="mb-3">Sessions assignées</h5>
-                            <div class="list-group mb-4">
-                                {% for wish in training_wishes_with_session %}
-                                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h5 class="mb-1">{{ wish.formation.name }}</h5>
-                                            <p class="text-muted small mb-1">
-                                                Code Ipéria : {{ wish.formation.code_iperia }}
-                                            </p>
-                                            <span class="badge bg-success">
-                                                <i class="fas fa-check-circle me-1"></i>Assigné à une session
-                                            </span>
-                                            <div class="mt-2 small text-muted">
-                                                <i class="fas fa-calendar me-1"></i>
-                                                Session du {{ wish.session.start_date|date:"d/m/Y" }} 
-                                                au {{ wish.session.end_date|date:"d/m/Y" }}
-                                            </div>
-                                        </div>
-                                        <div class="text-end">
-                                            <small class="text-muted">
-                                                Ajouté le {{ wish.created_at|date:"d/m/Y" }}
-                                            </small>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-
-                        <!-- Souhaits sans session -->
-                        {% if training_wishes_without_session %}
-                            <h5 class="mb-3">Souhaits en attente</h5>
-                            <div class="list-group">
-                                {% for wish in training_wishes_without_session %}
-                                    <div class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
-                                        <div>
-                                            <h5 class="mb-1">{{ wish.formation.name }}</h5>
-                                            <p class="text-muted small mb-1">
-                                                Code Ipéria : {{ wish.formation.code_iperia }}
-                                            </p>
-                                            <span class="badge bg-warning">
-                                                <i class="fas fa-clock me-1"></i>En attente
-                                            </span>
-                                        </div>
-                                        <div class="text-end">
-                                            <small class="text-muted">
-                                                Ajouté le {{ wish.created_at|date:"d/m/Y" }}
-                                            </small>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            </div>
-                        {% endif %}
-                    {% else %}
-                        <p class="text-muted text-center">Aucun souhait de formation</p>
-                    {% endif %}
+                <div class="mb-3">
+                    <label for="{{ form.rpe.id_for_label }}" class="form-label">{{ form.rpe.label }}</label>
+                    {{ form.rpe|add_class:"form-select"|attr:"onchange:toggleOtherRPE(this)" }}
                 </div>
-            </div>
-        </div>
-
-        <!-- Formations complétées -->
-        <div class="col-md-6 mb-4">
-            <div class="card">
-                <div class="card-body">
-                    <h2 class="card-title mb-4">Formations complétées</h2>
-                    {% if completed_trainings %}
-                        <div class="list-group">
-                            {% for training in completed_trainings %}
-                                <div class="list-group-item">
-                                    <h5 class="mb-1">{{ training.formation.name }}</h5>
-                                    <p class="mb-1">
-                                        <i class="fas fa-calendar-check"></i> Complété le {{ training.completion_date|date:"d/m/Y" }}
-                                    </p>
-                                    {% if training.certificate_number %}
-                                        <p class="mb-0">
-                                            <i class="fas fa-certificate"></i> Certificat n° {{ training.certificate_number }}
-                                        </p>
-                                    {% endif %}
-                                </div>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        <p class="text-muted">Aucune formation complétée</p>
-                    {% endif %}
+                <div class="mb-3" id="other_rpe_div" style="display: {% if not form.rpe.value %}block{% else %}none{% endif %};">
+                    <label for="{{ form.other_rpe.id_for_label }}" class="form-label">{{ form.other_rpe.label }}</label>
+                    {{ form.other_rpe|add_class:"form-control" }}
                 </div>
-            </div>
+
+                <button type="submit" class="btn btn-primary">Enregistrer</button>
+            </form>
         </div>
     </div>
+
+    {% if upcoming_sessions %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Formations à venir</h5>
+            {% for session in upcoming_sessions %}
+                <div class="mb-3 p-2 border rounded">
+                    <strong>{{ session.formation.name }}</strong><br>
+                    {% for date in session.dates.all %}
+                        <small>{{ date.date|date:"d/m/Y" }}{% if date.location %} - {{ date.location.name }}{% endif %}</small><br>
+                    {% endfor %}
+                    {% for p in session.session_participants.all %}
+                        {% if p.user == user %}
+                            <span class="badge bg-info mt-1">{{ p.get_status_display }}</span>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if training_wishes_with_session or training_wishes_without_session %}
+    <div class="card mb-3">
+        <div class="card-body">
+            <h5 class="card-title">Souhaits de formation</h5>
+
+            {% if training_wishes_with_session %}
+                <h6>Sessions assignées</h6>
+                {% for wish in training_wishes_with_session %}
+                    <div class="mb-2 p-2 border rounded">
+                        <strong>{{ wish.formation.name }}</strong>
+                        <span class="badge bg-success ms-2">Assignée</span><br>
+                        <small>Session du {{ wish.session.start_date|date:"d/m/Y" }} au {{ wish.session.end_date|date:"d/m/Y" }}</small><br>
+                        <small>Ajouté le {{ wish.created_at|date:"d/m/Y" }}</small>
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+            {% if training_wishes_without_session %}
+                <h6 class="mt-3">En attente</h6>
+                {% for wish in training_wishes_without_session %}
+                    <div class="mb-2 p-2 border rounded">
+                        <strong>{{ wish.formation.name }}</strong>
+                        <span class="badge bg-warning ms-2">En attente</span><br>
+                        <small>Ajouté le {{ wish.created_at|date:"d/m/Y" }}</small>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+
+    {% if completed_trainings %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Formations terminées</h5>
+            {% for training in completed_trainings %}
+                <div class="mb-2 p-2 border rounded">
+                    <strong>{{ training.formation.name }}</strong><br>
+                    <small>Terminée le {{ training.completion_date|date:"d/m/Y" }}</small><br>
+                    {% if training.certificate_number %}
+                        <small>Certificat : {{ training.certificate_number }}</small>
+                    {% endif %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
 </div>
 {% endblock %}
 
@@ -222,23 +121,19 @@
 {{ block.super }}
 <script>
 function toggleOtherRPE(select) {
-    const otherRpeDiv = document.getElementById('other_rpe_div');
-    const otherRpeInput = document.getElementById('{{ form.other_rpe.id_for_label }}');
-    
+    const div = document.getElementById('other_rpe_div');
+    const input = document.getElementById('{{ form.other_rpe.id_for_label }}');
     if (!select.value) {
-        otherRpeDiv.style.display = 'block';
-        otherRpeInput.required = true;
+        div.style.display = 'block';
+        input.required = true;
     } else {
-        otherRpeDiv.style.display = 'none';
-        otherRpeInput.required = false;
-        otherRpeInput.value = '';
+        div.style.display = 'none';
+        input.required = false;
+        input.value = '';
     }
 }
-
-// Initialisation au chargement de la page
-document.addEventListener('DOMContentLoaded', function() {
-    const rpeSelect = document.getElementById('{{ form.rpe.id_for_label }}');
-    toggleOtherRPE(rpeSelect);
+document.addEventListener('DOMContentLoaded', () => {
+    toggleOtherRPE(document.getElementById('{{ form.rpe.id_for_label }}'));
 });
 </script>
 {% endblock %}

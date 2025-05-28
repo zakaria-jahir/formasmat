@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 from rest_framework.response import Response
 from core.serializers import CompletedTrainingSerializer, SessionSerializer, TrainingWishSerializer
 from . import views
+from django.views.decorators.http import require_POST
 from io import BytesIO
 from django.db.models import Prefetch,Case, When, Value, IntegerField
 from django.apps import apps
@@ -218,6 +219,7 @@ def check_user_existence(request):
     return JsonResponse(response)
 
 @login_required
+
 def profile(request):
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=request.user)
@@ -233,13 +235,13 @@ def profile(request):
     else:
         form = UserProfileForm(instance=request.user)
 
-    # Récupérer les sessions où l'utilisateur est inscrit
+    # Sessions à venir
     upcoming_sessions = Session.objects.filter(
         session_participants__user=request.user,
         session_participants__status__in=['CONTACTED', 'FILE_EMAIL', 'FILE_PAPER']
     ).select_related('formation').prefetch_related('dates', 'dates__location', 'session_participants').distinct()
 
-    # Récupérer les souhaits de formation
+    # Souhaits de formation
     training_wishes_with_session = TrainingWish.objects.filter(
         user=request.user,
         session__isnull=False
@@ -250,10 +252,23 @@ def profile(request):
         session__isnull=True
     ).select_related('formation').order_by('-created_at')
 
-    # Récupérer les formations complétées
-    completed_trainings = CompletedTraining.objects.filter(
+    # Formations complétées via CompletedTraining
+    completed_trainings = list(CompletedTraining.objects.filter(
         user=request.user
-    ).select_related('formation').order_by('-completion_date')
+    ).select_related('formation').order_by('-completion_date'))
+
+    # ➕ Formations complétées via sessions marquées "TERMINEE"
+    completed_session_participations = SessionParticipant.objects.filter(
+        user=request.user,
+        session__status='TERMINEE'
+    ).select_related('session__formation')
+
+    for sp in completed_session_participations:
+        completed_trainings.append({
+            'formation': sp.session.formation,
+            'completion_date': sp.session.end_date,
+            'certificate_number': getattr(sp, 'certificate_number', None)
+        })
 
     context = {
         'form': form,
@@ -263,7 +278,6 @@ def profile(request):
         'completed_trainings': completed_trainings,
     }
     return render(request, 'core/profile.html', context)
-
 @login_required
 @staff_member_required
 @csrf_exempt
@@ -1180,13 +1194,20 @@ def export_session_pdf(request, session_id):
         'Content-Disposition': f'attachment; filename="session_{session_id}_participants.pdf"'
     })
 
+from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpResponse
+from openpyxl import Workbook
+from openpyxl.styles import PatternFill, Font, Alignment, Border, Side
+from openpyxl.utils import get_column_letter
+from .models import Session, SessionParticipant, Participant, ParticipantComment
+
 
 @staff_member_required
 def export_session_csv(request, session_id):
     session = Session.objects.get(pk=session_id)
     session_participants = SessionParticipant.objects.filter(session=session).select_related('user')
     participant_extra_data = {p.user_id: p for p in Participant.objects.filter(session=session)}
-    
+
     # Charger les commentaires groupés par participant_id
     comments_map = {}
     for comment in ParticipantComment.objects.filter(participant__session=session).select_related('participant__user', 'author'):
@@ -1217,20 +1238,27 @@ def export_session_csv(request, session_id):
         'Erreur': 'FF9999',
     }
 
-    # Ligne 1 : Formateurs
-    formateurs = ', '.join(f"{t.first_name} {t.last_name}" for t in session.trainers.all())
+    # Ligne 0 : Nom de la formation
     ws.merge_cells(start_row=1, start_column=1, end_row=1, end_column=7)
     cell = ws.cell(row=1, column=1)
+    cell.value = f"Formation : {session.formation.name}"
+    cell.font = Font(bold=True)
+    cell.alignment = center_alignment
+
+    # Ligne 1 : Formateurs
+    formateurs = ', '.join(f"{t.first_name} {t.last_name}" for t in session.trainers.all())
+    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=7)
+    cell = ws.cell(row=2, column=1)
     cell.value = f"Formateurs : {formateurs or 'Aucun'}"
     cell.font = Font(bold=True)
     cell.alignment = center_alignment
 
-    # Ligne 2 : Date et Lieu fusionnés
+    # Ligne 2 : Date et Lieu
     session_date = session.start_date.strftime("%d/%m/%Y") if session.start_date else "Date inconnue"
     session_location = f"{session.postal_code or 'CP inconnu'} {session.city or 'Ville inconnue'}"
     date_lieu_str = f"Date : {session_date} / Lieu : {session_location}"
-    ws.merge_cells(start_row=2, start_column=1, end_row=2, end_column=7)
-    cell = ws.cell(row=2, column=1)
+    ws.merge_cells(start_row=3, start_column=1, end_row=3, end_column=7)
+    cell = ws.cell(row=3, column=1)
     cell.value = date_lieu_str
     cell.font = Font(bold=True)
     cell.alignment = center_alignment
@@ -1240,15 +1268,16 @@ def export_session_csv(request, session_id):
         "Nom", "Prénom", "Email", "RPE/Association",
         "Statut d'inscription", "Statut Dossier", "Commentaires"
     ]
+    ws.append([])
     ws.append(headers)
     for col_num, column_title in enumerate(headers, 1):
-        cell = ws.cell(row=3, column=col_num)
+        cell = ws.cell(row=5, column=col_num)
         cell.fill = header_fill
         cell.font = header_font
         cell.alignment = center_alignment
         cell.border = thin_border
 
-    # Lignes 4+ : Données des participants
+    # Lignes suivantes : Données des participants
     for sp in session_participants:
         user = sp.user
         participant = participant_extra_data.get(user.id)
@@ -1256,7 +1285,6 @@ def export_session_csv(request, session_id):
         status_text = dict(SessionParticipant.STATUS_CHOICES).get(sp.status, 'Inconnu')
         file_status_text = dict(Participant.FILE_STATUS).get(participant.file_status, '') if participant else ''
 
-        # Récupération des commentaires associés à ce SessionParticipant
         comments = "\n".join(comments_map.get(sp.id, [])) or ''
 
         row_data = [
@@ -1276,13 +1304,12 @@ def export_session_csv(request, session_id):
             cell.alignment = center_alignment
             cell.border = thin_border
 
-        # Colorier la cellule de statut
         status_color = color_map.get(status_text)
         if status_color:
             status_cell = ws.cell(row=row_idx, column=5)
             status_cell.fill = PatternFill(start_color=status_color, end_color=status_color, fill_type="solid")
 
-    # Ajuster les largeurs de colonnes
+    # Ajustement des colonnes
     for i, column_cells in enumerate(ws.columns, 1):
         max_length = 0
         for cell in column_cells:
@@ -1291,7 +1318,7 @@ def export_session_csv(request, session_id):
         col_letter = get_column_letter(i)
         ws.column_dimensions[col_letter].width = max_length + 2
 
-    # Retourner le fichier Excel
+    # Génération du fichier Excel
     response = HttpResponse(
         content_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     )
@@ -1707,7 +1734,27 @@ def remove_participant(request, participant_id):
     except Exception as e:
         logger.error(f"Erreur lors de la suppression du participant: {e}")
         return JsonResponse({'error': str(e)}, status=400)
+@require_POST
+@login_required
+@staff_member_required
+def change_session_status(request, session_id):
+    try:
+        session = Session.objects.get(pk=session_id)
+    except Session.DoesNotExist:
+        return JsonResponse({'success': False, 'error': 'Session introuvable'}, status=404)
 
+    new_status = request.POST.get('status')
+    if new_status not in dict(Session.STATUS_CHOICES).keys():
+        return JsonResponse({'success': False, 'error': 'Statut invalide'}, status=400)
+
+    session.status = new_status
+    session.save()
+
+    return JsonResponse({
+        'success': True,
+        'status': session.get_status_display(),
+        'status_class': session.get_status_class()  # si tu as une méthode qui retourne la bonne classe Bootstrap
+    })
 @login_required
 @staff_member_required
 def update_session_status(request):

@@ -86,34 +86,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const calendarEl = document.getElementById('calendar');
     const modal = new bootstrap.Modal(document.getElementById('sessionModal'));
 
-    const events = [
-        {% for session in sessions %}
+const events = [
+    {% for session in sessions %}
+        {% for date in session.dates.all %}
             {
-                id: '{{ session.id }}',
+                id: '{{ session.id }}_{{ forloop.counter }}',
                 title: '{{ session.formation.name|escapejs }}',
-                start: '{{ session.dates.first.date|date:"Y-m-d" }}',
-                end: '{{ session.dates.last.date|date:"Y-m-d" }}',
+                start: '{{ date.date|date:"Y-m-d" }}',
                 backgroundColor: '#007bff',
                 borderColor: '#0056b3',
                 extendedProps: {
                     formation: '{{ session.formation.name|escapejs }}',
-                    dates: [
-                        {% for date in session.dates.all %}
-                            {
-                                date: '{{ date.date|date:"d/m/Y" }}',
-                                location: '{% if date.location %}{{ date.location.name|escapejs }}{% endif %}'
-                            }{% if not forloop.last %},{% endif %}
-                        {% endfor %}
-                    ],
+                    date: '{{ date.date|date:"d/m/Y" }}',
+                    location: '{% if date.location %}{{ date.location.name|escapejs }}{% else %}Lieu non défini{% endif %}',
                     trainers: [
                         {% for trainer in session.trainers.all %}
                             '{{ trainer.get_full_name|escapejs }}'{% if not forloop.last %},{% endif %}
                         {% endfor %}
                     ]
                 }
-            }{% if not forloop.last %},{% endif %}
+            }{% if not forloop.last or not forloop.parentloop.last %},{% endif %}
         {% endfor %}
-    ];
+    {% endfor %}
+];
+
 
     const calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',

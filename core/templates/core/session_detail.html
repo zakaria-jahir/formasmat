@@ -119,7 +119,7 @@
                                 <i class="fas fa-file-csv me-2"></i>CSV
                                 </a>
                             </li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-file-excel me-2"></i>Excel</a></li>
+                            
                             <li>
                                 <a class="dropdown-item" href="{% url 'core:export_session_pdf' session.id %}">
                                   <i class="fas fa-file-pdf me-2"></i>PDF
@@ -127,22 +127,23 @@
                             </li>                        
                         </ul>
                     </div>
-                    <div class="dropdown">
-                        <button class="btn btn-{{ session.get_status_class }} dropdown-toggle" type="button" id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ session.get_status_display }}
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="statusDropdown">
-                            {% for status_value, status_label in session.STATUS_CHOICES %}
-                                {% if status_value != session.status %}
-                                    <li>
-                                        <a class="dropdown-item status-change" href="#" data-status="{{ status_value }}">
-                                            {{ status_label }}
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            {% endfor %}
-                        </ul>
-                    </div>
+                    <<div class="dropdown">
+    <button class="btn btn-{{ session.get_status_class }} dropdown-toggle" type="button"
+            id="statusDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+        {{ session.get_status_display }}
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="statusDropdown">
+        {% for status_value, status_label in session.STATUS_CHOICES %}
+            {% if status_value != session.status %}
+                <li>
+                    <a class="dropdown-item status-change" href="#"
+                       data-status="{{ status_value }}">{{ status_label }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</div>
+
                 </div>
             </div>
             <div class="card-body">
@@ -784,19 +785,20 @@ $(document).ready(function() {
     }
 
     // Gestionnaire pour le changement de statut de la session
-    $('.status-change').on('click', function(e) {
-        e.preventDefault();
-        const newStatus = $(this).data('status');
-        const sessionId = {{ session.id }};
+// Gestionnaire pour le changement de statut de la session
+$('.status-change').on('click', function(e) {
+    e.preventDefault();
+    const newStatus = $(this).data('status');
+    const sessionId = {{ session.id }};
 
-        $.ajax({
-            url: "{% url 'core:update_session' session.id %}",
-            method: 'POST',
-            data: {
-                'session_id': sessionId,
-                'status': newStatus,
-                'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
-            },
+    $.ajax({
+        url: "{% url 'core:change_session_status' session.id %}",
+        method: 'POST',
+        data: {
+            'status': newStatus,
+            'csrfmiddlewaretoken': $('input[name=csrfmiddlewaretoken]').val()
+        },
+
             success: function(response) {
                 if (response.success) {
                     // Mettre à jour le bouton de statut

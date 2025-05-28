@@ -2,162 +2,183 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
+<style>
+  .card-footer .btn {
+    min-width: 100px;
+    text-align: center;
+  }
+
+  .card-footer form {
+    margin: 0;
+  }
+
+  .card-footer .btn-group .btn {
+    padding-left: 12px;
+    padding-right: 12px;
+  }
+</style>
+
 <div class="container-fluid mt-4">
-    <div class="row mb-4">
-        <div class="col-12 d-flex justify-content-between align-items-center">
-            <h2>
-                Formations 
-                {% if formations.count > 0 %}
-                    <small class="text-muted">({{ formations.count }} résultat{% if formations.count > 1 %}s{% endif %})</small>
-                {% endif %}
-            </h2>
-            {% if user.is_staff %}
-                <a href="{% url 'core:formation_create' %}" class="btn btn-primary">
-                    <i class="bi bi-plus-circle"></i> Nouvelle formation
-                </a>
-            {% endif %}
-        </div>
+  <div class="row mb-4">
+    <div class="col-12 d-flex justify-content-between align-items-center">
+      <h2>
+        Formations
+        {% if formations.count > 0 %}
+          <small class="text-muted">({{ formations.count }} résultat{% if formations.count > 1 %}s{% endif %})</small>
+        {% endif %}
+      </h2>
+      {% if user.is_staff %}
+        <a href="{% url 'core:formation_create' %}" class="btn btn-primary">
+          <i class="bi bi-plus-circle"></i> Nouvelle formation
+        </a>
+      {% endif %}
     </div>
+  </div>
 
-    <div class="row">
-        <!-- Filtres -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                <div class="card-header">
-                    <h5 class="mb-0">Filtres de recherche</h5>
-                </div>
-                <div class="card-body">
-                    <form method="get">
-                        <div class="mb-3">
-                            <label for="search" class="form-label">Recherche</label>
-                            <input type="text" class="form-control" id="search" name="search" value="{{ search_query }}">
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="type" class="form-label">Type de formation</label>
-                            <select class="form-select" id="type" name="type">
-                                <option value="">Tous types</option>
-                                {% for value, label in type_choices %}
-                                    <option value="{{ value }}" {% if type_filter == value %}selected{% endif %}>{{ label }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-
-                        <div class="mb-3">
-                            <label class="form-label">Modalités</label>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="is_presentiel" id="is_presentiel" value="true" {% if request.GET.is_presentiel %}checked{% endif %}>
-                                <label class="form-check-label" for="is_presentiel">Présentiel</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="is_distanciel" id="is_distanciel" value="true" {% if request.GET.is_distanciel %}checked{% endif %}>
-                                <label class="form-check-label" for="is_distanciel">Distanciel</label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="is_asynchrone" id="is_asynchrone" value="true" {% if request.GET.is_asynchrone %}checked{% endif %}>
-                                <label class="form-check-label" for="is_asynchrone">Asynchrone</label>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col">
-                                <label for="min_duration" class="form-label">Durée min (heures)</label>
-                                <input type="number" class="form-control" id="min_duration" name="min_duration" value="{{ min_duration }}">
-                            </div>
-                            <div class="col">
-                                <label for="max_duration" class="form-label">Durée max (heures)</label>
-                                <input type="number" class="form-control" id="max_duration" name="max_duration" value="{{ max_duration }}">
-                            </div>
-                        </div>
-
-                        <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-primary"><i class="bi bi-filter"></i> Appliquer les filtres</button>
-                            <a href="{% url 'core:formation_list' %}" class="btn btn-outline-secondary"><i class="bi bi-x-circle"></i> Réinitialiser</a>
-                        </div>
-                    </form>
-                </div>
+  <div class="row">
+    <!-- Filtres -->
+    <div class="col-md-3 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">Filtres de recherche</h5>
+        </div>
+        <div class="card-body">
+          <form method="get">
+            <div class="mb-3">
+              <label for="search" class="form-label">Recherche</label>
+              <input type="text" class="form-control" id="search" name="search" value="{{ search_query }}">
             </div>
-        </div>
 
-        <!-- Liste des formations -->
-        <div class="col-md-9">
-            {% if formations.count == 0 %}
-                <div class="alert alert-info">Aucune formation ne correspond à vos critères de recherche.</div>
-            {% else %}
-                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                    {% for formation in formations %}
-                        <div class="col">
-                            <div class="card h-100 shadow-sm">
-                                {% if formation.image %}
-                                    <img src="{{ formation.image.url }}" class="card-img-top" alt="{{ formation.name }}">
-                                {% endif %}
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ formation.name }}</h5>
-                                    <p class="card-text text-muted">
-                                        <i class="bi bi-clock"></i> {{ formation.duration }} heures<br>
-                                        <i class="bi bi-tag"></i> {{ formation.get_type_display }}<br>
-                                        <i class="bi bi-geo"></i>
-                                        {% if formation.is_presentiel %}Présentiel {% endif %}
-                                        {% if formation.is_distanciel %}Distanciel {% endif %}
-                                        {% if formation.is_asynchrone %}Asynchrone{% endif %}
-                                    </p>
-                                </div>
-                                <div class="card-footer d-flex justify-content-between align-items-center">
-                                    <a href="{% url 'core:formation_detail' pk=formation.pk %}" class="btn btn-outline-primary btn-sm">Détails <i class="bi bi-arrow-right"></i></a>
-                                    
-                                    {% if user.is_authenticated %}
-                                    <form method="post" action="{% url 'core:add_training_wish' formation_pk=formation.pk %}" style="display:inline;">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-outline-success btn-sm">
-                                            <i class="bi bi-heart"></i> Souhaiter 
-                                            {# à VOIR  #}
-                                        </button>
-                                    </form>
-                                    {% endif %}
+            <div class="mb-3">
+              <label for="type" class="form-label">Type de formation</label>
+              <select class="form-select" id="type" name="type">
+                <option value="">Tous types</option>
+                {% for value, label in type_choices %}
+                  <option value="{{ value }}" {% if type_filter == value %}selected{% endif %}>{{ label }}</option>
+                {% endfor %}
+              </select>
+            </div>
 
-                                    {% if user.is_staff %}
-                                        <div class="btn-group" role="group">
-                                            <a href="{% url 'core:formation_edit' pk=formation.pk %}" class="btn btn-sm btn-warning"><i class="bi bi-pencil"></i></a>
-                                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ formation.pk }}">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </div>
-                                    {% endif %}
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Delete Confirmation Modal -->
-                        <div class="modal fade" id="deleteModal{{ formation.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ formation.pk }}" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header bg-danger text-white">
-                                        <h5 class="modal-title" id="deleteModalLabel{{ formation.pk }}">
-                                            <i class="bi bi-exclamation-triangle"></i> Confirmation de suppression
-                                        </h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <p>Êtes-vous sûr de vouloir supprimer la formation : <strong>{{ formation.name }}</strong> ?</p>
-                                        <div class="alert alert-warning">
-                                            <i class="bi bi-info-circle"></i> Cette action est irréversible.
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                                        <form method="post" action="{% url 'core:formation_delete' pk=formation.pk %}">
-                                            {% csrf_token %}
-                                            <button type="submit" class="btn btn-danger">
-                                                <i class="bi bi-trash"></i> Confirmer la suppression
-                                            </button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            {% endif %}
+            <div class="mb-3">
+              <label class="form-label">Modalités</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="is_presentiel" id="is_presentiel" value="true" {% if request.GET.is_presentiel %}checked{% endif %}>
+                <label class="form-check-label" for="is_presentiel">Présentiel</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="is_distanciel" id="is_distanciel" value="true" {% if request.GET.is_distanciel %}checked{% endif %}>
+                <label class="form-check-label" for="is_distanciel">Distanciel</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="is_asynchrone" id="is_asynchrone" value="true" {% if request.GET.is_asynchrone %}checked{% endif %}>
+                <label class="form-check-label" for="is_asynchrone">Asynchrone</label>
+              </div>
+            </div>
+
+            <div class="row mb-3">
+              <div class="col">
+                <label for="min_duration" class="form-label">Durée min (heures)</label>
+                <input type="number" class="form-control" id="min_duration" name="min_duration" value="{{ min_duration }}">
+              </div>
+              <div class="col">
+                <label for="max_duration" class="form-label">Durée max (heures)</label>
+                <input type="number" class="form-control" id="max_duration" name="max_duration" value="{{ max_duration }}">
+              </div>
+            </div>
+
+            <div class="d-grid gap-2">
+              <button type="submit" class="btn btn-primary"><i class="bi bi-filter"></i> Appliquer les filtres</button>
+              <a href="{% url 'core:formation_list' %}" class="btn btn-outline-secondary"><i class="bi bi-x-circle"></i> Réinitialiser</a>
+            </div>
+          </form>
         </div>
+      </div>
     </div>
+
+    <!-- Liste des formations -->
+    <div class="col-md-9">
+      {% if formations.count == 0 %}
+        <div class="alert alert-info">Aucune formation ne correspond à vos critères de recherche.</div>
+      {% else %}
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+          {% for formation in formations %}
+            <div class="col">
+              <div class="card h-100 shadow-sm">
+                {% if formation.image %}
+                  <img src="{{ formation.image.url }}" class="card-img-top" alt="{{ formation.name }}">
+                {% endif %}
+                <div class="card-body">
+                  <h5 class="card-title">{{ formation.name }}</h5>
+                  <p class="card-text text-muted">
+                    <i class="bi bi-clock"></i> {{ formation.duration }} heures<br>
+                    <i class="bi bi-tag"></i> {{ formation.get_type_display }}<br>
+                    <i class="bi bi-geo"></i>
+                    {% if formation.is_presentiel %}Présentiel {% endif %}
+                    {% if formation.is_distanciel %}Distanciel {% endif %}
+                    {% if formation.is_asynchrone %}Asynchrone{% endif %}
+                  </p>
+                </div>
+
+                <div class="card-footer d-flex flex-wrap gap-2 justify-content-between align-items-center">
+                  <a href="{% url 'core:formation_detail' pk=formation.pk %}" class="btn btn-outline-primary btn-sm flex-grow-1">
+                    <i class="bi bi-info-circle"></i> Détails
+                  </a>
+
+                  {% if user.is_authenticated %}
+                  <form method="post" action="{% url 'core:add_training_wish' formation_pk=formation.pk %}" class="d-inline flex-grow-1">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-success btn-sm w-100">
+                      <i class="bi bi-heart"></i> Souhaiter
+                    </button>
+                  </form>
+                  {% endif %}
+
+                  {% if user.is_staff %}
+                  <div class="btn-group btn-group-sm">
+                    <a href="{% url 'core:formation_edit' pk=formation.pk %}" class="btn btn-warning">
+                      <i class="bi bi-pencil"></i>
+                    </a>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal{{ formation.pk }}">
+                      <i class="bi bi-trash"></i>
+                    </button>
+                  </div>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+
+            <!-- Modale de suppression -->
+            <div class="modal fade" id="deleteModal{{ formation.pk }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ formation.pk }}" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="deleteModalLabel{{ formation.pk }}">
+                      <i class="bi bi-exclamation-triangle"></i> Confirmation de suppression
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <p>Êtes-vous sûr de vouloir supprimer la formation : <strong>{{ formation.name }}</strong> ?</p>
+                    <div class="alert alert-warning">
+                      <i class="bi bi-info-circle"></i> Cette action est irréversible.
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                    <form method="post" action="{% url 'core:formation_delete' pk=formation.pk %}">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-danger">
+                        <i class="bi bi-trash"></i> Confirmer la suppression
+                      </button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
 </div>
 {% endblock %}

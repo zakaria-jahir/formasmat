@@ -69,6 +69,7 @@ urlpatterns = [
     path('session/<int:session_id>/archive/', views.archive_session, name='archive_session'),
     path('sessions/export-archives/', views.export_archived_sessions_xlsx, name='export_archived_sessions'),
     path('sessions/list/', views.session_list, name='session_list'),
+    path('session/<int:session_id>/change-status/', views.change_session_status, name='change_session_status'),
 
 
 
@@ -93,6 +94,7 @@ urlpatterns = [
     path('api/add-wish/', views.api_add_training_wish, name='api_add_training_wish'),
     path('api/my-wishes/', views.api_user_wishes, name='api_user_wishes'),
     path('api/remove-wish/', views.api_remove_training_wish, name='api_remove_training_wish'),
+    
 
 
 
